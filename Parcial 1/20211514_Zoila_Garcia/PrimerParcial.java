@@ -24,50 +24,49 @@ public class PrimerParcial {
         double b = 0;
         byte menu;
         CalculadoraMatematica calc = new CalculadoraMatematica();
-        
+
+        System.out.println("===== CALCULADORA MATEMÁTICA =====");
+        System.out.println("[1]: Ingresar números");
+        System.out.println("[2]: Sumar");
+        System.out.println("[3]: Restar");
+        System.out.println("[4]: Multiplicar");
+        System.out.println("[5]: Dividir");
+        System.out.println("[0]: Salir");
+        System.out.println("==================================");
+
         //Menú de opciones
-        do
-        {
-            System.out.println("===== CALCULADORA MATEMÁTICA =====");
-            System.out.println("[1]: Ingresar números");
-            System.out.println("[2]: Sumar");
-            System.out.println("[3]: Restar");
-            System.out.println("[4]: Multiplicar");
-            System.out.println("[5]: Dividir");
-            System.out.println("[0]: Salir");
-            System.out.println("==================================");
+        do {
+
             System.out.print("Seleccione una opción: ");
-            
             menu = sc.nextByte();
-            
-            
-            
+
             switch (menu) {
                 case 1:
                     System.out.print("Ingrese el primer número: ");
                     a = sc.nextDouble();
                     System.out.print("Ingrese el segundo número: ");
                     b = sc.nextDouble();
-                    
-                    calc.registrarNumeros(a,b);
+
+                    calc.registrarNumeros(a, b);
+                    System.out.println("Números registrados correctamente.\n");
                     break;
                 case 2:
-                    System.out.println("El resultado de la suma es igual a " + calc.sumar());
+                    System.out.println("El resultado de la suma es igual a " + calc.sumar() + "\n");
                     break;
                 case 3:
-                    System.out.println("El resultado de la resta es igual a " + calc.restar());
+                    System.out.println("El resultado de la resta es igual a " + calc.restar() + "\n");
                     break;
                 case 4:
-                    System.out.println("El resultado de la multiplicación es igual a " + calc.multiplicar());
+                    System.out.println("El resultado de la multiplicación es igual a " + calc.multiplicar() + "\n");
                     break;
                 case 5:
-                    System.out.println("El resultado de la división es igual a " + calc.dividir());
+                    System.out.println("El resultado de la división es igual a " + calc.dividir() + "\n");
                     break;
                 case 0:
-                    System.out.println("Bye bye!");
+                    System.out.println("Bye bye!\n");
                     System.exit(0);
                 default:
-                    System.out.println("Elige una opcion valida.");
+                    System.out.println("Elige una opcion valida.\n");
                     break;
             }
         } while (menu != 0);
