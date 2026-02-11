@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Clase que representa una calculadora matematica basica.
  * Implementa operaciones fundamentales siguiendo los principios de POO.
- * @author Dalvi
+ * @author Darvin Mendez
  */
 public class CalculadoraMatematica {
     // Atributos Privados
