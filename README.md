@@ -3,7 +3,7 @@
 **Profesor:** Jesus Quezada
 
 ### Integrantes
-* Zoila Garcia 2021-1514
+* Zoila García 2021-1514
 * Luis Moscoso 2025-2065
 * Darvin Mendez 2025-2024
 * Drailyn Rivera 2024-0475
