@@ -1,13 +1,4 @@
-# 📘 Proyecto: Calculadora en Java
-
-## 👨‍🎓 Información del Estudiante
-
-**Nombre:** Luis Alberto
-**Matrícula:** 2025-2065
-**Asignatura:** Programación 1
-**Tarea:** Sobrecarga de Métodos – Clase Calculadora
-
----
+# Proyecto: Calculadora en Java
 
 ## 📌 Descripción del Proyecto
 
@@ -40,7 +31,7 @@ Java ejecuta automáticamente el método adecuado dependiendo de los valores env
 
 ---
 
-## 🧮 Métodos Implementados
+## Métodos Implementados
 
 | Método        | 2 Parámetros | 3 Parámetros | 4 Parámetros |
 | ------------- | ------------ | ------------ | ------------ |
@@ -50,18 +41,6 @@ Java ejecuta automáticamente el método adecuado dependiendo de los valores env
 | dividir()     | ✔            | ✘            | ✘            |
 
 **Total:** 10 métodos implementados.
-
----
-
-## Estructura del Proyecto
-
-```
-ProyectoCalculadora/
-│
-├── Calculadora.java
-├── Main.java
-└── README.md
-```
 
 ---
 
@@ -94,3 +73,4 @@ Multiplicación (4 params): 16
 Este proyecto demuestra el uso práctico de la sobrecarga de métodos en Java, permitiendo reutilizar nombres de funciones y mejorar la organización del código.
 
 ---
+
