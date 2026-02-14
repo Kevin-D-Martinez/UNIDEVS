@@ -13,8 +13,6 @@ package calculadora;
  * Realiza operaciones matemáticas básicas utilizando
  * sobrecarga de métodos.
  *
- * Nombre: TU NOMBRE
- * Matrícula: TU MATRICULA
  */
 
 public class Calculadora {
@@ -99,5 +97,6 @@ public class Main {
     }
 }
 }
+
 
 
