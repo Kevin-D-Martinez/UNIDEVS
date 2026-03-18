@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"pkg20251159_kevin_martinez","l":"Estudiante"},{"p":"pkg20251159_kevin_martinez","l":"Main"},{"p":"pkg20251159_kevin_martinez","l":"RegistroAcademicoGUI"}];updateSearchResults();
