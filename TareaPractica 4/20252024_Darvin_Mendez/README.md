@@ -21,7 +21,7 @@ Este proyecto es una calculadora extendida desarrollada en Java Swing que permit
 3. Ingresar los valores en los campos.
 4. Presionar el botón de la operación deseada.
 
-### 📸 Capturas de Pantalla
+### Capturas de Pantalla
 
 Aquí puedes ver el funcionamiento de la aplicación:
 
