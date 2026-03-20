@@ -21,13 +21,18 @@ Este proyecto es una calculadora extendida desarrollada en Java Swing que permit
 3. Ingresar los valores en los campos.
 4. Presionar el botón de la operación deseada.
 
-## Capturas de pantalla
+### 📸 Capturas de Pantalla
 
-![Calculadora](imagenes/captura_calculadora.png)
+Aquí puedes ver el funcionamiento de la aplicación:
 
-![Conversor](imagenes/captura_conversor.png)
+#### 1. Interfaz de la Calculadora y Operaciones
+![Calculadora](imagenes/captura_calculadora.png.png)
 
-![Error](imagenes/captura_error.png)
+#### 2. Conversor de Temperatura (Fahrenheit <-> Celsius)
+![Conversor](imagenes/captura_conversor.png.png)
+
+#### 3. Validación de Error (División por Cero)
+![Error División por Cero](imagenes/captura_error.png.png)
 
 ## Autor
 - Nombre: Darvin Mendez
