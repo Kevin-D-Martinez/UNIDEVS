@@ -14,14 +14,10 @@ El proyecto consta de dos partes principales:
 ---
 
 ## Estructura del proyecto
-20252024_Darvin_Mendez/
-├── src/ # Código fuente Java
-│ └── registro/
-│ ├── Estudiante.java
-│ └── RegistroAcademicoGUI.java
-├── nbproject/ # Archivos de NetBeans (opcional)
-├── README.md # Este archivo
-└── .gitignore # Ignorar archivos innecesarios
+src/
+├── Estudiante.java             # Clase con la lógica de negocio y encapsulamiento.
+├── RegistroAcademicoGUI.java    # Interfaz gráfica (JFrame) y manejo de eventos.
+└── RegistroAcademicoGUI.form    # Archivo de diseño visual generado por NetBeans.
 
 ---
 
