@@ -13,7 +13,8 @@ El proyecto consta de dos partes principales:
 
 ---
 
-## Estructura del proyecto
+### Estructura del proyecto
+```text
 src/
 ├── Estudiante.java             # Clase con la lógica de negocio y encapsulamiento.
 ├── RegistroAcademicoGUI.java    # Interfaz gráfica (JFrame) y manejo de eventos.
