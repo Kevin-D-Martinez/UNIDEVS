@@ -1,91 +1,28 @@
-# Registro Académico - 20252024 Darvin Mendez
+# Tarea 4.1 - GUI
 
 ## Descripción
-Este proyecto en **Java Swing** permite registrar los datos académicos de un estudiante, calcular su nota final y determinar si aprobó o reprobó.  
+Este proyecto consiste en el desarrollo de una interfaz gráfica en Java utilizando NetBeans, que permite capturar y presentar los datos de un participante.
 
-El proyecto consta de dos partes principales:
+Se aplican los principios de encapsulamiento y separación de responsabilidades mediante una clase llamada `ProcesarDatos`, encargada de almacenar y procesar la información.
 
-1. **Clase `Estudiante`**  
-   Representa un estudiante con sus datos personales y calificaciones en distintas evaluaciones académicas.
-
-2. **Interfaz `RegistroAcademicoGUI`**  
-   Una ventana gráfica que permite ingresar los datos del estudiante, calcular la nota final y mostrar el resultado de manera interactiva.
-
----
+## Funcionalidad
+- Captura datos del participante (matrícula, nombres, apellidos, cuatrimestre)
+- Almacena los datos en la clase `ProcesarDatos`
+- Muestra los datos mediante una ventana emergente
 
 ## Estructura del proyecto
-20252024_Darvin_Mendez/
-├── src/ # Código fuente Java
-│ └── registro/
-│ ├── Estudiante.java
-│ └── RegistroAcademicoGUI.java
-├── nbproject/ # Archivos de NetBeans (opcional)
-├── README.md # Este archivo
-└── .gitignore # Ignorar archivos innecesarios
+Tarea4.1_GUI/
+    └── src/
+        └── principal/
+            ├── InterfazParticipante.java
+            ├── InterfazParticipante.form
+            └── ProcesarDatos.java
 
----
-
-## Clases principales
-
-### `Estudiante.java`
-
-- **Atributos privados**
-  - `nombre`: Nombre completo del estudiante
-  - `matricula`: Matrícula del estudiante
-  - `carrera`: Carrera o programa académico
-  - `practicas`: Calificación obtenida en prácticas (0-40)
-  - `parciales`: Calificación obtenida en parciales (0-20)
-  - `asignaciones`: Calificación obtenida en asignaciones (0-20)
-  - `examenFinal`: Calificación obtenida en examen final (0-20)
-
-- **Métodos**
-  - `calcularNotaFinal()`: Suma todas las evaluaciones y devuelve la nota final.
-  - `getResultado()`: Devuelve `"APROBADO"` si la nota final ≥ 60, `"REPROBADO"` en caso contrario.
-  - `getNombre()`, `getMatricula()`, `getCarrera()`: Devuelven los datos personales del estudiante.
-
----
-
-### `RegistroAcademicoGUI.java`
-
-- Ventana principal construida con **Java Swing**.
-- Campos de entrada para:
-  - Nombre, matrícula, carrera
-  - Prácticas, parciales, asignaciones, examen final
-- Botones:
-  - `Calcular Resultado`: Calcula la nota final y muestra el estado aprobado/reprobado.
-  - `Limpiar`: Limpia todos los campos y el resultado.
-- Validaciones:
-  - No permite campos personales vacíos.
-  - Las calificaciones deben estar en su rango permitido.
-  - Bloquea la entrada de letras en las calificaciones.
-- Muestra el resultado en un `JLabel` con color:
-  - Verde si aprobado
-  - Rojo si reprobado
-
----
-
-## Uso
-
-1. Abrir el proyecto en NetBeans o cualquier IDE compatible con Java Swing.
-2. Ejecutar la clase `RegistroAcademicoGUI`.
-3. Ingresar los datos del estudiante en los campos correspondientes.
-4. Presionar **Calcular Resultado** para obtener la nota final y estado.
-5. Presionar **Limpiar** para reiniciar los campos.
-
----
-
-## Notas
-
-- Proyecto creado para fines académicos.  
-- La nota final se calcula sumando todas las evaluaciones según el esquema:
-  - Prácticas: 0-40
-  - Parciales: 0-20
-  - Asignaciones: 0-20
-  - Examen final: 0-20
-
----
+## Tecnologías utilizadas
+- Java
+- NetBeans
+- Swing (JFrame, JButton, JTextField)
 
 ## Autor
-
-**Darvin Mendez**  
-Matrícula: 20252024  
+Darvin Méndez
+Matrícula: 2025-2024
