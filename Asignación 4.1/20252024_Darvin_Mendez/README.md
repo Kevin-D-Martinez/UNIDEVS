@@ -10,7 +10,7 @@ Se aplican los principios de encapsulamiento y separación de responsabilidades 
 - Almacena los datos en la clase `ProcesarDatos`
 - Muestra los datos mediante una ventana emergente
 
-## Estructura del proyecto
+### Estructura del proyecto
 Tarea4.1_GUI/
     └── src/
         └── principal/
