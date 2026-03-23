@@ -26,5 +26,5 @@ Tarea4.1_GUI/
 - Swing (JFrame, JButton, JTextField)
 
 ## Autor
-Darvin Méndez
+Darvin Méndez<br>
 Matrícula: 2025-2024
