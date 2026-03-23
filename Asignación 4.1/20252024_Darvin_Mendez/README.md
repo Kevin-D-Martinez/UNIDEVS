@@ -11,12 +11,14 @@ Se aplican los principios de encapsulamiento y separación de responsabilidades 
 - Muestra los datos mediante una ventana emergente
 
 ## Estructura del proyecto
+```text
 Tarea4.1_GUI/
 └── src/
 └── principal/
 ├── InterfazParticipante.java
 ├── InterfazParticipante.form
 └── ProcesarDatos.java
+```
 
 ## Tecnologías utilizadas
 - Java
