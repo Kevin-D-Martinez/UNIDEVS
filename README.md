@@ -1,4 +1,4 @@
-![alt text](logoUnidevs.png)
+![alt text](logoUnidevs_Rectangular.png)
 
 # UNIDEVS - Programacion 1
 **Profesor:** Jesus Quezada
