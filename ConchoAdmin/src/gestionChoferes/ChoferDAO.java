@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 
 public class ChoferDAO {
     
-    public static void guardarChofer(String nombre, String apellido, boolean activo, String telefono, String cedula){
+    public static void guardarChofer(String nombre, String apellido, String cedula, String telefono, String estado, Strin){
         
-        String sql = "INSERT INTO Choferes(nombre, apellido, activo, cedula, telefono) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Choferes(nombre, apellido, estado, cedula, telefono) VALUES (?, ?, ?, ?, ?)";
         
         try {
             Connection con = chofer.ConexionMySQL.conectar();
@@ -15,7 +15,7 @@ public class ChoferDAO {
             
             ps.setString(1, nombre);
             ps.setString(2, apellido);
-            ps.setBoolean(3, activo);
+            ps.setString(3, estado);
             ps.setString(4, cedula);
             ps.setString(5, telefono);
             

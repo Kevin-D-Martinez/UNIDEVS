@@ -5,13 +5,12 @@ package gestionChoferes;
  * @author Kevin Daniel Martinez Reyes 2025-1159
  */
 public class Chofer {
-    private int id;
-    private String nombre;
-    private String apellido;
-    private String estado;
-    private String cedula;
-    private String telefono;
-    private int rutaId;
+    private int id = 1;
+    private String nombre = "vacío";
+    private String apellido = "vacío";
+    private String estado = "vacío";
+    private String cedula = "vacío";
+    private String telefono = "vacío";
     
     public Chofer(){
     }
@@ -22,14 +21,12 @@ public class Chofer {
      * @param nombre
      * @param apellido
      * @param estado
-     * @param rutaId
      */
-    public Chofer(int id, String nombre, String apellido, String estado, int rutaId){
+    public Chofer(int id, String nombre, String apellido, String estado){
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.estado = estado;
-        this.rutaId = rutaId;
     }
     
     /**
@@ -37,16 +34,14 @@ public class Chofer {
      * @param id 
      * @param nombre 
      * @param apellido 
-     * @param estado 
-     * @param rutaId 
+     * @param estado
      * @param telefono 
      */
-    public Chofer(int id, String nombre, String apellido, String estado, int rutaId, String telefono){
+    public Chofer(int id, String nombre, String apellido, String estado, String telefono){
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.estado = estado;
-        this.rutaId = rutaId;
         this.telefono = telefono;
     }
     
@@ -55,19 +50,17 @@ public class Chofer {
      * @param id 
      * @param nombre 
      * @param apellido 
-     * @param estado 
-     * @param rutaId 
+     * @param estado  
      * @param telefono 
      * @param cedula 
      */
-    public Chofer(int id, String nombre, String apellido, String estado, int rutaId, String telefono, String cedula){
+    public Chofer(int id, String nombre, String apellido, String estado, String telefono, String cedula){
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.estado = estado;
         this.cedula = cedula;
         this.telefono = telefono;
-        this.rutaId = rutaId;
     }
     
     public int getId(){
@@ -100,14 +93,6 @@ public class Chofer {
     
     public void setEstado(String estado){
         this.estado = estado;
-    }
-    
-    public int getRutaId(){
-        return rutaId;
-    }
-    
-    public void setRutaId(int rutaId){
-        this.rutaId = rutaId;
     }
     
     public String getTelefono(){
