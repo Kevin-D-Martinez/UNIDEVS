@@ -5,12 +5,14 @@ package gestionChoferes;
  * @author Kevin Daniel Martinez Reyes 2025-1159
  */
 public class Chofer {
-    private int id = 1;
-    private String nombre = "vacío";
-    private String apellido = "vacío";
-    private String estado = "vacío";
+    private int id;
+    private String nombre;
+    private String apellido;
+    private String estado;
     private String cedula = "vacío";
     private String telefono = "vacío";
+    private int idRuta;
+    private int idUsuario;
     
     public Chofer(){
     }
@@ -21,12 +23,16 @@ public class Chofer {
      * @param nombre
      * @param apellido
      * @param estado
+     * @param idRuta
+     * @param idUsuario
      */
-    public Chofer(int id, String nombre, String apellido, String estado){
+    public Chofer(int id, String nombre, String apellido, String estado, int idRuta, int idUsuario){
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.estado = estado;
+        this.idRuta = idRuta;
+        this.idUsuario = idUsuario;
     }
     
     /**
@@ -35,14 +41,18 @@ public class Chofer {
      * @param nombre 
      * @param apellido 
      * @param estado
+     * @param idRuta
+     * @param idUsuario
      * @param telefono 
      */
-    public Chofer(int id, String nombre, String apellido, String estado, String telefono){
+    public Chofer(int id, String nombre, String apellido, String estado, int idRuta, int idUsuario, String telefono){
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.estado = estado;
         this.telefono = telefono;
+        this.idRuta = idRuta;
+        this.idUsuario = idUsuario;
     }
     
     /**
@@ -51,16 +61,20 @@ public class Chofer {
      * @param nombre 
      * @param apellido 
      * @param estado  
+     * @param idRuta  
+     * @param idUsuario  
      * @param telefono 
      * @param cedula 
      */
-    public Chofer(int id, String nombre, String apellido, String estado, String telefono, String cedula){
+    public Chofer(int id, String nombre, String apellido, String estado, int idRuta, int idUsuario, String telefono, String cedula){
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.estado = estado;
         this.cedula = cedula;
         this.telefono = telefono;
+        this.idRuta = idRuta;
+        this.idUsuario = idUsuario;
     }
     
     public int getId(){
@@ -109,5 +123,21 @@ public class Chofer {
     
     public void setCedula(String cedula){
         this.cedula = cedula;
+    }
+    
+    public int getIdRuta(){
+        return idRuta;
+    }
+    
+    public void setIdRuta(int idRuta){
+        this.idRuta = idRuta;
+    }
+    
+    public int getIdUsuario(){
+        return idUsuario;
+    }
+    
+    public void setIdUsuario(int idUsuario){
+        this.idUsuario = idUsuario;
     }
 }
