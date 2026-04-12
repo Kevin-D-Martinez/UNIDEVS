@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"calculadora.guiCalculadora"},{"l":"convertidorgrados"},{"l":"raizcuadrada_exponente"}];updateSearchResults();

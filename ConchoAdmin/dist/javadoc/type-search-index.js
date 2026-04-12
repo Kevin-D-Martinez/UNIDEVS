@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"gestionChoferes","l":"Chofer"},{"p":"gestionChoferes","l":"ChoferDAO"},{"p":"<Unnamed>","l":"ConchoAdmin"},{"p":"asignaciones","l":"ConexionMySQL"},{"p":"gestionUsuarios","l":"Usuario"},{"p":"gestionUsuarios","l":"UsuarioDAO"}];updateSearchResults();

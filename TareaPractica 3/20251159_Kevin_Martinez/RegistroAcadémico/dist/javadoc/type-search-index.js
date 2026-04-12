@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"registroacademico","l":"Estudiante"},{"p":"registroacademico","l":"Main"},{"p":"registroacademico","l":"RegistroAcademicoGUI"}];updateSearchResults();

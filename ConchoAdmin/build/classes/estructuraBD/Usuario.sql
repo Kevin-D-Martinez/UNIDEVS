@@ -1,8 +1,0 @@
-CREATE TABLE Usuario(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre 	VARCHAR(25),
-    apellido VARCHAR(25),
-    email VARCHAR(50),
-    contraseña VARCHAR(15),
-    fechaCreacion DATETIME DEFAULT CURRENT_TIMESTAMP
-)
