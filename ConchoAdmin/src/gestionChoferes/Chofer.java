@@ -56,7 +56,7 @@ public class Chofer {
     }
     
     /**
-     * Constructor que asigna todos los valores que puede tener un chofer
+     * Constructor que asigna todos los valores de un chofer
      * @param id 
      * @param nombre 
      * @param apellido 
