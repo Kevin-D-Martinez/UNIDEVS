@@ -31,7 +31,7 @@ public class ChoferDAO {
         List<Chofer>datos = new ArrayList<>();
         try{
             
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             rs  = ps.executeQuery();
             
@@ -62,7 +62,7 @@ public class ChoferDAO {
         List<Chofer>datos = new ArrayList<>();
         try{
             
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             rs  = ps.executeQuery();
             
@@ -94,7 +94,7 @@ public class ChoferDAO {
                     + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         try{
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
                     
             ps.setString(1, c.getNombre());
@@ -125,7 +125,7 @@ public class ChoferDAO {
         String sql = "UPDATE Chofer set nombre=?, apellido=?, cedula=?, telefono=?, estado=? where id=?";
         
         try{
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, c.getNombre());
@@ -162,7 +162,7 @@ public class ChoferDAO {
         String sql = "DELETE FROM Chofer WHERE id = " + id;
         
         try{
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             
             r = ps.executeUpdate();
