@@ -15,11 +15,42 @@ public class UsuarioDAO {
     PreparedStatement ps;
     ResultSet rs;
     
-    public int login(String nombreCompletoOEmail, String contraseña){
-        String sql = "SELECT * FROM Chofer "+
-                     "WHERE nombre||apellido||email||contraseña LIKE '%"+nombreCompletoOEmail+"%'";
+    /**
+     * Este metodo se encarga de validar la existencia de un usuario para iniciar sesión.
+     * Devuelve 1 si cumple con todo lo requerido, sino 0.
+     * @param email
+     * @param contraseña
+     * @return 1/0
+     */
+    public int login(String email, String contraseña){
+        String sql = "SELECT * FROM Usuario WHERE email = ?";
+       
+        try{
+            con = asignaciones.ConexionMySQL.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            rs = ps.executeQuery(); 
+            
+            if(rs.next()){
+                Usuario u = new Usuario();
+                
+                u.setId(rs.getInt(1));
+                u.setNombre(rs.getString(2));
+                u.setApellido(rs.getString(3));
+                u.setEmail(rs.getString(4));
+                u.setContraseña(rs.getString(5));
+                
+                if(contraseña.equals(u.getContraseña())){
+                    System.out.println("email y contraseña correctos");
+                    return 1;
+                }
+            }
+            
+        } catch(SQLException e){
+            System.out.println("Error al iniciar sesión: " + e);
+        }
         
-        return 1;
+        return 0;
     }
     
     /**
@@ -30,7 +61,7 @@ public class UsuarioDAO {
      */
     public int agregar(Usuario c){
         
-        String sql = "INSERT INTO Chofere(nombre, apellido, email, contraseña) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Usuario(nombre, apellido, email, contraseña) VALUES (?, ?, ?, ?)";
         
         try{
             con = chofer.ConexionMySQL.conectar();
@@ -44,7 +75,11 @@ public class UsuarioDAO {
             ps.executeUpdate();
             
         } catch (SQLException e) {
-            System.out.println("Error al insertar usuario: " + e);
+            if (e.getErrorCode() == 1062) {
+                return 0;
+            } else {
+                System.out.println("Error al insertar usuario: " + e);
+            }
         }
         return 1;
     }
@@ -58,7 +93,7 @@ public class UsuarioDAO {
     public int actualizar(Usuario c){
         int r = 0;
         
-        String sql = "UPDATE Chofer set nombre=?, apellido=?, email=?, contraseña=?";
+        String sql = "UPDATE Usuario set nombre=?, apellido=?, email=?, contraseña=?";
         
         try{
             con = chofer.ConexionMySQL.conectar();
