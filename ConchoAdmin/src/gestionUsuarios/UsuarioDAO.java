@@ -26,7 +26,7 @@ public class UsuarioDAO {
         String sql = "SELECT * FROM Usuario WHERE email = ?";
        
         try{
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setString(1, email);
             rs = ps.executeQuery(); 
@@ -64,7 +64,7 @@ public class UsuarioDAO {
         String sql = "INSERT INTO Usuario(nombre, apellido, email, contraseña) VALUES (?, ?, ?, ?)";
         
         try{
-            con = chofer.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
                     
             ps.setString(1, c.getNombre());
@@ -96,7 +96,7 @@ public class UsuarioDAO {
         String sql = "UPDATE Usuario set nombre=?, apellido=?, email=?, contraseña=?";
         
         try{
-            con = chofer.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, c.getNombre());
