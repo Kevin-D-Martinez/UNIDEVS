@@ -117,4 +117,32 @@ public class UsuarioDAO {
         }
         return r;
     }
+    
+    /**
+     * Este metodo se encarga de eliminar el chofer seleccionado.
+     * El mismo devuelve el numero de choferes afectados.
+     * @param id
+     * @return r
+     */
+    public int eliminar(int id){
+
+        int r = 0;
+        
+        String sql = "DELETE FROM Usuario WHERE id = " + id;
+        
+        try{
+            con = ConexionMySQL.conectar();
+            ps = con.prepareStatement(sql);
+            
+            r = ps.executeUpdate();
+            if(r == 1){
+                return 1;
+            }else{
+                return 0;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al tratar de borrar usuario: " + e);
+        }
+        return r;
+    }
 }
