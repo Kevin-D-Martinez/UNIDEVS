@@ -1,6 +1,6 @@
 CREATE TABLE Pago(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    monto DECIMAL(4,2),
+    monto DECIMAL(6,2),
     metodoPago VARCHAR(10),
     estado VARCHAR(10),
     id_chofer INT,
