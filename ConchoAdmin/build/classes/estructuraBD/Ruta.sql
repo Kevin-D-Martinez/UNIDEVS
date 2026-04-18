@@ -6,5 +6,3 @@ CREATE TABLE Ruta(
     fechaCreacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 )
-
-SELECT * FROM Ruta;
