@@ -17,7 +17,9 @@ Concho admin es un sistema de gestión de rutas de transporte público que permi
 * Tener conexión a internet (los datos son almacenados en la nube).
 
 ## Imagenes del prógrama en uso
-
+![Inicio sesión](imagenes/image.png)
+![Regitrarse](imagenes/image1.png)
+![Inicio](imagenes/image2.png)
 
 ## UNIDEVS
 Darvin Mendez - Lider del equipo 
