@@ -2,6 +2,8 @@ package vistas;
 
 import gestionRutas.Ruta;
 import gestionRutas.RutaControlador;
+import gestionUsuarios.Sesion;
+import gestionUsuarios.Usuario;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.text.NumberFormat;
@@ -35,6 +37,8 @@ public class Inicio extends javax.swing.JFrame {
 
     //Llama a los controladores para no tener que abrir más de una instancia
     RutaControlador controller = new RutaControlador();
+    Usuario actual = Sesion.getInstancia().getUsuarioActual();
+    int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
 
@@ -42,25 +46,25 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form home
      */
     public Inicio() {
-        
+
         // Inicializa los componentes de la interfa
         initComponents();
-        
+
         // Centraliza la ventana en la pantalla del usuario
         setLocationRelativeTo(null);
-        
+
         // Configura el icono de la ventana
         Image icono = new ImageIcon(getClass().getResource("/assets/icono.png")).getImage();
         setIconImage(icono);
-        
+
         //Carga el FAQ
         cargarFAQ();
-        
+
         // Configura las diferentes tables
         configurarTablaRutas();
 
         // Cuenta los objetos para los contadores del inicio
-        actualizarContadores(8);                     // CAMBIAR CUANDO TENGA LA SESION
+        actualizarContadores(idUsuario);
     }
 
     /**
@@ -1368,7 +1372,7 @@ public class Inicio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
         modelo.setRowCount(0);
 
-        List<Ruta> rutas = controller.filtrarRutas(8, txtBuscar.getText()); // NECESITO CAMBIAR POR LA SESION ACTIVA
+        List<Ruta> rutas = controller.filtrarRutas(idUsuario, txtBuscar.getText());
 
         for (Ruta ruta : rutas) {
             Object[] fila = new Object[3];
@@ -1559,7 +1563,7 @@ public class Inicio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
         modelo.setRowCount(0);
 
-        List<Ruta> rutas = controller.leerRutas(8); // NECESITO CAMBIAR POR LA SESION ACTIVA
+        List<Ruta> rutas = controller.leerRutas(idUsuario);
 
         for (Ruta ruta : rutas) {
             Object[] fila = new Object[3];
@@ -1665,8 +1669,8 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     /**
-     * Crea y retorna un JPanel visual que representa un ítem del FAQ,
-     * mostrando la pregunta en verde y la respuesta en texto debajo.
+     * Crea y retorna un JPanel visual que representa un ítem del FAQ, mostrando
+     * la pregunta en verde y la respuesta en texto debajo.
      *
      * @param pregunta Texto de la pregunta a mostrar.
      * @param respuesta Texto de la respuesta a mostrar.

@@ -2,6 +2,8 @@
  */
 package vistas;
 
+import gestionUsuarios.Usuario;
+import gestionUsuarios.UsuarioDAO;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -11,8 +13,11 @@ import javax.swing.JOptionPane;
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
 public class Login extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
+
+    //Llama al DAO de usuarios para no tener que abrir más de una instancia
+    UsuarioDAO controller = new UsuarioDAO();
 
     /**
      * Creates new form Login
@@ -416,18 +421,28 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogin_IniciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin_IniciaActionPerformed
+
         String contrasena = new String(txtLoginContrasena.getPassword());
-        if (txtLoginCorreo.getText().isEmpty() || contrasena.isEmpty()) {
+        String correo = txtLoginCorreo.getText();
+
+        if (correo.isEmpty() || contrasena.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe llenar todos los campos.");
             return;
         }
 
-// 1. Abre la ventana principal
-        Inicio home = new Inicio();
-        home.setVisible(true);
-        
-        // 2. Cierra el login
-        this.dispose();
+        if (controller.login(correo, contrasena) == 1) {
+            // 1. Abre la ventana principal
+            Inicio home = new Inicio();
+            home.setVisible(true);
+
+            // 2. Cierra el login
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Datos incorrectos.");
+            return;
+        }
+
+
     }//GEN-LAST:event_btnLogin_IniciaActionPerformed
 
     private void btnLogin_RegistrateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin_RegistrateActionPerformed
@@ -442,9 +457,26 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLoginContrasenaActionPerformed
 
     private void btnRegistro_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistro_CrearActionPerformed
+
         String contrasena = new String(txtRegistroContrasena.getPassword());
-        if (txtRegistroCorreo.getText().isEmpty() || txtRegistroNombre.getText().isEmpty() || txtRegistroApellido.getText().isEmpty() || contrasena.isEmpty()) {
+        String correo = txtRegistroCorreo.getText();
+        String nombre = txtRegistroNombre.getText();
+        String apellido = txtRegistroApellido.getText();
+
+        if (correo.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || contrasena.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe llenar todos los campos.");
+            return;
+        }
+
+        Usuario usuario = new Usuario(nombre, apellido, correo, contrasena);
+        if (controller.agregar(usuario) == 1) {
+            JOptionPane.showMessageDialog(this, "Datos agregados con éxito.");
+            contenedorLogin.removeAll();
+            contenedorLogin.add(pnlLogin);
+            contenedorLogin.repaint();
+            contenedorLogin.revalidate();
+        } else {
+            JOptionPane.showMessageDialog(this, "Datos incorrectos.");
             return;
         }
     }//GEN-LAST:event_btnRegistro_CrearActionPerformed
