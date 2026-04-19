@@ -49,4 +49,9 @@ public class RutaControlador {
         
         return rutaDAO.filtrarRutas(idUsuario,valorFiltro);
     }
+    
+    public int contarRutas(int idUsuario) {
+        
+        return rutaDAO.contarRutas(idUsuario);
+    }
 }

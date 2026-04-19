@@ -563,7 +563,7 @@
                   <Color blue="64" green="78" red="b" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\64\pngamarillo\007-distance.png"/>
+                  <Image iconType="3" name="/assets/007-distance64.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rutas"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -600,7 +600,7 @@
                   <Color blue="64" green="78" red="b" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\64\pngamarillo\008-profile.png"/>
+                  <Image iconType="3" name="/assets/008-profile64.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Choferes"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -637,7 +637,7 @@
                   <Color blue="64" green="78" red="b" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\64\pngamarillo\010-coin.png"/>
+                  <Image iconType="3" name="/assets/010-coin64.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pagos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -674,7 +674,7 @@
                   <Color blue="64" green="78" red="b" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\64\pngamarillo\011-car.png"/>
+                  <Image iconType="3" name="/assets/011-car64.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Veh&#xed;culos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -725,7 +725,14 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane2" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="btnRutasEditar" min="-2" pref="230" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnRutasEliminar" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnRutasRecargar" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane2" pref="530" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
@@ -742,15 +749,6 @@
                           <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                      <Component id="btnRutasEditar" min="-2" pref="188" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnRutasEliminar" min="-2" pref="182" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnRutasRecargar" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -782,10 +780,10 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnRutasEditar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btnRutasEliminar" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="btnRutasRecargar" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="btnRutasRecargar" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="464" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="564" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -804,7 +802,7 @@
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\32\pngazul\009-distance.png"/>
+                  <Image iconType="3" name="/assets/009-distance32.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rutas"/>
                 <Property name="iconTextGap" type="int" value="10"/>
@@ -871,7 +869,7 @@
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\004-search.png"/>
+                  <Image iconType="3" name="/assets/004-search16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -892,7 +890,7 @@
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\005-add.png"/>
+                  <Image iconType="3" name="/assets/005-add16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Crear nuevo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -914,7 +912,7 @@
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\001-edit.png"/>
+                  <Image iconType="3" name="/assets/001-edit16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Editar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -935,7 +933,7 @@
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\003-trashcan.png"/>
+                  <Image iconType="3" name="/assets/003-trashcan16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1974,7 +1972,7 @@
               <Color blue="64" green="78" red="b" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\32\pngamarillo\007-distance.png"/>
+              <Image iconType="3" name="/assets/007-distance.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Rutas"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -2000,7 +1998,7 @@
               <Color blue="64" green="78" red="b" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\32\pngamarillo\008-profile.png"/>
+              <Image iconType="3" name="/assets/008-profile.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Choferes"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -2026,7 +2024,7 @@
               <Color blue="64" green="78" red="b" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\32\pngamarillo\011-car.png"/>
+              <Image iconType="3" name="/assets/011-car.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Veh&#xed;culos"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -2044,7 +2042,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\logos\unidevs75.png"/>
+              <Image iconType="3" name="/assets/unidevs75.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="by:"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -2063,7 +2061,7 @@
               <Color blue="64" green="78" red="b" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\32\pngamarillo\010-coin.png"/>
+              <Image iconType="3" name="/assets/010-coin.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pagos"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>

@@ -34,7 +34,7 @@ public class RutaDAO {
             System.out.println("Error al agregar ruta: " + e);
         } finally {
             try {
-                
+
                 if (ps != null) {
                     ps.close();
                 }
@@ -92,8 +92,8 @@ public class RutaDAO {
             }
         }
         return datos;
-    }  
-    
+    }
+
     public List filtrarRutas(int idUsuario, String valorFiltro) {
 
         Connection con = null;
@@ -138,34 +138,33 @@ public class RutaDAO {
             }
         }
         return datos;
-    }  
-    
-    public Ruta cargarRuta(int id) {
-
-    String sql = "SELECT * FROM Ruta WHERE id = ?";
-
-    try (Connection con = ConexionMySQL.conectar();
-         PreparedStatement ps = con.prepareStatement(sql)) {
-
-        ps.setInt(1, id);
-
-        try (ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) {
-                String nombre = rs.getString("nombre");
-                double tarifa = rs.getDouble("tarifa");
-                int id_usuario = rs.getInt("id_usuario");
-
-                return new Ruta(id, nombre, tarifa, id_usuario);
-            }
-        }
-
-    } catch (SQLException e) {
-        System.out.println("Error al cargar la ruta: " + e);
     }
 
-    return null; // si no encuentra nada
-}  
-        
+    public Ruta cargarRuta(int id) {
+
+        String sql = "SELECT * FROM Ruta WHERE id = ?";
+
+        try (Connection con = ConexionMySQL.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String nombre = rs.getString("nombre");
+                    double tarifa = rs.getDouble("tarifa");
+                    int id_usuario = rs.getInt("id_usuario");
+
+                    return new Ruta(id, nombre, tarifa, id_usuario);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al cargar la ruta: " + e);
+        }
+
+        return null; // si no encuentra nada
+    }
+
     public boolean actualizarRuta(Ruta ruta) {
 
         Connection con = null;
@@ -187,7 +186,7 @@ public class RutaDAO {
             System.out.println("Error al actualizar ruta: " + e);
         } finally {
             try {
-                
+
                 if (ps != null) {
                     ps.close();
                 }
@@ -220,7 +219,7 @@ public class RutaDAO {
             System.out.println("Error al eliminar ruta: " + e);
         } finally {
             try {
-                
+
                 if (ps != null) {
                     ps.close();
                 }
@@ -233,6 +232,47 @@ public class RutaDAO {
         }
 
         return false;
+    }
+
+    public int contarRutas(int idUsuario) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT COUNT(*) FROM Ruta WHERE id_usuario = ?;";
+
+        try {
+
+            con = ConexionMySQL.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idUsuario);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {          // ← esto faltaba
+                return rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al contar rutas: " + e);
+
+        } finally {
+            try {
+
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error cerrando conexión: " + e);
+            }
+        }
+
+        return 0;
     }
 
 }
