@@ -1,20 +1,40 @@
-/*
- */
 package vistas;
 
+import gestionRutas.Ruta;
+import gestionRutas.RutaControlador;
+import javax.swing.ImageIcon;
+import java.awt.Image;
+import java.text.NumberFormat;
+import java.util.List;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 /**
+ * Interfaz principal de la aplicación
  *
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
 public class home extends javax.swing.JFrame {
-    
+
+    //Llama a los controladores para no tener que abrir más de una instancia
+    RutaControlador controller = new RutaControlador();
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(home.class.getName());
 
     /**
      * Creates new form home
      */
     public home() {
+
         initComponents();
+        setLocationRelativeTo(null);
+        Image icono = new ImageIcon(getClass().getResource("/assets/icono.png")).getImage();
+        setIconImage(icono);
+        configurarTabla();
     }
 
     /**
@@ -28,24 +48,24 @@ public class home extends javax.swing.JFrame {
 
         pnlContenido = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        lblRutasCreadas = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblVehiculosRegistrados = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        lblChoferesActivos = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lblPagosPendientes = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         btnRutasInicio = new javax.swing.JButton();
         btnChoferesInicio = new javax.swing.JButton();
@@ -56,53 +76,53 @@ public class home extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btnRutasBuscar = new javax.swing.JButton();
+        btnRutasCrear = new javax.swing.JButton();
+        btnRutasEditar = new javax.swing.JButton();
+        btnRutasEliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblRutas = new javax.swing.JTable();
+        btnRutasRecargar = new javax.swing.JButton();
         pnlChoferes = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
+        txtChoferes = new javax.swing.JTextField();
+        btnChoferesBuscar = new javax.swing.JButton();
+        btnChoferesCrear = new javax.swing.JButton();
+        btnChoferesEditar = new javax.swing.JButton();
+        btnChoferesEliminar = new javax.swing.JButton();
+        btnChoferesDetalles = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblChoferes = new javax.swing.JTable();
         pnlVehiculos = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
+        txtVehiculos = new javax.swing.JTextField();
+        btnVehiculosBuscar = new javax.swing.JButton();
+        btnVehiculosCrear = new javax.swing.JButton();
+        btnVehiculosEditar = new javax.swing.JButton();
+        btnVehiculosEliminar = new javax.swing.JButton();
+        btnVehiculosVer = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblVehiculos = new javax.swing.JTable();
         pnlPagos = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jSeparator10 = new javax.swing.JSeparator();
         jSeparator11 = new javax.swing.JSeparator();
         jLabel23 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton24 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
+        txtPagos = new javax.swing.JTextField();
+        btnPagosBuscar = new javax.swing.JButton();
+        btnPagosCrear = new javax.swing.JButton();
+        btnPagosEditar = new javax.swing.JButton();
+        btnPagosEliminar = new javax.swing.JButton();
+        btnPagosVer = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
+        tblPagos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -114,8 +134,8 @@ public class home extends javax.swing.JFrame {
         btnPagos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ConchoAdmin");
         setMinimumSize(new java.awt.Dimension(800, 800));
-        setPreferredSize(new java.awt.Dimension(800, 800));
 
         pnlContenido.setBackground(new java.awt.Color(255, 254, 236));
         pnlContenido.setMinimumSize(new java.awt.Dimension(600, 700));
@@ -126,10 +146,10 @@ public class home extends javax.swing.JFrame {
         pnlHome.setMinimumSize(new java.awt.Dimension(600, 700));
         pnlHome.setPreferredSize(new java.awt.Dimension(600, 700));
 
-        jLabel2.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(112, 112, 112));
-        jLabel2.setText("Hola, usuario.");
+        lblUsuario.setBackground(new java.awt.Color(153, 153, 153));
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(112, 112, 112));
+        lblUsuario.setText("Hola, usuario.");
 
         jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
@@ -153,11 +173,11 @@ public class home extends javax.swing.JFrame {
         jLabel19.setToolTipText("");
         jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel21.setBackground(new java.awt.Color(23, 31, 38));
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("0");
+        lblRutasCreadas.setBackground(new java.awt.Color(23, 31, 38));
+        lblRutasCreadas.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblRutasCreadas.setForeground(new java.awt.Color(23, 31, 38));
+        lblRutasCreadas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRutasCreadas.setText("0");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -166,7 +186,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblRutasCreadas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
                 .addContainerGap())
@@ -175,7 +195,7 @@ public class home extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblRutasCreadas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel20)
                 .addGap(0, 0, 0)
@@ -196,11 +216,11 @@ public class home extends javax.swing.JFrame {
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel10.setPreferredSize(new java.awt.Dimension(89, 27));
 
-        jLabel11.setBackground(new java.awt.Color(23, 31, 38));
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("0");
+        lblVehiculosRegistrados.setBackground(new java.awt.Color(23, 31, 38));
+        lblVehiculosRegistrados.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblVehiculosRegistrados.setForeground(new java.awt.Color(23, 31, 38));
+        lblVehiculosRegistrados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVehiculosRegistrados.setText("0");
 
         jLabel12.setBackground(new java.awt.Color(23, 31, 38));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -217,7 +237,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblVehiculosRegistrados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
                 .addContainerGap())
@@ -226,7 +246,7 @@ public class home extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblVehiculosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel12)
                 .addGap(0, 0, 0)
@@ -254,11 +274,11 @@ public class home extends javax.swing.JFrame {
         jLabel16.setToolTipText("");
         jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel18.setBackground(new java.awt.Color(23, 31, 38));
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("0");
+        lblChoferesActivos.setBackground(new java.awt.Color(23, 31, 38));
+        lblChoferesActivos.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblChoferesActivos.setForeground(new java.awt.Color(23, 31, 38));
+        lblChoferesActivos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblChoferesActivos.setText("0");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -267,7 +287,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblChoferesActivos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -276,7 +296,7 @@ public class home extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblChoferesActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel17)
                 .addGap(0, 0, 0)
@@ -303,11 +323,11 @@ public class home extends javax.swing.JFrame {
         jLabel15.setToolTipText("");
         jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel14.setBackground(new java.awt.Color(23, 31, 38));
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("0");
+        lblPagosPendientes.setBackground(new java.awt.Color(23, 31, 38));
+        lblPagosPendientes.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblPagosPendientes.setForeground(new java.awt.Color(23, 31, 38));
+        lblPagosPendientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPagosPendientes.setText("0");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -316,7 +336,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPagosPendientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
                 .addContainerGap())
@@ -325,7 +345,7 @@ public class home extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPagosPendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel15)
                 .addGap(0, 0, 0)
@@ -400,7 +420,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlHomeLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(lblUsuario)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeLayout.createSequentialGroup()
                         .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -428,7 +448,7 @@ public class home extends javax.swing.JFrame {
             pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHomeLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
-                .addComponent(jLabel2)
+                .addComponent(lblUsuario)
                 .addGap(8, 8, 8)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -447,7 +467,7 @@ public class home extends javax.swing.JFrame {
                 .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVehiculosInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPagosInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(151, 151, 151))
+                .addGap(133, 133, 133))
         );
 
         pnlContenido.add(pnlHome, "card2");
@@ -458,8 +478,10 @@ public class home extends javax.swing.JFrame {
 
         lblRutas.setBackground(new java.awt.Color(153, 153, 153));
         lblRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblRutas.setForeground(new java.awt.Color(112, 112, 112));
+        lblRutas.setForeground(new java.awt.Color(23, 31, 38));
+        lblRutas.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\009-distance.png")); // NOI18N
         lblRutas.setText("Rutas");
+        lblRutas.setIconTextGap(10);
 
         jSeparator4.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator4.setForeground(new java.awt.Color(204, 204, 204));
@@ -469,67 +491,81 @@ public class home extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(112, 112, 112));
-        jLabel5.setText("Buscar:");
+        jLabel5.setText("Buscar por nombre:");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(112, 112, 112));
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTextField1.setCaretColor(new java.awt.Color(112, 112, 112));
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setForeground(new java.awt.Color(112, 112, 112));
+        txtBuscar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtBuscar.setCaretColor(new java.awt.Color(112, 112, 112));
+        txtBuscar.addActionListener(this::txtBuscarActionPerformed);
 
-        jButton9.setBackground(new java.awt.Color(244, 231, 149));
-        jButton9.setForeground(new java.awt.Color(23, 31, 38));
-        jButton9.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
-        jButton9.setText("Buscar");
-        jButton9.setBorder(null);
-        jButton9.setIconTextGap(6);
-        jButton9.addActionListener(this::jButton9ActionPerformed);
+        btnRutasBuscar.setBackground(new java.awt.Color(244, 231, 149));
+        btnRutasBuscar.setForeground(new java.awt.Color(23, 31, 38));
+        btnRutasBuscar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
+        btnRutasBuscar.setText("Buscar");
+        btnRutasBuscar.setBorder(null);
+        btnRutasBuscar.setIconTextGap(6);
+        btnRutasBuscar.addActionListener(this::btnRutasBuscarActionPerformed);
 
-        jButton10.setBackground(new java.awt.Color(244, 231, 149));
-        jButton10.setForeground(new java.awt.Color(23, 31, 38));
-        jButton10.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
-        jButton10.setText("Crear nuevo");
-        jButton10.setToolTipText("");
-        jButton10.setBorder(null);
-        jButton10.setIconTextGap(6);
-        jButton10.addActionListener(this::jButton10ActionPerformed);
+        btnRutasCrear.setBackground(new java.awt.Color(244, 231, 149));
+        btnRutasCrear.setForeground(new java.awt.Color(23, 31, 38));
+        btnRutasCrear.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
+        btnRutasCrear.setText("Crear nuevo");
+        btnRutasCrear.setToolTipText("");
+        btnRutasCrear.setBorder(null);
+        btnRutasCrear.setIconTextGap(6);
+        btnRutasCrear.addActionListener(this::btnRutasCrearActionPerformed);
 
-        jButton11.setBackground(new java.awt.Color(244, 231, 149));
-        jButton11.setForeground(new java.awt.Color(23, 31, 38));
-        jButton11.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
-        jButton11.setText("Editar seleccionado");
-        jButton11.setBorder(null);
-        jButton11.setIconTextGap(6);
-        jButton11.addActionListener(this::jButton11ActionPerformed);
+        btnRutasEditar.setBackground(new java.awt.Color(244, 231, 149));
+        btnRutasEditar.setForeground(new java.awt.Color(23, 31, 38));
+        btnRutasEditar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
+        btnRutasEditar.setText("Editar seleccionado");
+        btnRutasEditar.setBorder(null);
+        btnRutasEditar.setIconTextGap(6);
+        btnRutasEditar.addActionListener(this::btnRutasEditarActionPerformed);
 
-        jButton12.setBackground(new java.awt.Color(244, 231, 149));
-        jButton12.setForeground(new java.awt.Color(23, 31, 38));
-        jButton12.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
-        jButton12.setText("Eliminar seleccionado");
-        jButton12.setBorder(null);
-        jButton12.setIconTextGap(6);
-        jButton12.addActionListener(this::jButton12ActionPerformed);
+        btnRutasEliminar.setBackground(new java.awt.Color(244, 231, 149));
+        btnRutasEliminar.setForeground(new java.awt.Color(23, 31, 38));
+        btnRutasEliminar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
+        btnRutasEliminar.setText("Eliminar seleccionado");
+        btnRutasEliminar.setBorder(null);
+        btnRutasEliminar.setIconTextGap(6);
+        btnRutasEliminar.addActionListener(this::btnRutasEliminarActionPerformed);
 
-        jButton13.setBackground(new java.awt.Color(244, 231, 149));
-        jButton13.setForeground(new java.awt.Color(23, 31, 38));
-        jButton13.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
-        jButton13.setText("Ver detalles");
-        jButton13.setBorder(null);
-        jButton13.setIconTextGap(6);
-        jButton13.addActionListener(this::jButton13ActionPerformed);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblRutas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nombre", "Tarifa"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblRutas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        tblRutas.setShowGrid(true);
+        tblRutas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblRutasMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblRutas);
+
+        btnRutasRecargar.setBackground(new java.awt.Color(244, 231, 149));
+        btnRutasRecargar.setForeground(new java.awt.Color(23, 31, 38));
+        btnRutasRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/reload.png"))); // NOI18N
+        btnRutasRecargar.setBorder(null);
+        btnRutasRecargar.setIconTextGap(6);
+        btnRutasRecargar.addActionListener(this::btnRutasRecargarActionPerformed);
 
         javax.swing.GroupLayout pnlRutasLayout = new javax.swing.GroupLayout(pnlRutas);
         pnlRutas.setLayout(pnlRutasLayout);
@@ -539,25 +575,27 @@ public class home extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(pnlRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2)
-                    .addGroup(pnlRutasLayout.createSequentialGroup()
-                        .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlRutasLayout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRutasBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlRutasLayout.createSequentialGroup()
                         .addComponent(lblRutas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRutasCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
+                    .addComponent(jSeparator4))
                 .addGap(35, 35, 35))
+            .addGroup(pnlRutasLayout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(btnRutasEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRutasEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRutasRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
         );
         pnlRutasLayout.setVerticalGroup(
             pnlRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -569,35 +607,38 @@ public class home extends javax.swing.JFrame {
                         .addGap(8, 8, 8))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRutasLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRutasCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(btnRutasBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRutasEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRutasEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRutasRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
 
         pnlContenido.add(pnlRutas, "card3");
 
         pnlChoferes.setBackground(new java.awt.Color(255, 254, 236));
         pnlChoferes.setMinimumSize(new java.awt.Dimension(600, 700));
+        pnlChoferes.setPreferredSize(new java.awt.Dimension(600, 700));
 
         jLabel6.setBackground(new java.awt.Color(153, 153, 153));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(112, 112, 112));
+        jLabel6.setForeground(new java.awt.Color(23, 31, 38));
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\010-profile.png")); // NOI18N
         jLabel6.setText("Choferes");
+        jLabel6.setIconTextGap(10);
 
         jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator6.setForeground(new java.awt.Color(204, 204, 204));
@@ -609,54 +650,54 @@ public class home extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(112, 112, 112));
         jLabel7.setText("Buscar:");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(112, 112, 112));
-        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTextField2.setCaretColor(new java.awt.Color(112, 112, 112));
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+        txtChoferes.setBackground(new java.awt.Color(255, 255, 255));
+        txtChoferes.setForeground(new java.awt.Color(112, 112, 112));
+        txtChoferes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtChoferes.setCaretColor(new java.awt.Color(112, 112, 112));
+        txtChoferes.addActionListener(this::txtChoferesActionPerformed);
 
-        jButton14.setBackground(new java.awt.Color(244, 231, 149));
-        jButton14.setForeground(new java.awt.Color(23, 31, 38));
-        jButton14.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
-        jButton14.setText("Buscar");
-        jButton14.setBorder(null);
-        jButton14.setIconTextGap(6);
-        jButton14.addActionListener(this::jButton14ActionPerformed);
+        btnChoferesBuscar.setBackground(new java.awt.Color(244, 231, 149));
+        btnChoferesBuscar.setForeground(new java.awt.Color(23, 31, 38));
+        btnChoferesBuscar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
+        btnChoferesBuscar.setText("Buscar");
+        btnChoferesBuscar.setBorder(null);
+        btnChoferesBuscar.setIconTextGap(6);
+        btnChoferesBuscar.addActionListener(this::btnChoferesBuscarActionPerformed);
 
-        jButton15.setBackground(new java.awt.Color(244, 231, 149));
-        jButton15.setForeground(new java.awt.Color(23, 31, 38));
-        jButton15.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
-        jButton15.setText("Crear nuevo");
-        jButton15.setToolTipText("");
-        jButton15.setBorder(null);
-        jButton15.setIconTextGap(6);
-        jButton15.addActionListener(this::jButton15ActionPerformed);
+        btnChoferesCrear.setBackground(new java.awt.Color(244, 231, 149));
+        btnChoferesCrear.setForeground(new java.awt.Color(23, 31, 38));
+        btnChoferesCrear.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
+        btnChoferesCrear.setText("Crear nuevo");
+        btnChoferesCrear.setToolTipText("");
+        btnChoferesCrear.setBorder(null);
+        btnChoferesCrear.setIconTextGap(6);
+        btnChoferesCrear.addActionListener(this::btnChoferesCrearActionPerformed);
 
-        jButton16.setBackground(new java.awt.Color(244, 231, 149));
-        jButton16.setForeground(new java.awt.Color(23, 31, 38));
-        jButton16.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
-        jButton16.setText("Editar seleccionado");
-        jButton16.setBorder(null);
-        jButton16.setIconTextGap(6);
-        jButton16.addActionListener(this::jButton16ActionPerformed);
+        btnChoferesEditar.setBackground(new java.awt.Color(244, 231, 149));
+        btnChoferesEditar.setForeground(new java.awt.Color(23, 31, 38));
+        btnChoferesEditar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
+        btnChoferesEditar.setText("Editar seleccionado");
+        btnChoferesEditar.setBorder(null);
+        btnChoferesEditar.setIconTextGap(6);
+        btnChoferesEditar.addActionListener(this::btnChoferesEditarActionPerformed);
 
-        jButton17.setBackground(new java.awt.Color(244, 231, 149));
-        jButton17.setForeground(new java.awt.Color(23, 31, 38));
-        jButton17.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
-        jButton17.setText("Eliminar seleccionado");
-        jButton17.setBorder(null);
-        jButton17.setIconTextGap(6);
-        jButton17.addActionListener(this::jButton17ActionPerformed);
+        btnChoferesEliminar.setBackground(new java.awt.Color(244, 231, 149));
+        btnChoferesEliminar.setForeground(new java.awt.Color(23, 31, 38));
+        btnChoferesEliminar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
+        btnChoferesEliminar.setText("Eliminar seleccionado");
+        btnChoferesEliminar.setBorder(null);
+        btnChoferesEliminar.setIconTextGap(6);
+        btnChoferesEliminar.addActionListener(this::btnChoferesEliminarActionPerformed);
 
-        jButton18.setBackground(new java.awt.Color(244, 231, 149));
-        jButton18.setForeground(new java.awt.Color(23, 31, 38));
-        jButton18.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
-        jButton18.setText("Ver detalles");
-        jButton18.setBorder(null);
-        jButton18.setIconTextGap(6);
-        jButton18.addActionListener(this::jButton18ActionPerformed);
+        btnChoferesDetalles.setBackground(new java.awt.Color(244, 231, 149));
+        btnChoferesDetalles.setForeground(new java.awt.Color(23, 31, 38));
+        btnChoferesDetalles.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
+        btnChoferesDetalles.setText("Ver detalles");
+        btnChoferesDetalles.setBorder(null);
+        btnChoferesDetalles.setIconTextGap(6);
+        btnChoferesDetalles.addActionListener(this::btnChoferesDetallesActionPerformed);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblChoferes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -667,7 +708,7 @@ public class home extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tblChoferes);
 
         javax.swing.GroupLayout pnlChoferesLayout = new javax.swing.GroupLayout(pnlChoferes);
         pnlChoferes.setLayout(pnlChoferesLayout);
@@ -678,21 +719,21 @@ public class home extends javax.swing.JFrame {
                 .addGroup(pnlChoferesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane3)
                     .addGroup(pnlChoferesLayout.createSequentialGroup()
-                        .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnChoferesDetalles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnChoferesEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnChoferesEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlChoferesLayout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2)
+                        .addComponent(txtChoferes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnChoferesBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlChoferesLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnChoferesCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
                 .addGap(35, 35, 35))
@@ -707,24 +748,24 @@ public class home extends javax.swing.JFrame {
                         .addGap(8, 8, 8))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlChoferesLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnChoferesCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlChoferesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(btnChoferesBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtChoferes, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlChoferesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnChoferesEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChoferesEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChoferesDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
 
         pnlContenido.add(pnlChoferes, "card3");
@@ -734,8 +775,10 @@ public class home extends javax.swing.JFrame {
 
         jLabel8.setBackground(new java.awt.Color(153, 153, 153));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(112, 112, 112));
+        jLabel8.setForeground(new java.awt.Color(23, 31, 38));
+        jLabel8.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\008-car.png")); // NOI18N
         jLabel8.setText("Vehículos");
+        jLabel8.setIconTextGap(10);
 
         jSeparator8.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator8.setForeground(new java.awt.Color(204, 204, 204));
@@ -747,54 +790,54 @@ public class home extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(112, 112, 112));
         jLabel9.setText("Buscar:");
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setForeground(new java.awt.Color(112, 112, 112));
-        jTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTextField3.setCaretColor(new java.awt.Color(112, 112, 112));
-        jTextField3.addActionListener(this::jTextField3ActionPerformed);
+        txtVehiculos.setBackground(new java.awt.Color(255, 255, 255));
+        txtVehiculos.setForeground(new java.awt.Color(112, 112, 112));
+        txtVehiculos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtVehiculos.setCaretColor(new java.awt.Color(112, 112, 112));
+        txtVehiculos.addActionListener(this::txtVehiculosActionPerformed);
 
-        jButton19.setBackground(new java.awt.Color(244, 231, 149));
-        jButton19.setForeground(new java.awt.Color(23, 31, 38));
-        jButton19.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
-        jButton19.setText("Buscar");
-        jButton19.setBorder(null);
-        jButton19.setIconTextGap(6);
-        jButton19.addActionListener(this::jButton19ActionPerformed);
+        btnVehiculosBuscar.setBackground(new java.awt.Color(244, 231, 149));
+        btnVehiculosBuscar.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosBuscar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
+        btnVehiculosBuscar.setText("Buscar");
+        btnVehiculosBuscar.setBorder(null);
+        btnVehiculosBuscar.setIconTextGap(6);
+        btnVehiculosBuscar.addActionListener(this::btnVehiculosBuscarActionPerformed);
 
-        jButton20.setBackground(new java.awt.Color(244, 231, 149));
-        jButton20.setForeground(new java.awt.Color(23, 31, 38));
-        jButton20.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
-        jButton20.setText("Crear nuevo");
-        jButton20.setToolTipText("");
-        jButton20.setBorder(null);
-        jButton20.setIconTextGap(6);
-        jButton20.addActionListener(this::jButton20ActionPerformed);
+        btnVehiculosCrear.setBackground(new java.awt.Color(244, 231, 149));
+        btnVehiculosCrear.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosCrear.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
+        btnVehiculosCrear.setText("Crear nuevo");
+        btnVehiculosCrear.setToolTipText("");
+        btnVehiculosCrear.setBorder(null);
+        btnVehiculosCrear.setIconTextGap(6);
+        btnVehiculosCrear.addActionListener(this::btnVehiculosCrearActionPerformed);
 
-        jButton21.setBackground(new java.awt.Color(244, 231, 149));
-        jButton21.setForeground(new java.awt.Color(23, 31, 38));
-        jButton21.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
-        jButton21.setText("Editar seleccionado");
-        jButton21.setBorder(null);
-        jButton21.setIconTextGap(6);
-        jButton21.addActionListener(this::jButton21ActionPerformed);
+        btnVehiculosEditar.setBackground(new java.awt.Color(244, 231, 149));
+        btnVehiculosEditar.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosEditar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
+        btnVehiculosEditar.setText("Editar seleccionado");
+        btnVehiculosEditar.setBorder(null);
+        btnVehiculosEditar.setIconTextGap(6);
+        btnVehiculosEditar.addActionListener(this::btnVehiculosEditarActionPerformed);
 
-        jButton22.setBackground(new java.awt.Color(244, 231, 149));
-        jButton22.setForeground(new java.awt.Color(23, 31, 38));
-        jButton22.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
-        jButton22.setText("Eliminar seleccionado");
-        jButton22.setBorder(null);
-        jButton22.setIconTextGap(6);
-        jButton22.addActionListener(this::jButton22ActionPerformed);
+        btnVehiculosEliminar.setBackground(new java.awt.Color(244, 231, 149));
+        btnVehiculosEliminar.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosEliminar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
+        btnVehiculosEliminar.setText("Eliminar seleccionado");
+        btnVehiculosEliminar.setBorder(null);
+        btnVehiculosEliminar.setIconTextGap(6);
+        btnVehiculosEliminar.addActionListener(this::btnVehiculosEliminarActionPerformed);
 
-        jButton23.setBackground(new java.awt.Color(244, 231, 149));
-        jButton23.setForeground(new java.awt.Color(23, 31, 38));
-        jButton23.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
-        jButton23.setText("Ver detalles");
-        jButton23.setBorder(null);
-        jButton23.setIconTextGap(6);
-        jButton23.addActionListener(this::jButton23ActionPerformed);
+        btnVehiculosVer.setBackground(new java.awt.Color(244, 231, 149));
+        btnVehiculosVer.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosVer.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
+        btnVehiculosVer.setText("Ver detalles");
+        btnVehiculosVer.setBorder(null);
+        btnVehiculosVer.setIconTextGap(6);
+        btnVehiculosVer.addActionListener(this::btnVehiculosVerActionPerformed);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -805,7 +848,7 @@ public class home extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(tblVehiculos);
 
         javax.swing.GroupLayout pnlVehiculosLayout = new javax.swing.GroupLayout(pnlVehiculos);
         pnlVehiculos.setLayout(pnlVehiculosLayout);
@@ -816,21 +859,21 @@ public class home extends javax.swing.JFrame {
                 .addGroup(pnlVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane4)
                     .addGroup(pnlVehiculosLayout.createSequentialGroup()
-                        .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVehiculosVer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVehiculosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnVehiculosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlVehiculosLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3)
+                        .addComponent(txtVehiculos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnVehiculosBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlVehiculosLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnVehiculosCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator8, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
                 .addGap(35, 35, 35))
@@ -845,24 +888,24 @@ public class home extends javax.swing.JFrame {
                         .addGap(8, 8, 8))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVehiculosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVehiculosCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(btnVehiculosBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVehiculosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVehiculosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVehiculosVer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
 
         pnlContenido.add(pnlVehiculos, "card3");
@@ -872,8 +915,10 @@ public class home extends javax.swing.JFrame {
 
         jLabel22.setBackground(new java.awt.Color(153, 153, 153));
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(112, 112, 112));
+        jLabel22.setForeground(new java.awt.Color(23, 31, 38));
+        jLabel22.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\007-coin.png")); // NOI18N
         jLabel22.setText("Pagos");
+        jLabel22.setIconTextGap(10);
 
         jSeparator10.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator10.setForeground(new java.awt.Color(204, 204, 204));
@@ -885,54 +930,54 @@ public class home extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(112, 112, 112));
         jLabel23.setText("Buscar:");
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setForeground(new java.awt.Color(112, 112, 112));
-        jTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTextField4.setCaretColor(new java.awt.Color(112, 112, 112));
-        jTextField4.addActionListener(this::jTextField4ActionPerformed);
+        txtPagos.setBackground(new java.awt.Color(255, 255, 255));
+        txtPagos.setForeground(new java.awt.Color(112, 112, 112));
+        txtPagos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtPagos.setCaretColor(new java.awt.Color(112, 112, 112));
+        txtPagos.addActionListener(this::txtPagosActionPerformed);
 
-        jButton24.setBackground(new java.awt.Color(244, 231, 149));
-        jButton24.setForeground(new java.awt.Color(23, 31, 38));
-        jButton24.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
-        jButton24.setText("Buscar");
-        jButton24.setBorder(null);
-        jButton24.setIconTextGap(6);
-        jButton24.addActionListener(this::jButton24ActionPerformed);
+        btnPagosBuscar.setBackground(new java.awt.Color(244, 231, 149));
+        btnPagosBuscar.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosBuscar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
+        btnPagosBuscar.setText("Buscar");
+        btnPagosBuscar.setBorder(null);
+        btnPagosBuscar.setIconTextGap(6);
+        btnPagosBuscar.addActionListener(this::btnPagosBuscarActionPerformed);
 
-        jButton25.setBackground(new java.awt.Color(244, 231, 149));
-        jButton25.setForeground(new java.awt.Color(23, 31, 38));
-        jButton25.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
-        jButton25.setText("Crear nuevo");
-        jButton25.setToolTipText("");
-        jButton25.setBorder(null);
-        jButton25.setIconTextGap(6);
-        jButton25.addActionListener(this::jButton25ActionPerformed);
+        btnPagosCrear.setBackground(new java.awt.Color(244, 231, 149));
+        btnPagosCrear.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosCrear.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
+        btnPagosCrear.setText("Crear nuevo");
+        btnPagosCrear.setToolTipText("");
+        btnPagosCrear.setBorder(null);
+        btnPagosCrear.setIconTextGap(6);
+        btnPagosCrear.addActionListener(this::btnPagosCrearActionPerformed);
 
-        jButton26.setBackground(new java.awt.Color(244, 231, 149));
-        jButton26.setForeground(new java.awt.Color(23, 31, 38));
-        jButton26.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
-        jButton26.setText("Editar seleccionado");
-        jButton26.setBorder(null);
-        jButton26.setIconTextGap(6);
-        jButton26.addActionListener(this::jButton26ActionPerformed);
+        btnPagosEditar.setBackground(new java.awt.Color(244, 231, 149));
+        btnPagosEditar.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosEditar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
+        btnPagosEditar.setText("Editar seleccionado");
+        btnPagosEditar.setBorder(null);
+        btnPagosEditar.setIconTextGap(6);
+        btnPagosEditar.addActionListener(this::btnPagosEditarActionPerformed);
 
-        jButton27.setBackground(new java.awt.Color(244, 231, 149));
-        jButton27.setForeground(new java.awt.Color(23, 31, 38));
-        jButton27.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
-        jButton27.setText("Eliminar seleccionado");
-        jButton27.setBorder(null);
-        jButton27.setIconTextGap(6);
-        jButton27.addActionListener(this::jButton27ActionPerformed);
+        btnPagosEliminar.setBackground(new java.awt.Color(244, 231, 149));
+        btnPagosEliminar.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosEliminar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
+        btnPagosEliminar.setText("Eliminar seleccionado");
+        btnPagosEliminar.setBorder(null);
+        btnPagosEliminar.setIconTextGap(6);
+        btnPagosEliminar.addActionListener(this::btnPagosEliminarActionPerformed);
 
-        jButton28.setBackground(new java.awt.Color(244, 231, 149));
-        jButton28.setForeground(new java.awt.Color(23, 31, 38));
-        jButton28.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
-        jButton28.setText("Ver detalles");
-        jButton28.setBorder(null);
-        jButton28.setIconTextGap(6);
-        jButton28.addActionListener(this::jButton28ActionPerformed);
+        btnPagosVer.setBackground(new java.awt.Color(244, 231, 149));
+        btnPagosVer.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosVer.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
+        btnPagosVer.setText("Ver detalles");
+        btnPagosVer.setBorder(null);
+        btnPagosVer.setIconTextGap(6);
+        btnPagosVer.addActionListener(this::btnPagosVerActionPerformed);
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        tblPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -943,7 +988,7 @@ public class home extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane6.setViewportView(jTable6);
+        jScrollPane6.setViewportView(tblPagos);
 
         javax.swing.GroupLayout pnlPagosLayout = new javax.swing.GroupLayout(pnlPagos);
         pnlPagos.setLayout(pnlPagosLayout);
@@ -953,21 +998,21 @@ public class home extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(pnlPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlPagosLayout.createSequentialGroup()
-                        .addComponent(jButton28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPagosVer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPagosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPagosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlPagosLayout.createSequentialGroup()
                         .addComponent(jLabel23)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4)
+                        .addComponent(txtPagos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPagosBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlPagosLayout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPagosCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator10, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING))
@@ -983,24 +1028,24 @@ public class home extends javax.swing.JFrame {
                         .addGap(8, 8, 8))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPagosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPagosCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(btnPagosBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPagosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPagosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPagosVer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
 
         pnlContenido.add(pnlPagos, "card3");
@@ -1015,7 +1060,7 @@ public class home extends javax.swing.JFrame {
         btnHome.setBackground(new java.awt.Color(23, 31, 38));
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnHome.setForeground(new java.awt.Color(11, 120, 100));
-        btnHome.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngamarillo\\001-home.png")); // NOI18N
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/001-home.png"))); // NOI18N
         btnHome.setText("Inicio");
         btnHome.setToolTipText("");
         btnHome.setBorder(null);
@@ -1024,7 +1069,7 @@ public class home extends javax.swing.JFrame {
         btnHome.setIconTextGap(10);
         btnHome.addActionListener(this::btnHomeActionPerformed);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\logos\\isologo150px.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/isologo150px.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         btnRutas.setBackground(new java.awt.Color(23, 31, 38));
@@ -1145,7 +1190,7 @@ public class home extends javax.swing.JFrame {
         pnlContenido.add(pnlHome);
         pnlContenido.repaint();
         pnlContenido.revalidate();
-        
+
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasActionPerformed
@@ -1153,6 +1198,7 @@ public class home extends javax.swing.JFrame {
         pnlContenido.add(pnlRutas);
         pnlContenido.repaint();
         pnlContenido.revalidate();
+        mostrarRutas();
     }//GEN-LAST:event_btnRutasActionPerformed
 
     private void btnChoferesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesActionPerformed
@@ -1197,101 +1243,140 @@ public class home extends javax.swing.JFrame {
         pnlContenido.revalidate();
     }//GEN-LAST:event_btnVehiculosInicioActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtBuscarActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void btnRutasBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasBuscarActionPerformed
+        if (txtBuscar.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar su búsqueda.");
+            return;
+        }
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
+        modelo.setRowCount(0);
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+        List<Ruta> rutas = controller.filtrarRutas(8,txtBuscar.getText()); // NECESITO CAMBIAR POR LA SESION ACTIVA
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+        for (Ruta ruta : rutas) {
+            Object[] fila = new Object[3];
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+            fila[0] = ruta.getId();
+            fila[1] = ruta.getNombre();
+            fila[2] = ruta.getTarifa();
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+            // 3. Agregar fila
+            modelo.addRow(fila);
+        }
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        tblRutas.setModel(modelo);
+        txtBuscar.setText("");
+    }//GEN-LAST:event_btnRutasBuscarActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+    private void btnRutasCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasCrearActionPerformed
+        DialogCrearRuta dialog = new DialogCrearRuta(this, true, this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnRutasCrearActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
+    private void btnRutasEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasEditarActionPerformed
+        int fila = this.tblRutas.getSelectedRow();
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton16ActionPerformed
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton17ActionPerformed
+        int id = (int) this.tblRutas.getValueAt(fila, 0);
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
+        DialogEditarRuta dialog = new DialogEditarRuta(this, true,id,this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnRutasEditarActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    private void btnRutasEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasEliminarActionPerformed
+        int fila = this.tblRutas.getSelectedRow();
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton19ActionPerformed
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton20ActionPerformed
+        int id = (int) this.tblRutas.getValueAt(fila, 0);
+        
+        DialogEliminarRuta dialog = new DialogEliminarRuta(this, true,id,this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnRutasEliminarActionPerformed
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+    private void txtChoferesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChoferesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton21ActionPerformed
+    }//GEN-LAST:event_txtChoferesActionPerformed
 
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+    private void btnChoferesBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton22ActionPerformed
+    }//GEN-LAST:event_btnChoferesBuscarActionPerformed
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+    private void btnChoferesCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesCrearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton23ActionPerformed
+    }//GEN-LAST:event_btnChoferesCrearActionPerformed
 
-    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+    private void btnChoferesEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton28ActionPerformed
+    }//GEN-LAST:event_btnChoferesEditarActionPerformed
 
-    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+    private void btnChoferesEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton27ActionPerformed
+    }//GEN-LAST:event_btnChoferesEliminarActionPerformed
 
-    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+    private void btnChoferesDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesDetallesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton26ActionPerformed
+    }//GEN-LAST:event_btnChoferesDetallesActionPerformed
 
-    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+    private void txtVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVehiculosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton25ActionPerformed
+    }//GEN-LAST:event_txtVehiculosActionPerformed
 
-    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+    private void btnVehiculosBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton24ActionPerformed
+    }//GEN-LAST:event_btnVehiculosBuscarActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void btnVehiculosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosCrearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_btnVehiculosCrearActionPerformed
+
+    private void btnVehiculosEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVehiculosEditarActionPerformed
+
+    private void btnVehiculosEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVehiculosEliminarActionPerformed
+
+    private void btnVehiculosVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosVerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVehiculosVerActionPerformed
+
+    private void btnPagosVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosVerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPagosVerActionPerformed
+
+    private void btnPagosEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPagosEliminarActionPerformed
+
+    private void btnPagosEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPagosEditarActionPerformed
+
+    private void btnPagosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPagosCrearActionPerformed
+
+    private void btnPagosBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPagosBuscarActionPerformed
+
+    private void txtPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPagosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPagosActionPerformed
 
     private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
         pnlContenido.removeAll();
@@ -1299,6 +1384,14 @@ public class home extends javax.swing.JFrame {
         pnlContenido.repaint();
         pnlContenido.revalidate();
     }//GEN-LAST:event_btnPagosActionPerformed
+
+    private void tblRutasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRutasMouseClicked
+
+    }//GEN-LAST:event_tblRutasMouseClicked
+
+    private void btnRutasRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasRecargarActionPerformed
+        mostrarRutas();
+    }//GEN-LAST:event_btnRutasRecargarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1325,50 +1418,103 @@ public class home extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new home().setVisible(true));
     }
 
+    public void mostrarRutas() {
+        long inicio = System.currentTimeMillis();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
+        modelo.setRowCount(0);
+
+        List<Ruta> rutas = controller.leerRutas(8); // NECESITO CAMBIAR POR LA SESION ACTIVA
+
+        for (Ruta ruta : rutas) {
+            Object[] fila = new Object[3];
+
+            fila[0] = ruta.getId();
+            fila[1] = ruta.getNombre();
+            fila[2] = ruta.getTarifa();
+
+            // 3. Agregar fila
+            modelo.addRow(fila);
+        }
+
+        tblRutas.setModel(modelo);
+
+        long fin = System.currentTimeMillis();
+        System.out.println("Tiempo: " + (fin - inicio));
+    }
+
+    private void configurarTabla() {
+        tblRutas.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+
+        // Fija el tamaño de la columna ID en Rutas
+        tblRutas.getColumnModel().getColumn(0).setMinWidth(50);
+        tblRutas.getColumnModel().getColumn(0).setMaxWidth(50);
+        tblRutas.getColumnModel().getColumn(0).setPreferredWidth(50);
+
+        // Fija el tamaño de la columna Tarifa en Rutas
+        tblRutas.getColumnModel().getColumn(2).setMinWidth(100);
+        tblRutas.getColumnModel().getColumn(2).setMaxWidth(100);
+        tblRutas.getColumnModel().getColumn(2).setPreferredWidth(100);
+
+        // Configura el estilo de dinero
+        tblRutas.getColumnModel().getColumn(2).setCellRenderer(new MonedaRenderer());
+
+    }
+
+    public class MonedaRenderer extends DefaultTableCellRenderer {
+
+        private NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("es", "DO"));
+
+        @Override
+        protected void setValue(Object value) {
+            if (value != null) {
+                setText(formato.format(value));
+                setHorizontalAlignment(SwingConstants.LEFT);
+            } else {
+                setText("");
+            }
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChoferes;
+    private javax.swing.JButton btnChoferesBuscar;
+    private javax.swing.JButton btnChoferesCrear;
+    private javax.swing.JButton btnChoferesDetalles;
+    private javax.swing.JButton btnChoferesEditar;
+    private javax.swing.JButton btnChoferesEliminar;
     private javax.swing.JButton btnChoferesInicio;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPagos;
+    private javax.swing.JButton btnPagosBuscar;
+    private javax.swing.JButton btnPagosCrear;
+    private javax.swing.JButton btnPagosEditar;
+    private javax.swing.JButton btnPagosEliminar;
     private javax.swing.JButton btnPagosInicio;
+    private javax.swing.JButton btnPagosVer;
     private javax.swing.JButton btnRutas;
+    private javax.swing.JButton btnRutasBuscar;
+    private javax.swing.JButton btnRutasCrear;
+    private javax.swing.JButton btnRutasEditar;
+    private javax.swing.JButton btnRutasEliminar;
     private javax.swing.JButton btnRutasInicio;
+    private javax.swing.JButton btnRutasRecargar;
     private javax.swing.JButton btnVehiculos;
+    private javax.swing.JButton btnVehiculosBuscar;
+    private javax.swing.JButton btnVehiculosCrear;
+    private javax.swing.JButton btnVehiculosEditar;
+    private javax.swing.JButton btnVehiculosEliminar;
     private javax.swing.JButton btnVehiculosInicio;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton btnVehiculosVer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
@@ -1397,20 +1543,25 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lblChoferesActivos;
+    private javax.swing.JLabel lblPagosPendientes;
     private javax.swing.JLabel lblRutas;
+    private javax.swing.JLabel lblRutasCreadas;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblVehiculosRegistrados;
     private javax.swing.JPanel pnlChoferes;
     private javax.swing.JPanel pnlContenido;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JPanel pnlPagos;
     private javax.swing.JPanel pnlRutas;
     private javax.swing.JPanel pnlVehiculos;
+    private javax.swing.JTable tblChoferes;
+    private javax.swing.JTable tblPagos;
+    private javax.swing.JTable tblRutas;
+    private javax.swing.JTable tblVehiculos;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtChoferes;
+    private javax.swing.JTextField txtPagos;
+    private javax.swing.JTextField txtVehiculos;
     // End of variables declaration//GEN-END:variables
 }
