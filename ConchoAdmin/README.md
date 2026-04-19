@@ -1,4 +1,4 @@
-![Logo proyecto](imagenes/ConchoAdmin.svg)
+![Logo proyecto](imagenesDeUso/isologo300.png)
 
 ---
 
@@ -17,12 +17,12 @@ Concho admin es un sistema de gestión de rutas de transporte público que permi
 * Tener conexión a internet (los datos son almacenados en la nube).
 
 ## Imagenes del prógrama en uso
-![Inicio sesión](imagenes/image.png)
-![Regitrarse](imagenes/image1.png)
-![Inicio](imagenes/image2.png)
+![Inicio sesión](imagenesDeUso/image.png)
+![Regitrarse](imagenesDeUso/image1.png)
+![Inicio](imagenesDeUso/image2.png)
 
 ## UNIDEVS
-Darvin Mendez - Lider del equipo 
-Zoila García - Diseñadora 
-Luis Moscoso - SQA
-Kevin Martinez - Administrador de la Base de Datos
+Darvin Mendez - Lider del equipo.
+Zoila García - Diseñadora.
+Luis Moscoso - SQA.
+Kevin Martinez - Administrador de la Base de Datos.
