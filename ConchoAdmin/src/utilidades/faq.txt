@@ -1,0 +1,26 @@
+PREGUNTA: ¿Qué puedo hacer con Concho Admin?
+RESPUESTA: Con Concho Admin puedes ver todos los choferes que trabajan en tus rutas, los vehículos asociados, consultar el historial de pagos y organizar tus rutas de forma digital. La idea es que no tengas que usar cuadernos ni papeles para llevar el control.
+
+PREGUNTA: ¿Cómo registro un chofer nuevo?
+RESPUESTA: Ve al módulo de choferes, agrega sus datos (nombre, cédula, teléfono) y asígnalo a una ruta. Después de eso ya podrás ver sus pagos y vehículo.
+
+PREGUNTA: ¿Cómo veo cuánto me debe o me ha pagado un chofer?
+RESPUESTA: En la sección de pagos puedes ver todos los pagos realizados, filtrar por chofer o ruta, y revisar si un pago está pendiente o completado. Esto te evita revisar cuadernos o cuentas manuales.
+
+PREGUNTA: ¿Qué pasa si un chofer deja de trabajar conmigo?
+RESPUESTA: Puedes cambiar su estado a inactivo. Así no pierdes su historial, pero sabes que ya no está activo en la ruta.
+
+PREGUNTA: ¿Qué hago si cometo un error al registrar datos?
+RESPUESTA: Puedes editar o actualizar la información en cualquier momento. No necesitas borrar todo ni empezar de cero.
+
+PREGUNTA: ¿Puedo manejar varias rutas al mismo tiempo?
+RESPUESTA: Sí. La aplicación te permite gestionar múltiples rutas desde un mismo usuario.
+
+PREGUNTA: ¿Qué ventaja tiene usar esto en vez de papel?
+RESPUESTA: Ahorras tiempo buscando información, evitas perder datos, tienes todo organizado en segundos y puedes ver reportes más claros. En pocas palabras: menos desorden, más control.
+
+PREGUNTA: ¿Qué pasa si no sé usar computadoras muy bien?
+RESPUESTA: La app está hecha para ser simple. Además, al usarla constantemente te vas a acostumbrar rápido porque siempre sigues los mismos pasos.
+
+PREGUNTA: ¿Puedo crecer con esta aplicación?
+RESPUESTA: Sí. El sistema puede ampliarse en el futuro para incluir reportes financieros, más control de pagos y mejor organización de rutas.

@@ -4,6 +4,7 @@ package vistas;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,30 +39,30 @@ public class Login extends javax.swing.JFrame {
         pnlLogin = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         btnLogin_Inicia = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtLoginCorreo = new javax.swing.JTextField();
         btnLogin_Registrate = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtLoginContrasena = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         lblAlertaLogin = new javax.swing.JLabel();
         pnlRegistro = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         btnRegistro_Crear = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        txtRegistroApellido = new javax.swing.JTextField();
         btnRegistro_Iniciar = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        txtRegistroContrasena = new javax.swing.JPasswordField();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
+        txtRegistroCorreo = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
-        jTextField4 = new javax.swing.JTextField();
+        txtRegistroNombre = new javax.swing.JTextField();
         lblAlertaRegistro = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -108,8 +109,9 @@ public class Login extends javax.swing.JFrame {
         btnLogin_Inicia.setIconTextGap(6);
         btnLogin_Inicia.addActionListener(this::btnLogin_IniciaActionPerformed);
 
-        jTextField1.setBackground(new java.awt.Color(255, 254, 236));
-        jTextField1.setBorder(null);
+        txtLoginCorreo.setBackground(new java.awt.Color(255, 254, 236));
+        txtLoginCorreo.setForeground(new java.awt.Color(112, 112, 112));
+        txtLoginCorreo.setBorder(null);
 
         btnLogin_Registrate.setBackground(new java.awt.Color(204, 204, 204));
         btnLogin_Registrate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -136,11 +138,11 @@ public class Login extends javax.swing.JFrame {
         jLabel21.setToolTipText("");
         jLabel21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jPasswordField1.setEditable(false);
-        jPasswordField1.setBackground(new java.awt.Color(255, 254, 236));
-        jPasswordField1.setToolTipText("");
-        jPasswordField1.setBorder(null);
-        jPasswordField1.addActionListener(this::jPasswordField1ActionPerformed);
+        txtLoginContrasena.setBackground(new java.awt.Color(255, 254, 236));
+        txtLoginContrasena.setForeground(new java.awt.Color(112, 112, 112));
+        txtLoginContrasena.setToolTipText("");
+        txtLoginContrasena.setBorder(null);
+        txtLoginContrasena.addActionListener(this::txtLoginContrasenaActionPerformed);
 
         jSeparator1.setBackground(new java.awt.Color(11, 120, 100));
         jSeparator1.setForeground(new java.awt.Color(11, 120, 100));
@@ -149,7 +151,6 @@ public class Login extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(11, 120, 100));
 
         lblAlertaLogin.setForeground(new java.awt.Color(153, 0, 0));
-        lblAlertaLogin.setText("*Debes llenar todos los campos");
 
         javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
         pnlLogin.setLayout(pnlLoginLayout);
@@ -165,8 +166,8 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(pnlLoginLayout.createSequentialGroup()
                         .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator1)
-                            .addComponent(jPasswordField1)
-                            .addComponent(jTextField1)
+                            .addComponent(txtLoginContrasena)
+                            .addComponent(txtLoginCorreo)
                             .addComponent(btnLogin_Inicia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnLogin_Registrate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -182,18 +183,18 @@ public class Login extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLoginCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLoginContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblAlertaLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(btnLogin_Inicia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogin_Registrate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,8 +221,9 @@ public class Login extends javax.swing.JFrame {
         btnRegistro_Crear.setIconTextGap(6);
         btnRegistro_Crear.addActionListener(this::btnRegistro_CrearActionPerformed);
 
-        jTextField2.setBackground(new java.awt.Color(255, 254, 236));
-        jTextField2.setBorder(null);
+        txtRegistroApellido.setBackground(new java.awt.Color(255, 254, 236));
+        txtRegistroApellido.setForeground(new java.awt.Color(112, 112, 112));
+        txtRegistroApellido.setBorder(null);
 
         btnRegistro_Iniciar.setBackground(new java.awt.Color(204, 204, 204));
         btnRegistro_Iniciar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -248,11 +250,11 @@ public class Login extends javax.swing.JFrame {
         jLabel25.setToolTipText("");
         jLabel25.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jPasswordField2.setEditable(false);
-        jPasswordField2.setBackground(new java.awt.Color(255, 254, 236));
-        jPasswordField2.setToolTipText("");
-        jPasswordField2.setBorder(null);
-        jPasswordField2.addActionListener(this::jPasswordField2ActionPerformed);
+        txtRegistroContrasena.setBackground(new java.awt.Color(255, 254, 236));
+        txtRegistroContrasena.setForeground(new java.awt.Color(112, 112, 112));
+        txtRegistroContrasena.setToolTipText("");
+        txtRegistroContrasena.setBorder(null);
+        txtRegistroContrasena.addActionListener(this::txtRegistroContrasenaActionPerformed);
 
         jSeparator3.setBackground(new java.awt.Color(11, 120, 100));
         jSeparator3.setForeground(new java.awt.Color(11, 120, 100));
@@ -260,8 +262,9 @@ public class Login extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(11, 120, 100));
         jSeparator4.setForeground(new java.awt.Color(11, 120, 100));
 
-        jTextField3.setBackground(new java.awt.Color(255, 254, 236));
-        jTextField3.setBorder(null);
+        txtRegistroCorreo.setBackground(new java.awt.Color(255, 254, 236));
+        txtRegistroCorreo.setForeground(new java.awt.Color(112, 112, 112));
+        txtRegistroCorreo.setBorder(null);
 
         jLabel26.setBackground(new java.awt.Color(23, 31, 38));
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -285,11 +288,11 @@ public class Login extends javax.swing.JFrame {
         jSeparator6.setBackground(new java.awt.Color(11, 120, 100));
         jSeparator6.setForeground(new java.awt.Color(11, 120, 100));
 
-        jTextField4.setBackground(new java.awt.Color(255, 254, 236));
-        jTextField4.setBorder(null);
+        txtRegistroNombre.setBackground(new java.awt.Color(255, 254, 236));
+        txtRegistroNombre.setForeground(new java.awt.Color(112, 112, 112));
+        txtRegistroNombre.setBorder(null);
 
         lblAlertaRegistro.setForeground(new java.awt.Color(153, 0, 0));
-        lblAlertaRegistro.setText("*Debes llenar todos los campos");
 
         javax.swing.GroupLayout pnlRegistroLayout = new javax.swing.GroupLayout(pnlRegistro);
         pnlRegistro.setLayout(pnlRegistroLayout);
@@ -311,17 +314,17 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(pnlRegistroLayout.createSequentialGroup()
                         .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3)
+                            .addComponent(txtRegistroCorreo)
                             .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                             .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRegistroNombre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator5))
                         .addGap(36, 36, 36)
                         .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2)
+                            .addComponent(txtRegistroApellido)
                             .addComponent(jSeparator3)
                             .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                            .addComponent(jPasswordField2)
+                            .addComponent(txtRegistroContrasena)
                             .addComponent(jSeparator4)
                             .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(122, Short.MAX_VALUE))))
@@ -336,30 +339,30 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(pnlRegistroLayout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRegistroApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRegistroContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlRegistroLayout.createSequentialGroup()
                         .addComponent(jLabel26)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRegistroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel27)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRegistroCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblAlertaRegistro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(btnRegistro_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRegistro_Iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -413,7 +416,13 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogin_IniciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin_IniciaActionPerformed
-        // 1. Abre la ventana principal
+        String contrasena = new String(txtLoginContrasena.getPassword());
+        if (txtLoginCorreo.getText().isEmpty() || contrasena.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe llenar todos los campos.");
+            return;
+        }
+
+// 1. Abre la ventana principal
         Inicio home = new Inicio();
         home.setVisible(true);
         
@@ -428,12 +437,16 @@ public class Login extends javax.swing.JFrame {
         contenedorLogin.revalidate();
     }//GEN-LAST:event_btnLogin_RegistrateActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void txtLoginContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginContrasenaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_txtLoginContrasenaActionPerformed
 
     private void btnRegistro_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistro_CrearActionPerformed
-        // TODO add your handling code here:
+        String contrasena = new String(txtRegistroContrasena.getPassword());
+        if (txtRegistroCorreo.getText().isEmpty() || txtRegistroNombre.getText().isEmpty() || txtRegistroApellido.getText().isEmpty() || contrasena.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe llenar todos los campos.");
+            return;
+        }
     }//GEN-LAST:event_btnRegistro_CrearActionPerformed
 
     private void btnRegistro_IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistro_IniciarActionPerformed
@@ -443,9 +456,9 @@ public class Login extends javax.swing.JFrame {
         contenedorLogin.revalidate();
     }//GEN-LAST:event_btnRegistro_IniciarActionPerformed
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+    private void txtRegistroContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegistroContrasenaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
+    }//GEN-LAST:event_txtRegistroContrasenaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -490,21 +503,21 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblAlertaLogin;
     private javax.swing.JLabel lblAlertaRegistro;
     private javax.swing.JPanel pnlLogin;
     private javax.swing.JPanel pnlRegistro;
+    private javax.swing.JPasswordField txtLoginContrasena;
+    private javax.swing.JTextField txtLoginCorreo;
+    private javax.swing.JTextField txtRegistroApellido;
+    private javax.swing.JPasswordField txtRegistroContrasena;
+    private javax.swing.JTextField txtRegistroCorreo;
+    private javax.swing.JTextField txtRegistroNombre;
     // End of variables declaration//GEN-END:variables
 }
