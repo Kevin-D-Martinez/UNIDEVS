@@ -13,14 +13,14 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
     
     Ruta ruta;
     RutaControlador controller = new RutaControlador();
-    private Home home;
+    private Inicio home;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEliminarRuta.class.getName());
 
     /**
      * Creates new form DialogCrearRuta
      */
-    public DialogEliminarRuta(java.awt.Frame parent, boolean modal, int id, Home home) {
+    public DialogEliminarRuta(java.awt.Frame parent, boolean modal, int id, Inicio home) {
         super(parent, modal);
         this.home = home;
         initComponents();

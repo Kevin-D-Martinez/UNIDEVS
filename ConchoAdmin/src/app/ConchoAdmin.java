@@ -4,7 +4,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.UIManager;
 import vistas.Login;
 
-import vistas.Home;
+import vistas.Inicio;
 
 /**
  *

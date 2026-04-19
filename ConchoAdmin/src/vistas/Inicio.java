@@ -18,17 +18,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
-public class Home extends javax.swing.JFrame {
+public class Inicio extends javax.swing.JFrame {
 
     //Llama a los controladores para no tener que abrir más de una instancia
     RutaControlador controller = new RutaControlador();
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Home.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
 
     /**
      * Creates new form home
      */
-    public Home() {
+    public Inicio() {
 
         initComponents();
         setLocationRelativeTo(null);
@@ -1405,7 +1405,7 @@ public class Home extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Home().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Inicio().setVisible(true));
     }
 
     public void mostrarRutas() {

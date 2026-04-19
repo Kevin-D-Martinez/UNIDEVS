@@ -414,7 +414,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLogin_IniciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin_IniciaActionPerformed
         // 1. Abre la ventana principal
-        Home home = new Home();
+        Inicio home = new Inicio();
         home.setVisible(true);
         
         // 2. Cierra el login

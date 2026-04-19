@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
 public class DialogCrearRuta extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearRuta.class.getName());
-    private Home home;
+    private Inicio home;
 
     /**
      * Creates new form DialogCrearRuta
      */
-    public DialogCrearRuta(java.awt.Frame parent, boolean modal, Home home) {
+    public DialogCrearRuta(java.awt.Frame parent, boolean modal, Inicio home) {
         super(parent, modal);
         this.home = home;
         initComponents();
