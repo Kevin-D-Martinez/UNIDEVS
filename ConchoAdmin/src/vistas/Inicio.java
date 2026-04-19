@@ -42,14 +42,24 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form home
      */
     public Inicio() {
-
+        
+        // Inicializa los componentes de la interfa
         initComponents();
+        
+        // Centraliza la ventana en la pantalla del usuario
         setLocationRelativeTo(null);
+        
+        // Configura el icono de la ventana
         Image icono = new ImageIcon(getClass().getResource("/assets/icono.png")).getImage();
         setIconImage(icono);
+        
+        //Carga el FAQ
         cargarFAQ();
-        configurarTabla();
+        
+        // Configura las diferentes tables
+        configurarTablaRutas();
 
+        // Cuenta los objetos para los contadores del inicio
         lblRutasCreadas.setText(String.valueOf(controller.contarRutas(8)));         // CAMBIAR CUANDO TENGA LA SESION
     }
 
@@ -144,7 +154,7 @@ public class Inicio extends javax.swing.JFrame {
         jSeparator13 = new javax.swing.JSeparator();
         scrollFAQ = new javax.swing.JScrollPane();
         jLabel25 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlSide = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -798,7 +808,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(153, 153, 153));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel8.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\008-car.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/008-car.png"))); // NOI18N
         jLabel8.setText("Vehículos");
         jLabel8.setIconTextGap(10);
 
@@ -820,6 +830,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnVehiculosBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosBuscar.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/004-search16.png"))); // NOI18N
         btnVehiculosBuscar.setText("Buscar");
         btnVehiculosBuscar.setBorder(null);
         btnVehiculosBuscar.setIconTextGap(6);
@@ -827,6 +838,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnVehiculosCrear.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosCrear.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/005-add16.png"))); // NOI18N
         btnVehiculosCrear.setText("Crear nuevo");
         btnVehiculosCrear.setToolTipText("");
         btnVehiculosCrear.setBorder(null);
@@ -835,6 +847,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnVehiculosEditar.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosEditar.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/001-edit16.png"))); // NOI18N
         btnVehiculosEditar.setText("Editar seleccionado");
         btnVehiculosEditar.setBorder(null);
         btnVehiculosEditar.setIconTextGap(6);
@@ -842,6 +855,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnVehiculosEliminar.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosEliminar.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/003-trashcan16.png"))); // NOI18N
         btnVehiculosEliminar.setText("Eliminar seleccionado");
         btnVehiculosEliminar.setBorder(null);
         btnVehiculosEliminar.setIconTextGap(6);
@@ -934,7 +948,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel22.setBackground(new java.awt.Color(153, 153, 153));
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel22.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\007-coin.png")); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/007-coin.png"))); // NOI18N
         jLabel22.setText("Pagos");
         jLabel22.setIconTextGap(10);
 
@@ -956,6 +970,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnPagosBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosBuscar.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/004-search16.png"))); // NOI18N
         btnPagosBuscar.setText("Buscar");
         btnPagosBuscar.setBorder(null);
         btnPagosBuscar.setIconTextGap(6);
@@ -963,6 +978,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnPagosCrear.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosCrear.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/005-add16.png"))); // NOI18N
         btnPagosCrear.setText("Crear nuevo");
         btnPagosCrear.setToolTipText("");
         btnPagosCrear.setBorder(null);
@@ -971,6 +987,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnPagosEditar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosEditar.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/001-edit16.png"))); // NOI18N
         btnPagosEditar.setText("Editar seleccionado");
         btnPagosEditar.setBorder(null);
         btnPagosEditar.setIconTextGap(6);
@@ -978,6 +995,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnPagosEliminar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosEliminar.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/003-trashcan16.png"))); // NOI18N
         btnPagosEliminar.setText("Eliminar seleccionado");
         btnPagosEliminar.setBorder(null);
         btnPagosEliminar.setIconTextGap(6);
@@ -1121,12 +1139,12 @@ public class Inicio extends javax.swing.JFrame {
 
         pnlContenido.add(pnlInfo, "card7");
 
-        jPanel2.setBackground(new java.awt.Color(23, 31, 38));
-        jPanel2.setAlignmentX(0.0F);
-        jPanel2.setAlignmentY(0.0F);
-        jPanel2.setMinimumSize(new java.awt.Dimension(200, 600));
-        jPanel2.setName(""); // NOI18N
-        jPanel2.setPreferredSize(new java.awt.Dimension(200, 600));
+        pnlSide.setBackground(new java.awt.Color(23, 31, 38));
+        pnlSide.setAlignmentX(0.0F);
+        pnlSide.setAlignmentY(0.0F);
+        pnlSide.setMinimumSize(new java.awt.Dimension(200, 600));
+        pnlSide.setName(""); // NOI18N
+        pnlSide.setPreferredSize(new java.awt.Dimension(200, 600));
 
         btnHome.setBackground(new java.awt.Color(23, 31, 38));
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -1209,20 +1227,20 @@ public class Inicio extends javax.swing.JFrame {
         btnInfo.setPreferredSize(new java.awt.Dimension(95, 16));
         btnInfo.addActionListener(this::btnInfoActionPerformed);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        javax.swing.GroupLayout pnlSideLayout = new javax.swing.GroupLayout(pnlSide);
+        pnlSide.setLayout(pnlSideLayout);
+        pnlSideLayout.setHorizontalGroup(
+            pnlSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSideLayout.createSequentialGroup()
+                .addGroup(pnlSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pnlSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnlSideLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSideLayout.createSequentialGroup()
                             .addGap(25, 25, 25)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnRutas, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                 .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                 .addComponent(btnChoferes, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
@@ -1233,9 +1251,9 @@ public class Inicio extends javax.swing.JFrame {
                                 .addComponent(btnInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnlSideLayout.setVerticalGroup(
+            pnlSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSideLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
@@ -1265,13 +1283,13 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlSide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(pnlSide, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
@@ -1528,6 +1546,13 @@ public class Inicio extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new Inicio().setVisible(true));
     }
 
+    /**
+     * Carga y muestra todas las rutas del usuario activo en la tabla tblRutas.
+     *
+     * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
+     * También mide e imprime el tiempo de carga en consola para diagnóstico.
+     *
+     */
     public void mostrarRutas() {
         long inicio = System.currentTimeMillis();
 
@@ -1553,7 +1578,15 @@ public class Inicio extends javax.swing.JFrame {
         System.out.println("Tiempo: " + (fin - inicio));
     }
 
-    private void configurarTabla() {
+    /**
+     * Configura el comportamiento y apariencia de la tabla tblRutas.
+     *
+     * Fija el ancho de la columna ID a 50px y de la columna Tarifa a 100px.
+     * Aplica el renderer personalizado MonedaRenderer a la columna Tarifa para
+     * mostrar los valores con formato de moneda dominicana (DOP).
+     *
+     */
+    private void configurarTablaRutas() {
         tblRutas.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
 
         // Fija el tamaño de la columna ID en Rutas
@@ -1571,6 +1604,13 @@ public class Inicio extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Renderer personalizado para mostrar valores numéricos como moneda
+     * dominicana (DOP).
+     *
+     * Extiende DefaultTableCellRenderer y formatea los valores de la celda
+     * usando NumberFormat#getCurrencyInstance con locale es_DO.
+     */
     public class MonedaRenderer extends DefaultTableCellRenderer {
 
         private NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("es", "DO"));
@@ -1586,6 +1626,14 @@ public class Inicio extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Lee el archivo faq.txt y carga su contenido en el scrollFAQ como una
+     * lista visual de preguntas y respuestas.
+     *
+     * Si el archivo no tiene contenido o no se encuentra, muestra un mensaje de
+     * error en rojo dentro del scroll.
+     *
+     */
     private void cargarFAQ() {
 
         JPanel panelContenido = new JPanel();
@@ -1612,6 +1660,14 @@ public class Inicio extends javax.swing.JFrame {
         scrollFAQ.setViewportView(panelContenido);
     }
 
+    /**
+     * Crea y retorna un JPanel visual que representa un ítem del FAQ,
+     * mostrando la pregunta en verde y la respuesta en texto debajo.
+     *
+     * @param pregunta Texto de la pregunta a mostrar.
+     * @param respuesta Texto de la respuesta a mostrar.
+     * @return Panel con la pregunta y respuesta estilizadas.
+     */
     private JPanel crearItemFAQ(String pregunta, String respuesta) {
 
         JPanel item = new JPanel();
@@ -1692,7 +1748,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1726,6 +1781,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel pnlInfo;
     private javax.swing.JPanel pnlPagos;
     private javax.swing.JPanel pnlRutas;
+    private javax.swing.JPanel pnlSide;
     private javax.swing.JPanel pnlVehiculos;
     private javax.swing.JScrollPane scrollFAQ;
     private javax.swing.JTable tblChoferes;

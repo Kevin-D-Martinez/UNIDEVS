@@ -29,7 +29,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlSide" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="pnlContenido" max="32767" attributes="0"/>
           </Group>
@@ -37,7 +37,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" alignment="0" pref="800" max="32767" attributes="0"/>
+          <Component id="pnlSide" alignment="0" pref="800" max="32767" attributes="0"/>
           <Component id="pnlContenido" alignment="0" pref="800" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -1380,7 +1380,7 @@
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\32\pngazul\008-car.png"/>
+                  <Image iconType="3" name="/assets/008-car.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Veh&#xed;culos"/>
                 <Property name="iconTextGap" type="int" value="10"/>
@@ -1446,6 +1446,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/004-search16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1463,6 +1466,9 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/005-add16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Crear nuevo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -1483,6 +1489,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/001-edit16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Editar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1500,6 +1509,9 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/003-trashcan16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1653,7 +1665,7 @@
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\32\pngazul\007-coin.png"/>
+                  <Image iconType="3" name="/assets/007-coin.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pagos"/>
                 <Property name="iconTextGap" type="int" value="10"/>
@@ -1719,6 +1731,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/004-search16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1736,6 +1751,9 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/005-add16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Crear nuevo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -1756,6 +1774,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/001-edit16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Editar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1773,6 +1794,9 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/003-trashcan16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1942,7 +1966,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Container class="javax.swing.JPanel" name="pnlSide">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="26" green="1f" red="17" type="rgb"/>
