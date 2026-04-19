@@ -23,7 +23,7 @@ public class ChoferDAO {
      * @param valorBuscar
      * @return datos
      */
-    public List listarChofer(String valorBuscar){
+    public List<Chofer> listarChofer(String valorBuscar){
         
         String sql = "SELECT * FROM Chofer "+
                      "WHERE id||nombre||apellido||cedula||telefono||estado LIKE '%"+valorBuscar+"%'";
@@ -65,7 +65,7 @@ public class ChoferDAO {
      * El mismo devuelve un objeto tipo arrayList.
      * @return datos
      */
-    public List listar(){
+    public List<Chofer> listar(){
         String sql = "SELECT * FROM Chofer";
         List<Chofer>datos = new ArrayList<>();
         try{
