@@ -1,9 +1,8 @@
 CREATE TABLE Vehiculo(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     marca VARCHAR(15),
-    nombre VARCHAR(15),
     modelo VARCHAR(10),
-    años DATE,
+    año VARCHAR(4),
     matricula CHAR(7),
     id_chofer INT,
     id_ruta INT,
