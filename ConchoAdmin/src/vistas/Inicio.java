@@ -60,7 +60,7 @@ public class Inicio extends javax.swing.JFrame {
         configurarTablaRutas();
 
         // Cuenta los objetos para los contadores del inicio
-        lblRutasCreadas.setText(String.valueOf(controller.contarRutas(8)));         // CAMBIAR CUANDO TENGA LA SESION
+        actualizarContadores(8);                     // CAMBIAR CUANDO TENGA LA SESION
     }
 
     /**
@@ -1602,6 +1602,10 @@ public class Inicio extends javax.swing.JFrame {
         // Configura el estilo de dinero
         tblRutas.getColumnModel().getColumn(2).setCellRenderer(new MonedaRenderer());
 
+    }
+
+    private void actualizarContadores(int usuarioActivo) {
+        lblRutasCreadas.setText(String.valueOf(controller.contarRutas(usuarioActivo)));
     }
 
     /**
