@@ -2,8 +2,9 @@ package app;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.UIManager;
+import vistas.Login;
 
-import vistas.home;
+import vistas.Inicio;
 
 /**
  *
@@ -22,7 +23,7 @@ public class ConchoAdmin {
         }
 
         javax.swing.SwingUtilities.invokeLater(() -> {
-            new home().setVisible(true);
+            new Login().setVisible(true);
         });
     }
 

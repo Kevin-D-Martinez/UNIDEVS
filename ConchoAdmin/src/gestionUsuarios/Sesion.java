@@ -11,7 +11,7 @@ public class Sesion {
     
     private Sesion() {}
 
-    public static Sesion getInstance() {
+    public static Sesion getInstancia() {
         if (instancia == null) {
             instancia = new Sesion();
         }
