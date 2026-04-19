@@ -8,64 +8,105 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DAO Vehiculos.
- * Clase encargada de gestionar las operaciones CRUD
- * sobre la tabla Vehiculo en la base de datos.
+ * DAO Vehiculos. Clase encargada de gestionar las operaciones CRUD sobre la
+ * tabla Vehiculo en la base de datos.
+ *
  * @author Darvin Mendez
  */
 public class VehiculoDAO {
-    
-    Connection con;
-    PreparedStatement ps;
-    ResultSet rs;
 
     /**
-     * Este metodo se encarga de listar todos los vehiculos.
-     * Devuelve un objeto tipo ArrayList con los datos.
-     * @return datos
+     * Lista todos los vehículos registrados en la base de datos.
+     *
+     * @param idUsuario
+     * @return
      */
-    public List listar(){
-        String sql = "SELECT * FROM Vehiculo";
-        List<Vehiculo> datos = new ArrayList<>();
-        
-        try{
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            
-            while(rs.next()){
+    public List<Vehiculo> listar(int idUsuario) {
+
+    String sql = "SELECT * FROM Vehiculo WHERE id_usuario = ?";
+    List<Vehiculo> datos = new ArrayList<>();
+
+    try (
+        Connection con = ConexionMySQL.conectar();
+        PreparedStatement ps = con.prepareStatement(sql)
+    ) {
+
+        ps.setInt(1, idUsuario);
+
+        try (ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
                 Vehiculo v = new Vehiculo();
-                v.setId(rs.getInt(1));
-                v.setMarca(rs.getString(2));
-                v.setModelo(rs.getString(3));
-                v.setAño(rs.getString(4));
-                v.setMatricula(rs.getString(5));
-                v.setIdChofer(rs.getInt(6));
-                v.setIdRuta(rs.getInt(7));
-                v.setIdUsuario(rs.getInt(8));
+                v.setId(rs.getInt("id"));
+                v.setMarca(rs.getString("marca"));
+                v.setModelo(rs.getString("modelo"));
+                v.setAño(rs.getString("año"));
+                v.setMatricula(rs.getString("matricula"));
+                v.setIdChofer(rs.getInt("id_chofer"));
+                v.setIdRuta(rs.getInt("id_ruta"));
+                v.setIdUsuario(rs.getInt("id_usuario"));
+
                 datos.add(v);
             }
-            
-        } catch(SQLException e){
-            System.out.println("Error al listar vehiculos: " + e);
         }
-        return datos;
+
+    } catch (SQLException e) {
+        System.out.println("Error al listar vehiculos: " + e);
+    }
+
+    return datos;
+}
+
+    /**
+     * Carga un solo vehículo según su ID.
+     *
+     * @param id
+     * @return
+     */
+    public Vehiculo cargarVehiculo(int id) {
+
+        String sql = "SELECT * FROM Vehiculo WHERE id = ?";
+        Vehiculo v = null;
+
+        try (
+                Connection con = ConexionMySQL.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    v = new Vehiculo();
+                    v.setId(rs.getInt("id"));
+                    v.setMarca(rs.getString("marca"));
+                    v.setModelo(rs.getString("modelo"));
+                    v.setAño(rs.getString("año"));
+                    v.setMatricula(rs.getString("matricula"));
+                    v.setIdChofer(rs.getInt("id_chofer"));
+                    v.setIdRuta(rs.getInt("id_ruta"));
+                    v.setIdUsuario(rs.getInt("id_usuario"));
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al cargar vehiculo: " + e);
+        }
+
+        return v;
     }
 
     /**
-     * Este metodo se encarga de registrar un nuevo vehiculo.
-     * Devuelve 1 si la insercion se realiza correctamente.
+     * Registra un nuevo vehículo en la base de datos.
+     *
      * @param v
-     * @return 1
+     * @return
      */
-    public int agregar(Vehiculo v){
-        
+    public int agregar(Vehiculo v) {
+
         String sql = "INSERT INTO Vehiculo(marca, modelo, año, matricula, id_chofer, id_ruta, id_usuario) VALUES(?,?,?,?,?,?,?)";
-        
-        try{
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
-                    
+
+        try (
+                Connection con = ConexionMySQL.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            // Se asignan los valores del objeto al query
             ps.setString(1, v.getMarca());
             ps.setString(2, v.getModelo());
             ps.setString(3, v.getAño());
@@ -73,30 +114,25 @@ public class VehiculoDAO {
             ps.setInt(5, v.getIdChofer());
             ps.setInt(6, v.getIdRuta());
             ps.setInt(7, v.getIdUsuario());
-            
-            ps.executeUpdate();
-            
+
+            return ps.executeUpdate();
+
         } catch (SQLException e) {
             System.out.println("Error al insertar vehiculo: " + e);
         }
-        return 1;
+        return 0;
     }
 
     /**
-     * Este metodo se encarga de actualizar un vehiculo.
-     * Devuelve el numero de registros afectados.
-     * @param v
-     * @return r
+     * Actualiza un vehículo existente en la base de datos.
      */
-    public int actualizar(Vehiculo v){
-        int r = 0;
-        
-        String sql = "UPDATE Vehiculo set marca=?, modelo=?, año=?, matricula=?, id_chofer=?, id_ruta=?, id_usuario=? WHERE id=?";
-        
-        try{
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
+    public int actualizar(Vehiculo v) {
+        String sql = "UPDATE Vehiculo SET marca=?, modelo=?, año=?, matricula=?, id_chofer=?, id_ruta=?, id_usuario=? WHERE id=?";
 
+        try (
+                Connection con = ConexionMySQL.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            // Se actualizan los campos del vehículo
             ps.setString(1, v.getMarca());
             ps.setString(2, v.getModelo());
             ps.setString(3, v.getAño());
@@ -105,35 +141,55 @@ public class VehiculoDAO {
             ps.setInt(6, v.getIdRuta());
             ps.setInt(7, v.getIdUsuario());
             ps.setInt(8, v.getId());
-            
-            r = ps.executeUpdate();
-            
+
+            return ps.executeUpdate();
+
         } catch (SQLException e) {
             System.out.println("Error al actualizar vehiculo: " + e);
+            return 0;
         }
-        return r;
     }
 
     /**
-     * Este metodo se encarga de eliminar un vehiculo.
-     * Devuelve el numero de registros afectados.
+     * Elimina un vehículo según su ID.
+     *
      * @param id
-     * @return r
+     * @return
      */
-    public int eliminar(int id){
-        int r = 0;
-        
-        String sql = "DELETE FROM Vehiculo WHERE id = " + id;
-        
-        try{
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
-            
-            r = ps.executeUpdate();
-            
+    public int eliminar(int id) {
+        String sql = "DELETE FROM Vehiculo WHERE id = ?";
+
+        try (
+                Connection con = ConexionMySQL.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error al eliminar vehiculo: " + e);
         }
-        return r;
+        return 0;
+    }
+
+    /**
+     * Cuenta la cantidad de vehículos registrados por usuario.
+     *
+     * @param idUsuario
+     * @return
+     */
+    public int contarVehiculos(int idUsuario) {
+        String sql = "SELECT COUNT(*) FROM Vehiculo WHERE id_usuario = ?";
+        int total = 0;
+
+        try (
+                Connection con = ConexionMySQL.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idUsuario);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    total = rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al contar vehiculos: " + e);
+        }
+        return total;
     }
 }
