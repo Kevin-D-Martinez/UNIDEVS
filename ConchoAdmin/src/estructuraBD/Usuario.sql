@@ -7,3 +7,4 @@ CREATE TABLE Usuario(
     fechaCreacion DATETIME DEFAULT CURRENT_TIMESTAMP
 )
 
+SELECT * FROM Usuario;
