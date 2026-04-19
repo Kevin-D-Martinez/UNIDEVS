@@ -1,32 +1,60 @@
 package asignaciones;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
- * Conexion BD ConchoAdmin (MySQL).
- * @author Kevin Daniel Martinez Reyes
+ * Clase  para gestionar la conexión a la base de datos MySQL.
+ * <p>
+ * Lee las credenciales desde el archivo externo config.properties.
+ * Cada llamada a conectar() abre una nueva conexión independiente,
+ * por lo que debe ser cerrada al terminar.
+ * </p>
+ *
+ * <b>Ejemplo de config.properties:</b>
+ * <pre>
+ *   db.url=jdbc:mysql://host:3306/basededatos
+ *   db.usuario=usuario
+ *   db.contra=contraseña
+ * </pre>
+ *
+ * @author Kevin Daniel Martinez Reyes y Zoila García
+ * @version 3.0
  */
 public class ConexionMySQL {
 
     /**
      * Datos necesarios para la creación de la conexión
      */
-    static String url = "jdbc:mysql://bua4hqkt6dimvqko4gzv-mysql.services.clever-cloud.com:3306/bua4hqkt6dimvqko4gzv";
-    static String user = "u40gkd53pb7ugtgz";
-    static String password = "tR7mxHFGLgO9ukfBXxSZ";
+    static Properties props = new Properties();
+    static String url = null;
+    static String user = null;
+    static String password = null;
 
     /**
-     * Metodo que crea la conexion a la Bases de Datos
-     * SQLite y retorna un objeto de tipo Connection o nulo.
-     * @return con / null
+     * Metodo que crea la conexion a la Bases de Datos MySQL y retorna un objeto
+     * de tipo Connection o nulo.
+     *
+     * @return Objeto Connection si la conexión fue exitosa, null en caso de error.
      */
     public static Connection conectar() {
         try {
+            props.load(new FileInputStream("config.properties"));
+            url = props.getProperty("db.url");
+            user = props.getProperty("db.usuario");
+            password = props.getProperty("db.contra");
+
             Connection con = DriverManager.getConnection(url, user, password);
             System.out.println("La conexión ha sido exitosa");
             return con;
+        } catch (IOException e) {
+            System.out.println("No se encontró config.properties");
+            return null;
+
         } catch (SQLException e) {
             System.out.println("Ha ocurrido un error al tratar de conectarse: " + e.getMessage());
             return null;
