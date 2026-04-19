@@ -115,7 +115,6 @@ public class home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 800));
-        setPreferredSize(new java.awt.Dimension(800, 800));
 
         pnlContenido.setBackground(new java.awt.Color(255, 254, 236));
         pnlContenido.setMinimumSize(new java.awt.Dimension(600, 700));
@@ -339,7 +338,6 @@ public class home extends javax.swing.JFrame {
         btnRutasInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnRutasInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRutasInicio.setForeground(new java.awt.Color(11, 120, 100));
-        btnRutasInicio.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\64\\pngamarillo\\007-distance.png")); // NOI18N
         btnRutasInicio.setText("Rutas");
         btnRutasInicio.setToolTipText("");
         btnRutasInicio.setBorder(null);
@@ -353,7 +351,6 @@ public class home extends javax.swing.JFrame {
         btnChoferesInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnChoferesInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnChoferesInicio.setForeground(new java.awt.Color(11, 120, 100));
-        btnChoferesInicio.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\64\\pngamarillo\\008-profile.png")); // NOI18N
         btnChoferesInicio.setText("Choferes");
         btnChoferesInicio.setToolTipText("");
         btnChoferesInicio.setBorder(null);
@@ -367,7 +364,6 @@ public class home extends javax.swing.JFrame {
         btnPagosInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnPagosInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnPagosInicio.setForeground(new java.awt.Color(11, 120, 100));
-        btnPagosInicio.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\64\\pngamarillo\\010-coin.png")); // NOI18N
         btnPagosInicio.setText("Pagos");
         btnPagosInicio.setToolTipText("");
         btnPagosInicio.setBorder(null);
@@ -381,7 +377,6 @@ public class home extends javax.swing.JFrame {
         btnVehiculosInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnVehiculosInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnVehiculosInicio.setForeground(new java.awt.Color(11, 120, 100));
-        btnVehiculosInicio.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\64\\pngamarillo\\011-car.png")); // NOI18N
         btnVehiculosInicio.setText("Vehículos");
         btnVehiculosInicio.setToolTipText("");
         btnVehiculosInicio.setBorder(null);
@@ -479,7 +474,6 @@ public class home extends javax.swing.JFrame {
 
         jButton9.setBackground(new java.awt.Color(244, 231, 149));
         jButton9.setForeground(new java.awt.Color(23, 31, 38));
-        jButton9.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
         jButton9.setText("Buscar");
         jButton9.setBorder(null);
         jButton9.setIconTextGap(6);
@@ -487,7 +481,6 @@ public class home extends javax.swing.JFrame {
 
         jButton10.setBackground(new java.awt.Color(244, 231, 149));
         jButton10.setForeground(new java.awt.Color(23, 31, 38));
-        jButton10.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
         jButton10.setText("Crear nuevo");
         jButton10.setToolTipText("");
         jButton10.setBorder(null);
@@ -496,7 +489,6 @@ public class home extends javax.swing.JFrame {
 
         jButton11.setBackground(new java.awt.Color(244, 231, 149));
         jButton11.setForeground(new java.awt.Color(23, 31, 38));
-        jButton11.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
         jButton11.setText("Editar seleccionado");
         jButton11.setBorder(null);
         jButton11.setIconTextGap(6);
@@ -504,7 +496,6 @@ public class home extends javax.swing.JFrame {
 
         jButton12.setBackground(new java.awt.Color(244, 231, 149));
         jButton12.setForeground(new java.awt.Color(23, 31, 38));
-        jButton12.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
         jButton12.setText("Eliminar seleccionado");
         jButton12.setBorder(null);
         jButton12.setIconTextGap(6);
@@ -512,7 +503,6 @@ public class home extends javax.swing.JFrame {
 
         jButton13.setBackground(new java.awt.Color(244, 231, 149));
         jButton13.setForeground(new java.awt.Color(23, 31, 38));
-        jButton13.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
         jButton13.setText("Ver detalles");
         jButton13.setBorder(null);
         jButton13.setIconTextGap(6);
@@ -617,7 +607,6 @@ public class home extends javax.swing.JFrame {
 
         jButton14.setBackground(new java.awt.Color(244, 231, 149));
         jButton14.setForeground(new java.awt.Color(23, 31, 38));
-        jButton14.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
         jButton14.setText("Buscar");
         jButton14.setBorder(null);
         jButton14.setIconTextGap(6);
@@ -625,7 +614,6 @@ public class home extends javax.swing.JFrame {
 
         jButton15.setBackground(new java.awt.Color(244, 231, 149));
         jButton15.setForeground(new java.awt.Color(23, 31, 38));
-        jButton15.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
         jButton15.setText("Crear nuevo");
         jButton15.setToolTipText("");
         jButton15.setBorder(null);
@@ -634,7 +622,6 @@ public class home extends javax.swing.JFrame {
 
         jButton16.setBackground(new java.awt.Color(244, 231, 149));
         jButton16.setForeground(new java.awt.Color(23, 31, 38));
-        jButton16.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
         jButton16.setText("Editar seleccionado");
         jButton16.setBorder(null);
         jButton16.setIconTextGap(6);
@@ -642,7 +629,6 @@ public class home extends javax.swing.JFrame {
 
         jButton17.setBackground(new java.awt.Color(244, 231, 149));
         jButton17.setForeground(new java.awt.Color(23, 31, 38));
-        jButton17.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
         jButton17.setText("Eliminar seleccionado");
         jButton17.setBorder(null);
         jButton17.setIconTextGap(6);
@@ -650,7 +636,6 @@ public class home extends javax.swing.JFrame {
 
         jButton18.setBackground(new java.awt.Color(244, 231, 149));
         jButton18.setForeground(new java.awt.Color(23, 31, 38));
-        jButton18.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
         jButton18.setText("Ver detalles");
         jButton18.setBorder(null);
         jButton18.setIconTextGap(6);
@@ -755,7 +740,6 @@ public class home extends javax.swing.JFrame {
 
         jButton19.setBackground(new java.awt.Color(244, 231, 149));
         jButton19.setForeground(new java.awt.Color(23, 31, 38));
-        jButton19.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
         jButton19.setText("Buscar");
         jButton19.setBorder(null);
         jButton19.setIconTextGap(6);
@@ -763,7 +747,6 @@ public class home extends javax.swing.JFrame {
 
         jButton20.setBackground(new java.awt.Color(244, 231, 149));
         jButton20.setForeground(new java.awt.Color(23, 31, 38));
-        jButton20.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
         jButton20.setText("Crear nuevo");
         jButton20.setToolTipText("");
         jButton20.setBorder(null);
@@ -772,7 +755,6 @@ public class home extends javax.swing.JFrame {
 
         jButton21.setBackground(new java.awt.Color(244, 231, 149));
         jButton21.setForeground(new java.awt.Color(23, 31, 38));
-        jButton21.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
         jButton21.setText("Editar seleccionado");
         jButton21.setBorder(null);
         jButton21.setIconTextGap(6);
@@ -780,7 +762,6 @@ public class home extends javax.swing.JFrame {
 
         jButton22.setBackground(new java.awt.Color(244, 231, 149));
         jButton22.setForeground(new java.awt.Color(23, 31, 38));
-        jButton22.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
         jButton22.setText("Eliminar seleccionado");
         jButton22.setBorder(null);
         jButton22.setIconTextGap(6);
@@ -788,7 +769,6 @@ public class home extends javax.swing.JFrame {
 
         jButton23.setBackground(new java.awt.Color(244, 231, 149));
         jButton23.setForeground(new java.awt.Color(23, 31, 38));
-        jButton23.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
         jButton23.setText("Ver detalles");
         jButton23.setBorder(null);
         jButton23.setIconTextGap(6);
@@ -893,7 +873,6 @@ public class home extends javax.swing.JFrame {
 
         jButton24.setBackground(new java.awt.Color(244, 231, 149));
         jButton24.setForeground(new java.awt.Color(23, 31, 38));
-        jButton24.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
         jButton24.setText("Buscar");
         jButton24.setBorder(null);
         jButton24.setIconTextGap(6);
@@ -901,7 +880,6 @@ public class home extends javax.swing.JFrame {
 
         jButton25.setBackground(new java.awt.Color(244, 231, 149));
         jButton25.setForeground(new java.awt.Color(23, 31, 38));
-        jButton25.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
         jButton25.setText("Crear nuevo");
         jButton25.setToolTipText("");
         jButton25.setBorder(null);
@@ -910,7 +888,6 @@ public class home extends javax.swing.JFrame {
 
         jButton26.setBackground(new java.awt.Color(244, 231, 149));
         jButton26.setForeground(new java.awt.Color(23, 31, 38));
-        jButton26.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
         jButton26.setText("Editar seleccionado");
         jButton26.setBorder(null);
         jButton26.setIconTextGap(6);
@@ -918,7 +895,6 @@ public class home extends javax.swing.JFrame {
 
         jButton27.setBackground(new java.awt.Color(244, 231, 149));
         jButton27.setForeground(new java.awt.Color(23, 31, 38));
-        jButton27.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
         jButton27.setText("Eliminar seleccionado");
         jButton27.setBorder(null);
         jButton27.setIconTextGap(6);
@@ -926,7 +902,6 @@ public class home extends javax.swing.JFrame {
 
         jButton28.setBackground(new java.awt.Color(244, 231, 149));
         jButton28.setForeground(new java.awt.Color(23, 31, 38));
-        jButton28.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
         jButton28.setText("Ver detalles");
         jButton28.setBorder(null);
         jButton28.setIconTextGap(6);
@@ -1015,7 +990,6 @@ public class home extends javax.swing.JFrame {
         btnHome.setBackground(new java.awt.Color(23, 31, 38));
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnHome.setForeground(new java.awt.Color(11, 120, 100));
-        btnHome.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngamarillo\\001-home.png")); // NOI18N
         btnHome.setText("Inicio");
         btnHome.setToolTipText("");
         btnHome.setBorder(null);
@@ -1024,13 +998,11 @@ public class home extends javax.swing.JFrame {
         btnHome.setIconTextGap(10);
         btnHome.addActionListener(this::btnHomeActionPerformed);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\logos\\isologo150px.png")); // NOI18N
         jLabel1.setText("jLabel1");
 
         btnRutas.setBackground(new java.awt.Color(23, 31, 38));
         btnRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRutas.setForeground(new java.awt.Color(11, 120, 100));
-        btnRutas.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngamarillo\\007-distance.png")); // NOI18N
         btnRutas.setText("Rutas");
         btnRutas.setToolTipText("");
         btnRutas.setBorder(null);
@@ -1041,7 +1013,6 @@ public class home extends javax.swing.JFrame {
         btnChoferes.setBackground(new java.awt.Color(23, 31, 38));
         btnChoferes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnChoferes.setForeground(new java.awt.Color(11, 120, 100));
-        btnChoferes.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngamarillo\\008-profile.png")); // NOI18N
         btnChoferes.setText("Choferes");
         btnChoferes.setToolTipText("");
         btnChoferes.setBorder(null);
@@ -1052,7 +1023,6 @@ public class home extends javax.swing.JFrame {
         btnVehiculos.setBackground(new java.awt.Color(23, 31, 38));
         btnVehiculos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnVehiculos.setForeground(new java.awt.Color(11, 120, 100));
-        btnVehiculos.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngamarillo\\011-car.png")); // NOI18N
         btnVehiculos.setText("Vehículos");
         btnVehiculos.setToolTipText("");
         btnVehiculos.setBorder(null);
@@ -1061,7 +1031,6 @@ public class home extends javax.swing.JFrame {
         btnVehiculos.addActionListener(this::btnVehiculosActionPerformed);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\logos\\unidevs75.png")); // NOI18N
         jLabel3.setText("by:");
         jLabel3.setToolTipText("");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -1069,7 +1038,6 @@ public class home extends javax.swing.JFrame {
         btnPagos.setBackground(new java.awt.Color(23, 31, 38));
         btnPagos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnPagos.setForeground(new java.awt.Color(11, 120, 100));
-        btnPagos.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngamarillo\\010-coin.png")); // NOI18N
         btnPagos.setText("Pagos");
         btnPagos.setToolTipText("");
         btnPagos.setBorder(null);
