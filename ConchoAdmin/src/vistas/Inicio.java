@@ -1,9 +1,9 @@
 package vistas;
 
-import gestionRutas.Ruta;
-import gestionRutas.RutaControlador;
-import gestionUsuarios.Sesion;
-import gestionUsuarios.Usuario;
+import gestionChoferes.*;
+import gestionPago.*;
+import gestionRutas.*;
+import gestionUsuarios.*;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.text.NumberFormat;
@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.List;
@@ -37,6 +38,10 @@ public class Inicio extends javax.swing.JFrame {
 
     //Llama a los controladores para no tener que abrir más de una instancia
     RutaControlador controller = new RutaControlador();
+    PagoDAO controllerPagos = new PagoDAO();
+    ChoferDAO controllerChoferes = new ChoferDAO();
+
+    //Llama al usuario activo
     Usuario actual = Sesion.getInstancia().getUsuarioActual();
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
@@ -62,9 +67,14 @@ public class Inicio extends javax.swing.JFrame {
 
         // Configura las diferentes tables
         configurarTablaRutas();
+        configurarTablaPagos();
+        configurarTablaChoferes();
 
         // Cuenta los objetos para los contadores del inicio
         actualizarContadores(idUsuario);
+
+        // Actualiza el nombre de usuario en el inicio
+        lblUsuario.setText("Hola, " + actual.getNombre());
     }
 
     /**
@@ -741,9 +751,18 @@ public class Inicio extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nombre", "Apellido", "Cedula"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblChoferes.setShowGrid(true);
         jScrollPane3.setViewportView(tblChoferes);
 
         javax.swing.GroupLayout pnlChoferesLayout = new javax.swing.GroupLayout(pnlChoferes);
@@ -1021,9 +1040,10 @@ public class Inicio extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Chofer", "Monto", "Estado"
             }
         ));
+        tblPagos.setShowGrid(true);
         jScrollPane6.setViewportView(tblPagos);
 
         javax.swing.GroupLayout pnlPagosLayout = new javax.swing.GroupLayout(pnlPagos);
@@ -1134,11 +1154,11 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel24)
-                .addGap(18, 18, 18)
+                .addGap(147, 147, 147)
                 .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(scrollFAQ, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
-                .addGap(23, 23, 23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollFAQ, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pnlContenido.add(pnlInfo, "card7");
@@ -1226,9 +1246,6 @@ public class Inicio extends javax.swing.JFrame {
         btnInfo.setText("by:");
         btnInfo.setBorder(null);
         btnInfo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnInfo.setMaximumSize(new java.awt.Dimension(95, 16));
-        btnInfo.setMinimumSize(new java.awt.Dimension(95, 16));
-        btnInfo.setPreferredSize(new java.awt.Dimension(95, 16));
         btnInfo.addActionListener(this::btnInfoActionPerformed);
 
         javax.swing.GroupLayout pnlSideLayout = new javax.swing.GroupLayout(pnlSide);
@@ -1306,6 +1323,9 @@ public class Inicio extends javax.swing.JFrame {
         pnlContenido.repaint();
         pnlContenido.revalidate();
 
+        // Cuenta los objetos para los contadores del inicio
+        actualizarContadores(idUsuario);
+
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasActionPerformed
@@ -1321,6 +1341,7 @@ public class Inicio extends javax.swing.JFrame {
         pnlContenido.add(pnlChoferes);
         pnlContenido.repaint();
         pnlContenido.revalidate();
+        mostrarChoferes();
     }//GEN-LAST:event_btnChoferesActionPerformed
 
     private void btnVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosActionPerformed
@@ -1343,6 +1364,7 @@ public class Inicio extends javax.swing.JFrame {
         pnlContenido.add(pnlChoferes);
         pnlContenido.repaint();
         pnlContenido.revalidate();
+        mostrarChoferes();
     }//GEN-LAST:event_btnChoferesInicioActionPerformed
 
     private void btnPagosInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosInicioActionPerformed
@@ -1350,6 +1372,7 @@ public class Inicio extends javax.swing.JFrame {
         pnlContenido.add(pnlPagos);
         pnlContenido.repaint();
         pnlContenido.revalidate();
+        mostrarPagos();
     }//GEN-LAST:event_btnPagosInicioActionPerformed
 
     private void btnVehiculosInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosInicioActionPerformed
@@ -1499,6 +1522,7 @@ public class Inicio extends javax.swing.JFrame {
         pnlContenido.add(pnlPagos);
         pnlContenido.repaint();
         pnlContenido.revalidate();
+        mostrarPagos();
     }//GEN-LAST:event_btnPagosActionPerformed
 
     private void tblRutasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRutasMouseClicked
@@ -1524,31 +1548,6 @@ public class Inicio extends javax.swing.JFrame {
                 -> scrollFAQ.getVerticalScrollBar().setValue(0)
         );
     }//GEN-LAST:event_btnInfoActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Inicio().setVisible(true));
-    }
 
     /**
      * Carga y muestra todas las rutas del usuario activo en la tabla tblRutas.
@@ -1585,18 +1584,19 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Configura el comportamiento y apariencia de la tabla tblRutas.
      *
-     * Fija el ancho de la columna ID a 50px y de la columna Tarifa a 100px.
-     * Aplica el renderer personalizado MonedaRenderer a la columna Tarifa para
-     * mostrar los valores con formato de moneda dominicana (DOP).
+     * Fija el ancho de la columna ID a 0 (para que no aparezca) y de la columna
+     * Tarifa a 100px. Aplica el renderer personalizado MonedaRenderer a la
+     * columna Tarifa para mostrar los valores con formato de moneda dominicana
+     * (DOP).
      *
      */
     private void configurarTablaRutas() {
         tblRutas.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
 
         // Fija el tamaño de la columna ID en Rutas
-        tblRutas.getColumnModel().getColumn(0).setMinWidth(50);
-        tblRutas.getColumnModel().getColumn(0).setMaxWidth(50);
-        tblRutas.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblRutas.getColumnModel().getColumn(0).setMinWidth(0);
+        tblRutas.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblRutas.getColumnModel().getColumn(0).setPreferredWidth(0);
 
         // Fija el tamaño de la columna Tarifa en Rutas
         tblRutas.getColumnModel().getColumn(2).setMinWidth(100);
@@ -1608,8 +1608,154 @@ public class Inicio extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Carga y muestra todos los choferes del usuario activo en la tabla
+     * tblChoferes.
+     *
+     * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
+     * También mide e imprime el tiempo de carga en consola para diagnóstico.
+     *
+     */
+    public void mostrarChoferes() {
+        long inicio = System.currentTimeMillis();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblChoferes.getModel();
+        modelo.setRowCount(0);
+
+        List<Chofer> choferes = controllerChoferes.listar();
+
+        for (Chofer chofer : choferes) {
+            Object[] fila = new Object[4];
+
+            fila[0] = chofer.getId();
+            fila[1] = chofer.getNombre();
+            fila[2] = chofer.getApellido();
+            fila[3] = chofer.getCedula();
+
+            // 3. Agregar fila
+            modelo.addRow(fila);
+        }
+
+        tblChoferes.setModel(modelo);
+
+        long fin = System.currentTimeMillis();
+        System.out.println("Tiempo: " + (fin - inicio));
+    }
+
+    /**
+     * Configura el comportamiento y apariencia de la tabla tblChoferes.
+     *
+     * Fija el ancho de la columna ID a 0 (para que no aparezca) y de la columna
+     * Cédula a 100px.
+     *
+     */
+    private void configurarTablaChoferes() {
+        tblChoferes.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+
+        // Fija el tamaño de la columna ID en tblChoferes
+        tblChoferes.getColumnModel().getColumn(0).setMinWidth(0);
+        tblChoferes.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblChoferes.getColumnModel().getColumn(0).setPreferredWidth(0);
+
+        // Fija el tamaño de la columna Cédula en tblChoferes
+        tblChoferes.getColumnModel().getColumn(3).setMinWidth(100);
+        tblChoferes.getColumnModel().getColumn(3).setMaxWidth(100);
+        tblChoferes.getColumnModel().getColumn(3).setPreferredWidth(100);
+
+        // Pone el formato a la cédula
+        tblChoferes.getColumnModel().getColumn(3).setCellRenderer(new CedulaRenderer());
+    }
+
+    /**
+     * Carga y muestra todos los pagos del usuario activo en la tabla tblPagos.
+     *
+     * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
+     * También mide e imprime el tiempo de carga en consola para diagnóstico.
+     *
+     */
+    public void mostrarPagos() {
+        long inicio = System.currentTimeMillis();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblPagos.getModel();
+        modelo.setRowCount(0);
+
+        List<Pago> pagos = controllerPagos.listarPorChofer(idUsuario);
+
+        for (Pago pago : pagos) {
+            Object[] fila = new Object[4];
+
+            fila[0] = pago.getId();
+            fila[1] = pago.getId_chofer();
+            fila[2] = pago.getMonto();
+            fila[3] = pago.getEstadoPago();
+
+            // 3. Agregar fila
+            modelo.addRow(fila);
+        }
+
+        tblPagos.setModel(modelo);
+
+        long fin = System.currentTimeMillis();
+        System.out.println("Tiempo: " + (fin - inicio));
+    }
+
+    /**
+     * Configura el comportamiento y apariencia de la tabla tblPagos.
+     *
+     * Fija el ancho de la columna ID a 0 (para que no aparezca) Aplica el
+     * renderer personalizado MonedaRenderer a la columna monto para mostrar los
+     * valores con formato de moneda dominicana (DOP).
+     *
+     */
+    private void configurarTablaPagos() {
+        tblRutas.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+
+        // Fija el tamaño de la columna ID en Rutas
+        tblPagos.getColumnModel().getColumn(0).setMinWidth(0);
+        tblPagos.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblPagos.getColumnModel().getColumn(0).setPreferredWidth(0);
+
+        // Configura el estilo de dinero
+        tblPagos.getColumnModel().getColumn(3).setCellRenderer(new MonedaRenderer());
+
+    }
+
+    /**
+     * Actualiza los contadores del inicio
+     *
+     */
     private void actualizarContadores(int usuarioActivo) {
         lblRutasCreadas.setText(String.valueOf(controller.contarRutas(usuarioActivo)));
+        //lblChoferesActivos.setText(String.valueOf(controllerChoferes.contarRutas(usuarioActivo)));
+        //lblPagosPendientes.setText(String.valueOf(controllerPagos.contarPagosPendientes(usuarioActivo)));
+    }
+
+    /**
+     * Renderer personalizado para mostrar valores numéricos como cédula.
+     *
+     * Extiende DefaultTableCellRenderer y formatea los valores de la celda
+     */
+    public class CedulaRenderer extends DefaultTableCellRenderer {
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus,
+                int row, int column) {
+
+            if (value != null) {
+                String cedula = value.toString().replaceAll("-", "");
+
+                if (cedula.length() == 11) {
+                    cedula = cedula.substring(0, 3) + "-"
+                            + cedula.substring(3, 10) + "-"
+                            + cedula.substring(10);
+                }
+
+                value = cedula;
+            }
+
+            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        }
     }
 
     /**
