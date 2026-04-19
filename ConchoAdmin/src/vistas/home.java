@@ -18,17 +18,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
-public class home extends javax.swing.JFrame {
+public class Home extends javax.swing.JFrame {
 
     //Llama a los controladores para no tener que abrir más de una instancia
     RutaControlador controller = new RutaControlador();
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(home.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Home.class.getName());
 
     /**
      * Creates new form home
      */
-    public home() {
+    public Home() {
 
         initComponents();
         setLocationRelativeTo(null);
@@ -618,10 +618,11 @@ public class home extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRutasEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRutasEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRutasRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRutasRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnRutasEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRutasEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
@@ -658,7 +659,6 @@ public class home extends javax.swing.JFrame {
 
         btnChoferesBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnChoferesBuscar.setForeground(new java.awt.Color(23, 31, 38));
-        btnChoferesBuscar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
         btnChoferesBuscar.setText("Buscar");
         btnChoferesBuscar.setBorder(null);
         btnChoferesBuscar.setIconTextGap(6);
@@ -666,7 +666,6 @@ public class home extends javax.swing.JFrame {
 
         btnChoferesCrear.setBackground(new java.awt.Color(244, 231, 149));
         btnChoferesCrear.setForeground(new java.awt.Color(23, 31, 38));
-        btnChoferesCrear.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
         btnChoferesCrear.setText("Crear nuevo");
         btnChoferesCrear.setToolTipText("");
         btnChoferesCrear.setBorder(null);
@@ -675,7 +674,6 @@ public class home extends javax.swing.JFrame {
 
         btnChoferesEditar.setBackground(new java.awt.Color(244, 231, 149));
         btnChoferesEditar.setForeground(new java.awt.Color(23, 31, 38));
-        btnChoferesEditar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
         btnChoferesEditar.setText("Editar seleccionado");
         btnChoferesEditar.setBorder(null);
         btnChoferesEditar.setIconTextGap(6);
@@ -683,7 +681,6 @@ public class home extends javax.swing.JFrame {
 
         btnChoferesEliminar.setBackground(new java.awt.Color(244, 231, 149));
         btnChoferesEliminar.setForeground(new java.awt.Color(23, 31, 38));
-        btnChoferesEliminar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
         btnChoferesEliminar.setText("Eliminar seleccionado");
         btnChoferesEliminar.setBorder(null);
         btnChoferesEliminar.setIconTextGap(6);
@@ -798,7 +795,6 @@ public class home extends javax.swing.JFrame {
 
         btnVehiculosBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosBuscar.setForeground(new java.awt.Color(23, 31, 38));
-        btnVehiculosBuscar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
         btnVehiculosBuscar.setText("Buscar");
         btnVehiculosBuscar.setBorder(null);
         btnVehiculosBuscar.setIconTextGap(6);
@@ -806,7 +802,6 @@ public class home extends javax.swing.JFrame {
 
         btnVehiculosCrear.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosCrear.setForeground(new java.awt.Color(23, 31, 38));
-        btnVehiculosCrear.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
         btnVehiculosCrear.setText("Crear nuevo");
         btnVehiculosCrear.setToolTipText("");
         btnVehiculosCrear.setBorder(null);
@@ -815,7 +810,6 @@ public class home extends javax.swing.JFrame {
 
         btnVehiculosEditar.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosEditar.setForeground(new java.awt.Color(23, 31, 38));
-        btnVehiculosEditar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
         btnVehiculosEditar.setText("Editar seleccionado");
         btnVehiculosEditar.setBorder(null);
         btnVehiculosEditar.setIconTextGap(6);
@@ -823,7 +817,6 @@ public class home extends javax.swing.JFrame {
 
         btnVehiculosEliminar.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosEliminar.setForeground(new java.awt.Color(23, 31, 38));
-        btnVehiculosEliminar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
         btnVehiculosEliminar.setText("Eliminar seleccionado");
         btnVehiculosEliminar.setBorder(null);
         btnVehiculosEliminar.setIconTextGap(6);
@@ -938,7 +931,6 @@ public class home extends javax.swing.JFrame {
 
         btnPagosBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosBuscar.setForeground(new java.awt.Color(23, 31, 38));
-        btnPagosBuscar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\004-search.png")); // NOI18N
         btnPagosBuscar.setText("Buscar");
         btnPagosBuscar.setBorder(null);
         btnPagosBuscar.setIconTextGap(6);
@@ -946,7 +938,6 @@ public class home extends javax.swing.JFrame {
 
         btnPagosCrear.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosCrear.setForeground(new java.awt.Color(23, 31, 38));
-        btnPagosCrear.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\005-add.png")); // NOI18N
         btnPagosCrear.setText("Crear nuevo");
         btnPagosCrear.setToolTipText("");
         btnPagosCrear.setBorder(null);
@@ -955,7 +946,6 @@ public class home extends javax.swing.JFrame {
 
         btnPagosEditar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosEditar.setForeground(new java.awt.Color(23, 31, 38));
-        btnPagosEditar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\001-edit.png")); // NOI18N
         btnPagosEditar.setText("Editar seleccionado");
         btnPagosEditar.setBorder(null);
         btnPagosEditar.setIconTextGap(6);
@@ -963,7 +953,6 @@ public class home extends javax.swing.JFrame {
 
         btnPagosEliminar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosEliminar.setForeground(new java.awt.Color(23, 31, 38));
-        btnPagosEliminar.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\003-trashcan.png")); // NOI18N
         btnPagosEliminar.setText("Eliminar seleccionado");
         btnPagosEliminar.setBorder(null);
         btnPagosEliminar.setIconTextGap(6);
@@ -1416,7 +1405,7 @@ public class home extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new home().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Home().setVisible(true));
     }
 
     public void mostrarRutas() {

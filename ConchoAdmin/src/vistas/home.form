@@ -777,10 +777,12 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnRutasEditar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btnRutasEliminar" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnRutasRecargar" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnRutasEditar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="btnRutasEliminar" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" pref="564" max="32767" attributes="0"/>
@@ -1159,9 +1161,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\004-search.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1179,9 +1178,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\005-add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Crear nuevo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -1202,9 +1198,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\001-edit.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Editar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1222,9 +1215,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\003-trashcan.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1444,9 +1434,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\004-search.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1464,9 +1451,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\005-add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Crear nuevo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -1487,9 +1471,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\001-edit.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Editar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1507,9 +1488,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\003-trashcan.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1729,9 +1707,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\004-search.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1749,9 +1724,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\005-add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Crear nuevo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -1772,9 +1744,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\001-edit.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Editar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1792,9 +1761,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\003-trashcan.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

@@ -13,14 +13,14 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
     
     Ruta ruta;
     RutaControlador controller = new RutaControlador();
-    private home home;
+    private Home home;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEliminarRuta.class.getName());
 
     /**
      * Creates new form DialogCrearRuta
      */
-    public DialogEliminarRuta(java.awt.Frame parent, boolean modal, int id, home home) {
+    public DialogEliminarRuta(java.awt.Frame parent, boolean modal, int id, Home home) {
         super(parent, modal);
         this.home = home;
         initComponents();
@@ -61,7 +61,6 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
         lblRutas.setBackground(new java.awt.Color(153, 153, 153));
         lblRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRutas.setForeground(new java.awt.Color(23, 31, 38));
-        lblRutas.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\009-distance.png")); // NOI18N
         lblRutas.setText("Eliminar ruta");
         lblRutas.setIconTextGap(10);
 

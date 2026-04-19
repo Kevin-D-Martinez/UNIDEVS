@@ -14,14 +14,14 @@ public class DialogEditarRuta extends javax.swing.JDialog {
     
     Ruta ruta;
     RutaControlador controller = new RutaControlador();
-    private home home;
+    private Home home;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEditarRuta.class.getName());
 
     /**
      * Creates new form DialogCrearRuta
      */
-    public DialogEditarRuta(java.awt.Frame parent, boolean modal, int id, home home) {
+    public DialogEditarRuta(java.awt.Frame parent, boolean modal, int id, Home home) {
         super(parent, modal);
         this.home = home;
         initComponents();
@@ -63,7 +63,6 @@ public class DialogEditarRuta extends javax.swing.JDialog {
         lblRutas.setBackground(new java.awt.Color(153, 153, 153));
         lblRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRutas.setForeground(new java.awt.Color(23, 31, 38));
-        lblRutas.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\009-distance.png")); // NOI18N
         lblRutas.setText("Editar ruta");
         lblRutas.setIconTextGap(10);
 
@@ -180,7 +179,7 @@ public class DialogEditarRuta extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 212, Short.MAX_VALUE)
+            .addGap(0, 205, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
