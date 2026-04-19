@@ -314,7 +314,7 @@ public class RutaDAO {
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
 
-            if (rs.next()) {          // ← esto faltaba
+            if (rs.next()) {
                 return rs.getInt(1);
             }
 

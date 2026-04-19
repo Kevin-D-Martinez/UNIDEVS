@@ -13,6 +13,19 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.util.List;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import utilidades.LectorFAQ;
+
 /**
  * Interfaz principal de la aplicación
  *
@@ -29,14 +42,25 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form home
      */
     public Inicio() {
-
+        
+        // Inicializa los componentes de la interfa
         initComponents();
+        
+        // Centraliza la ventana en la pantalla del usuario
         setLocationRelativeTo(null);
+        
+        // Configura el icono de la ventana
         Image icono = new ImageIcon(getClass().getResource("/assets/icono.png")).getImage();
         setIconImage(icono);
-        configurarTabla();
         
-        lblRutasCreadas.setText(String.valueOf(controller.contarRutas(8)));         // CAMBIAR CUANDO TENGA LA SESION
+        //Carga el FAQ
+        cargarFAQ();
+        
+        // Configura las diferentes tables
+        configurarTablaRutas();
+
+        // Cuenta los objetos para los contadores del inicio
+        actualizarContadores(8);                     // CAMBIAR CUANDO TENGA LA SESION
     }
 
     /**
@@ -125,15 +149,22 @@ public class Inicio extends javax.swing.JFrame {
         btnPagosVer = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblPagos = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
+        pnlInfo = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jSeparator13 = new javax.swing.JSeparator();
+        scrollFAQ = new javax.swing.JScrollPane();
+        jLabel25 = new javax.swing.JLabel();
+        pnlSide = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnRutas = new javax.swing.JButton();
         btnChoferes = new javax.swing.JButton();
         btnVehiculos = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         btnPagos = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
+        jSeparator12 = new javax.swing.JSeparator();
+        btnInfo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ConchoAdmin");
@@ -361,7 +392,10 @@ public class Inicio extends javax.swing.JFrame {
         btnRutasInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnRutasInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRutasInicio.setForeground(new java.awt.Color(11, 120, 100));
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+=======
         btnRutasInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/007-distance64.png"))); // NOI18N
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnRutasInicio.setText("Rutas");
         btnRutasInicio.setToolTipText("");
         btnRutasInicio.setBorder(null);
@@ -375,7 +409,10 @@ public class Inicio extends javax.swing.JFrame {
         btnChoferesInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnChoferesInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnChoferesInicio.setForeground(new java.awt.Color(11, 120, 100));
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+=======
         btnChoferesInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/008-profile64.png"))); // NOI18N
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnChoferesInicio.setText("Choferes");
         btnChoferesInicio.setToolTipText("");
         btnChoferesInicio.setBorder(null);
@@ -389,7 +426,10 @@ public class Inicio extends javax.swing.JFrame {
         btnPagosInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnPagosInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnPagosInicio.setForeground(new java.awt.Color(11, 120, 100));
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+=======
         btnPagosInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/010-coin64.png"))); // NOI18N
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnPagosInicio.setText("Pagos");
         btnPagosInicio.setToolTipText("");
         btnPagosInicio.setBorder(null);
@@ -403,7 +443,10 @@ public class Inicio extends javax.swing.JFrame {
         btnVehiculosInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnVehiculosInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnVehiculosInicio.setForeground(new java.awt.Color(11, 120, 100));
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+=======
         btnVehiculosInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/011-car64.png"))); // NOI18N
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnVehiculosInicio.setText("Vehículos");
         btnVehiculosInicio.setToolTipText("");
         btnVehiculosInicio.setBorder(null);
@@ -501,6 +544,45 @@ public class Inicio extends javax.swing.JFrame {
         txtBuscar.setCaretColor(new java.awt.Color(112, 112, 112));
         txtBuscar.addActionListener(this::txtBuscarActionPerformed);
 
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+        jButton9.setBackground(new java.awt.Color(244, 231, 149));
+        jButton9.setForeground(new java.awt.Color(23, 31, 38));
+        jButton9.setText("Buscar");
+        jButton9.setBorder(null);
+        jButton9.setIconTextGap(6);
+        jButton9.addActionListener(this::jButton9ActionPerformed);
+
+        jButton10.setBackground(new java.awt.Color(244, 231, 149));
+        jButton10.setForeground(new java.awt.Color(23, 31, 38));
+        jButton10.setText("Crear nuevo");
+        jButton10.setToolTipText("");
+        jButton10.setBorder(null);
+        jButton10.setIconTextGap(6);
+        jButton10.addActionListener(this::jButton10ActionPerformed);
+
+        jButton11.setBackground(new java.awt.Color(244, 231, 149));
+        jButton11.setForeground(new java.awt.Color(23, 31, 38));
+        jButton11.setText("Editar seleccionado");
+        jButton11.setBorder(null);
+        jButton11.setIconTextGap(6);
+        jButton11.addActionListener(this::jButton11ActionPerformed);
+
+        jButton12.setBackground(new java.awt.Color(244, 231, 149));
+        jButton12.setForeground(new java.awt.Color(23, 31, 38));
+        jButton12.setText("Eliminar seleccionado");
+        jButton12.setBorder(null);
+        jButton12.setIconTextGap(6);
+        jButton12.addActionListener(this::jButton12ActionPerformed);
+
+        jButton13.setBackground(new java.awt.Color(244, 231, 149));
+        jButton13.setForeground(new java.awt.Color(23, 31, 38));
+        jButton13.setText("Ver detalles");
+        jButton13.setBorder(null);
+        jButton13.setIconTextGap(6);
+        jButton13.addActionListener(this::jButton13ActionPerformed);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+=======
         btnRutasBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnRutasBuscar.setForeground(new java.awt.Color(23, 31, 38));
         btnRutasBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/004-search16.png"))); // NOI18N
@@ -535,6 +617,7 @@ public class Inicio extends javax.swing.JFrame {
         btnRutasEliminar.addActionListener(this::btnRutasEliminarActionPerformed);
 
         tblRutas.setModel(new javax.swing.table.DefaultTableModel(
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -637,7 +720,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(153, 153, 153));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\010-profile.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/010-profile.png"))); // NOI18N
         jLabel6.setText("Choferes");
         jLabel6.setIconTextGap(10);
 
@@ -657,8 +740,46 @@ public class Inicio extends javax.swing.JFrame {
         txtChoferes.setCaretColor(new java.awt.Color(112, 112, 112));
         txtChoferes.addActionListener(this::txtChoferesActionPerformed);
 
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+        jButton14.setBackground(new java.awt.Color(244, 231, 149));
+        jButton14.setForeground(new java.awt.Color(23, 31, 38));
+        jButton14.setText("Buscar");
+        jButton14.setBorder(null);
+        jButton14.setIconTextGap(6);
+        jButton14.addActionListener(this::jButton14ActionPerformed);
+
+        jButton15.setBackground(new java.awt.Color(244, 231, 149));
+        jButton15.setForeground(new java.awt.Color(23, 31, 38));
+        jButton15.setText("Crear nuevo");
+        jButton15.setToolTipText("");
+        jButton15.setBorder(null);
+        jButton15.setIconTextGap(6);
+        jButton15.addActionListener(this::jButton15ActionPerformed);
+
+        jButton16.setBackground(new java.awt.Color(244, 231, 149));
+        jButton16.setForeground(new java.awt.Color(23, 31, 38));
+        jButton16.setText("Editar seleccionado");
+        jButton16.setBorder(null);
+        jButton16.setIconTextGap(6);
+        jButton16.addActionListener(this::jButton16ActionPerformed);
+
+        jButton17.setBackground(new java.awt.Color(244, 231, 149));
+        jButton17.setForeground(new java.awt.Color(23, 31, 38));
+        jButton17.setText("Eliminar seleccionado");
+        jButton17.setBorder(null);
+        jButton17.setIconTextGap(6);
+        jButton17.addActionListener(this::jButton17ActionPerformed);
+
+        jButton18.setBackground(new java.awt.Color(244, 231, 149));
+        jButton18.setForeground(new java.awt.Color(23, 31, 38));
+        jButton18.setText("Ver detalles");
+        jButton18.setBorder(null);
+        jButton18.setIconTextGap(6);
+        jButton18.addActionListener(this::jButton18ActionPerformed);
+=======
         btnChoferesBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnChoferesBuscar.setForeground(new java.awt.Color(23, 31, 38));
+        btnChoferesBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/004-search16.png"))); // NOI18N
         btnChoferesBuscar.setText("Buscar");
         btnChoferesBuscar.setBorder(null);
         btnChoferesBuscar.setIconTextGap(6);
@@ -666,6 +787,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnChoferesCrear.setBackground(new java.awt.Color(244, 231, 149));
         btnChoferesCrear.setForeground(new java.awt.Color(23, 31, 38));
+        btnChoferesCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/005-add16.png"))); // NOI18N
         btnChoferesCrear.setText("Crear nuevo");
         btnChoferesCrear.setToolTipText("");
         btnChoferesCrear.setBorder(null);
@@ -674,6 +796,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnChoferesEditar.setBackground(new java.awt.Color(244, 231, 149));
         btnChoferesEditar.setForeground(new java.awt.Color(23, 31, 38));
+        btnChoferesEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/001-edit16.png"))); // NOI18N
         btnChoferesEditar.setText("Editar seleccionado");
         btnChoferesEditar.setBorder(null);
         btnChoferesEditar.setIconTextGap(6);
@@ -681,6 +804,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnChoferesEliminar.setBackground(new java.awt.Color(244, 231, 149));
         btnChoferesEliminar.setForeground(new java.awt.Color(23, 31, 38));
+        btnChoferesEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/003-trashcan16.png"))); // NOI18N
         btnChoferesEliminar.setText("Eliminar seleccionado");
         btnChoferesEliminar.setBorder(null);
         btnChoferesEliminar.setIconTextGap(6);
@@ -693,6 +817,7 @@ public class Inicio extends javax.swing.JFrame {
         btnChoferesDetalles.setBorder(null);
         btnChoferesDetalles.setIconTextGap(6);
         btnChoferesDetalles.addActionListener(this::btnChoferesDetallesActionPerformed);
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
 
         tblChoferes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -773,7 +898,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(153, 153, 153));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel8.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\008-car.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/008-car.png"))); // NOI18N
         jLabel8.setText("Vehículos");
         jLabel8.setIconTextGap(10);
 
@@ -793,8 +918,46 @@ public class Inicio extends javax.swing.JFrame {
         txtVehiculos.setCaretColor(new java.awt.Color(112, 112, 112));
         txtVehiculos.addActionListener(this::txtVehiculosActionPerformed);
 
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+        jButton19.setBackground(new java.awt.Color(244, 231, 149));
+        jButton19.setForeground(new java.awt.Color(23, 31, 38));
+        jButton19.setText("Buscar");
+        jButton19.setBorder(null);
+        jButton19.setIconTextGap(6);
+        jButton19.addActionListener(this::jButton19ActionPerformed);
+
+        jButton20.setBackground(new java.awt.Color(244, 231, 149));
+        jButton20.setForeground(new java.awt.Color(23, 31, 38));
+        jButton20.setText("Crear nuevo");
+        jButton20.setToolTipText("");
+        jButton20.setBorder(null);
+        jButton20.setIconTextGap(6);
+        jButton20.addActionListener(this::jButton20ActionPerformed);
+
+        jButton21.setBackground(new java.awt.Color(244, 231, 149));
+        jButton21.setForeground(new java.awt.Color(23, 31, 38));
+        jButton21.setText("Editar seleccionado");
+        jButton21.setBorder(null);
+        jButton21.setIconTextGap(6);
+        jButton21.addActionListener(this::jButton21ActionPerformed);
+
+        jButton22.setBackground(new java.awt.Color(244, 231, 149));
+        jButton22.setForeground(new java.awt.Color(23, 31, 38));
+        jButton22.setText("Eliminar seleccionado");
+        jButton22.setBorder(null);
+        jButton22.setIconTextGap(6);
+        jButton22.addActionListener(this::jButton22ActionPerformed);
+
+        jButton23.setBackground(new java.awt.Color(244, 231, 149));
+        jButton23.setForeground(new java.awt.Color(23, 31, 38));
+        jButton23.setText("Ver detalles");
+        jButton23.setBorder(null);
+        jButton23.setIconTextGap(6);
+        jButton23.addActionListener(this::jButton23ActionPerformed);
+=======
         btnVehiculosBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosBuscar.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/004-search16.png"))); // NOI18N
         btnVehiculosBuscar.setText("Buscar");
         btnVehiculosBuscar.setBorder(null);
         btnVehiculosBuscar.setIconTextGap(6);
@@ -802,6 +965,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnVehiculosCrear.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosCrear.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/005-add16.png"))); // NOI18N
         btnVehiculosCrear.setText("Crear nuevo");
         btnVehiculosCrear.setToolTipText("");
         btnVehiculosCrear.setBorder(null);
@@ -810,6 +974,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnVehiculosEditar.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosEditar.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/001-edit16.png"))); // NOI18N
         btnVehiculosEditar.setText("Editar seleccionado");
         btnVehiculosEditar.setBorder(null);
         btnVehiculosEditar.setIconTextGap(6);
@@ -817,6 +982,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnVehiculosEliminar.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosEliminar.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/003-trashcan16.png"))); // NOI18N
         btnVehiculosEliminar.setText("Eliminar seleccionado");
         btnVehiculosEliminar.setBorder(null);
         btnVehiculosEliminar.setIconTextGap(6);
@@ -829,6 +995,7 @@ public class Inicio extends javax.swing.JFrame {
         btnVehiculosVer.setBorder(null);
         btnVehiculosVer.setIconTextGap(6);
         btnVehiculosVer.addActionListener(this::btnVehiculosVerActionPerformed);
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
 
         tblVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -909,7 +1076,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel22.setBackground(new java.awt.Color(153, 153, 153));
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel22.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\32\\pngazul\\007-coin.png")); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/007-coin.png"))); // NOI18N
         jLabel22.setText("Pagos");
         jLabel22.setIconTextGap(10);
 
@@ -929,8 +1096,46 @@ public class Inicio extends javax.swing.JFrame {
         txtPagos.setCaretColor(new java.awt.Color(112, 112, 112));
         txtPagos.addActionListener(this::txtPagosActionPerformed);
 
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+        jButton24.setBackground(new java.awt.Color(244, 231, 149));
+        jButton24.setForeground(new java.awt.Color(23, 31, 38));
+        jButton24.setText("Buscar");
+        jButton24.setBorder(null);
+        jButton24.setIconTextGap(6);
+        jButton24.addActionListener(this::jButton24ActionPerformed);
+
+        jButton25.setBackground(new java.awt.Color(244, 231, 149));
+        jButton25.setForeground(new java.awt.Color(23, 31, 38));
+        jButton25.setText("Crear nuevo");
+        jButton25.setToolTipText("");
+        jButton25.setBorder(null);
+        jButton25.setIconTextGap(6);
+        jButton25.addActionListener(this::jButton25ActionPerformed);
+
+        jButton26.setBackground(new java.awt.Color(244, 231, 149));
+        jButton26.setForeground(new java.awt.Color(23, 31, 38));
+        jButton26.setText("Editar seleccionado");
+        jButton26.setBorder(null);
+        jButton26.setIconTextGap(6);
+        jButton26.addActionListener(this::jButton26ActionPerformed);
+
+        jButton27.setBackground(new java.awt.Color(244, 231, 149));
+        jButton27.setForeground(new java.awt.Color(23, 31, 38));
+        jButton27.setText("Eliminar seleccionado");
+        jButton27.setBorder(null);
+        jButton27.setIconTextGap(6);
+        jButton27.addActionListener(this::jButton27ActionPerformed);
+
+        jButton28.setBackground(new java.awt.Color(244, 231, 149));
+        jButton28.setForeground(new java.awt.Color(23, 31, 38));
+        jButton28.setText("Ver detalles");
+        jButton28.setBorder(null);
+        jButton28.setIconTextGap(6);
+        jButton28.addActionListener(this::jButton28ActionPerformed);
+=======
         btnPagosBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosBuscar.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/004-search16.png"))); // NOI18N
         btnPagosBuscar.setText("Buscar");
         btnPagosBuscar.setBorder(null);
         btnPagosBuscar.setIconTextGap(6);
@@ -938,6 +1143,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnPagosCrear.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosCrear.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/005-add16.png"))); // NOI18N
         btnPagosCrear.setText("Crear nuevo");
         btnPagosCrear.setToolTipText("");
         btnPagosCrear.setBorder(null);
@@ -946,6 +1152,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnPagosEditar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosEditar.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/001-edit16.png"))); // NOI18N
         btnPagosEditar.setText("Editar seleccionado");
         btnPagosEditar.setBorder(null);
         btnPagosEditar.setIconTextGap(6);
@@ -953,6 +1160,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnPagosEliminar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosEliminar.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/003-trashcan16.png"))); // NOI18N
         btnPagosEliminar.setText("Eliminar seleccionado");
         btnPagosEliminar.setBorder(null);
         btnPagosEliminar.setIconTextGap(6);
@@ -965,6 +1173,7 @@ public class Inicio extends javax.swing.JFrame {
         btnPagosVer.setBorder(null);
         btnPagosVer.setIconTextGap(6);
         btnPagosVer.addActionListener(this::btnPagosVerActionPerformed);
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
 
         tblPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1039,17 +1248,77 @@ public class Inicio extends javax.swing.JFrame {
 
         pnlContenido.add(pnlPagos, "card3");
 
-        jPanel2.setBackground(new java.awt.Color(23, 31, 38));
-        jPanel2.setAlignmentX(0.0F);
-        jPanel2.setAlignmentY(0.0F);
-        jPanel2.setMinimumSize(new java.awt.Dimension(200, 600));
-        jPanel2.setName(""); // NOI18N
-        jPanel2.setPreferredSize(new java.awt.Dimension(200, 600));
+        pnlInfo.setBackground(new java.awt.Color(255, 254, 236));
+
+        jLabel24.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(23, 31, 38));
+        jLabel24.setText("Versión 1.0");
+        jLabel24.setIconTextGap(10);
+
+        jSeparator13.setBackground(new java.awt.Color(204, 204, 204));
+        jSeparator13.setForeground(new java.awt.Color(204, 204, 204));
+
+        scrollFAQ.setBackground(new java.awt.Color(255, 254, 236));
+        scrollFAQ.setBorder(null);
+
+        jLabel25.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(23, 31, 38));
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/006-info.png"))); // NOI18N
+        jLabel25.setText("Sobre ConchoAdmin");
+        jLabel25.setIconTextGap(10);
+
+        javax.swing.GroupLayout pnlInfoLayout = new javax.swing.GroupLayout(pnlInfo);
+        pnlInfo.setLayout(pnlInfoLayout);
+        pnlInfoLayout.setHorizontalGroup(
+            pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInfoLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlInfoLayout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlInfoLayout.createSequentialGroup()
+                        .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(scrollFAQ)
+                            .addComponent(jSeparator13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlInfoLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel24)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(35, 35, 35))))
+        );
+        pnlInfoLayout.setVerticalGroup(
+            pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInfoLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel24)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(scrollFAQ, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
+        );
+
+        pnlContenido.add(pnlInfo, "card7");
+
+        pnlSide.setBackground(new java.awt.Color(23, 31, 38));
+        pnlSide.setAlignmentX(0.0F);
+        pnlSide.setAlignmentY(0.0F);
+        pnlSide.setMinimumSize(new java.awt.Dimension(200, 600));
+        pnlSide.setName(""); // NOI18N
+        pnlSide.setPreferredSize(new java.awt.Dimension(200, 600));
 
         btnHome.setBackground(new java.awt.Color(23, 31, 38));
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnHome.setForeground(new java.awt.Color(11, 120, 100));
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+=======
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/001-home.png"))); // NOI18N
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnHome.setText("Inicio");
         btnHome.setToolTipText("");
         btnHome.setBorder(null);
@@ -1058,13 +1327,19 @@ public class Inicio extends javax.swing.JFrame {
         btnHome.setIconTextGap(10);
         btnHome.addActionListener(this::btnHomeActionPerformed);
 
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+=======
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/isologo150px.png"))); // NOI18N
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         jLabel1.setText("jLabel1");
 
         btnRutas.setBackground(new java.awt.Color(23, 31, 38));
         btnRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRutas.setForeground(new java.awt.Color(11, 120, 100));
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+=======
         btnRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/007-distance.png"))); // NOI18N
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnRutas.setText("Rutas");
         btnRutas.setToolTipText("");
         btnRutas.setBorder(null);
@@ -1075,7 +1350,10 @@ public class Inicio extends javax.swing.JFrame {
         btnChoferes.setBackground(new java.awt.Color(23, 31, 38));
         btnChoferes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnChoferes.setForeground(new java.awt.Color(11, 120, 100));
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+=======
         btnChoferes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/008-profile.png"))); // NOI18N
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnChoferes.setText("Choferes");
         btnChoferes.setToolTipText("");
         btnChoferes.setBorder(null);
@@ -1086,7 +1364,10 @@ public class Inicio extends javax.swing.JFrame {
         btnVehiculos.setBackground(new java.awt.Color(23, 31, 38));
         btnVehiculos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnVehiculos.setForeground(new java.awt.Color(11, 120, 100));
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
+=======
         btnVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/011-car.png"))); // NOI18N
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnVehiculos.setText("Vehículos");
         btnVehiculos.setToolTipText("");
         btnVehiculos.setBorder(null);
@@ -1094,8 +1375,8 @@ public class Inicio extends javax.swing.JFrame {
         btnVehiculos.setIconTextGap(10);
         btnVehiculos.addActionListener(this::btnVehiculosActionPerformed);
 
+<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/unidevs75.png"))); // NOI18N
         jLabel3.setText("by:");
         jLabel3.setToolTipText("");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -1103,7 +1384,12 @@ public class Inicio extends javax.swing.JFrame {
         btnPagos.setBackground(new java.awt.Color(23, 31, 38));
         btnPagos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnPagos.setForeground(new java.awt.Color(11, 120, 100));
+=======
+        btnPagos.setBackground(new java.awt.Color(23, 31, 38));
+        btnPagos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnPagos.setForeground(new java.awt.Color(11, 120, 100));
         btnPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/010-coin.png"))); // NOI18N
+>>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnPagos.setText("Pagos");
         btnPagos.setToolTipText("");
         btnPagos.setBorder(null);
@@ -1111,31 +1397,55 @@ public class Inicio extends javax.swing.JFrame {
         btnPagos.setIconTextGap(10);
         btnPagos.addActionListener(this::btnPagosActionPerformed);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        btnCerrarSesion.setBackground(new java.awt.Color(23, 31, 38));
+        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCerrarSesion.setForeground(new java.awt.Color(11, 120, 100));
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logout32.png"))); // NOI18N
+        btnCerrarSesion.setText("Cerrar sesión");
+        btnCerrarSesion.setToolTipText("");
+        btnCerrarSesion.setBorder(null);
+        btnCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCerrarSesion.setIconTextGap(10);
+        btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
+
+        btnInfo.setBackground(new java.awt.Color(23, 31, 38));
+        btnInfo.setForeground(new java.awt.Color(112, 112, 112));
+        btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/unidevs75.png"))); // NOI18N
+        btnInfo.setText("by:");
+        btnInfo.setBorder(null);
+        btnInfo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnInfo.setMaximumSize(new java.awt.Dimension(95, 16));
+        btnInfo.setMinimumSize(new java.awt.Dimension(95, 16));
+        btnInfo.setPreferredSize(new java.awt.Dimension(95, 16));
+        btnInfo.addActionListener(this::btnInfoActionPerformed);
+
+        javax.swing.GroupLayout pnlSideLayout = new javax.swing.GroupLayout(pnlSide);
+        pnlSide.setLayout(pnlSideLayout);
+        pnlSideLayout.setHorizontalGroup(
+            pnlSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSideLayout.createSequentialGroup()
+                .addGroup(pnlSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pnlSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnlSideLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSideLayout.createSequentialGroup()
                             .addGap(25, 25, 25)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnRutas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnChoferes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(pnlSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnRutas, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(btnChoferes, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(btnVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(btnPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(jSeparator12)
+                                .addComponent(btnInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnlSideLayout.setVerticalGroup(
+            pnlSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSideLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
@@ -1151,8 +1461,12 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(btnPagos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(btnCerrarSesion)
+                .addGap(35, 35, 35)
+                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1161,13 +1475,13 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlSide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(pnlSide, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
@@ -1242,11 +1556,11 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Debe ingresar su búsqueda.");
             return;
         }
-        
+
         DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
         modelo.setRowCount(0);
 
-        List<Ruta> rutas = controller.filtrarRutas(8,txtBuscar.getText()); // NECESITO CAMBIAR POR LA SESION ACTIVA
+        List<Ruta> rutas = controller.filtrarRutas(8, txtBuscar.getText()); // NECESITO CAMBIAR POR LA SESION ACTIVA
 
         for (Ruta ruta : rutas) {
             Object[] fila = new Object[3];
@@ -1278,7 +1592,7 @@ public class Inicio extends javax.swing.JFrame {
 
         int id = (int) this.tblRutas.getValueAt(fila, 0);
 
-        DialogEditarRuta dialog = new DialogEditarRuta(this, true,id,this);
+        DialogEditarRuta dialog = new DialogEditarRuta(this, true, id, this);
         dialog.setVisible(true);
     }//GEN-LAST:event_btnRutasEditarActionPerformed
 
@@ -1291,8 +1605,8 @@ public class Inicio extends javax.swing.JFrame {
         }
 
         int id = (int) this.tblRutas.getValueAt(fila, 0);
-        
-        DialogEliminarRuta dialog = new DialogEliminarRuta(this, true,id,this);
+
+        DialogEliminarRuta dialog = new DialogEliminarRuta(this, true, id, this);
         dialog.setVisible(true);
     }//GEN-LAST:event_btnRutasEliminarActionPerformed
 
@@ -1383,6 +1697,22 @@ public class Inicio extends javax.swing.JFrame {
         mostrarRutas();
     }//GEN-LAST:event_btnRutasRecargarActionPerformed
 
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
+    private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
+        pnlContenido.removeAll();
+        pnlContenido.add(pnlInfo);
+        pnlContenido.repaint();
+        pnlContenido.revalidate();
+
+        // Regresa el scroll al inicio
+        javax.swing.SwingUtilities.invokeLater(()
+                -> scrollFAQ.getVerticalScrollBar().setValue(0)
+        );
+    }//GEN-LAST:event_btnInfoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1408,6 +1738,13 @@ public class Inicio extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new Inicio().setVisible(true));
     }
 
+    /**
+     * Carga y muestra todas las rutas del usuario activo en la tabla tblRutas.
+     *
+     * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
+     * También mide e imprime el tiempo de carga en consola para diagnóstico.
+     *
+     */
     public void mostrarRutas() {
         long inicio = System.currentTimeMillis();
 
@@ -1433,7 +1770,15 @@ public class Inicio extends javax.swing.JFrame {
         System.out.println("Tiempo: " + (fin - inicio));
     }
 
-    private void configurarTabla() {
+    /**
+     * Configura el comportamiento y apariencia de la tabla tblRutas.
+     *
+     * Fija el ancho de la columna ID a 50px y de la columna Tarifa a 100px.
+     * Aplica el renderer personalizado MonedaRenderer a la columna Tarifa para
+     * mostrar los valores con formato de moneda dominicana (DOP).
+     *
+     */
+    private void configurarTablaRutas() {
         tblRutas.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
 
         // Fija el tamaño de la columna ID en Rutas
@@ -1451,6 +1796,17 @@ public class Inicio extends javax.swing.JFrame {
 
     }
 
+    private void actualizarContadores(int usuarioActivo) {
+        lblRutasCreadas.setText(String.valueOf(controller.contarRutas(usuarioActivo)));
+    }
+
+    /**
+     * Renderer personalizado para mostrar valores numéricos como moneda
+     * dominicana (DOP).
+     *
+     * Extiende DefaultTableCellRenderer y formatea los valores de la celda
+     * usando NumberFormat#getCurrencyInstance con locale es_DO.
+     */
     public class MonedaRenderer extends DefaultTableCellRenderer {
 
         private NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("es", "DO"));
@@ -1466,7 +1822,80 @@ public class Inicio extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Lee el archivo faq.txt y carga su contenido en el scrollFAQ como una
+     * lista visual de preguntas y respuestas.
+     *
+     * Si el archivo no tiene contenido o no se encuentra, muestra un mensaje de
+     * error en rojo dentro del scroll.
+     *
+     */
+    private void cargarFAQ() {
+
+        JPanel panelContenido = new JPanel();
+        panelContenido.setLayout(new BoxLayout(panelContenido, BoxLayout.Y_AXIS));
+        panelContenido.setBackground(new Color(255, 254, 236));
+        panelContenido.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
+
+        // Lee el archivo desde los recursos internos
+        List<String[]> items = LectorFAQ.leerFAQ();
+
+        if (items.isEmpty()) {
+            JLabel lblError = new JLabel("No se pudo cargar el FAQ.");
+            lblError.setForeground(Color.RED);
+            panelContenido.add(lblError);
+        }
+
+        int numero = 1;
+        for (String[] item : items) {
+            panelContenido.add(crearItemFAQ(numero + ". " + item[0], item[1]));
+            panelContenido.add(Box.createVerticalStrut(10));
+            numero++;
+        }
+
+        scrollFAQ.setViewportView(panelContenido);
+    }
+
+    /**
+     * Crea y retorna un JPanel visual que representa un ítem del FAQ,
+     * mostrando la pregunta en verde y la respuesta en texto debajo.
+     *
+     * @param pregunta Texto de la pregunta a mostrar.
+     * @param respuesta Texto de la respuesta a mostrar.
+     * @return Panel con la pregunta y respuesta estilizadas.
+     */
+    private JPanel crearItemFAQ(String pregunta, String respuesta) {
+
+        JPanel item = new JPanel();
+        item.setLayout(new BorderLayout());
+        item.setBackground(new Color(255, 254, 236));
+        item.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(11, 120, 100), 1),
+                BorderFactory.createEmptyBorder(10, 15, 10, 15)
+        ));
+        item.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+
+        JLabel lblPregunta = new JLabel(pregunta);
+        lblPregunta.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        lblPregunta.setForeground(new Color(11, 120, 100));
+
+        JTextArea txtRespuesta = new JTextArea(respuesta);
+        txtRespuesta.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        txtRespuesta.setForeground(new Color(23, 31, 38));
+        txtRespuesta.setEditable(false);
+        txtRespuesta.setLineWrap(true);
+        txtRespuesta.setWrapStyleWord(true);
+        txtRespuesta.setBackground(new Color(255, 254, 236));
+        txtRespuesta.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
+
+        item.add(lblPregunta, BorderLayout.NORTH);
+        item.add(txtRespuesta, BorderLayout.CENTER);
+
+        return item;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnChoferes;
     private javax.swing.JButton btnChoferesBuscar;
     private javax.swing.JButton btnChoferesCrear;
@@ -1475,6 +1904,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnChoferesEliminar;
     private javax.swing.JButton btnChoferesInicio;
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnPagos;
     private javax.swing.JButton btnPagosBuscar;
     private javax.swing.JButton btnPagosCrear;
@@ -1507,13 +1937,13 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1525,6 +1955,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1542,9 +1974,12 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel pnlChoferes;
     private javax.swing.JPanel pnlContenido;
     private javax.swing.JPanel pnlHome;
+    private javax.swing.JPanel pnlInfo;
     private javax.swing.JPanel pnlPagos;
     private javax.swing.JPanel pnlRutas;
+    private javax.swing.JPanel pnlSide;
     private javax.swing.JPanel pnlVehiculos;
+    private javax.swing.JScrollPane scrollFAQ;
     private javax.swing.JTable tblChoferes;
     private javax.swing.JTable tblPagos;
     private javax.swing.JTable tblRutas;

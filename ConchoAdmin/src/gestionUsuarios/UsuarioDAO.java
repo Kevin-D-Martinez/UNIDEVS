@@ -41,7 +41,7 @@ public class UsuarioDAO {
                 u.setContraseña(rs.getString(5));
                 
                 if(contraseña.equals(u.getContraseña())){
-                    System.out.println("email y contraseña correctos");
+                    Sesion.getInstancia().setUsuarioActual(u);
                     return 1;
                 }
             }
