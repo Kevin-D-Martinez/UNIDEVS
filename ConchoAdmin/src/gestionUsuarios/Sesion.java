@@ -1,7 +1,7 @@
 package gestionUsuarios;
 
 /**
- *
+ * Se encarga manejar la sesion del usuario
  * @author Kevin Daniel Martinez Reyes
  */
 public class Sesion {

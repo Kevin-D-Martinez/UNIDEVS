@@ -48,6 +48,14 @@ public class UsuarioDAO {
             
         } catch(SQLException e){
             System.out.println("Error al iniciar sesión: " + e);
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar: " + e);
+            }
         }
         
         return 0;
@@ -80,6 +88,14 @@ public class UsuarioDAO {
             } else {
                 System.out.println("Error al insertar usuario: " + e);
             }
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar: " + e);
+            }
         }
         return 1;
     }
@@ -93,7 +109,7 @@ public class UsuarioDAO {
     public int actualizar(Usuario c){
         int r = 0;
         
-        String sql = "UPDATE Usuario set nombre=?, apellido=?, email=?, contraseña=?";
+        String sql = "UPDATE Usuario set nombre=?, apellido=?, email=?, contraseña=? WHERE id=?";
         
         try{
             con = ConexionMySQL.conectar();
@@ -114,6 +130,14 @@ public class UsuarioDAO {
             
         } catch (SQLException e) {
             System.out.println("Error al tratar de actualizar usuario: " + e);
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar: " + e);
+            }
         }
         return r;
     }
@@ -128,20 +152,51 @@ public class UsuarioDAO {
 
         int r = 0;
         
-        String sql = "DELETE FROM Usuario WHERE id = " + id;
+        String sql1 = "DELETE FROM Pago WHERE id_usuario = ?";
+        String sql2 = "DELETE FROM Vehiculo WHERE id_usuario = ?";
+        String sql3 = "DELETE FROM Chofer WHERE id_usuario = ?";
+        String sql4 = "DELETE FROM Ruta WHERE id_usuario = ?";
+        String sql5 = "DELETE FROM Usuario WHERE id = ?";
         
         try{
             con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
             
-            r = ps.executeUpdate();
-            if(r == 1){
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, id);
+            ps1.executeUpdate();
+            
+            PreparedStatement ps2 = con.prepareStatement(sql2);
+            ps2.setInt(1, id);
+            ps2.executeUpdate();
+            
+            PreparedStatement ps3 = con.prepareStatement(sql2);
+            ps3.setInt(1, id);
+            ps3.executeUpdate();
+            
+            PreparedStatement ps4 = con.prepareStatement(sql3);
+            ps4.setInt(1, id);
+            ps4.executeUpdate();
+            
+            PreparedStatement ps5 = con.prepareStatement(sql4);
+            ps5.setInt(1, id);
+            ps5.executeUpdate();
+            
+            r = ps1.executeUpdate() + ps2.executeUpdate() + ps3.executeUpdate() + ps4.executeUpdate() + ps5.executeUpdate();
+            if(r == 5){
                 return 1;
             }else{
                 return 0;
             }
         } catch (SQLException e) {
             System.out.println("Error al tratar de borrar usuario: " + e);
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar: " + e);
+            }
         }
         return r;
     }

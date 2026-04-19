@@ -2,6 +2,8 @@ package vistas;
 
 import gestionRutas.Ruta;
 import gestionRutas.RutaControlador;
+import gestionUsuarios.Sesion;
+import gestionUsuarios.Usuario;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.text.NumberFormat;
@@ -35,6 +37,8 @@ public class Inicio extends javax.swing.JFrame {
 
     //Llama a los controladores para no tener que abrir más de una instancia
     RutaControlador controller = new RutaControlador();
+    Usuario actual = Sesion.getInstancia().getUsuarioActual();
+    int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
 
@@ -42,25 +46,25 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form home
      */
     public Inicio() {
-        
+
         // Inicializa los componentes de la interfa
         initComponents();
-        
+
         // Centraliza la ventana en la pantalla del usuario
         setLocationRelativeTo(null);
-        
+
         // Configura el icono de la ventana
         Image icono = new ImageIcon(getClass().getResource("/assets/icono.png")).getImage();
         setIconImage(icono);
-        
+
         //Carga el FAQ
         cargarFAQ();
-        
+
         // Configura las diferentes tables
         configurarTablaRutas();
 
         // Cuenta los objetos para los contadores del inicio
-        actualizarContadores(8);                     // CAMBIAR CUANDO TENGA LA SESION
+        actualizarContadores(idUsuario);
     }
 
     /**
@@ -392,10 +396,7 @@ public class Inicio extends javax.swing.JFrame {
         btnRutasInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnRutasInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRutasInicio.setForeground(new java.awt.Color(11, 120, 100));
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-=======
         btnRutasInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/007-distance64.png"))); // NOI18N
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnRutasInicio.setText("Rutas");
         btnRutasInicio.setToolTipText("");
         btnRutasInicio.setBorder(null);
@@ -409,10 +410,7 @@ public class Inicio extends javax.swing.JFrame {
         btnChoferesInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnChoferesInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnChoferesInicio.setForeground(new java.awt.Color(11, 120, 100));
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-=======
         btnChoferesInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/008-profile64.png"))); // NOI18N
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnChoferesInicio.setText("Choferes");
         btnChoferesInicio.setToolTipText("");
         btnChoferesInicio.setBorder(null);
@@ -426,10 +424,7 @@ public class Inicio extends javax.swing.JFrame {
         btnPagosInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnPagosInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnPagosInicio.setForeground(new java.awt.Color(11, 120, 100));
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-=======
         btnPagosInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/010-coin64.png"))); // NOI18N
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnPagosInicio.setText("Pagos");
         btnPagosInicio.setToolTipText("");
         btnPagosInicio.setBorder(null);
@@ -443,10 +438,7 @@ public class Inicio extends javax.swing.JFrame {
         btnVehiculosInicio.setBackground(new java.awt.Color(23, 31, 38));
         btnVehiculosInicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnVehiculosInicio.setForeground(new java.awt.Color(11, 120, 100));
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-=======
         btnVehiculosInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/011-car64.png"))); // NOI18N
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnVehiculosInicio.setText("Vehículos");
         btnVehiculosInicio.setToolTipText("");
         btnVehiculosInicio.setBorder(null);
@@ -544,45 +536,6 @@ public class Inicio extends javax.swing.JFrame {
         txtBuscar.setCaretColor(new java.awt.Color(112, 112, 112));
         txtBuscar.addActionListener(this::txtBuscarActionPerformed);
 
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-        jButton9.setBackground(new java.awt.Color(244, 231, 149));
-        jButton9.setForeground(new java.awt.Color(23, 31, 38));
-        jButton9.setText("Buscar");
-        jButton9.setBorder(null);
-        jButton9.setIconTextGap(6);
-        jButton9.addActionListener(this::jButton9ActionPerformed);
-
-        jButton10.setBackground(new java.awt.Color(244, 231, 149));
-        jButton10.setForeground(new java.awt.Color(23, 31, 38));
-        jButton10.setText("Crear nuevo");
-        jButton10.setToolTipText("");
-        jButton10.setBorder(null);
-        jButton10.setIconTextGap(6);
-        jButton10.addActionListener(this::jButton10ActionPerformed);
-
-        jButton11.setBackground(new java.awt.Color(244, 231, 149));
-        jButton11.setForeground(new java.awt.Color(23, 31, 38));
-        jButton11.setText("Editar seleccionado");
-        jButton11.setBorder(null);
-        jButton11.setIconTextGap(6);
-        jButton11.addActionListener(this::jButton11ActionPerformed);
-
-        jButton12.setBackground(new java.awt.Color(244, 231, 149));
-        jButton12.setForeground(new java.awt.Color(23, 31, 38));
-        jButton12.setText("Eliminar seleccionado");
-        jButton12.setBorder(null);
-        jButton12.setIconTextGap(6);
-        jButton12.addActionListener(this::jButton12ActionPerformed);
-
-        jButton13.setBackground(new java.awt.Color(244, 231, 149));
-        jButton13.setForeground(new java.awt.Color(23, 31, 38));
-        jButton13.setText("Ver detalles");
-        jButton13.setBorder(null);
-        jButton13.setIconTextGap(6);
-        jButton13.addActionListener(this::jButton13ActionPerformed);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-=======
         btnRutasBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnRutasBuscar.setForeground(new java.awt.Color(23, 31, 38));
         btnRutasBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/004-search16.png"))); // NOI18N
@@ -617,7 +570,6 @@ public class Inicio extends javax.swing.JFrame {
         btnRutasEliminar.addActionListener(this::btnRutasEliminarActionPerformed);
 
         tblRutas.setModel(new javax.swing.table.DefaultTableModel(
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -740,43 +692,6 @@ public class Inicio extends javax.swing.JFrame {
         txtChoferes.setCaretColor(new java.awt.Color(112, 112, 112));
         txtChoferes.addActionListener(this::txtChoferesActionPerformed);
 
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-        jButton14.setBackground(new java.awt.Color(244, 231, 149));
-        jButton14.setForeground(new java.awt.Color(23, 31, 38));
-        jButton14.setText("Buscar");
-        jButton14.setBorder(null);
-        jButton14.setIconTextGap(6);
-        jButton14.addActionListener(this::jButton14ActionPerformed);
-
-        jButton15.setBackground(new java.awt.Color(244, 231, 149));
-        jButton15.setForeground(new java.awt.Color(23, 31, 38));
-        jButton15.setText("Crear nuevo");
-        jButton15.setToolTipText("");
-        jButton15.setBorder(null);
-        jButton15.setIconTextGap(6);
-        jButton15.addActionListener(this::jButton15ActionPerformed);
-
-        jButton16.setBackground(new java.awt.Color(244, 231, 149));
-        jButton16.setForeground(new java.awt.Color(23, 31, 38));
-        jButton16.setText("Editar seleccionado");
-        jButton16.setBorder(null);
-        jButton16.setIconTextGap(6);
-        jButton16.addActionListener(this::jButton16ActionPerformed);
-
-        jButton17.setBackground(new java.awt.Color(244, 231, 149));
-        jButton17.setForeground(new java.awt.Color(23, 31, 38));
-        jButton17.setText("Eliminar seleccionado");
-        jButton17.setBorder(null);
-        jButton17.setIconTextGap(6);
-        jButton17.addActionListener(this::jButton17ActionPerformed);
-
-        jButton18.setBackground(new java.awt.Color(244, 231, 149));
-        jButton18.setForeground(new java.awt.Color(23, 31, 38));
-        jButton18.setText("Ver detalles");
-        jButton18.setBorder(null);
-        jButton18.setIconTextGap(6);
-        jButton18.addActionListener(this::jButton18ActionPerformed);
-=======
         btnChoferesBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnChoferesBuscar.setForeground(new java.awt.Color(23, 31, 38));
         btnChoferesBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/004-search16.png"))); // NOI18N
@@ -817,7 +732,6 @@ public class Inicio extends javax.swing.JFrame {
         btnChoferesDetalles.setBorder(null);
         btnChoferesDetalles.setIconTextGap(6);
         btnChoferesDetalles.addActionListener(this::btnChoferesDetallesActionPerformed);
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
 
         tblChoferes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -918,43 +832,6 @@ public class Inicio extends javax.swing.JFrame {
         txtVehiculos.setCaretColor(new java.awt.Color(112, 112, 112));
         txtVehiculos.addActionListener(this::txtVehiculosActionPerformed);
 
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-        jButton19.setBackground(new java.awt.Color(244, 231, 149));
-        jButton19.setForeground(new java.awt.Color(23, 31, 38));
-        jButton19.setText("Buscar");
-        jButton19.setBorder(null);
-        jButton19.setIconTextGap(6);
-        jButton19.addActionListener(this::jButton19ActionPerformed);
-
-        jButton20.setBackground(new java.awt.Color(244, 231, 149));
-        jButton20.setForeground(new java.awt.Color(23, 31, 38));
-        jButton20.setText("Crear nuevo");
-        jButton20.setToolTipText("");
-        jButton20.setBorder(null);
-        jButton20.setIconTextGap(6);
-        jButton20.addActionListener(this::jButton20ActionPerformed);
-
-        jButton21.setBackground(new java.awt.Color(244, 231, 149));
-        jButton21.setForeground(new java.awt.Color(23, 31, 38));
-        jButton21.setText("Editar seleccionado");
-        jButton21.setBorder(null);
-        jButton21.setIconTextGap(6);
-        jButton21.addActionListener(this::jButton21ActionPerformed);
-
-        jButton22.setBackground(new java.awt.Color(244, 231, 149));
-        jButton22.setForeground(new java.awt.Color(23, 31, 38));
-        jButton22.setText("Eliminar seleccionado");
-        jButton22.setBorder(null);
-        jButton22.setIconTextGap(6);
-        jButton22.addActionListener(this::jButton22ActionPerformed);
-
-        jButton23.setBackground(new java.awt.Color(244, 231, 149));
-        jButton23.setForeground(new java.awt.Color(23, 31, 38));
-        jButton23.setText("Ver detalles");
-        jButton23.setBorder(null);
-        jButton23.setIconTextGap(6);
-        jButton23.addActionListener(this::jButton23ActionPerformed);
-=======
         btnVehiculosBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosBuscar.setForeground(new java.awt.Color(23, 31, 38));
         btnVehiculosBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/004-search16.png"))); // NOI18N
@@ -995,7 +872,6 @@ public class Inicio extends javax.swing.JFrame {
         btnVehiculosVer.setBorder(null);
         btnVehiculosVer.setIconTextGap(6);
         btnVehiculosVer.addActionListener(this::btnVehiculosVerActionPerformed);
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
 
         tblVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1096,43 +972,6 @@ public class Inicio extends javax.swing.JFrame {
         txtPagos.setCaretColor(new java.awt.Color(112, 112, 112));
         txtPagos.addActionListener(this::txtPagosActionPerformed);
 
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-        jButton24.setBackground(new java.awt.Color(244, 231, 149));
-        jButton24.setForeground(new java.awt.Color(23, 31, 38));
-        jButton24.setText("Buscar");
-        jButton24.setBorder(null);
-        jButton24.setIconTextGap(6);
-        jButton24.addActionListener(this::jButton24ActionPerformed);
-
-        jButton25.setBackground(new java.awt.Color(244, 231, 149));
-        jButton25.setForeground(new java.awt.Color(23, 31, 38));
-        jButton25.setText("Crear nuevo");
-        jButton25.setToolTipText("");
-        jButton25.setBorder(null);
-        jButton25.setIconTextGap(6);
-        jButton25.addActionListener(this::jButton25ActionPerformed);
-
-        jButton26.setBackground(new java.awt.Color(244, 231, 149));
-        jButton26.setForeground(new java.awt.Color(23, 31, 38));
-        jButton26.setText("Editar seleccionado");
-        jButton26.setBorder(null);
-        jButton26.setIconTextGap(6);
-        jButton26.addActionListener(this::jButton26ActionPerformed);
-
-        jButton27.setBackground(new java.awt.Color(244, 231, 149));
-        jButton27.setForeground(new java.awt.Color(23, 31, 38));
-        jButton27.setText("Eliminar seleccionado");
-        jButton27.setBorder(null);
-        jButton27.setIconTextGap(6);
-        jButton27.addActionListener(this::jButton27ActionPerformed);
-
-        jButton28.setBackground(new java.awt.Color(244, 231, 149));
-        jButton28.setForeground(new java.awt.Color(23, 31, 38));
-        jButton28.setText("Ver detalles");
-        jButton28.setBorder(null);
-        jButton28.setIconTextGap(6);
-        jButton28.addActionListener(this::jButton28ActionPerformed);
-=======
         btnPagosBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosBuscar.setForeground(new java.awt.Color(23, 31, 38));
         btnPagosBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/004-search16.png"))); // NOI18N
@@ -1173,7 +1012,6 @@ public class Inicio extends javax.swing.JFrame {
         btnPagosVer.setBorder(null);
         btnPagosVer.setIconTextGap(6);
         btnPagosVer.addActionListener(this::btnPagosVerActionPerformed);
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
 
         tblPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1315,10 +1153,7 @@ public class Inicio extends javax.swing.JFrame {
         btnHome.setBackground(new java.awt.Color(23, 31, 38));
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnHome.setForeground(new java.awt.Color(11, 120, 100));
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-=======
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/001-home.png"))); // NOI18N
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnHome.setText("Inicio");
         btnHome.setToolTipText("");
         btnHome.setBorder(null);
@@ -1327,19 +1162,13 @@ public class Inicio extends javax.swing.JFrame {
         btnHome.setIconTextGap(10);
         btnHome.addActionListener(this::btnHomeActionPerformed);
 
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-=======
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/isologo150px.png"))); // NOI18N
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         jLabel1.setText("jLabel1");
 
         btnRutas.setBackground(new java.awt.Color(23, 31, 38));
         btnRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRutas.setForeground(new java.awt.Color(11, 120, 100));
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-=======
         btnRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/007-distance.png"))); // NOI18N
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnRutas.setText("Rutas");
         btnRutas.setToolTipText("");
         btnRutas.setBorder(null);
@@ -1350,10 +1179,7 @@ public class Inicio extends javax.swing.JFrame {
         btnChoferes.setBackground(new java.awt.Color(23, 31, 38));
         btnChoferes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnChoferes.setForeground(new java.awt.Color(11, 120, 100));
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-=======
         btnChoferes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/008-profile.png"))); // NOI18N
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnChoferes.setText("Choferes");
         btnChoferes.setToolTipText("");
         btnChoferes.setBorder(null);
@@ -1364,10 +1190,7 @@ public class Inicio extends javax.swing.JFrame {
         btnVehiculos.setBackground(new java.awt.Color(23, 31, 38));
         btnVehiculos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnVehiculos.setForeground(new java.awt.Color(11, 120, 100));
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-=======
         btnVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/011-car.png"))); // NOI18N
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnVehiculos.setText("Vehículos");
         btnVehiculos.setToolTipText("");
         btnVehiculos.setBorder(null);
@@ -1375,21 +1198,10 @@ public class Inicio extends javax.swing.JFrame {
         btnVehiculos.setIconTextGap(10);
         btnVehiculos.addActionListener(this::btnVehiculosActionPerformed);
 
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.java
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("by:");
-        jLabel3.setToolTipText("");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-
-        btnPagos.setBackground(new java.awt.Color(23, 31, 38));
-        btnPagos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnPagos.setForeground(new java.awt.Color(11, 120, 100));
-=======
         btnPagos.setBackground(new java.awt.Color(23, 31, 38));
         btnPagos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnPagos.setForeground(new java.awt.Color(11, 120, 100));
         btnPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/010-coin.png"))); // NOI18N
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.java
         btnPagos.setText("Pagos");
         btnPagos.setToolTipText("");
         btnPagos.setBorder(null);
@@ -1560,7 +1372,7 @@ public class Inicio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
         modelo.setRowCount(0);
 
-        List<Ruta> rutas = controller.filtrarRutas(8, txtBuscar.getText()); // NECESITO CAMBIAR POR LA SESION ACTIVA
+        List<Ruta> rutas = controller.filtrarRutas(idUsuario, txtBuscar.getText());
 
         for (Ruta ruta : rutas) {
             Object[] fila = new Object[3];
@@ -1751,7 +1563,7 @@ public class Inicio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
         modelo.setRowCount(0);
 
-        List<Ruta> rutas = controller.leerRutas(8); // NECESITO CAMBIAR POR LA SESION ACTIVA
+        List<Ruta> rutas = controller.leerRutas(idUsuario);
 
         for (Ruta ruta : rutas) {
             Object[] fila = new Object[3];
@@ -1857,8 +1669,8 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     /**
-     * Crea y retorna un JPanel visual que representa un ítem del FAQ,
-     * mostrando la pregunta en verde y la respuesta en texto debajo.
+     * Crea y retorna un JPanel visual que representa un ítem del FAQ, mostrando
+     * la pregunta en verde y la respuesta en texto debajo.
      *
      * @param pregunta Texto de la pregunta a mostrar.
      * @param respuesta Texto de la respuesta a mostrar.

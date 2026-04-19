@@ -562,19 +562,16 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="64" green="78" red="b" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/007-distance64.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Rutas"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Por defecto"/>
                 </Property>
                 <Property name="iconTextGap" type="int" value="20"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -602,19 +599,16 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="64" green="78" red="b" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/008-profile64.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Choferes"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Por defecto"/>
                 </Property>
                 <Property name="iconTextGap" type="int" value="20"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -642,19 +636,16 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="64" green="78" red="b" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/010-coin64.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Pagos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Por defecto"/>
                 </Property>
                 <Property name="iconTextGap" type="int" value="20"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -682,19 +673,16 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="64" green="78" red="b" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/011-car64.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Veh&#xed;culos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Por defecto"/>
                 </Property>
                 <Property name="iconTextGap" type="int" value="20"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -882,12 +870,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/004-search16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -906,12 +891,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/005-add16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Crear nuevo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -931,12 +913,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/001-edit16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Editar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -955,12 +934,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/003-trashcan16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Eliminar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -968,29 +944,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
               </Properties>
               <Events>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton12ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton13">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="95" green="e7" red="f4" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="26" green="1f" red="17" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Ver detalles"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-                <Property name="iconTextGap" type="int" value="6"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton13ActionPerformed"/>
-=======
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRutasEliminarActionPerformed"/>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
               </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -1207,12 +1161,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/004-search16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1231,12 +1182,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/005-add16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Crear nuevo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1256,12 +1204,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/001-edit16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Editar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1280,12 +1225,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/003-trashcan16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Eliminar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1303,6 +1245,9 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\006-info.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver detalles"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1501,12 +1446,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/004-search16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1525,12 +1467,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/005-add16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Crear nuevo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1550,12 +1489,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/001-edit16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Editar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1574,12 +1510,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/003-trashcan16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Eliminar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1597,6 +1530,9 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\006-info.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver detalles"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1795,12 +1731,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/004-search16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1819,12 +1752,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/005-add16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Crear nuevo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1844,12 +1774,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/001-edit16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Editar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1868,12 +1795,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
                 </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/003-trashcan16.png"/>
                 </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
                 <Property name="text" type="java.lang.String" value="Eliminar seleccionado"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1891,6 +1815,9 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="26" green="1f" red="17" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="D:\OneDrive\Documentos\GitHub\UNIDEVS\ConchoAdmin\resources\icons\16\006-info.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver detalles"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2125,19 +2052,16 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="64" green="78" red="b" type="rgb"/>
             </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/assets/001-home.png"/>
             </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
             <Property name="text" type="java.lang.String" value="Inicio"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="iconTextGap" type="int" value="10"/>
@@ -2148,12 +2072,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/assets/isologo150px.png"/>
             </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
         </Component>
@@ -2170,12 +2091,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="64" green="78" red="b" type="rgb"/>
             </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/assets/007-distance.png"/>
             </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
             <Property name="text" type="java.lang.String" value="Rutas"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2199,12 +2117,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="64" green="78" red="b" type="rgb"/>
             </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/assets/008-profile.png"/>
             </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
             <Property name="text" type="java.lang.String" value="Choferes"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2228,12 +2143,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="64" green="78" red="b" type="rgb"/>
             </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/assets/011-car.png"/>
             </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
             <Property name="text" type="java.lang.String" value="Veh&#xed;culos"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2246,17 +2158,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVehiculosActionPerformed"/>
           </Events>
         </Component>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="by:"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="horizontalTextPosition" type="int" value="2"/>
-          </Properties>
-        </Component>
-=======
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
         <Component class="javax.swing.JButton" name="btnPagos">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -2268,12 +2169,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="64" green="78" red="b" type="rgb"/>
             </Property>
-<<<<<<< HEAD:ConchoAdmin/src/vistas/home.form
-=======
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/assets/010-coin.png"/>
             </Property>
->>>>>>> 5a2337a46bbac76a08928c0a802f63567e823db9:ConchoAdmin/src/vistas/Inicio.form
             <Property name="text" type="java.lang.String" value="Pagos"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2330,15 +2228,6 @@
               <Border info="null"/>
             </Property>
             <Property name="horizontalTextPosition" type="int" value="2"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[95, 16]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[95, 16]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[95, 16]"/>
-            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInfoActionPerformed"/>
