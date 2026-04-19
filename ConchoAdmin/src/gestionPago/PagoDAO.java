@@ -39,6 +39,8 @@ public class PagoDAO{
     }catch(SQLException e){
         System.err.println("Error al someter el pago: " + e.getMessage());
         return false;
+    }finally{
+        cerrarRecursos();
     }
     
 }
@@ -63,6 +65,8 @@ public class PagoDAO{
         }
     } catch (SQLException e) {
         System.err.println("Error al listar pagos: " + e.getMessage());
+    } finally{
+        cerrarRecursos();
     }
     return lista;
 }
@@ -82,7 +86,7 @@ public class PagoDAO{
    }
     
     
-    // Metodo para Buscar por CHofer
+    // Metodo para Buscar por Chofer
     public List<Pago> listarPorChofer(int idChofer) {
     List<Pago> lista = new ArrayList<>();
     String sql = "SELECT * FROM Pago WHERE id_chofer = ?";
@@ -93,7 +97,9 @@ public class PagoDAO{
         // ... mismo proceso de llenado que el listarPagos() ...
     } catch (SQLException e) {
         System.err.println("Error al buscar por chofer: " + e.getMessage());
-    } 
+    } finally{
+        cerrarRecursos();
+    }
     return lista;
 }
     
@@ -112,9 +118,22 @@ public class PagoDAO{
           
         }catch (SQLException e){
             System.err.println("Error al contar Pagos: " + e.getMessage());
-    }
+        }finally{
+            cerrarRecursos();
+        }   
         return total;
 }
+ 
+    // Metodo para cerrar recursos
+    private void cerrarRecursos(){
+        try{
+            if(rs != null) rs.close();
+            if(ps != null) ps.close();
+            if(con != null) con.close();
+        } catch(SQLException e){
+            System.err.println("Error al cerrar: " + e.getMessage());
+        }
+    }
     
 }
 
