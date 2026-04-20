@@ -1,5 +1,6 @@
 package gestionVehiculos;
 
+import asignaciones.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +33,7 @@ public class VehiculoDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             ps.setInt(1, idUsuario);
@@ -74,7 +75,7 @@ public class VehiculoDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             ps.setInt(1, id);
@@ -112,7 +113,7 @@ public class VehiculoDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             // Se asignan los valores del objeto al query
@@ -140,7 +141,7 @@ public class VehiculoDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             // Se actualizan los campos del vehículo
@@ -171,7 +172,7 @@ public class VehiculoDAO {
         String sql = "DELETE FROM Vehiculo WHERE id = ?";
 
         try {
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             ps.setInt(1, id);
@@ -193,7 +194,7 @@ public class VehiculoDAO {
         int total = 0;
 
         try {
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             ps.setInt(1, idUsuario);
@@ -224,7 +225,7 @@ public class VehiculoDAO {
         List<Vehiculo> datos = new ArrayList<>();
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             String buscar = "%" + valorBuscar + "%";
@@ -238,7 +239,6 @@ public class VehiculoDAO {
 
             while (rs.next()) {
                 Vehiculo v = new Vehiculo();
-                v = new Vehiculo();
                 v.setId(rs.getInt("id"));
                 v.setMarca(rs.getString("marca"));
                 v.setModelo(rs.getString("modelo"));
@@ -266,7 +266,6 @@ public class VehiculoDAO {
             if (ps != null) {
                 ps.close();
             }
-            //if(con != null) con.close();
         } catch (SQLException e) {
             System.err.println("Error al cerrar conexión: " + e.getMessage());
         }

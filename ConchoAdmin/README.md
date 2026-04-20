@@ -13,7 +13,6 @@ Concho admin es un sistema de gestión de rutas de transporte público que permi
 
 ## Requisitos
 * Java JDK 25
-* Driver MySQL para JDBC
 * Tener conexión a internet (los datos son almacenados en la nube).
 
 ## Imagenes del prógrama en uso

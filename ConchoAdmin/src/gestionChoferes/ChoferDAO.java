@@ -1,5 +1,6 @@
 package gestionChoferes;
 
+import asignaciones.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +33,7 @@ public class ChoferDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
@@ -50,14 +51,14 @@ public class ChoferDAO {
     }
 
     /**
-     * Este metodo se encarga de listar los choferes activos. El mismo devuelve
-     * un objeto tipo arrayList.
+     * Este metodo se encarga de listar los choferes activos.El mismo devuelve
+ un objeto tipo arrayList.
      *
      * @param estado
-     * @param id_usuario
+     * @param idUsuario
      * @return datos
      */
-    public List<Chofer> listarChoferActivo(String estado, int id_usuario) {
+    public List<Chofer> listarChoferActivo(String estado, int idUsuario) {
 
         String sql = "SELECT * FROM Chofer "
                 + "WHERE estado = ? AND id_usuario = ?";
@@ -65,10 +66,10 @@ public class ChoferDAO {
         List<Chofer> datos = new ArrayList<>();
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setString(1, estado);
-            ps.setInt(2, id_usuario);
+            ps.setInt(2, idUsuario);
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -94,10 +95,10 @@ public class ChoferDAO {
      * tipo arrayList.
      *
      * @param valorBuscar
-     * @param id_usuario
+     * @param idUsuario
      * @return datos
      */
-    public List<Chofer> listarChofer(String valorBuscar, int id_usuario) {
+    public List<Chofer> listarChofer(String valorBuscar, int idUsuario) {
 
         String sql = "SELECT * FROM Chofer "
                 + "WHERE (nombre LIKE ? OR apellido LIKE ? OR cedula LIKE ?) AND id_usuario = ?";
@@ -105,14 +106,14 @@ public class ChoferDAO {
         List<Chofer> datos = new ArrayList<>();
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             String buscar = "%" + valorBuscar + "%";
             ps.setString(1, buscar);
             ps.setString(2, buscar);
             ps.setString(3, buscar);
-            ps.setInt(4, id_usuario);
+            ps.setInt(4, idUsuario);
 
             rs = ps.executeQuery();
 
@@ -138,17 +139,17 @@ public class ChoferDAO {
      * Este metodo se encarga de listar todos los choferes.El mismo devuelve un
      * objeto tipo arrayList.
      *
-     * @param id_usuario
+     * @param idUsuario
      * @return datos
      */
-    public List<Chofer> listar(int id_usuario) {
+    public List<Chofer> listar(int idUsuario) {
         String sql = "SELECT * FROM Chofer WHERE id_usuario = ?";
         List<Chofer> datos = new ArrayList<>();
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, id_usuario);
+            ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -181,7 +182,7 @@ public class ChoferDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
@@ -218,7 +219,7 @@ public class ChoferDAO {
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, c.getNombre());
@@ -252,7 +253,7 @@ public class ChoferDAO {
         String sql = "UPDATE Chofer set nombre=?, apellido=?, cedula=?, telefono=?, estado=? WHERE id=?";
 
         try {
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, c.getNombre());
@@ -292,7 +293,7 @@ public class ChoferDAO {
         String sql = "DELETE FROM Chofer WHERE id = " + id;
 
         try {
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             r = ps.executeUpdate();
@@ -318,7 +319,6 @@ public class ChoferDAO {
             if (ps != null) {
                 ps.close();
             }
-            //if(con != null) con.close();
         } catch (SQLException e) {
             System.err.println("Error al cerrar conexión: " + e.getMessage());
         }

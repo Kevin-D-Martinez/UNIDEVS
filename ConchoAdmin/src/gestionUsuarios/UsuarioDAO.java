@@ -1,5 +1,6 @@
 package gestionUsuarios;
 
+import asignaciones.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +27,7 @@ public class UsuarioDAO {
         String sql = "SELECT * FROM Usuario WHERE email = ?";
        
         try{
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setString(1, email);
             rs = ps.executeQuery(); 
@@ -66,7 +67,7 @@ public class UsuarioDAO {
         String sql = "INSERT INTO Usuario(nombre, apellido, email, contraseña) VALUES (?, ?, ?, ?)";
         
         try{
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
                     
             ps.setString(1, c.getNombre());
@@ -100,7 +101,7 @@ public class UsuarioDAO {
         String sql = "UPDATE Usuario set nombre=?, apellido=?, email=?, contraseña=? WHERE id=?";
         
         try{
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, c.getNombre());
@@ -139,7 +140,7 @@ public class UsuarioDAO {
         String sql5 = "DELETE FROM Usuario WHERE id = ?";
         
         try{
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             con.setAutoCommit(false);
             
             ps = con.prepareStatement(sql1);
@@ -193,9 +194,12 @@ public class UsuarioDAO {
      // Metodo para cerrar recursos
     private void cerrarRecursos(){
         try{
-            if(rs != null) rs.close();
-            if(ps != null) ps.close();
-            //if(con != null) con.close();
+            if(rs != null) {
+                rs.close();
+            }
+            if(ps != null) {
+                ps.close();
+            }
         } catch(SQLException e){
             System.err.println("Error al cerrar conexión: " + e.getMessage());
         }

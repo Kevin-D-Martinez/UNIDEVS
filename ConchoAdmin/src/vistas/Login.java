@@ -5,6 +5,8 @@ package vistas;
 import gestionUsuarios.Usuario;
 import gestionUsuarios.UsuarioDAO;
 import java.awt.Image;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -13,8 +15,6 @@ import javax.swing.JOptionPane;
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
 public class Login extends javax.swing.JFrame {
-
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
 
     //Llama al DAO de usuarios para no tener que abrir más de una instancia
     UsuarioDAO controller = new UsuarioDAO();
@@ -117,6 +117,7 @@ public class Login extends javax.swing.JFrame {
         txtLoginCorreo.setBackground(new java.awt.Color(255, 254, 236));
         txtLoginCorreo.setForeground(new java.awt.Color(112, 112, 112));
         txtLoginCorreo.setBorder(null);
+        txtLoginCorreo.addActionListener(this::txtLoginCorreoActionPerformed);
 
         btnLogin_Registrate.setBackground(new java.awt.Color(204, 204, 204));
         btnLogin_Registrate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -424,23 +425,28 @@ public class Login extends javax.swing.JFrame {
 
         String contrasena = new String(txtLoginContrasena.getPassword());
         String correo = txtLoginCorreo.getText();
+        Pattern patron =  Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Aa-z0-9-]+)*@"
+                                            +"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mat = patron.matcher(correo);
+        
+        if (mat.find() == true) {
+            if (controller.login(correo, contrasena) == 1) {
+                Inicio home = new Inicio();
+                home.setVisible(true);
+
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Datos incorrectos.");
+            }
+        } else if(correo.isEmpty() == false){
+            JOptionPane.showMessageDialog(this, "Formato de email incorrecto.");
+        }
 
         if (correo.isEmpty() || contrasena.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe llenar todos los campos.");
-            return;
         }
 
-        if (controller.login(correo, contrasena) == 1) {
-            // 1. Abre la ventana principal
-            Inicio home = new Inicio();
-            home.setVisible(true);
-
-            // 2. Cierra el login
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Datos incorrectos.");
-            return;
-        }
+        
 
 
     }//GEN-LAST:event_btnLogin_IniciaActionPerformed
@@ -462,6 +468,13 @@ public class Login extends javax.swing.JFrame {
         String correo = txtRegistroCorreo.getText();
         String nombre = txtRegistroNombre.getText();
         String apellido = txtRegistroApellido.getText();
+        
+        Pattern patron =  Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Aa-z0-9-]+)*@"
+                                            +"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mat = patron.matcher(correo);
+        if (mat.find() == false && correo.isEmpty() == false) {
+            JOptionPane.showMessageDialog(this, "Formato de email incorrecto.");
+        }
 
         if (correo.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || contrasena.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe llenar todos los campos.");
@@ -477,7 +490,6 @@ public class Login extends javax.swing.JFrame {
             contenedorLogin.revalidate();
         } else {
             JOptionPane.showMessageDialog(this, "Datos incorrectos.");
-            return;
         }
     }//GEN-LAST:event_btnRegistro_CrearActionPerformed
 
@@ -491,6 +503,10 @@ public class Login extends javax.swing.JFrame {
     private void txtRegistroContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegistroContrasenaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRegistroContrasenaActionPerformed
+
+    private void txtLoginCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLoginCorreoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin_Inicia;

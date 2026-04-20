@@ -1,5 +1,6 @@
 package gestionRutas;
 
+import asignaciones.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,7 +32,7 @@ public class RutaDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setString(1, ruta.getNombre());
             ps.setDouble(2, ruta.getTarifa());
@@ -60,7 +61,7 @@ public class RutaDAO {
         List<Ruta> datos = new ArrayList<>();
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
@@ -99,7 +100,7 @@ public class RutaDAO {
         List<Ruta> datos = new ArrayList<>();
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             ps.setString(2, "%" + valorFiltro + "%");
@@ -135,7 +136,7 @@ public class RutaDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
@@ -170,7 +171,7 @@ public class RutaDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setString(1, ruta.getNombre());
             ps.setDouble(2, ruta.getTarifa());
@@ -199,7 +200,7 @@ public class RutaDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, ruta.getId());
 
@@ -226,7 +227,7 @@ public class RutaDAO {
 
         try {
 
-            con = asignaciones.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
@@ -253,9 +254,6 @@ public class RutaDAO {
             if (ps != null) {
                 ps.close();
             }
-//            if (con != null) {
-//                con.close();
-//            }
         } catch (SQLException e) {
             System.err.println("Error al cerrar: " + e.getMessage());
         }
