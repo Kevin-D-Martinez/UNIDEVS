@@ -30,7 +30,7 @@ public class ChoferDAO {
 
         try {
 
-            con = gestionRutas.ConexionMySQL.conectar();
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
@@ -155,6 +155,39 @@ public class ChoferDAO {
             cerrarRecursos();
         }
         return datos;
+    }
+    
+    /**
+     * Este metodo se encarga de listar todos los choferes.El mismo devuelve un objeto tipo arrayList.
+     * @param id_usuario
+     * @return datos
+     */
+    public Chofer cargarChofer(int id){
+        String sql = "SELECT * FROM Chofer WHERE id = ?";
+
+        try{
+            
+            con = ConexionMySQL.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs  = ps.executeQuery();
+            
+            if(rs.next()){
+                Chofer c = new Chofer();
+                c.setId(rs.getInt(1));
+                c.setNombre(rs.getString(2));
+                c.setApellido(rs.getString(3));
+                c.setCedula(rs.getString(4));
+                c.setTelefono(rs.getString(5));
+                c.setEstado(rs.getString(6));
+                return c;
+            }
+        }catch(SQLException e){
+            System.out.println("Error al cargar chofer: " + e);
+        } finally {
+            cerrarRecursos();
+        }
+        return null;
     }
     
     /**

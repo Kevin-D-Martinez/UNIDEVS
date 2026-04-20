@@ -23,15 +23,15 @@ public class RutaDAO {
      */
     public boolean agregarRuta(Ruta ruta) {
 
-        Connection con = null;
+        Connection connect = null;
         PreparedStatement ps = null;
 
         String sql = "INSERT INTO Ruta (nombre,tarifa,id_usuario) VALUES (?,?,?)";
 
         try {
 
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
+            connect = ConexionMySQL.conectar();
+            ps = connect.prepareStatement(sql);
             ps.setString(1, ruta.getNombre());
             ps.setDouble(2, ruta.getTarifa());
             ps.setInt(3, ruta.getIdUsuario());
@@ -44,8 +44,8 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (con != null) {
-//                    con.close();
+//                if (connect != null) {
+//                    connect.close();
 //                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
@@ -64,7 +64,7 @@ public class RutaDAO {
      */
     public List leerRutas(int idUsuario) {
 
-        Connection con = null;
+        Connection connect = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -72,8 +72,8 @@ public class RutaDAO {
         List<Ruta> datos = new ArrayList<>();
         try {
 
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
+            connect = ConexionMySQL.conectar();
+            ps = connect.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
 
@@ -97,8 +97,8 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (con != null) {
-//                    con.close();
+//                if (connect != null) {
+//                    connect.close();
 //                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
@@ -119,7 +119,7 @@ public class RutaDAO {
      */
     public List filtrarRutas(int idUsuario, String valorFiltro) {
 
-        Connection con = null;
+        Connection connect = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -127,8 +127,8 @@ public class RutaDAO {
         List<Ruta> datos = new ArrayList<>();
         try {
 
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
+            connect = ConexionMySQL.conectar();
+            ps = connect.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             ps.setString(2, "%" + valorFiltro + "%");
             rs = ps.executeQuery();
@@ -153,8 +153,8 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (con != null) {
-//                    con.close();
+//                if (connect != null) {
+//                    connect.close();
 //                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
@@ -171,7 +171,7 @@ public class RutaDAO {
      */
     public Ruta cargarRuta(int id) {
 
-        Connection con = null;
+        Connection connect = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -179,8 +179,8 @@ public class RutaDAO {
 
         try {
 
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
+            connect = ConexionMySQL.conectar();
+            ps = connect.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
 
@@ -202,8 +202,8 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (con != null) {
-//                    con.close();
+//                if (connect != null) {
+//                    connect.close();
 //                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
@@ -222,15 +222,15 @@ public class RutaDAO {
      */
     public boolean actualizarRuta(Ruta ruta) {
 
-        Connection con = null;
+        Connection connect = null;
         PreparedStatement ps = null;
 
         String sql = "UPDATE Ruta set nombre = ?,tarifa = ?, id_usuario = ? where id = ?";
 
         try {
 
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
+            connect = ConexionMySQL.conectar();
+            ps = connect.prepareStatement(sql);
             ps.setString(1, ruta.getNombre());
             ps.setDouble(2, ruta.getTarifa());
             ps.setInt(3, ruta.getIdUsuario());
@@ -244,8 +244,8 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (con != null) {
-//                    con.close();
+//                if (connect != null) {
+//                    connect.close();
 //                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
@@ -263,15 +263,15 @@ public class RutaDAO {
      */
     public boolean eliminarRuta(Ruta ruta) {
 
-        Connection con = null;
+        Connection connect = null;
         PreparedStatement ps = null;
 
         String sql = "DELETE FROM Ruta where id = ?";
 
         try {
 
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
+            connect = ConexionMySQL.conectar();
+            ps = connect.prepareStatement(sql);
             ps.setInt(1, ruta.getId());
 
             return ps.executeUpdate() == 1;
@@ -282,8 +282,8 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (con != null) {
-//                    con.close();
+//                if (connect != null) {
+//                    connect.close();
 //                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
@@ -301,7 +301,7 @@ public class RutaDAO {
      * error.
      */
     public int contarRutas(int idUsuario) {
-        Connection con = null;
+        Connection connect = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -309,8 +309,8 @@ public class RutaDAO {
 
         try {
 
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
+            connect = ConexionMySQL.conectar();
+            ps = connect.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
 
@@ -328,8 +328,8 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (con != null) {
-//                    con.close();
+//                if (connect != null) {
+//                    connect.close();
 //                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);

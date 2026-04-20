@@ -2,8 +2,7 @@
  */
 package vistas;
 
-import gestionRutas.Ruta;
-import gestionRutas.RutaControlador;
+import gestionChoferes.*;
 
 /**
  *
@@ -11,14 +10,14 @@ import gestionRutas.RutaControlador;
  */
 public class DialogEliminarChofer extends javax.swing.JDialog {
     
-    Ruta ruta;
-    RutaControlador controller = new RutaControlador();
+    Chofer chofer;
+    ChoferDAO controller = new ChoferDAO();
     private Inicio home;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEliminarChofer.class.getName());
 
     /**
-     * Creates new form DialogCrearRuta
+     * Creates new form DialogEliminarChofer
      */
     public DialogEliminarChofer(java.awt.Frame parent, boolean modal, int id, Inicio home) {
         super(parent, modal);
@@ -26,9 +25,9 @@ public class DialogEliminarChofer extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(parent);
 
-        ruta = controller.cargarRuta(id);
+        chofer = controller.cargarChofer(id);
         
-        txtNombre.setText(ruta.getNombre());
+        txtNombre.setText(chofer.getNombre() + " " + chofer.getApellido());
     }
 
     /**
@@ -156,17 +155,17 @@ public class DialogEliminarChofer extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        boolean resultado = controller.eliminarRuta(ruta);
+        int resultado = controller.eliminar(chofer.getId());
 
-        if (resultado) {
-            System.out.println("Ruta eliminada");
+        if (resultado == 1) {
+            System.out.println("Chofer eliminado");
         } else {
             System.out.println("Error al eliminar");
             return;
         }
         
         dispose();
-        home.mostrarRutas();
+        home.mostrarChoferes();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

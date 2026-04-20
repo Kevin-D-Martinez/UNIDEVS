@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
 public class DialogEditarChofer extends javax.swing.JDialog {
-    
+
     Chofer chofer;
     ChoferDAO controller = new ChoferDAO();
     private Inicio home;
@@ -25,14 +25,22 @@ public class DialogEditarChofer extends javax.swing.JDialog {
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     /**
-     * Creates new form DialogCrearRuta
+     * Creates new form DialogEditarChofer
      */
-    public DialogEditarChofer(java.awt.Frame parent, boolean modal,int id, Inicio home) {
+    public DialogEditarChofer(java.awt.Frame parent, boolean modal, int id, Inicio home) {
         super(parent, modal);
         this.home = home;
         initComponents();
         cargarRutas();
         setLocationRelativeTo(parent);
+        
+        chofer = controller.cargarChofer(id);
+        
+        txtNombre.setText(chofer.getNombre());
+        txtApellido.setText(chofer.getApellido());
+        txtCedula.setText(chofer.getCedula());
+        txtTelefono.setText(chofer.getTelefono());
+        seleccionarRuta(chofer.getIdRuta());
     }
 
     /**
@@ -279,8 +287,13 @@ public class DialogEditarChofer extends javax.swing.JDialog {
             return;
         }
 
-        Chofer chofer = new Chofer(0, nombre, apellido, estado, idRuta, idUsuario, telefono, cedula);
-        int resultado = controller.agregar(chofer);
+        chofer.setNombre(nombre);
+        chofer.setApellido(apellido);
+        chofer.setCedula(cedula);
+        chofer.setTelefono(telefono);
+        chofer.setEstado(estado);
+        
+        int resultado = controller.actualizar(chofer);
 
         if (resultado == 1) {
             System.out.println("Chofer guardado");
@@ -316,6 +329,15 @@ public class DialogEditarChofer extends javax.swing.JDialog {
         }
     }
 
+    private void seleccionarRuta(int idRuta) {
+        for (int i = 0; i < comboRuta.getItemCount(); i++) {
+            Ruta ruta = comboRuta.getItemAt(i);
+            if (ruta.getId() == idRuta) {
+                comboRuta.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;

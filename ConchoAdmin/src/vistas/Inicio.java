@@ -1858,7 +1858,7 @@ public class Inicio extends javax.swing.JFrame {
      */
     private void actualizarContadores(int usuarioActivo) {
         lblRutasCreadas.setText(String.valueOf(controller.contarRutas(usuarioActivo)));
-        //lblChoferesActivos.setText(String.valueOf(controllerChoferes.contarRutas(usuarioActivo)));
+        lblChoferesActivos.setText(String.valueOf(controllerChoferes.contarChoferesActivos(usuarioActivo)));
         lblPagosPendientes.setText(String.valueOf(controllerPagos.contarPagosPendientes(usuarioActivo)));
         lblVehiculosRegistrados.setText(String.valueOf(controllerVehiculos.contarVehiculos(usuarioActivo)));
     }

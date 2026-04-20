@@ -100,7 +100,7 @@ public class PagoDAO {
                 p.setId_ruta(rs.getInt("id_ruta"));
                 p.setId_usuario(rs.getInt("id_usuario"));
                 p.setFechaCreacion(rs.getString("fechaCreacion"));
-                
+
                 return p;
             }
 
@@ -112,15 +112,15 @@ public class PagoDAO {
 
         return null; // si no encuentra nada
     }
-    
+
     // Elimina una pago especifico por id
     public boolean eliminarPago(Pago pago) {
-        
+
         Connection con = null;
         PreparedStatement ps = null;
 
         String sql = "DELETE FROM Pago where id = ?";
-        
+
         try {
 
             con = ConexionMySQL.conectar();
@@ -137,7 +137,7 @@ public class PagoDAO {
         return false;
     }
 
-    // Metodo pra Actualizar Estado (Aprobar Pago)
+    // Metodo para Actualizar Estado (Aprobar Pago)
     public boolean actualizarEstado(int idPago, String nuevoEstado) {
         String sql = "UPDATE Pago SET estado = ? WHERE id = ?";
         try {
@@ -149,7 +149,38 @@ public class PagoDAO {
         } catch (SQLException e) {
             System.err.println("Error al actualizar estado: " + e.getMessage());
             return false;
+        } finally {
+            cerrarRecursos();
         }
+    }
+
+    //Metodo para actualizar pago
+    public boolean actualizarPago(Pago pago) {
+
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        String sql = "UPDATE Pago set monto = ?, metodoPago = ?, estado = ?, id_chofer = ?, id_ruta = ? where id = ?";
+
+        try {
+
+            con = ConexionMySQL.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setDouble(1, pago.getMonto());
+            ps.setString(2, pago.getMetodoPago());
+            ps.setString(3, pago.getEstadoPago());
+            ps.setInt(4, pago.getId_chofer());
+            ps.setInt(5, pago.getId_ruta());
+            ps.setInt(6, pago.getId());
+
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar ruta: " + e);
+        } finally {
+            cerrarRecursos();
+        }
+
+        return false;
     }
 
     // Metodo para Buscar por Chofer

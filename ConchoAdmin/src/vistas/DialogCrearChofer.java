@@ -280,7 +280,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
         }
 
         Chofer chofer = new Chofer(0, nombre, apellido, estado, idRuta, idUsuario, telefono, cedula);
-        int resultado = controller.actualizar(chofer);
+        int resultado = controller.agregar(chofer);
 
         if (resultado == 1) {
             System.out.println("Chofer guardado");

@@ -3,6 +3,7 @@
 package vistas;
 
 import gestionChoferes.*;
+import gestionPago.*;
 import gestionRutas.*;
 import gestionUsuarios.*;
 import java.util.List;
@@ -15,6 +16,9 @@ import javax.swing.JOptionPane;
 public class DialogEditarPago extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEditarPago.class.getName());
+
+    Pago pago;
+    PagoDAO controller = new PagoDAO();
     private Inicio home;
 
     Usuario actual = Sesion.getInstancia().getUsuarioActual();
@@ -23,13 +27,21 @@ public class DialogEditarPago extends javax.swing.JDialog {
     /**
      * Creates new form DialogEditarPago
      */
-    public DialogEditarPago(java.awt.Frame parent, boolean modal,  int id, Inicio home) {
+    public DialogEditarPago(java.awt.Frame parent, boolean modal, int id, Inicio home) {
         super(parent, modal);
         this.home = home;
         initComponents();
         cargarRutas();
         cargarChoferes();
         setLocationRelativeTo(parent);
+
+        pago = controller.leerPago(id);
+
+        txtMonto.setText(String.valueOf(pago.getMonto()));
+        comboMetodo.setSelectedItem(pago.getMetodoPago());
+        comboEstado.setSelectedItem(pago.getEstadoPago());
+        seleccionarRuta(pago.getId_ruta());
+        seleccionarChofer(pago.getId_chofer());
     }
 
     /**
@@ -240,7 +252,42 @@ public class DialogEditarPago extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void comboMetodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMetodoActionPerformed
-        // TODO add your handling code here:
+        Ruta rutaSeleccionada = (Ruta) comboRuta.getSelectedItem();
+        if (rutaSeleccionada == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.");
+            return;
+        }
+        int idRuta = rutaSeleccionada.getId();
+        
+        Chofer choferSeleccionado = (Chofer) comboChofer.getSelectedItem();
+        if (choferSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un chofer.");
+            return;
+        }
+        int idChofer = choferSeleccionado.getId();
+        
+        if (txtMonto.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe rellenar el monto.");
+            return;
+        }
+                
+        pago.setMonto(Double.parseDouble(txtMonto.getText()));
+        pago.setEstadoPago(comboEstado.getSelectedItem().toString());
+        pago.setMetodoPago(comboMetodo.getSelectedItem().toString());
+        pago.setId_chofer(idChofer);
+        pago.setId_ruta(idRuta);
+        
+        boolean resultado = controller.actualizarPago(pago);
+
+        if (resultado) {
+            System.out.println("Pago guardado");
+        } else {
+            System.out.println("Error al guardar");
+            return;
+        }
+        
+        dispose();
+        home.mostrarPagos();
     }//GEN-LAST:event_comboMetodoActionPerformed
 
     private void cargarRutas() {
@@ -262,6 +309,26 @@ public class DialogEditarPago extends javax.swing.JDialog {
 
         for (Chofer chofer : choferes) {
             comboChofer.addItem(chofer);
+        }
+    }
+
+    private void seleccionarRuta(int idRuta) {
+        for (int i = 0; i < comboRuta.getItemCount(); i++) {
+            Ruta ruta = comboRuta.getItemAt(i);
+            if (ruta.getId() == idRuta) {
+                comboRuta.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+
+    private void seleccionarChofer(int idChofer) {
+        for (int i = 0; i < comboChofer.getItemCount(); i++) {
+            Chofer chofer = comboChofer.getItemAt(i);
+            if (chofer.getId() == idChofer) {
+                comboChofer.setSelectedIndex(i);
+                break;
+            }
         }
     }
 

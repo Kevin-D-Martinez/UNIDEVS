@@ -4,8 +4,8 @@ package vistas;
 
 import gestionChoferes.*;
 import gestionRutas.*;
-import gestionUsuarios.Sesion;
-import gestionUsuarios.Usuario;
+import gestionUsuarios.*;
+import gestionVehiculos.*;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -257,7 +257,53 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMarcaActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
+        
+        Vehiculo vehiculo = new Vehiculo();
+        VehiculoDAO controller = new VehiculoDAO();
+        
+        Ruta rutaSeleccionada = (Ruta) comboRuta.getSelectedItem();
+        if (rutaSeleccionada == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.");
+            return;
+        }
+        int idRuta = rutaSeleccionada.getId();
+        
+        Chofer choferSeleccionado = (Chofer) comboChofer.getSelectedItem();
+        if (choferSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un chofer.");
+            return;
+        }
+        int idChofer = choferSeleccionado.getId();
+        
+        String modelo = txtModelo.getText();
+        String marca = txtMarca.getText();
+        String ano = txtAno.getText();
+        String matricula = txtMatricula.getText();
+        
+        if (modelo.isEmpty() || marca.isEmpty() || ano.isEmpty() || matricula.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos.");
+            return;
+        }
+        
+        vehiculo.setMarca(marca);
+        vehiculo.setModelo(modelo);
+        vehiculo.setAño(ano);
+        vehiculo.setMatricula(matricula);
+        vehiculo.setIdChofer(idChofer);
+        vehiculo.setIdRuta(idRuta);
+        vehiculo.setIdUsuario(idUsuario);
+        
+        int resultado = controller.agregar(vehiculo);
+        
+        if (resultado == 1) {
+            System.out.println("Vehiculo guardado");
+        } else {
+            System.out.println("Error al guardar");
+            return;
+        }
+        
+        dispose();
+        home.mostrarVehiculos();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloActionPerformed

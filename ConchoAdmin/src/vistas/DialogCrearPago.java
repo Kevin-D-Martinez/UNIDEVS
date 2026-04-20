@@ -3,6 +3,7 @@
 package vistas;
 
 import gestionChoferes.*;
+import gestionPago.*;
 import gestionRutas.*;
 import gestionUsuarios.Sesion;
 import gestionUsuarios.Usuario;
@@ -22,7 +23,7 @@ public class DialogCrearPago extends javax.swing.JDialog {
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     /**
-     * Creates new form DialogCrearVehiculo
+     * Creates new form DialogCrearPago
      */
     public DialogCrearPago(java.awt.Frame parent, boolean modal, Inicio home) {
         super(parent, modal);
@@ -233,7 +234,46 @@ public class DialogCrearPago extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMontoActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
+        Pago pago = new Pago();
+        PagoDAO controller = new PagoDAO();
+        
+        Ruta rutaSeleccionada = (Ruta) comboRuta.getSelectedItem();
+        if (rutaSeleccionada == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.");
+            return;
+        }
+        int idRuta = rutaSeleccionada.getId();
+        
+        Chofer choferSeleccionado = (Chofer) comboChofer.getSelectedItem();
+        if (choferSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un chofer.");
+            return;
+        }
+        int idChofer = choferSeleccionado.getId();
+        
+        if (txtMonto.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe rellenar el monto.");
+            return;
+        }
+        
+        pago.setMonto(Double.parseDouble(txtMonto.getText()));
+        pago.setEstadoPago(comboEstado.getSelectedItem().toString());
+        pago.setMetodoPago(comboMetodo.getSelectedItem().toString());
+        pago.setId_chofer(idChofer);
+        pago.setId_ruta(idRuta);
+        pago.setId_usuario(idUsuario);
+        
+        boolean resultado = controller.crearPago(pago);
+
+        if (resultado) {
+            System.out.println("Pago guardado");
+        } else {
+            System.out.println("Error al guardar");
+            return;
+        }
+        
+        dispose();
+        home.mostrarPagos();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

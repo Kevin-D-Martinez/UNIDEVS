@@ -14,12 +14,12 @@ import java.util.Properties;
  */
 public class ConexionMySQL {
 
-    private static Connection con;
+    private static Connection connect;
 
     public static Connection conectar() {
 
         // Si ya hay una conexión abierta, no abre otra
-        if (con == null) {
+        if (connect == null) {
             try {
 
                 /*
@@ -31,7 +31,7 @@ public class ConexionMySQL {
                 String url = props.getProperty("db.url");
                 String usuario = props.getProperty("db.usuario");
                 String contra = props.getProperty("db.contra");
-                con = DriverManager.getConnection(url, usuario, contra);
+                connect = DriverManager.getConnection(url, usuario, contra);
                 System.out.println("Conexión exitosa");
 
             } catch (IOException e) {
@@ -41,7 +41,7 @@ public class ConexionMySQL {
                 System.out.println("Error al conectar con la base de datos");
             }
         }
-        return con;
+        return connect;
     }
 }
 
