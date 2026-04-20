@@ -23,14 +23,15 @@ public class PagoDAO{
         String sql = "INSERT INTO Pago (monto, metodoPago, estado, id_chofer, id_ruta, id_usuario) VALUES (?, ?, ?, ?, ?, ?)";
         
         try{
+            con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             
             // Usamos los Getters del DTO para llenar los campos '?'
             ps.setDouble(1, pago.getMonto());
             ps.setString(2, pago.getMetodoPago());
             ps.setString(3, pago.getEstadoPago());
-            ps.setInt(4, pago.getId_chofer());
-            ps.setInt(5, pago.getId_ruta());
+            ps.setString(4, pago.getId_chofer());
+            ps.setString(5, pago.getId_ruta());
             ps.setInt(6, pago.getId_usuario());
             
             int resultado = ps.executeUpdate();
@@ -49,6 +50,7 @@ public class PagoDAO{
     List<Pago> lista = new ArrayList<>();
     String sql = "SELECT * FROM Pago ORDER BY fechaCreacion DESC";
     try {
+        con = ConexionMySQL.conectar();
         ps = con.prepareStatement(sql);
         rs = ps.executeQuery();
         while (rs.next()) {
@@ -57,8 +59,8 @@ public class PagoDAO{
             p.setMonto(rs.getDouble("monto"));
             p.setMetodoPago(rs.getString("metodoPago"));
             p.setEstadoPago(rs.getString("estado"));
-            p.setId_chofer(rs.getInt("id_chofer"));
-            p.setId_ruta(rs.getInt("id_ruta"));
+            p.setId_chofer(rs.getString("id_chofer"));
+            p.setId_ruta(rs.getString("id_ruta"));
             p.setId_usuario(rs.getInt("id_usuario"));
             p.setFechaCreacion(rs.getString("fechaCreacion"));
             lista.add(p);
@@ -75,6 +77,7 @@ public class PagoDAO{
     public boolean actualizarEstado(int idPago, String nuevoEstado) {
     String sql = "UPDATE Pago SET estado = ? WHERE id = ?";
     try {
+        con = ConexionMySQL.conectar();
         ps = con.prepareStatement(sql);
         ps.setString(1, nuevoEstado);
         ps.setInt(2, idPago);
@@ -91,10 +94,22 @@ public class PagoDAO{
     List<Pago> lista = new ArrayList<>();
     String sql = "SELECT * FROM Pago WHERE id_chofer = ?";
     try {
+        con = ConexionMySQL.conectar();
         ps = con.prepareStatement(sql);
         ps.setInt(1, idChofer);
         rs = ps.executeQuery();
-        // ... mismo proceso de llenado que el listarPagos() ...
+          while (rs.next()) {
+            Pago p = new Pago();
+            p.setId(rs.getInt("id"));
+            p.setMonto(rs.getDouble("monto"));
+            p.setMetodoPago(rs.getString("metodoPago"));
+            p.setEstadoPago(rs.getString("estado"));
+            p.setId_chofer(rs.getString("id_chofer"));
+            p.setId_ruta(rs.getString("id_ruta"));
+            p.setId_usuario(rs.getInt("id_usuario"));
+            p.setFechaCreacion(rs.getString("fechaCreacion"));
+            lista.add(p);
+        } 
     } catch (SQLException e) {
         System.err.println("Error al buscar por chofer: " + e.getMessage());
     } finally{
@@ -105,10 +120,11 @@ public class PagoDAO{
     
     // Metodo para Contar Pagos Pendientes
     public int contarPagosPendientes(){
-        String sql = "SELECT COUNT(*) AS total FROM Pago WHERE estado = 'Pendiente'";
+        String sql = "SELECT COUNT(*) AS total FROM Pago WHERE id_usuario = 'Pendiente'";
         int total = 0;
         
         try{
+          con = ConexionMySQL.conectar();
           ps = con.prepareStatement(sql);
           rs = ps.executeQuery();
           
