@@ -3,6 +3,8 @@
 package vistas;
 
 import gestionRutas.*;
+import gestionUsuarios.Sesion;
+import gestionUsuarios.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +15,9 @@ public class DialogCrearRuta extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearRuta.class.getName());
     private Inicio home;
+    
+    Usuario actual = Sesion.getInstancia().getUsuarioActual();
+    int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     /**
      * Creates new form DialogCrearRuta
@@ -239,7 +244,7 @@ public class DialogCrearRuta extends javax.swing.JDialog {
 
         String nombre = txtNombre.getText();
         String tarifa = txtTarifa.getText();
-        int id_usuario = 8;     // CAMBIAR POR USUARIO ACTIVO
+        int id_usuario = idUsuario;
 
         boolean resultado = controller.guardarRuta(nombre, tarifa, id_usuario);
 

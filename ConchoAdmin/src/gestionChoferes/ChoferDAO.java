@@ -23,7 +23,7 @@ public class ChoferDAO {
      * @param valorBuscar
      * @return datos
      */
-    public List listarChofer(String valorBuscar){
+    public List<Chofer> listarChofer(String valorBuscar){
         
         String sql = "SELECT * FROM Chofer "+
                      "WHERE id||nombre||apellido||cedula||telefono||estado LIKE '%"+valorBuscar+"%'";
@@ -47,6 +47,14 @@ public class ChoferDAO {
             }
         }catch(SQLException e){
             System.out.println("Error al listar los choferes: " + e);
+        }finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar: " + e);
+            }
         }
         return datos;
     }
@@ -57,7 +65,7 @@ public class ChoferDAO {
      * El mismo devuelve un objeto tipo arrayList.
      * @return datos
      */
-    public List listar(){
+    public List<Chofer> listar(){
         String sql = "SELECT * FROM Chofer";
         List<Chofer>datos = new ArrayList<>();
         try{
@@ -109,6 +117,14 @@ public class ChoferDAO {
             
         } catch (SQLException e) {
             System.out.println("Error al insertar chofer: " + e);
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar: " + e);
+            }
         }
         return 1;
     }
@@ -122,7 +138,7 @@ public class ChoferDAO {
     public int actualizar(Chofer c){
         int r = 0;
         
-        String sql = "UPDATE Chofer set nombre=?, apellido=?, cedula=?, telefono=?, estado=? where id=?";
+        String sql = "UPDATE Chofer set nombre=?, apellido=?, cedula=?, telefono=?, estado=? WHERE id=?";
         
         try{
             con = ConexionMySQL.conectar();
@@ -145,6 +161,14 @@ public class ChoferDAO {
             
         } catch (SQLException e) {
             System.out.println("Error al tratar de actualizar chofer: " + e);
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar: " + e);
+            }
         }
         return r;
     }
@@ -173,6 +197,14 @@ public class ChoferDAO {
             }
         } catch (SQLException e) {
             System.out.println("Error al tratar de borrar chofer: " + e);
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar: " + e);
+            }
         }
         return r;
     }
