@@ -1,6 +1,6 @@
 package gestionPago;
 
-import asignaciones.ConexionMySQL;
+import conexion.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +21,7 @@ public class PagoDAO {
 
     // Metodo para insertar un nuevo pago
     public boolean crearPago(Pago pago) {
-        String sql = "INSERT INTO Pago (monto, metodoPago, estado, id_chofer, id_ruta, id_usuario) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Pagos (monto, metodoPago, estado, id_chofer, id_ruta, id_usuario) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             con = ConexionMySQL.conectar();
@@ -50,7 +50,7 @@ public class PagoDAO {
     // Metodo para Listar (Ver todos los pagos
     public List<Pago> listarPagos(int idUsuario) {
         List<Pago> lista = new ArrayList<>();
-        String sql = "SELECT * FROM Pago WHERE id_usuario = ? ORDER BY fechaCreacion DESC";
+        String sql = "SELECT * FROM Pagos WHERE id_usuario = ? ORDER BY fechaCreacion DESC";
         try {
             con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
@@ -79,7 +79,7 @@ public class PagoDAO {
     // Carga Pago especifico por ID
     public Pago leerPago(int idUsuario) {
 
-        String sql = "SELECT * FROM Pago WHERE id = ?";
+        String sql = "SELECT * FROM Pagos WHERE id = ?";
 
         try {
 
@@ -114,7 +114,7 @@ public class PagoDAO {
     // Elimina una pago especifico por id
     public boolean eliminarPago(Pago pago) {
 
-        String sql = "DELETE FROM Pago where id = ?";
+        String sql = "DELETE FROM Pagos where id = ?";
 
         try {
 
@@ -134,7 +134,7 @@ public class PagoDAO {
 
     // Metodo para Actualizar Estado (Aprobar Pago)
     public boolean actualizarEstado(int idPago, String nuevoEstado) {
-        String sql = "UPDATE Pago SET estado = ? WHERE id = ?";
+        String sql = "UPDATE Pagos SET estado = ? WHERE id = ?";
         try {
             con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
@@ -152,7 +152,7 @@ public class PagoDAO {
     //Metodo para actualizar pago
     public boolean actualizarPago(Pago pago) {
 
-        String sql = "UPDATE Pago set monto = ?, metodoPago = ?, estado = ?, id_chofer = ?, id_ruta = ? where id = ?";
+        String sql = "UPDATE Pagos set monto = ?, metodoPago = ?, estado = ?, id_chofer = ?, id_ruta = ? where id = ?";
 
         try {
 
@@ -178,7 +178,7 @@ public class PagoDAO {
     // Metodo para Buscar por Chofer
     public List<Pago> listarPorChofer(int idChofer) {
         List<Pago> lista = new ArrayList<>();
-        String sql = "SELECT * FROM Pago WHERE id_chofer = ?";
+        String sql = "SELECT * FROM Pagos WHERE id_chofer = ?";
         try {
             con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
@@ -206,7 +206,7 @@ public class PagoDAO {
 
     // Metodo para Contar Pagos Pendientes
     public int contarPagosPendientes(int idUsuario) {
-        String sql = "SELECT COUNT(*) AS total FROM Pago WHERE id_usuario = ? AND estado = 'Pendiente'";
+        String sql = "SELECT COUNT(*) AS total FROM Pagos WHERE id_usuario = ? AND estado = 'Pendiente'";
         int total = 0;
 
         try {

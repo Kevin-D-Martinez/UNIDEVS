@@ -1,6 +1,6 @@
 package gestionRutas;
 
-import asignaciones.ConexionMySQL;
+import conexion.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +28,7 @@ public class RutaDAO {
      */
     public boolean agregarRuta(Ruta ruta) {
 
-        String sql = "INSERT INTO Ruta (nombre,tarifa,id_usuario) VALUES (?,?,?)";
+        String sql = "INSERT INTO Rutas (nombre,tarifa,id_usuario) VALUES (?,?,?)";
 
         try {
 
@@ -57,7 +57,7 @@ public class RutaDAO {
      */
     public List leerRutas(int idUsuario) {
 
-        String sql = "SELECT * FROM Ruta WHERE id_usuario = ?";
+        String sql = "SELECT * FROM Rutas WHERE id_usuario = ?";
         List<Ruta> datos = new ArrayList<>();
         try {
 
@@ -96,7 +96,7 @@ public class RutaDAO {
      */
     public List filtrarRutas(int idUsuario, String valorFiltro) {
 
-        String sql = "SELECT * FROM Ruta WHERE id_usuario = ? AND nombre LIKE ?";
+        String sql = "SELECT * FROM Rutas WHERE id_usuario = ? AND nombre LIKE ?";
         List<Ruta> datos = new ArrayList<>();
         try {
 
@@ -132,7 +132,7 @@ public class RutaDAO {
      */
     public Ruta cargarRuta(int id) {
 
-        String sql = "SELECT * FROM Ruta WHERE id = ?";
+        String sql = "SELECT * FROM Rutas WHERE id = ?";
 
         try {
 
@@ -167,7 +167,7 @@ public class RutaDAO {
      */
     public boolean actualizarRuta(Ruta ruta) {
 
-        String sql = "UPDATE Ruta set nombre = ?,tarifa = ?, id_usuario = ? where id = ?";
+        String sql = "UPDATE Rutas set nombre = ?,tarifa = ?, id_usuario = ? where id = ?";
 
         try {
 
@@ -196,7 +196,7 @@ public class RutaDAO {
      */
     public boolean eliminarRuta(Ruta ruta) {
 
-        String sql = "DELETE FROM Ruta where id = ?";
+        String sql = "DELETE FROM Rutas where id = ?";
 
         try {
 
@@ -223,7 +223,7 @@ public class RutaDAO {
      */
     public int contarRutas(int idUsuario) {
 
-        String sql = "SELECT COUNT(*) FROM Ruta WHERE id_usuario = ?";
+        String sql = "SELECT COUNT(*) FROM Rutas WHERE id_usuario = ?";
 
         try {
 

@@ -15,7 +15,6 @@ public class LectorFAQ {
     /**
      * Lee el archivo faq.txt y retorna una lista de pares [pregunta, respuesta].
      *
-     * @param ruta Ruta del archivo faq.txt
      * @return Lista de arreglos String[] donde [0]=pregunta y [1]=respuesta
      */
     public static List<String[]> leerFAQ() {

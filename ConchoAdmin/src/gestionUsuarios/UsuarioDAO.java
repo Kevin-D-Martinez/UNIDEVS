@@ -1,6 +1,6 @@
 package gestionUsuarios;
 
-import asignaciones.ConexionMySQL;
+import conexion.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +24,7 @@ public class UsuarioDAO {
      * @return 1/0
      */
     public int login(String email, String contraseña){
-        String sql = "SELECT * FROM Usuario WHERE email = ?";
+        String sql = "SELECT * FROM Usuarios WHERE email = ?";
        
         try{
             con = ConexionMySQL.conectar();
@@ -64,7 +64,7 @@ public class UsuarioDAO {
      */
     public int agregar(Usuario c){
         
-        String sql = "INSERT INTO Usuario(nombre, apellido, email, contraseña) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Usuarios(nombre, apellido, email, contraseña) VALUES (?, ?, ?, ?)";
         
         try{
             con = ConexionMySQL.conectar();
@@ -98,7 +98,7 @@ public class UsuarioDAO {
     public int actualizar(Usuario c){
         int r = 0;
         
-        String sql = "UPDATE Usuario set nombre=?, apellido=?, email=?, contraseña=? WHERE id=?";
+        String sql = "UPDATE Usuarios set nombre=?, apellido=?, email=?, contraseña=? WHERE id=?";
         
         try{
             con = ConexionMySQL.conectar();
@@ -133,11 +133,11 @@ public class UsuarioDAO {
      */
     public int eliminar(int id){
         
-        String sql1 = "DELETE FROM Pago WHERE id_usuario = ?";
-        String sql2 = "DELETE FROM Vehiculo WHERE id_usuario = ?";
-        String sql3 = "DELETE FROM Chofer WHERE id_usuario = ?";
-        String sql4 = "DELETE FROM Ruta WHERE id_usuario = ?";
-        String sql5 = "DELETE FROM Usuario WHERE id = ?";
+        String sql1 = "DELETE FROM Pagos WHERE id_usuario = ?";
+        String sql2 = "DELETE FROM Vehiculos WHERE id_usuario = ?";
+        String sql3 = "DELETE FROM Choferes WHERE id_usuario = ?";
+        String sql4 = "DELETE FROM Rutas WHERE id_usuario = ?";
+        String sql5 = "DELETE FROM Usuarios WHERE id = ?";
         
         try{
             con = ConexionMySQL.conectar();

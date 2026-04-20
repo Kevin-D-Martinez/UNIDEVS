@@ -1,6 +1,6 @@
 package gestionVehiculos;
 
-import asignaciones.ConexionMySQL;
+import conexion.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +28,7 @@ public class VehiculoDAO {
      */
     public List<Vehiculo> listar(int idUsuario) {
 
-        String sql = "SELECT * FROM Vehiculo WHERE id_usuario = ?";
+        String sql = "SELECT * FROM Vehiculos WHERE id_usuario = ?";
         List<Vehiculo> datos = new ArrayList<>();
 
         try {
@@ -70,7 +70,7 @@ public class VehiculoDAO {
      */
     public Vehiculo cargarVehiculo(int id) {
 
-        String sql = "SELECT * FROM Vehiculo WHERE id = ?";
+        String sql = "SELECT * FROM Vehiculos WHERE id = ?";
         Vehiculo v = null;
 
         try {
@@ -109,7 +109,7 @@ public class VehiculoDAO {
      */
     public int agregar(Vehiculo v) {
 
-        String sql = "INSERT INTO Vehiculo(marca, modelo, año, matricula, id_chofer, id_ruta, id_usuario) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Vehiculos(marca, modelo, año, matricula, id_chofer, id_ruta, id_usuario) VALUES(?,?,?,?,?,?,?)";
 
         try {
 
@@ -135,9 +135,11 @@ public class VehiculoDAO {
 
     /**
      * Actualiza un vehículo existente en la base de datos.
+     * @param v
+     * @return 
      */
     public int actualizar(Vehiculo v) {
-        String sql = "UPDATE Vehiculo SET marca=?, modelo=?, año=?, matricula=?, id_chofer=?, id_ruta=?, id_usuario=? WHERE id=?";
+        String sql = "UPDATE Vehiculos SET marca=?, modelo=?, año=?, matricula=?, id_chofer=?, id_ruta=?, id_usuario=? WHERE id=?";
 
         try {
 
@@ -169,7 +171,7 @@ public class VehiculoDAO {
      * @return
      */
     public int eliminar(int id) {
-        String sql = "DELETE FROM Vehiculo WHERE id = ?";
+        String sql = "DELETE FROM Vehiculos WHERE id = ?";
 
         try {
             con = ConexionMySQL.conectar();
@@ -190,7 +192,7 @@ public class VehiculoDAO {
      * @return
      */
     public int contarVehiculos(int idUsuario) {
-        String sql = "SELECT COUNT(*) FROM Vehiculo WHERE id_usuario = ?";
+        String sql = "SELECT COUNT(*) FROM Vehiculos WHERE id_usuario = ?";
         int total = 0;
 
         try {
@@ -219,7 +221,7 @@ public class VehiculoDAO {
      */
     public List<Vehiculo> filtrarVehiculo(String valorBuscar, int id_usuario) {
 
-        String sql = "SELECT * FROM Vehiculo "
+        String sql = "SELECT * FROM Vehiculos "
                 + "WHERE (marca LIKE ? OR modelo LIKE ? OR año LIKE ? OR matricula LIKE ?) AND id_usuario = ?";
 
         List<Vehiculo> datos = new ArrayList<>();

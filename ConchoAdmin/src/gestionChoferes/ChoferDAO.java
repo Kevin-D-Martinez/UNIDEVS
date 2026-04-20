@@ -1,6 +1,6 @@
 package gestionChoferes;
 
-import asignaciones.ConexionMySQL;
+import conexion.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +29,7 @@ public class ChoferDAO {
      */
     public int contarChoferesActivos(int idUsuario) {
 
-        String sql = "SELECT COUNT(*) FROM Chofer WHERE estado = 'Activo' AND id_usuario = ?";
+        String sql = "SELECT COUNT(*) FROM Choferes WHERE estado = 'Activo' AND id_usuario = ?";
 
         try {
 
@@ -60,7 +60,7 @@ public class ChoferDAO {
      */
     public List<Chofer> listarChoferActivo(String estado, int idUsuario) {
 
-        String sql = "SELECT * FROM Chofer "
+        String sql = "SELECT * FROM Choferes "
                 + "WHERE estado = ? AND id_usuario = ?";
 
         List<Chofer> datos = new ArrayList<>();
@@ -100,7 +100,7 @@ public class ChoferDAO {
      */
     public List<Chofer> listarChofer(String valorBuscar, int idUsuario) {
 
-        String sql = "SELECT * FROM Chofer "
+        String sql = "SELECT * FROM Choferes "
                 + "WHERE (nombre LIKE ? OR apellido LIKE ? OR cedula LIKE ?) AND id_usuario = ?";
 
         List<Chofer> datos = new ArrayList<>();
@@ -143,7 +143,7 @@ public class ChoferDAO {
      * @return datos
      */
     public List<Chofer> listar(int idUsuario) {
-        String sql = "SELECT * FROM Chofer WHERE id_usuario = ?";
+        String sql = "SELECT * FROM Choferes WHERE id_usuario = ?";
         List<Chofer> datos = new ArrayList<>();
         try {
 
@@ -174,11 +174,11 @@ public class ChoferDAO {
      * Este metodo se encarga de listar todos los choferes.El mismo devuelve un
      * objeto tipo arrayList.
      *
-     * @param id_usuario
+     * @param id
      * @return datos
      */
     public Chofer cargarChofer(int id) {
-        String sql = "SELECT * FROM Chofer WHERE id = ?";
+        String sql = "SELECT * FROM Choferes WHERE id = ?";
 
         try {
 
@@ -215,7 +215,7 @@ public class ChoferDAO {
      */
     public int agregar(Chofer c) {
 
-        String sql = "INSERT INTO Chofer(nombre, apellido, cedula, telefono, estado, id_ruta, id_usuario) "
+        String sql = "INSERT INTO Choferes(nombre, apellido, cedula, telefono, estado, id_ruta, id_usuario) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
@@ -250,7 +250,7 @@ public class ChoferDAO {
     public int actualizar(Chofer c) {
         int r = 0;
 
-        String sql = "UPDATE Chofer set nombre=?, apellido=?, cedula=?, telefono=?, estado=? WHERE id=?";
+        String sql = "UPDATE Choferes set nombre=?, apellido=?, cedula=?, telefono=?, estado=? WHERE id=?";
 
         try {
             con = ConexionMySQL.conectar();
@@ -290,7 +290,7 @@ public class ChoferDAO {
 
         int r = 0;
 
-        String sql = "DELETE FROM Chofer WHERE id = " + id;
+        String sql = "DELETE FROM Choferes WHERE id = " + id;
 
         try {
             con = ConexionMySQL.conectar();

@@ -1,4 +1,4 @@
-package asignaciones;
+package conexion;
 
 import java.io.FileInputStream;
 import java.io.IOException;
