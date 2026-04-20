@@ -44,9 +44,9 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (connect != null) {
-//                    connect.close();
-//                }
+                if (connect != null) {
+                    connect.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
             }
@@ -97,9 +97,9 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (connect != null) {
-//                    connect.close();
-//                }
+                if (connect != null) {
+                    connect.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
             }
@@ -153,9 +153,9 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (connect != null) {
-//                    connect.close();
-//                }
+                if (connect != null) {
+                    connect.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
             }
@@ -202,9 +202,9 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (connect != null) {
-//                    connect.close();
-//                }
+                if (connect != null) {
+                    connect.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
             }
@@ -244,9 +244,9 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (connect != null) {
-//                    connect.close();
-//                }
+                if (connect != null) {
+                    connect.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
             }
@@ -282,9 +282,9 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (connect != null) {
-//                    connect.close();
-//                }
+                if (connect != null) {
+                    connect.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
             }
@@ -328,9 +328,9 @@ public class RutaDAO {
                 if (ps != null) {
                     ps.close();
                 }
-//                if (connect != null) {
-//                    connect.close();
-//                }
+                if (connect != null) {
+                    connect.close();
+                }
             } catch (SQLException e) {
                 System.out.println("Error cerrando conexión: " + e);
             }

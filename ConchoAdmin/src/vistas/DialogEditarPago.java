@@ -244,14 +244,6 @@ public class DialogEditarPago extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMontoActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAceptarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void comboMetodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMetodoActionPerformed
         Ruta rutaSeleccionada = (Ruta) comboRuta.getSelectedItem();
         if (rutaSeleccionada == null) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.");
@@ -288,6 +280,14 @@ public class DialogEditarPago extends javax.swing.JDialog {
         
         dispose();
         home.mostrarPagos();
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void comboMetodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMetodoActionPerformed
+        
     }//GEN-LAST:event_comboMetodoActionPerformed
 
     private void cargarRutas() {
