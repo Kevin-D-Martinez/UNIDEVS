@@ -16,8 +16,8 @@ public class Pago {
     private double monto;
     private String metodoPago;
     private String estadoPago;
-    private int id_chofer;
-    private int id_ruta;
+    private String id_chofer;
+    private String id_ruta;
     private int id_usuario;
     private String fechaCreacion; 
     
@@ -56,11 +56,11 @@ public class Pago {
         return estadoPago;
     }
 
-    public int getId_chofer() {
+    public String getId_chofer() {
         return id_chofer;
     }
 
-    public int getId_ruta() {
+    public String getId_ruta() {
         return id_ruta;
     }
 
@@ -91,11 +91,11 @@ public class Pago {
         this.estadoPago = estadoPago;
     }
 
-    public void setId_chofer(int id_chofer) {
+    public void setId_chofer(String id_chofer) {
         this.id_chofer = id_chofer;
     }
 
-    public void setId_ruta(int id_ruta) {
+    public void setId_ruta(String id_ruta) {
         this.id_ruta = id_ruta;
     }
 
