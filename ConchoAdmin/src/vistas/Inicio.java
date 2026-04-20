@@ -4,10 +4,10 @@ import gestionChoferes.*;
 import gestionPago.*;
 import gestionRutas.*;
 import gestionUsuarios.*;
+import gestionVehiculos.*;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.text.NumberFormat;
-import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -40,6 +40,7 @@ public class Inicio extends javax.swing.JFrame {
     RutaControlador controller = new RutaControlador();
     PagoDAO controllerPagos = new PagoDAO();
     ChoferDAO controllerChoferes = new ChoferDAO();
+    VehiculoDAO controllerVehiculos = new VehiculoDAO();
 
     //Llama al usuario activo
     Usuario actual = Sesion.getInstancia().getUsuarioActual();
@@ -69,6 +70,7 @@ public class Inicio extends javax.swing.JFrame {
         configurarTablaRutas();
         configurarTablaPagos();
         configurarTablaChoferes();
+        configurarTablaVehiculos();
 
         // Cuenta los objetos para los contadores del inicio
         actualizarContadores(idUsuario);
@@ -164,10 +166,11 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         tblPagos = new javax.swing.JTable();
         pnlInfo = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
         jSeparator13 = new javax.swing.JSeparator();
         scrollFAQ = new javax.swing.JScrollPane();
         jLabel25 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         pnlSide = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -894,15 +897,23 @@ public class Inicio extends javax.swing.JFrame {
 
         tblVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Marca", "Modelo", "Año", "Chofer"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(tblVehiculos);
 
         javax.swing.GroupLayout pnlVehiculosLayout = new javax.swing.GroupLayout(pnlVehiculos);
@@ -1108,12 +1119,6 @@ public class Inicio extends javax.swing.JFrame {
 
         pnlInfo.setBackground(new java.awt.Color(255, 254, 236));
 
-        jLabel24.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel24.setText("Versión 1.0");
-        jLabel24.setIconTextGap(10);
-
         jSeparator13.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator13.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -1127,6 +1132,19 @@ public class Inicio extends javax.swing.JFrame {
         jLabel25.setText("Sobre ConchoAdmin");
         jLabel25.setIconTextGap(10);
 
+        jScrollPane1.setBorder(null);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(255, 254, 236));
+        jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(23, 31, 38));
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Concho admin es un sistema de gestión de rutas de transporte público que permite administrar choferes, vehículos y rutas. Con el fin de que los dueños de rutas tengan un mayor manejo de sus ingresos y choferes.\n\nVersión 1.0\nCreado por UNIDEVS:\nDarvin Mendez - Lider del equipo             Zoila García - UX/UI\nLuis Moscoso - SQA                                     Kevin Martinez - Administrador Base de Datos");
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setBorder(null);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout pnlInfoLayout = new javax.swing.GroupLayout(pnlInfo);
         pnlInfo.setLayout(pnlInfoLayout);
         pnlInfoLayout.setHorizontalGroup(
@@ -1136,16 +1154,16 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlInfoLayout.createSequentialGroup()
                         .addComponent(jLabel25)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(349, Short.MAX_VALUE))
                     .addGroup(pnlInfoLayout.createSequentialGroup()
                         .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(scrollFAQ)
-                            .addComponent(jSeparator13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlInfoLayout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel24)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jSeparator13, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(35, 35, 35))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInfoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
         pnlInfoLayout.setVerticalGroup(
             pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1153,12 +1171,12 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel24)
-                .addGap(147, 147, 147)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollFAQ, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pnlContenido.add(pnlInfo, "card7");
@@ -1349,6 +1367,7 @@ public class Inicio extends javax.swing.JFrame {
         pnlContenido.add(pnlVehiculos);
         pnlContenido.repaint();
         pnlContenido.revalidate();
+        mostrarVehiculos();
     }//GEN-LAST:event_btnVehiculosActionPerformed
 
     private void btnRutasInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasInicioActionPerformed
@@ -1380,6 +1399,7 @@ public class Inicio extends javax.swing.JFrame {
         pnlContenido.add(pnlVehiculos);
         pnlContenido.repaint();
         pnlContenido.revalidate();
+        mostrarVehiculos();
     }//GEN-LAST:event_btnVehiculosInicioActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
@@ -1665,6 +1685,54 @@ public class Inicio extends javax.swing.JFrame {
         // Pone el formato a la cédula
         tblChoferes.getColumnModel().getColumn(3).setCellRenderer(new CedulaRenderer());
     }
+    
+    /**
+     * Carga y muestra todas las rutas del usuario activo en la tabla tblVehiculos.
+     *
+     * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
+     * También mide e imprime el tiempo de carga en consola para diagnóstico.
+     *
+     */
+    public void mostrarVehiculos() {
+        long inicio = System.currentTimeMillis();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblVehiculos.getModel();
+        modelo.setRowCount(0);
+
+        List<Vehiculo> vehiculos = controllerVehiculos.listar(idUsuario);
+
+        for (Vehiculo vehiculo : vehiculos) {
+            Object[] fila = new Object[5];
+
+            fila[0] = vehiculo.getId();
+            fila[1] = vehiculo.getMarca();
+            fila[2] = vehiculo.getModelo();
+            fila[3] = vehiculo.getAño();
+            fila[4] = vehiculo.getIdChofer();
+
+            // 3. Agregar fila
+            modelo.addRow(fila);
+        }
+
+        tblVehiculos.setModel(modelo);
+
+        long fin = System.currentTimeMillis();
+        System.out.println("Tiempo: " + (fin - inicio));
+    }
+
+    /**
+     * Configura el comportamiento y apariencia de la tabla tblVehiculos.
+     *
+     * Fija el ancho de la columna ID a 0 (para que no aparezca)
+     */
+    private void configurarTablaVehiculos() {
+        tblVehiculos.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+
+        // Fija el tamaño de la columna ID en Vehiculos
+        tblVehiculos.getColumnModel().getColumn(0).setMinWidth(0);
+        tblVehiculos.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblVehiculos.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
 
     /**
      * Carga y muestra todos los pagos del usuario activo en la tabla tblPagos.
@@ -1727,7 +1795,8 @@ public class Inicio extends javax.swing.JFrame {
     private void actualizarContadores(int usuarioActivo) {
         lblRutasCreadas.setText(String.valueOf(controller.contarRutas(usuarioActivo)));
         //lblChoferesActivos.setText(String.valueOf(controllerChoferes.contarRutas(usuarioActivo)));
-        //lblPagosPendientes.setText(String.valueOf(controllerPagos.contarPagosPendientes(usuarioActivo)));
+        lblPagosPendientes.setText(String.valueOf(controllerPagos.contarPagosPendientes(usuarioActivo)));
+        lblVehiculosRegistrados.setText(String.valueOf(controllerVehiculos.contarVehiculos(usuarioActivo)));
     }
 
     /**
@@ -1895,7 +1964,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1906,6 +1974,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1923,6 +1992,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblChoferesActivos;
     private javax.swing.JLabel lblPagosPendientes;
     private javax.swing.JLabel lblRutas;

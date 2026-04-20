@@ -119,13 +119,14 @@ public class PagoDAO{
 }
     
     // Metodo para Contar Pagos Pendientes
-    public int contarPagosPendientes(){
-        String sql = "SELECT COUNT(*) AS total FROM Pago WHERE id_usuario = 'Pendiente'";
+    public int contarPagosPendientes(int idUsuario){
+        String sql = "SELECT COUNT(*) AS total FROM Pago WHERE id_usuario = ? AND estado = 'Pendiente'";
         int total = 0;
         
         try{
           con = ConexionMySQL.conectar();
           ps = con.prepareStatement(sql);
+          ps.setInt(1, idUsuario);
           rs = ps.executeQuery();
           
           if (rs.next()){

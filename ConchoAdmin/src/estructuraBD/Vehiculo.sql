@@ -12,3 +12,5 @@ CREATE TABLE Vehiculo(
     FOREIGN KEY (id_ruta) REFERENCES Ruta(id),
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 )
+
+SELECT * FROM Vehiculo

@@ -61,6 +61,7 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
         lblRutas.setBackground(new java.awt.Color(153, 153, 153));
         lblRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRutas.setForeground(new java.awt.Color(23, 31, 38));
+        lblRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/009-distance32.png"))); // NOI18N
         lblRutas.setText("Eliminar ruta");
         lblRutas.setIconTextGap(10);
 

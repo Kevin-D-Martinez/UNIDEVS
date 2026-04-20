@@ -48,13 +48,7 @@ public class ChoferDAO {
         }catch(SQLException e){
             System.out.println("Error al listar los choferes: " + e);
         }finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar: " + e);
-            }
+            cerrarRecursos();
         }
         return datos;
     }
@@ -86,6 +80,8 @@ public class ChoferDAO {
             }
         }catch(SQLException e){
             System.out.println("Error al listar los choferes: " + e);
+        } finally {
+            cerrarRecursos();
         }
         return datos;
     }
@@ -118,13 +114,7 @@ public class ChoferDAO {
         } catch (SQLException e) {
             System.out.println("Error al insertar chofer: " + e);
         } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar: " + e);
-            }
+            cerrarRecursos();
         }
         return 1;
     }
@@ -162,13 +152,7 @@ public class ChoferDAO {
         } catch (SQLException e) {
             System.out.println("Error al tratar de actualizar chofer: " + e);
         } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar: " + e);
-            }
+            cerrarRecursos();
         }
         return r;
     }
@@ -198,14 +182,19 @@ public class ChoferDAO {
         } catch (SQLException e) {
             System.out.println("Error al tratar de borrar chofer: " + e);
         } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar: " + e);
-            }
+            cerrarRecursos();
         }
         return r;
+    }
+    
+     // Metodo para cerrar recursos
+    private void cerrarRecursos(){
+        try{
+            if(rs != null) rs.close();
+            if(ps != null) ps.close();
+            if(con != null) con.close();
+        } catch(SQLException e){
+            System.err.println("Error al cerrar: " + e.getMessage());
+        }
     }
 }
