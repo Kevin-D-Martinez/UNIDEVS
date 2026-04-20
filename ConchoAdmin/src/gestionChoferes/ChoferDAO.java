@@ -18,6 +18,36 @@ public class ChoferDAO {
     ResultSet rs;
     
     /**
+     * Método que cuenta el total de choferes activos para un usuario en específico.
+     * Retorna el número total de choferes activos del usuario, o 0 si no tiene choferes activos o hay un
+     * error.
+     * @param idUsuario 
+     * @return 
+     */
+    public int contarChoferesActivos(int idUsuario) {
+
+        String sql = "SELECT COUNT(*) FROM Chofer WHERE estado = 'Activo' AND id_usuario = ?";
+
+        try {
+
+            con = gestionRutas.ConexionMySQL.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idUsuario);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al contar choferes activos: " + e);
+        } finally {
+            cerrarRecursos();
+        }
+        return 0;
+    }
+    
+    /**
      * Este metodo se encarga de listar los choferes activos. El mismo devuelve un objeto tipo arrayList.
      * @param estado
      * @param id_usuario
@@ -235,7 +265,7 @@ public class ChoferDAO {
             if(ps != null) ps.close();
             if(con != null) con.close();
         } catch(SQLException e){
-            System.err.println("Error al cerrar: " + e.getMessage());
+            System.err.println("Error al cerrar conexión: " + e.getMessage());
         }
     }
 }

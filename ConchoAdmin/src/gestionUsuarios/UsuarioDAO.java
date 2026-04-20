@@ -131,8 +131,6 @@ public class UsuarioDAO {
      * @return r
      */
     public int eliminar(int id){
-
-        int r = 0;
         
         String sql1 = "DELETE FROM Pago WHERE id_usuario = ?";
         String sql2 = "DELETE FROM Vehiculo WHERE id_usuario = ?";
@@ -142,39 +140,54 @@ public class UsuarioDAO {
         
         try{
             con = ConexionMySQL.conectar();
+            con.setAutoCommit(false);
             
-            PreparedStatement ps1 = con.prepareStatement(sql1);
-            ps1.setInt(1, id);
-            ps1.executeUpdate();
+            ps = con.prepareStatement(sql1);
+            ps.setInt(1, id);
+            ps.executeUpdate();
             
             PreparedStatement ps2 = con.prepareStatement(sql2);
             ps2.setInt(1, id);
             ps2.executeUpdate();
             
-            PreparedStatement ps3 = con.prepareStatement(sql2);
+            PreparedStatement ps3 = con.prepareStatement(sql3);
             ps3.setInt(1, id);
             ps3.executeUpdate();
             
-            PreparedStatement ps4 = con.prepareStatement(sql3);
+            PreparedStatement ps4 = con.prepareStatement(sql4);
             ps4.setInt(1, id);
             ps4.executeUpdate();
             
-            PreparedStatement ps5 = con.prepareStatement(sql4);
+            PreparedStatement ps5 = con.prepareStatement(sql5);
             ps5.setInt(1, id);
             ps5.executeUpdate();
             
-            r = ps1.executeUpdate() + ps2.executeUpdate() + ps3.executeUpdate() + ps4.executeUpdate() + ps5.executeUpdate();
-            if(r == 5){
-                return 1;
-            }else{
+            con.commit();
+            
+            try{
+                ps2.close();
+                ps3.close();
+                ps4.close();
+                ps5.close();
+            } catch(SQLException e){
+                System.err.println("Error al cerrar recursos: " + e.getMessage());
+            }
+            
+            return 1;
+        } catch (SQLException e) {
+            try {
+                if (con != null) {
+                    con.rollback();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error en rollback: " + ex);
                 return 0;
             }
-        } catch (SQLException e) {
             System.out.println("Error al tratar de borrar usuario: " + e);
         } finally {
             cerrarRecursos();
         }
-        return r;
+        return 0;
     }
     
      // Metodo para cerrar recursos
@@ -184,7 +197,7 @@ public class UsuarioDAO {
             if(ps != null) ps.close();
             if(con != null) con.close();
         } catch(SQLException e){
-            System.err.println("Error al cerrar: " + e.getMessage());
+            System.err.println("Error al cerrar conexión: " + e.getMessage());
         }
     }
 }
