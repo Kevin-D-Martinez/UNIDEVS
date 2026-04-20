@@ -135,7 +135,7 @@ public class ChoferDAO {
      */
     public int agregar(Chofer c){
         
-        String sql = "INSERT INTO Chofere(nombre, apellido, cedula, telefono, estado, id_ruta, id_usuario) "
+        String sql = "INSERT INTO Chofer(nombre, apellido, cedula, telefono, estado, id_ruta, id_usuario) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         try{

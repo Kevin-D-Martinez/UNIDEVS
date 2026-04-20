@@ -140,4 +140,9 @@ public class Chofer {
     public void setIdUsuario(int idUsuario){
         this.idUsuario = idUsuario;
     }
+    
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 }

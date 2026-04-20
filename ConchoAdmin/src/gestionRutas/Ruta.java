@@ -68,4 +68,9 @@ public class Ruta {
         this.idUsuario = idUsuario;
     }
 
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
+
 }

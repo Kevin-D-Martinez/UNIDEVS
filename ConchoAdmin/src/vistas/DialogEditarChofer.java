@@ -13,10 +13,13 @@ import javax.swing.JOptionPane;
  *
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
-public class DialogCrearChofer extends javax.swing.JDialog {
-
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearChofer.class.getName());
+public class DialogEditarChofer extends javax.swing.JDialog {
+    
+    Chofer chofer;
+    ChoferDAO controller = new ChoferDAO();
     private Inicio home;
+
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEditarChofer.class.getName());
 
     Usuario actual = Sesion.getInstancia().getUsuarioActual();
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
@@ -24,7 +27,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
     /**
      * Creates new form DialogCrearRuta
      */
-    public DialogCrearChofer(java.awt.Frame parent, boolean modal, Inicio home) {
+    public DialogEditarChofer(java.awt.Frame parent, boolean modal,int id, Inicio home) {
         super(parent, modal);
         this.home = home;
         initComponents();
@@ -63,7 +66,6 @@ public class DialogCrearChofer extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear ruta");
         setBackground(new java.awt.Color(255, 254, 236));
-        setPreferredSize(new java.awt.Dimension(400, 500));
 
         jPanel1.setBackground(new java.awt.Color(255, 254, 236));
         jPanel1.setForeground(new java.awt.Color(112, 112, 112));
@@ -72,7 +74,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
         lblRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRutas.setForeground(new java.awt.Color(23, 31, 38));
         lblRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/010-profile32.png"))); // NOI18N
-        lblRutas.setText("Crear chofer");
+        lblRutas.setText("Editar chofer");
         lblRutas.setIconTextGap(10);
 
         jSeparator1.setForeground(new java.awt.Color(112, 112, 112));
@@ -258,8 +260,6 @@ public class DialogCrearChofer extends javax.swing.JDialog {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
-        ChoferDAO controller = new ChoferDAO();
-
         Ruta rutaSeleccionada = (Ruta) comboRuta.getSelectedItem();
         if (rutaSeleccionada == null) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.");
@@ -280,7 +280,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
         }
 
         Chofer chofer = new Chofer(0, nombre, apellido, estado, idRuta, idUsuario, telefono, cedula);
-        int resultado = controller.actualizar(chofer);
+        int resultado = controller.agregar(chofer);
 
         if (resultado == 1) {
             System.out.println("Chofer guardado");

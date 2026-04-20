@@ -13,22 +13,23 @@ import javax.swing.JOptionPane;
  *
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
-public class DialogCrearChofer extends javax.swing.JDialog {
+public class DialogCrearVehiculo extends javax.swing.JDialog {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearChofer.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearVehiculo.class.getName());
     private Inicio home;
 
     Usuario actual = Sesion.getInstancia().getUsuarioActual();
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     /**
-     * Creates new form DialogCrearRuta
+     * Creates new form DialogCrearVehiculo
      */
-    public DialogCrearChofer(java.awt.Frame parent, boolean modal, Inicio home) {
+    public DialogCrearVehiculo(java.awt.Frame parent, boolean modal, Inicio home) {
         super(parent, modal);
         this.home = home;
         initComponents();
         cargarRutas();
+        cargarChoferes();
         setLocationRelativeTo(parent);
     }
 
@@ -53,17 +54,16 @@ public class DialogCrearChofer extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         comboRuta = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        comboEstado = new javax.swing.JComboBox<>();
+        comboChofer = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        txtApellido1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear ruta");
         setBackground(new java.awt.Color(255, 254, 236));
-        setPreferredSize(new java.awt.Dimension(400, 500));
 
         jPanel1.setBackground(new java.awt.Color(255, 254, 236));
         jPanel1.setForeground(new java.awt.Color(112, 112, 112));
@@ -71,8 +71,8 @@ public class DialogCrearChofer extends javax.swing.JDialog {
         lblRutas.setBackground(new java.awt.Color(153, 153, 153));
         lblRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRutas.setForeground(new java.awt.Color(23, 31, 38));
-        lblRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/010-profile32.png"))); // NOI18N
-        lblRutas.setText("Crear chofer");
+        lblRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/008-car32.png"))); // NOI18N
+        lblRutas.setText("Crear vehículo");
         lblRutas.setIconTextGap(10);
 
         jSeparator1.setForeground(new java.awt.Color(112, 112, 112));
@@ -87,7 +87,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel1.setText("Nombre:");
+        jLabel1.setText("Marca:");
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.setForeground(new java.awt.Color(112, 112, 112));
@@ -105,7 +105,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel3.setText("Apellido:");
+        jLabel3.setText("Modelo:");
 
         txtCedula.setBackground(new java.awt.Color(255, 255, 255));
         txtCedula.setForeground(new java.awt.Color(112, 112, 112));
@@ -115,17 +115,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel4.setText("Cédula:");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel5.setText("Teléfono:");
-
-        txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
-        txtTelefono.setForeground(new java.awt.Color(112, 112, 112));
-        txtTelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        txtTelefono.setCaretColor(new java.awt.Color(112, 112, 112));
-        txtTelefono.addActionListener(this::txtTelefonoActionPerformed);
+        jLabel4.setText("Matrícula:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(23, 31, 38));
@@ -139,14 +129,23 @@ public class DialogCrearChofer extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel7.setText("Estado:");
+        jLabel7.setText("Chofer:");
 
-        comboEstado.setBackground(new java.awt.Color(255, 255, 255));
-        comboEstado.setForeground(new java.awt.Color(112, 112, 112));
-        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-        comboEstado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        comboEstado.setMinimumSize(new java.awt.Dimension(64, 20));
-        comboEstado.setPreferredSize(new java.awt.Dimension(64, 20));
+        comboChofer.setBackground(new java.awt.Color(255, 255, 255));
+        comboChofer.setForeground(new java.awt.Color(112, 112, 112));
+        comboChofer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        comboChofer.setMinimumSize(new java.awt.Dimension(64, 20));
+        comboChofer.setPreferredSize(new java.awt.Dimension(64, 20));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(23, 31, 38));
+        jLabel8.setText("Año:");
+
+        txtApellido1.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellido1.setForeground(new java.awt.Color(112, 112, 112));
+        txtApellido1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txtApellido1.setCaretColor(new java.awt.Color(112, 112, 112));
+        txtApellido1.addActionListener(this::txtApellido1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -158,7 +157,6 @@ public class DialogCrearChofer extends javax.swing.JDialog {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1)
@@ -166,26 +164,30 @@ public class DialogCrearChofer extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombre)
-                            .addComponent(txtApellido)
                             .addComponent(txtCedula)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblAlerta)
                                 .addGap(0, 0, 0)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 116, Short.MAX_VALUE)
+                                        .addGap(0, 112, Short.MAX_VALUE)
                                         .addComponent(btnAceptar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnCancelar))
                                     .addComponent(comboRuta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(txtTelefono)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtApellido1))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblRutas)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(33, 33, 33)
-                        .addComponent(comboEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(36, 36, 36)
+                        .addComponent(comboChofer, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
@@ -199,29 +201,27 @@ public class DialogCrearChofer extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(18, 26, Short.MAX_VALUE)
+                .addGap(18, 20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 26, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel8)
+                    .addComponent(txtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 26, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAlerta)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
                         .addComponent(comboRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 26, Short.MAX_VALUE)
+                .addGap(18, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 28, Short.MAX_VALUE)
+                    .addComponent(comboChofer, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -238,7 +238,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 467, Short.MAX_VALUE)
+            .addGap(0, 386, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -257,40 +257,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-
-        ChoferDAO controller = new ChoferDAO();
-
-        Ruta rutaSeleccionada = (Ruta) comboRuta.getSelectedItem();
-        if (rutaSeleccionada == null) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.");
-            return;
-        }
-        int idRuta = rutaSeleccionada.getId();
-
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String cedula = txtCedula.getText();
-        String telefono = txtTelefono.getText();
-        String estado = comboEstado.getSelectedItem().toString();
-        int id_usuario = idUsuario;
-
-        if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty() || telefono.isEmpty() || estado.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar todos los datos");
-            return;
-        }
-
-        Chofer chofer = new Chofer(0, nombre, apellido, estado, idRuta, idUsuario, telefono, cedula);
-        int resultado = controller.actualizar(chofer);
-
-        if (resultado == 1) {
-            System.out.println("Chofer guardado");
-        } else {
-            System.out.println("Error al guardar");
-            return;
-        }
-
-        dispose();
-        home.mostrarChoferes();
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
@@ -301,9 +268,9 @@ public class DialogCrearChofer extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCedulaActionPerformed
 
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+    private void txtApellido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellido1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoActionPerformed
+    }//GEN-LAST:event_txtApellido1ActionPerformed
 
     private void cargarRutas() {
         RutaDAO rutaDAO = new RutaDAO();
@@ -316,24 +283,35 @@ public class DialogCrearChofer extends javax.swing.JDialog {
         }
     }
 
+    private void cargarChoferes() {
+        ChoferDAO choferDAO = new ChoferDAO();
+        List<Chofer> choferes = choferDAO.listar(idUsuario); // filtra por usuario actual
+
+        comboChofer.removeAllItems();
+
+        for (Chofer chofer : choferes) {
+            comboChofer.addItem(chofer);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JComboBox<String> comboEstado;
+    private javax.swing.JComboBox<Chofer> comboChofer;
     private javax.swing.JComboBox<Ruta> comboRuta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAlerta;
     private javax.swing.JLabel lblRutas;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtApellido1;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

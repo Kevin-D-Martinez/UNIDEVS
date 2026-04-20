@@ -30,8 +30,8 @@ public class PagoDAO{
             ps.setDouble(1, pago.getMonto());
             ps.setString(2, pago.getMetodoPago());
             ps.setString(3, pago.getEstadoPago());
-            ps.setString(4, pago.getId_chofer());
-            ps.setString(5, pago.getId_ruta());
+            ps.setInt(4, pago.getId_chofer());
+            ps.setInt(5, pago.getId_ruta());
             ps.setInt(6, pago.getId_usuario());
             
             int resultado = ps.executeUpdate();
@@ -46,12 +46,13 @@ public class PagoDAO{
     
 }
     // Metodo para Listar (Ver todos los pagos
-    public List<Pago> listarPagos() {
+    public List<Pago> listarPagos(int idUsuario) {
     List<Pago> lista = new ArrayList<>();
-    String sql = "SELECT * FROM Pago ORDER BY fechaCreacion DESC";
+    String sql = "SELECT * FROM Pago WHERE id_usuario = ? ORDER BY fechaCreacion DESC";
     try {
         con = ConexionMySQL.conectar();
         ps = con.prepareStatement(sql);
+        ps.setInt(1, idUsuario);
         rs = ps.executeQuery();
         while (rs.next()) {
             Pago p = new Pago();
@@ -59,8 +60,8 @@ public class PagoDAO{
             p.setMonto(rs.getDouble("monto"));
             p.setMetodoPago(rs.getString("metodoPago"));
             p.setEstadoPago(rs.getString("estado"));
-            p.setId_chofer(rs.getString("id_chofer"));
-            p.setId_ruta(rs.getString("id_ruta"));
+            p.setId_chofer(rs.getInt("id_chofer"));
+            p.setId_ruta(rs.getInt("id_ruta"));
             p.setId_usuario(rs.getInt("id_usuario"));
             p.setFechaCreacion(rs.getString("fechaCreacion"));
             lista.add(p);
@@ -104,8 +105,8 @@ public class PagoDAO{
             p.setMonto(rs.getDouble("monto"));
             p.setMetodoPago(rs.getString("metodoPago"));
             p.setEstadoPago(rs.getString("estado"));
-            p.setId_chofer(rs.getString("id_chofer"));
-            p.setId_ruta(rs.getString("id_ruta"));
+            p.setId_chofer(rs.getInt("id_chofer"));
+            p.setId_ruta(rs.getInt("id_ruta"));
             p.setId_usuario(rs.getInt("id_usuario"));
             p.setFechaCreacion(rs.getString("fechaCreacion"));
             lista.add(p);

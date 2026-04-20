@@ -1474,11 +1474,22 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChoferesBuscarActionPerformed
 
     private void btnChoferesCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesCrearActionPerformed
-        // TODO add your handling code here:
+        DialogCrearChofer dialog = new DialogCrearChofer(this, true, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnChoferesCrearActionPerformed
 
     private void btnChoferesEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesEditarActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tblChoferes.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
+
+        int id = (int) this.tblChoferes.getValueAt(fila, 0);
+
+        DialogEditarChofer dialog = new DialogEditarChofer(this, true, id, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnChoferesEditarActionPerformed
 
     private void btnChoferesEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesEliminarActionPerformed
@@ -1498,7 +1509,8 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVehiculosBuscarActionPerformed
 
     private void btnVehiculosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosCrearActionPerformed
-        // TODO add your handling code here:
+        DialogCrearVehiculo dialog = new DialogCrearVehiculo(this, true, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnVehiculosCrearActionPerformed
 
     private void btnVehiculosEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosEditarActionPerformed
@@ -1642,15 +1654,16 @@ public class Inicio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblChoferes.getModel();
         modelo.setRowCount(0);
 
-        List<Chofer> choferes = controllerChoferes.listar();
+        List<Chofer> choferes = controllerChoferes.listar(idUsuario);
 
         for (Chofer chofer : choferes) {
-            Object[] fila = new Object[4];
+            Object[] fila = new Object[5];
 
             fila[0] = chofer.getId();
             fila[1] = chofer.getNombre();
             fila[2] = chofer.getApellido();
             fila[3] = chofer.getCedula();
+            fila[4] = chofer.getEstado();
 
             // 3. Agregar fila
             modelo.addRow(fila);
@@ -1747,7 +1760,7 @@ public class Inicio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblPagos.getModel();
         modelo.setRowCount(0);
 
-        List<Pago> pagos = controllerPagos.listarPorChofer(idUsuario);
+        List<Pago> pagos = controllerPagos.listarPagos(idUsuario);
 
         for (Pago pago : pagos) {
             Object[] fila = new Object[4];
@@ -1784,7 +1797,7 @@ public class Inicio extends javax.swing.JFrame {
         tblPagos.getColumnModel().getColumn(0).setPreferredWidth(0);
 
         // Configura el estilo de dinero
-        tblPagos.getColumnModel().getColumn(3).setCellRenderer(new MonedaRenderer());
+        tblPagos.getColumnModel().getColumn(2).setCellRenderer(new MonedaRenderer());
 
     }
 
