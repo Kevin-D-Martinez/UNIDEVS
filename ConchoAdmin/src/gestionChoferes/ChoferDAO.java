@@ -18,21 +18,61 @@ public class ChoferDAO {
     ResultSet rs;
     
     /**
-     * Este metodo se encarga de listar un chofer.
-     * El mismo devuelve un objeto tipo arrayList.
-     * @param valorBuscar
+     * Este metodo se encarga de listar los choferes activos. El mismo devuelve un objeto tipo arrayList.
+     * @param estado
+     * @param id_usuario
      * @return datos
      */
-    public List<Chofer> listarChofer(String valorBuscar){
+    public List<Chofer> listarChoferActivo(String estado, int id_usuario){
         
         String sql = "SELECT * FROM Chofer "+
-                     "WHERE id||nombre||apellido||cedula||telefono||estado LIKE '%"+valorBuscar+"%'";
+                     "WHERE estado = ? AND id_usuario = ?";
         
         List<Chofer>datos = new ArrayList<>();
         try{
             
             con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
+            ps.setString(1, estado);
+            ps.setInt(2, id_usuario);
+            rs  = ps.executeQuery();
+            
+            while(rs.next()){
+                Chofer c = new Chofer();
+                c.setId(rs.getInt(1));
+                c.setNombre(rs.getString(2));
+                c.setApellido(rs.getString(3));
+                c.setCedula(rs.getString(4));
+                c.setTelefono(rs.getString(5));
+                c.setEstado(rs.getString(6));
+                datos.add(c);
+            }
+        }catch(SQLException e){
+            System.out.println("Error al listar los choferes: " + e);
+        }finally {
+            cerrarRecursos();
+        }
+        return datos;
+    }
+    
+    /**
+     * Este metodo se encarga de listar un chofer.El mismo devuelve un objeto tipo arrayList.
+     * @param valorBuscar
+     * @param id_usuario
+     * @return datos
+     */
+    public List<Chofer> listarChofer(String valorBuscar, int id_usuario){
+        
+        String sql = "SELECT * FROM Chofer "+
+                     "WHERE nombre||apellido||cedula LIKE '%?%' AND id_usuario = ?";
+        
+        List<Chofer>datos = new ArrayList<>();
+        try{
+            
+            con = ConexionMySQL.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, valorBuscar);
+            ps.setInt(2, id_usuario);
             rs  = ps.executeQuery();
             
             while(rs.next()){
@@ -55,17 +95,18 @@ public class ChoferDAO {
     
     
     /**
-     * Este metodo se encarga de listar todos los choferes. 
-     * El mismo devuelve un objeto tipo arrayList.
+     * Este metodo se encarga de listar todos los choferes.El mismo devuelve un objeto tipo arrayList.
+     * @param id_usuario
      * @return datos
      */
-    public List<Chofer> listar(){
-        String sql = "SELECT * FROM Chofer";
+    public List<Chofer> listar(int id_usuario){
+        String sql = "SELECT * FROM Chofer WHERE id_usuario = ?";
         List<Chofer>datos = new ArrayList<>();
         try{
             
             con = ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
+            ps.setInt(1, id_usuario);
             rs  = ps.executeQuery();
             
             while(rs.next()){

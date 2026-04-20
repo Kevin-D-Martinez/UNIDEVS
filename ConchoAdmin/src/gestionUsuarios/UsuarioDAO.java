@@ -49,13 +49,7 @@ public class UsuarioDAO {
         } catch(SQLException e){
             System.out.println("Error al iniciar sesión: " + e);
         } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar: " + e);
-            }
+            cerrarRecursos();
         }
         
         return 0;
@@ -89,13 +83,7 @@ public class UsuarioDAO {
                 System.out.println("Error al insertar usuario: " + e);
             }
         } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar: " + e);
-            }
+            cerrarRecursos();
         }
         return 1;
     }
@@ -131,13 +119,7 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println("Error al tratar de actualizar usuario: " + e);
         } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar: " + e);
-            }
+            cerrarRecursos();
         }
         return r;
     }
@@ -190,14 +172,19 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println("Error al tratar de borrar usuario: " + e);
         } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar: " + e);
-            }
+            cerrarRecursos();
         }
         return r;
+    }
+    
+     // Metodo para cerrar recursos
+    private void cerrarRecursos(){
+        try{
+            if(rs != null) rs.close();
+            if(ps != null) ps.close();
+            if(con != null) con.close();
+        } catch(SQLException e){
+            System.err.println("Error al cerrar: " + e.getMessage());
+        }
     }
 }
