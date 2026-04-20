@@ -4,8 +4,8 @@ package vistas;
 
 import gestionChoferes.*;
 import gestionRutas.*;
-import gestionUsuarios.Sesion;
-import gestionUsuarios.Usuario;
+import gestionUsuarios.*;
+import gestionVehiculos.*;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -13,9 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
-public class DialogCrearVehiculo extends javax.swing.JDialog {
+public class DialogEditarVehiculo extends javax.swing.JDialog {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearVehiculo.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEditarVehiculo.class.getName());
+
+    Vehiculo vehiculo;
+    VehiculoDAO controller = new VehiculoDAO();
     private Inicio home;
 
     Usuario actual = Sesion.getInstancia().getUsuarioActual();
@@ -24,13 +27,22 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
     /**
      * Creates new form DialogCrearVehiculo
      */
-    public DialogCrearVehiculo(java.awt.Frame parent, boolean modal, Inicio home) {
+    public DialogEditarVehiculo(java.awt.Frame parent, boolean modal, int id, Inicio home) {
         super(parent, modal);
         this.home = home;
         initComponents();
         cargarRutas();
         cargarChoferes();
         setLocationRelativeTo(parent);
+
+        vehiculo = controller.cargarVehiculo(id);
+
+        txtModelo.setText(vehiculo.getModelo());
+        txtMarca.setText(vehiculo.getMarca());
+        txtAno.setText(vehiculo.getAño());
+        txtMatricula.setText(vehiculo.getMatricula());
+        seleccionarRuta(vehiculo.getIdRuta());
+        seleccionarChofer(vehiculo.getIdChofer());
     }
 
     /**
@@ -72,7 +84,7 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
         lblRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRutas.setForeground(new java.awt.Color(23, 31, 38));
         lblRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/008-car32.png"))); // NOI18N
-        lblRutas.setText("Crear vehículo");
+        lblRutas.setText("Editar vehículo");
         lblRutas.setIconTextGap(10);
 
         jSeparator1.setForeground(new java.awt.Color(112, 112, 112));
@@ -257,7 +269,49 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMarcaActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
+        
+        Ruta rutaSeleccionada = (Ruta) comboRuta.getSelectedItem();
+        if (rutaSeleccionada == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.");
+            return;
+        }
+        int idRuta = rutaSeleccionada.getId();
+        
+        Chofer choferSeleccionado = (Chofer) comboChofer.getSelectedItem();
+        if (choferSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un chofer.");
+            return;
+        }
+        int idChofer = choferSeleccionado.getId();
+        
+        String modelo = txtModelo.getText();
+        String marca = txtMarca.getText();
+        String ano = txtAno.getText();
+        String matricula = txtMatricula.getText();
+        
+        if (modelo.isEmpty() || marca.isEmpty() || ano.isEmpty() || matricula.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos.");
+            return;
+        }
+        
+        vehiculo.setMarca(marca);
+        vehiculo.setModelo(modelo);
+        vehiculo.setAño(ano);
+        vehiculo.setMatricula(matricula);
+        vehiculo.setIdChofer(idChofer);
+        vehiculo.setIdRuta(idRuta);
+                
+        int resultado = controller.actualizar(vehiculo);
+
+        if (resultado == 1) {
+            System.out.println("Vehiculo guardado");
+        } else {
+            System.out.println("Error al guardar");
+            return;
+        }
+        
+        dispose();
+        home.mostrarVehiculos();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloActionPerformed
@@ -291,6 +345,26 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
 
         for (Chofer chofer : choferes) {
             comboChofer.addItem(chofer);
+        }
+    }
+
+    private void seleccionarRuta(int idRuta) {
+        for (int i = 0; i < comboRuta.getItemCount(); i++) {
+            Ruta ruta = comboRuta.getItemAt(i);
+            if (ruta.getId() == idRuta) {
+                comboRuta.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+
+    private void seleccionarChofer(int idChofer) {
+        for (int i = 0; i < comboChofer.getItemCount(); i++) {
+            Chofer chofer = comboChofer.getItemAt(i);
+            if (chofer.getId() == idChofer) {
+                comboChofer.setSelectedIndex(i);
+                break;
+            }
         }
     }
 

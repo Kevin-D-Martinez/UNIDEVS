@@ -4,8 +4,7 @@ package vistas;
 
 import gestionChoferes.*;
 import gestionRutas.*;
-import gestionUsuarios.Sesion;
-import gestionUsuarios.Usuario;
+import gestionUsuarios.*;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -13,18 +12,18 @@ import javax.swing.JOptionPane;
  *
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
-public class DialogCrearVehiculo extends javax.swing.JDialog {
+public class DialogEditarPago extends javax.swing.JDialog {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearVehiculo.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEditarPago.class.getName());
     private Inicio home;
 
     Usuario actual = Sesion.getInstancia().getUsuarioActual();
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     /**
-     * Creates new form DialogCrearVehiculo
+     * Creates new form DialogEditarPago
      */
-    public DialogCrearVehiculo(java.awt.Frame parent, boolean modal, Inicio home) {
+    public DialogEditarPago(java.awt.Frame parent, boolean modal,  int id, Inicio home) {
         super(parent, modal);
         this.home = home;
         initComponents();
@@ -48,18 +47,16 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
         btnCancelar = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        txtMarca = new javax.swing.JTextField();
+        txtMonto = new javax.swing.JTextField();
         lblAlerta = new javax.swing.JLabel();
-        txtModelo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtMatricula = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         comboRuta = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         comboChofer = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        txtAno = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        comboMetodo = new javax.swing.JComboBox<>();
+        comboEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear ruta");
@@ -71,8 +68,8 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
         lblRutas.setBackground(new java.awt.Color(153, 153, 153));
         lblRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRutas.setForeground(new java.awt.Color(23, 31, 38));
-        lblRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/008-car32.png"))); // NOI18N
-        lblRutas.setText("Crear vehículo");
+        lblRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/007-coin32.png"))); // NOI18N
+        lblRutas.setText("Editar pago");
         lblRutas.setIconTextGap(10);
 
         jSeparator1.setForeground(new java.awt.Color(112, 112, 112));
@@ -87,35 +84,15 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel1.setText("Marca:");
+        jLabel1.setText("Monto:");
 
-        txtMarca.setBackground(new java.awt.Color(255, 255, 255));
-        txtMarca.setForeground(new java.awt.Color(112, 112, 112));
-        txtMarca.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        txtMarca.setCaretColor(new java.awt.Color(112, 112, 112));
-        txtMarca.addActionListener(this::txtMarcaActionPerformed);
+        txtMonto.setBackground(new java.awt.Color(255, 255, 255));
+        txtMonto.setForeground(new java.awt.Color(112, 112, 112));
+        txtMonto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txtMonto.setCaretColor(new java.awt.Color(112, 112, 112));
+        txtMonto.addActionListener(this::txtMontoActionPerformed);
 
         lblAlerta.setForeground(new java.awt.Color(153, 0, 0));
-
-        txtModelo.setBackground(new java.awt.Color(255, 255, 255));
-        txtModelo.setForeground(new java.awt.Color(112, 112, 112));
-        txtModelo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        txtModelo.setCaretColor(new java.awt.Color(112, 112, 112));
-        txtModelo.addActionListener(this::txtModeloActionPerformed);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel3.setText("Modelo:");
-
-        txtMatricula.setBackground(new java.awt.Color(255, 255, 255));
-        txtMatricula.setForeground(new java.awt.Color(112, 112, 112));
-        txtMatricula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        txtMatricula.setCaretColor(new java.awt.Color(112, 112, 112));
-        txtMatricula.addActionListener(this::txtMatriculaActionPerformed);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel4.setText("Matrícula:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(23, 31, 38));
@@ -139,13 +116,26 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel8.setText("Año:");
+        jLabel8.setText("Estado:");
 
-        txtAno.setBackground(new java.awt.Color(255, 255, 255));
-        txtAno.setForeground(new java.awt.Color(112, 112, 112));
-        txtAno.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        txtAno.setCaretColor(new java.awt.Color(112, 112, 112));
-        txtAno.addActionListener(this::txtAnoActionPerformed);
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(23, 31, 38));
+        jLabel9.setText("Método:");
+
+        comboMetodo.setBackground(new java.awt.Color(255, 255, 255));
+        comboMetodo.setForeground(new java.awt.Color(112, 112, 112));
+        comboMetodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Transfer", "Tarjeta" }));
+        comboMetodo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        comboMetodo.setMinimumSize(new java.awt.Dimension(64, 20));
+        comboMetodo.setPreferredSize(new java.awt.Dimension(64, 20));
+        comboMetodo.addActionListener(this::comboMetodoActionPerformed);
+
+        comboEstado.setBackground(new java.awt.Color(255, 255, 255));
+        comboEstado.setForeground(new java.awt.Color(112, 112, 112));
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Pagado" }));
+        comboEstado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        comboEstado.setMinimumSize(new java.awt.Dimension(64, 20));
+        comboEstado.setPreferredSize(new java.awt.Dimension(64, 20));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,15 +146,19 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblRutas)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel7))
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMarca)
-                            .addComponent(txtMatricula)
+                            .addComponent(comboMetodo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtMonto)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblAlerta)
                                 .addGap(0, 0, 0)
@@ -174,20 +168,9 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
                                         .addComponent(btnAceptar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnCancelar))
-                                    .addComponent(comboRuta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtAno))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblRutas)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(36, 36, 36)
-                        .addComponent(comboChofer, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(comboChofer, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(comboEstado, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboRuta, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
@@ -199,29 +182,27 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(18, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel8)
-                    .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 22, Short.MAX_VALUE)
+                    .addComponent(jLabel9)
+                    .addComponent(comboMetodo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addComponent(comboRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAlerta)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(comboRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 21, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(comboChofer, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 22, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addComponent(comboChofer, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -238,39 +219,29 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
+            .addGap(0, 355, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
+    private void txtMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMontoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMarcaActionPerformed
+    }//GEN-LAST:event_txtMontoActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarActionPerformed
 
-    private void txtModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtModeloActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
+    private void comboMetodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMetodoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatriculaActionPerformed
-
-    private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnoActionPerformed
+    }//GEN-LAST:event_comboMetodoActionPerformed
 
     private void cargarRutas() {
         RutaDAO rutaDAO = new RutaDAO();
@@ -298,20 +269,18 @@ public class DialogCrearVehiculo extends javax.swing.JDialog {
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<Chofer> comboChofer;
+    private javax.swing.JComboBox<String> comboEstado;
+    private javax.swing.JComboBox<String> comboMetodo;
     private javax.swing.JComboBox<Ruta> comboRuta;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAlerta;
     private javax.swing.JLabel lblRutas;
-    private javax.swing.JTextField txtAno;
-    private javax.swing.JTextField txtMarca;
-    private javax.swing.JTextField txtMatricula;
-    private javax.swing.JTextField txtModelo;
+    private javax.swing.JTextField txtMonto;
     // End of variables declaration//GEN-END:variables
 }

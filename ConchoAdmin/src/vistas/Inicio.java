@@ -1493,7 +1493,17 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChoferesEditarActionPerformed
 
     private void btnChoferesEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesEliminarActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tblChoferes.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
+
+        int id = (int) this.tblChoferes.getValueAt(fila, 0);
+
+        DialogEliminarChofer dialog = new DialogEliminarChofer(this, true, id, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnChoferesEliminarActionPerformed
 
     private void btnChoferesDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesDetallesActionPerformed
@@ -1514,11 +1524,31 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVehiculosCrearActionPerformed
 
     private void btnVehiculosEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosEditarActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tblVehiculos.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
+
+        int id = (int) this.tblVehiculos.getValueAt(fila, 0);
+
+        DialogEditarVehiculo dialog = new DialogEditarVehiculo(this, true, id, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnVehiculosEditarActionPerformed
 
     private void btnVehiculosEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosEliminarActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tblVehiculos.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
+
+        int id = (int) this.tblVehiculos.getValueAt(fila, 0);
+
+        DialogEliminarVehiculo dialog = new DialogEliminarVehiculo(this, true, id, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnVehiculosEliminarActionPerformed
 
     private void btnVehiculosVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosVerActionPerformed
@@ -1530,15 +1560,36 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPagosVerActionPerformed
 
     private void btnPagosEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosEliminarActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tblPagos.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
+
+        int id = (int) this.tblPagos.getValueAt(fila, 0);
+
+        DialogEliminarPago dialog = new DialogEliminarPago(this, true, id, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnPagosEliminarActionPerformed
 
     private void btnPagosEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosEditarActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tblPagos.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
+
+        int id = (int) this.tblPagos.getValueAt(fila, 0);
+
+        DialogEditarPago dialog = new DialogEditarPago(this, true, id, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnPagosEditarActionPerformed
 
     private void btnPagosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosCrearActionPerformed
-        // TODO add your handling code here:
+        DialogCrearPago dialog = new DialogCrearPago(this, true, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnPagosCrearActionPerformed
 
     private void btnPagosBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosBuscarActionPerformed

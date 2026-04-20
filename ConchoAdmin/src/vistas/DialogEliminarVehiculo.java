@@ -2,33 +2,32 @@
  */
 package vistas;
 
-import gestionRutas.Ruta;
-import gestionRutas.RutaControlador;
+import gestionVehiculos.*;
 
 /**
  *
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
-public class DialogEliminarRuta extends javax.swing.JDialog {
+public class DialogEliminarVehiculo extends javax.swing.JDialog {
     
-    Ruta ruta;
-    RutaControlador controller = new RutaControlador();
+    Vehiculo vehiculo;
+    VehiculoDAO controller = new VehiculoDAO();
     private Inicio home;
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEliminarRuta.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEliminarVehiculo.class.getName());
 
     /**
-     * Creates new form DialogEliminarRuta
+     * Creates new form DialogEliminarVehiculo
      */
-    public DialogEliminarRuta(java.awt.Frame parent, boolean modal, int id, Inicio home) {
+    public DialogEliminarVehiculo(java.awt.Frame parent, boolean modal, int id, Inicio home) {
         super(parent, modal);
         this.home = home;
         initComponents();
         setLocationRelativeTo(parent);
 
-        ruta = controller.cargarRuta(id);
+        vehiculo = controller.cargarVehiculo(id);
         
-        txtNombreRuta.setText(ruta.getNombre());
+        txtNombre.setText(vehiculo.getMarca() + " " + vehiculo.getModelo() + " " + vehiculo.getAño());
     }
 
     /**
@@ -47,12 +46,11 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
         btnAceptar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblAlerta = new javax.swing.JLabel();
-        txtNombreRuta = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear ruta");
         setBackground(new java.awt.Color(255, 254, 236));
-        setMaximumSize(new java.awt.Dimension(406, 216));
         setMinimumSize(new java.awt.Dimension(406, 216));
 
         jPanel1.setBackground(new java.awt.Color(255, 254, 236));
@@ -61,8 +59,8 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
         lblRutas.setBackground(new java.awt.Color(153, 153, 153));
         lblRutas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRutas.setForeground(new java.awt.Color(23, 31, 38));
-        lblRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/009-distance32.png"))); // NOI18N
-        lblRutas.setText("Eliminar ruta");
+        lblRutas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/008-car32.png"))); // NOI18N
+        lblRutas.setText("Eliminar vehículo");
         lblRutas.setIconTextGap(10);
 
         jSeparator1.setForeground(new java.awt.Color(112, 112, 112));
@@ -78,14 +76,14 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(23, 31, 38));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("¿Seguro que quieres eliminar esta ruta?");
+        jLabel1.setText("¿Seguro que quieres eliminar este vehículo?");
 
         lblAlerta.setForeground(new java.awt.Color(153, 0, 0));
 
-        txtNombreRuta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtNombreRuta.setForeground(new java.awt.Color(112, 112, 112));
-        txtNombreRuta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtNombreRuta.setText("NombreRuta");
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(112, 112, 112));
+        txtNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtNombre.setText("NombreVehículo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,7 +105,7 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnCancelar))
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNombreRuta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator1))))
                 .addGap(23, 23, 23))
         );
@@ -126,7 +124,7 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addGap(0, 0, 0)
-                        .addComponent(txtNombreRuta)
+                        .addComponent(txtNombre)
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,9 +155,9 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        boolean resultado = controller.eliminarRuta(ruta);
+        int resultado = controller.eliminar(vehiculo.getId());
 
-        if (resultado) {
+        if (resultado == 0) {
             System.out.println("Ruta eliminada");
         } else {
             System.out.println("Error al eliminar");
@@ -167,7 +165,7 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
         }
         
         dispose();
-        home.mostrarRutas();
+        home.mostrarVehiculos();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -178,6 +176,6 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAlerta;
     private javax.swing.JLabel lblRutas;
-    private javax.swing.JLabel txtNombreRuta;
+    private javax.swing.JLabel txtNombre;
     // End of variables declaration//GEN-END:variables
 }

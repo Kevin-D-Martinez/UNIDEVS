@@ -12,6 +12,4 @@ CREATE TABLE Pago(
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 )
 
-SELECT * from Pago WHERE id_usuario = 9 AND estado = 'Pendiente';
-
-SELECT COUNT(*) AS total FROM Pago WHERE id_usuario = 9 AND estado = 'Pendiente'
+SELECT * from Pago;
