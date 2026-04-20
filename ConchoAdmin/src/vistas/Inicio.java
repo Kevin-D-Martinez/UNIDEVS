@@ -27,6 +27,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.ToolTipManager;
 import utilidades.LectorFAQ;
 
 /**
@@ -77,6 +78,9 @@ public class Inicio extends javax.swing.JFrame {
 
         // Actualiza el nombre de usuario en el inicio
         lblUsuario.setText("Hola, " + actual.getNombre());
+
+        // Que los tooltips aparezcan más rápido
+        ToolTipManager.sharedInstance().setInitialDelay(200); // más rápido
     }
 
     /**
@@ -115,6 +119,7 @@ public class Inicio extends javax.swing.JFrame {
         btnVehiculosInicio = new javax.swing.JButton();
         pnlRutas = new javax.swing.JPanel();
         lblRutas = new javax.swing.JLabel();
+        btnRutasRecargar = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
@@ -125,9 +130,9 @@ public class Inicio extends javax.swing.JFrame {
         btnRutasEliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblRutas = new javax.swing.JTable();
-        btnRutasRecargar = new javax.swing.JButton();
         pnlChoferes = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        btnChoferesRecargar = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
@@ -152,12 +157,12 @@ public class Inicio extends javax.swing.JFrame {
         btnVehiculosVer = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblVehiculos = new javax.swing.JTable();
+        btnVehiculosRecargar = new javax.swing.JButton();
         pnlPagos = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jSeparator10 = new javax.swing.JSeparator();
         jSeparator11 = new javax.swing.JSeparator();
         jLabel23 = new javax.swing.JLabel();
-        txtPagos = new javax.swing.JTextField();
         btnPagosBuscar = new javax.swing.JButton();
         btnPagosCrear = new javax.swing.JButton();
         btnPagosEditar = new javax.swing.JButton();
@@ -165,6 +170,8 @@ public class Inicio extends javax.swing.JFrame {
         btnPagosVer = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblPagos = new javax.swing.JTable();
+        btnPagosRecargar = new javax.swing.JButton();
+        comboChofer = new javax.swing.JComboBox<>();
         pnlInfo = new javax.swing.JPanel();
         jSeparator13 = new javax.swing.JSeparator();
         scrollFAQ = new javax.swing.JScrollPane();
@@ -533,6 +540,16 @@ public class Inicio extends javax.swing.JFrame {
         lblRutas.setText("Rutas");
         lblRutas.setIconTextGap(10);
 
+        btnRutasRecargar.setBackground(new java.awt.Color(244, 231, 149));
+        btnRutasRecargar.setForeground(new java.awt.Color(23, 31, 38));
+        btnRutasRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/reload.png"))); // NOI18N
+        btnRutasRecargar.setBorder(null);
+        btnRutasRecargar.setIconTextGap(6);
+        btnRutasRecargar.setMaximumSize(new java.awt.Dimension(40, 40));
+        btnRutasRecargar.setMinimumSize(new java.awt.Dimension(40, 40));
+        btnRutasRecargar.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnRutasRecargar.addActionListener(this::btnRutasRecargarActionPerformed);
+
         jSeparator4.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator4.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -610,13 +627,6 @@ public class Inicio extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblRutas);
 
-        btnRutasRecargar.setBackground(new java.awt.Color(244, 231, 149));
-        btnRutasRecargar.setForeground(new java.awt.Color(23, 31, 38));
-        btnRutasRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/reload.png"))); // NOI18N
-        btnRutasRecargar.setBorder(null);
-        btnRutasRecargar.setIconTextGap(6);
-        btnRutasRecargar.addActionListener(this::btnRutasRecargarActionPerformed);
-
         javax.swing.GroupLayout pnlRutasLayout = new javax.swing.GroupLayout(pnlRutas);
         pnlRutas.setLayout(pnlRutasLayout);
         pnlRutasLayout.setHorizontalGroup(
@@ -672,7 +682,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(btnRutasEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnRutasEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
 
@@ -689,6 +699,16 @@ public class Inicio extends javax.swing.JFrame {
         jLabel6.setText("Choferes");
         jLabel6.setIconTextGap(10);
 
+        btnChoferesRecargar.setBackground(new java.awt.Color(244, 231, 149));
+        btnChoferesRecargar.setForeground(new java.awt.Color(23, 31, 38));
+        btnChoferesRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/reload.png"))); // NOI18N
+        btnChoferesRecargar.setBorder(null);
+        btnChoferesRecargar.setIconTextGap(6);
+        btnChoferesRecargar.setMaximumSize(new java.awt.Dimension(40, 40));
+        btnChoferesRecargar.setMinimumSize(new java.awt.Dimension(40, 40));
+        btnChoferesRecargar.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnChoferesRecargar.addActionListener(this::btnChoferesRecargarActionPerformed);
+
         jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator6.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -701,6 +721,7 @@ public class Inicio extends javax.swing.JFrame {
 
         txtChoferes.setBackground(new java.awt.Color(255, 255, 255));
         txtChoferes.setForeground(new java.awt.Color(112, 112, 112));
+        txtChoferes.setToolTipText("Buscar por nombre, apellido o cédula");
         txtChoferes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtChoferes.setCaretColor(new java.awt.Color(112, 112, 112));
         txtChoferes.addActionListener(this::txtChoferesActionPerformed);
@@ -740,7 +761,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnChoferesDetalles.setBackground(new java.awt.Color(244, 231, 149));
         btnChoferesDetalles.setForeground(new java.awt.Color(23, 31, 38));
-        btnChoferesDetalles.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
+        btnChoferesDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/006-info16.png"))); // NOI18N
         btnChoferesDetalles.setText("Ver detalles");
         btnChoferesDetalles.setBorder(null);
         btnChoferesDetalles.setIconTextGap(6);
@@ -748,17 +769,17 @@ public class Inicio extends javax.swing.JFrame {
 
         tblChoferes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "Cedula"
+                "ID", "Nombre", "Cedula", "Telefono", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -779,9 +800,11 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(pnlChoferesLayout.createSequentialGroup()
                         .addComponent(btnChoferesDetalles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnChoferesEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnChoferesEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnChoferesEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnChoferesEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnChoferesRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlChoferesLayout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
@@ -817,12 +840,14 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlChoferesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnChoferesEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChoferesEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChoferesDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlChoferesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlChoferesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnChoferesEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnChoferesEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnChoferesDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnChoferesRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
 
@@ -850,6 +875,7 @@ public class Inicio extends javax.swing.JFrame {
 
         txtVehiculos.setBackground(new java.awt.Color(255, 255, 255));
         txtVehiculos.setForeground(new java.awt.Color(112, 112, 112));
+        txtVehiculos.setToolTipText("Buscar por modelo, marca, año o matrícula.");
         txtVehiculos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtVehiculos.setCaretColor(new java.awt.Color(112, 112, 112));
         txtVehiculos.addActionListener(this::txtVehiculosActionPerformed);
@@ -889,7 +915,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnVehiculosVer.setBackground(new java.awt.Color(244, 231, 149));
         btnVehiculosVer.setForeground(new java.awt.Color(23, 31, 38));
-        btnVehiculosVer.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
+        btnVehiculosVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/006-info16.png"))); // NOI18N
         btnVehiculosVer.setText("Ver detalles");
         btnVehiculosVer.setBorder(null);
         btnVehiculosVer.setIconTextGap(6);
@@ -903,18 +929,29 @@ public class Inicio extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Marca", "Modelo", "Año", "Chofer"
+                "ID", "Chofer", "Marca", "Modelo", "Año"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
+        tblVehiculos.setShowGrid(true);
         jScrollPane4.setViewportView(tblVehiculos);
+
+        btnVehiculosRecargar.setBackground(new java.awt.Color(244, 231, 149));
+        btnVehiculosRecargar.setForeground(new java.awt.Color(23, 31, 38));
+        btnVehiculosRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/reload.png"))); // NOI18N
+        btnVehiculosRecargar.setBorder(null);
+        btnVehiculosRecargar.setIconTextGap(6);
+        btnVehiculosRecargar.setMaximumSize(new java.awt.Dimension(40, 40));
+        btnVehiculosRecargar.setMinimumSize(new java.awt.Dimension(40, 40));
+        btnVehiculosRecargar.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnVehiculosRecargar.addActionListener(this::btnVehiculosRecargarActionPerformed);
 
         javax.swing.GroupLayout pnlVehiculosLayout = new javax.swing.GroupLayout(pnlVehiculos);
         pnlVehiculos.setLayout(pnlVehiculosLayout);
@@ -927,9 +964,11 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(pnlVehiculosLayout.createSequentialGroup()
                         .addComponent(btnVehiculosVer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVehiculosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVehiculosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVehiculosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnVehiculosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnVehiculosRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlVehiculosLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
@@ -965,12 +1004,14 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVehiculosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVehiculosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVehiculosVer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnVehiculosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVehiculosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVehiculosVer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVehiculosRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
 
@@ -994,13 +1035,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(112, 112, 112));
-        jLabel23.setText("Buscar:");
-
-        txtPagos.setBackground(new java.awt.Color(255, 255, 255));
-        txtPagos.setForeground(new java.awt.Color(112, 112, 112));
-        txtPagos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        txtPagos.setCaretColor(new java.awt.Color(112, 112, 112));
-        txtPagos.addActionListener(this::txtPagosActionPerformed);
+        jLabel23.setText("Buscar por chofer:");
 
         btnPagosBuscar.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosBuscar.setForeground(new java.awt.Color(23, 31, 38));
@@ -1037,7 +1072,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnPagosVer.setBackground(new java.awt.Color(244, 231, 149));
         btnPagosVer.setForeground(new java.awt.Color(23, 31, 38));
-        btnPagosVer.setIcon(new javax.swing.ImageIcon("D:\\OneDrive\\Documentos\\GitHub\\UNIDEVS\\ConchoAdmin\\resources\\icons\\16\\006-info.png")); // NOI18N
+        btnPagosVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/006-info16.png"))); // NOI18N
         btnPagosVer.setText("Ver detalles");
         btnPagosVer.setBorder(null);
         btnPagosVer.setIconTextGap(6);
@@ -1045,17 +1080,41 @@ public class Inicio extends javax.swing.JFrame {
 
         tblPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Chofer", "Monto", "Estado"
+                "ID", "Chofer", "Monto", "Metodo", "Estado"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tblPagos.setShowGrid(true);
         jScrollPane6.setViewportView(tblPagos);
+
+        btnPagosRecargar.setBackground(new java.awt.Color(244, 231, 149));
+        btnPagosRecargar.setForeground(new java.awt.Color(23, 31, 38));
+        btnPagosRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/reload.png"))); // NOI18N
+        btnPagosRecargar.setBorder(null);
+        btnPagosRecargar.setIconTextGap(6);
+        btnPagosRecargar.setMaximumSize(new java.awt.Dimension(40, 40));
+        btnPagosRecargar.setMinimumSize(new java.awt.Dimension(40, 40));
+        btnPagosRecargar.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnPagosRecargar.addActionListener(this::btnPagosRecargarActionPerformed);
+
+        comboChofer.setBackground(new java.awt.Color(255, 255, 255));
+        comboChofer.setForeground(new java.awt.Color(112, 112, 112));
+        comboChofer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        comboChofer.setMinimumSize(new java.awt.Dimension(64, 20));
+        comboChofer.setPreferredSize(new java.awt.Dimension(64, 20));
 
         javax.swing.GroupLayout pnlPagosLayout = new javax.swing.GroupLayout(pnlPagos);
         pnlPagos.setLayout(pnlPagosLayout);
@@ -1067,14 +1126,16 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(pnlPagosLayout.createSequentialGroup()
                         .addComponent(btnPagosVer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPagosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPagosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPagosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPagosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPagosRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlPagosLayout.createSequentialGroup()
                         .addComponent(jLabel23)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPagos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboChofer, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnPagosBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlPagosLayout.createSequentialGroup()
                         .addComponent(jLabel22)
@@ -1101,17 +1162,19 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnPagosBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(comboChofer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPagosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPagosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPagosVer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnPagosEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPagosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPagosVer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPagosRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
 
@@ -1429,7 +1492,7 @@ public class Inicio extends javax.swing.JFrame {
         }
 
         tblRutas.setModel(modelo);
-        txtBuscar.setText("");
+        //txtBuscar.setText("");
     }//GEN-LAST:event_btnRutasBuscarActionPerformed
 
     private void btnRutasCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasCrearActionPerformed
@@ -1470,7 +1533,31 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtChoferesActionPerformed
 
     private void btnChoferesBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesBuscarActionPerformed
-        // TODO add your handling code here:
+        if (txtChoferes.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar su búsqueda.");
+            return;
+        }
+
+        DefaultTableModel modelo = (DefaultTableModel) tblChoferes.getModel();
+        modelo.setRowCount(0);
+
+        List<Chofer> choferes = controllerChoferes.listarChofer(txtChoferes.getText(), idUsuario);
+
+        for (Chofer chofer : choferes) {
+            Object[] fila = new Object[5];
+
+            fila[0] = chofer.getId();
+            fila[1] = chofer.getNombre();
+            fila[2] = chofer.getApellido();
+            fila[3] = chofer.getCedula();
+            fila[4] = chofer.getEstado();
+
+            // 3. Agregar fila
+            modelo.addRow(fila);
+        }
+
+        tblChoferes.setModel(modelo);
+        //txtChoferes.setText("");
     }//GEN-LAST:event_btnChoferesBuscarActionPerformed
 
     private void btnChoferesCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesCrearActionPerformed
@@ -1507,7 +1594,17 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChoferesEliminarActionPerformed
 
     private void btnChoferesDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesDetallesActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tblChoferes.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
+
+        int id = (int) this.tblChoferes.getValueAt(fila, 0);
+
+        DialogVerChofer dialog = new DialogVerChofer(this, true, id, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnChoferesDetallesActionPerformed
 
     private void txtVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVehiculosActionPerformed
@@ -1515,7 +1612,31 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtVehiculosActionPerformed
 
     private void btnVehiculosBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosBuscarActionPerformed
-        // TODO add your handling code here:
+        if (txtVehiculos.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar su búsqueda.");
+            return;
+        }
+
+        DefaultTableModel modelo = (DefaultTableModel) tblVehiculos.getModel();
+        modelo.setRowCount(0);
+
+        List<Vehiculo> vehiculos = controllerVehiculos.filtrarVehiculo(txtVehiculos.getText(), idUsuario);
+
+        for (Vehiculo vehiculo : vehiculos) {
+            Object[] fila = new Object[5];
+
+            fila[0] = vehiculo.getId();
+            fila[1] = vehiculo.getMarca();
+            fila[2] = vehiculo.getModelo();
+            fila[3] = vehiculo.getAño();
+            fila[4] = vehiculo.getIdChofer();
+
+            // 3. Agregar fila
+            modelo.addRow(fila);
+        }
+
+        tblVehiculos.setModel(modelo);
+        txtVehiculos.setText("");
     }//GEN-LAST:event_btnVehiculosBuscarActionPerformed
 
     private void btnVehiculosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosCrearActionPerformed
@@ -1552,11 +1673,31 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVehiculosEliminarActionPerformed
 
     private void btnVehiculosVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosVerActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tblVehiculos.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
+
+        int id = (int) this.tblVehiculos.getValueAt(fila, 0);
+
+        DialogVerVehiculo dialog = new DialogVerVehiculo(this, true, id, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnVehiculosVerActionPerformed
 
     private void btnPagosVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosVerActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tblPagos.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila.");
+            return;
+        }
+
+        int id = (int) this.tblPagos.getValueAt(fila, 0);
+
+        DialogVerPago dialog = new DialogVerPago(this, true, id, this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnPagosVerActionPerformed
 
     private void btnPagosEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosEliminarActionPerformed
@@ -1593,12 +1734,34 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPagosCrearActionPerformed
 
     private void btnPagosBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPagosBuscarActionPerformed
+        Chofer choferSeleccionado = (Chofer) comboChofer.getSelectedItem();
+        if (choferSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un chofer.");
+            return;
+        }
+        int idChofer = choferSeleccionado.getId();
 
-    private void txtPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPagosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPagosActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tblPagos.getModel();
+        modelo.setRowCount(0);
+
+        List<Pago> pagos = controllerPagos.listarPorChofer(idChofer);
+
+        for (Pago pago : pagos) {
+            Object[] fila = new Object[4];
+
+            fila[0] = pago.getId();
+            fila[1] = pago.getId_chofer();
+            fila[2] = pago.getMonto();
+            fila[3] = pago.getEstadoPago();
+
+            // 3. Agregar fila
+            modelo.addRow(fila);
+        }
+
+        tblPagos.setModel(modelo);
+        comboChofer.setSelectedIndex(1);
+
+    }//GEN-LAST:event_btnPagosBuscarActionPerformed
 
     private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
         pnlContenido.removeAll();
@@ -1631,6 +1794,18 @@ public class Inicio extends javax.swing.JFrame {
                 -> scrollFAQ.getVerticalScrollBar().setValue(0)
         );
     }//GEN-LAST:event_btnInfoActionPerformed
+
+    private void btnPagosRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosRecargarActionPerformed
+        mostrarPagos();
+    }//GEN-LAST:event_btnPagosRecargarActionPerformed
+
+    private void btnVehiculosRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosRecargarActionPerformed
+        mostrarVehiculos();
+    }//GEN-LAST:event_btnVehiculosRecargarActionPerformed
+
+    private void btnChoferesRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesRecargarActionPerformed
+        mostrarChoferes();
+    }//GEN-LAST:event_btnChoferesRecargarActionPerformed
 
     /**
      * Carga y muestra todas las rutas del usuario activo en la tabla tblRutas.
@@ -1711,9 +1886,9 @@ public class Inicio extends javax.swing.JFrame {
             Object[] fila = new Object[5];
 
             fila[0] = chofer.getId();
-            fila[1] = chofer.getNombre();
-            fila[2] = chofer.getApellido();
-            fila[3] = chofer.getCedula();
+            fila[1] = chofer.getNombre() + " " + chofer.getApellido();
+            fila[2] = chofer.getCedula();
+            fila[3] = chofer.getTelefono();
             fila[4] = chofer.getEstado();
 
             // 3. Agregar fila
@@ -1729,9 +1904,8 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Configura el comportamiento y apariencia de la tabla tblChoferes.
      *
-     * Fija el ancho de la columna ID a 0 (para que no aparezca) y de la columna
-     * Cédula a 100px.
-     *
+     * Fija el ancho de la columna ID a 0 (para que no aparezca) y de la columnas cédula, estado y telefono a 100px.
+     * También da formado a las columnas cedula y telefono
      */
     private void configurarTablaChoferes() {
         tblChoferes.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
@@ -1742,16 +1916,28 @@ public class Inicio extends javax.swing.JFrame {
         tblChoferes.getColumnModel().getColumn(0).setPreferredWidth(0);
 
         // Fija el tamaño de la columna Cédula en tblChoferes
+        tblChoferes.getColumnModel().getColumn(2).setMinWidth(100);
+        tblChoferes.getColumnModel().getColumn(2).setMaxWidth(100);
+        tblChoferes.getColumnModel().getColumn(2).setPreferredWidth(100);
+        
+        // Fija el tamaño de la columna telefono en tblChoferes
         tblChoferes.getColumnModel().getColumn(3).setMinWidth(100);
         tblChoferes.getColumnModel().getColumn(3).setMaxWidth(100);
         tblChoferes.getColumnModel().getColumn(3).setPreferredWidth(100);
+        
+        // Fija el tamaño de la columna estado en tblChoferes
+        tblChoferes.getColumnModel().getColumn(4).setMinWidth(100);
+        tblChoferes.getColumnModel().getColumn(4).setMaxWidth(100);
+        tblChoferes.getColumnModel().getColumn(4).setPreferredWidth(100);
 
-        // Pone el formato a la cédula
-        tblChoferes.getColumnModel().getColumn(3).setCellRenderer(new CedulaRenderer());
+        // Pone el formato a la cédula y telefono
+        tblChoferes.getColumnModel().getColumn(2).setCellRenderer(new CedulaRenderer());
+        tblChoferes.getColumnModel().getColumn(3).setCellRenderer(new TelefonoRenderer());
     }
-    
+
     /**
-     * Carga y muestra todas las rutas del usuario activo en la tabla tblVehiculos.
+     * Carga y muestra todas las rutas del usuario activo en la tabla
+     * tblVehiculos.
      *
      * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
      * También mide e imprime el tiempo de carga en consola para diagnóstico.
@@ -1766,13 +1952,15 @@ public class Inicio extends javax.swing.JFrame {
         List<Vehiculo> vehiculos = controllerVehiculos.listar(idUsuario);
 
         for (Vehiculo vehiculo : vehiculos) {
+            Chofer chofer = controllerChoferes.cargarChofer(vehiculo.getIdChofer());
+            
             Object[] fila = new Object[5];
 
             fila[0] = vehiculo.getId();
-            fila[1] = vehiculo.getMarca();
-            fila[2] = vehiculo.getModelo();
-            fila[3] = vehiculo.getAño();
-            fila[4] = vehiculo.getIdChofer();
+            fila[1] = chofer.getNombre() + " " + chofer.getApellido();
+            fila[2] = vehiculo.getMarca();
+            fila[3] = vehiculo.getModelo();
+            fila[4] = vehiculo.getAño();
 
             // 3. Agregar fila
             modelo.addRow(fila);
@@ -1808,18 +1996,24 @@ public class Inicio extends javax.swing.JFrame {
     public void mostrarPagos() {
         long inicio = System.currentTimeMillis();
 
+        cargarChoferes();
+
         DefaultTableModel modelo = (DefaultTableModel) tblPagos.getModel();
         modelo.setRowCount(0);
 
         List<Pago> pagos = controllerPagos.listarPagos(idUsuario);
 
         for (Pago pago : pagos) {
-            Object[] fila = new Object[4];
+            
+            Chofer chofer = controllerChoferes.cargarChofer(pago.getId_chofer());
+            
+            Object[] fila = new Object[5];
 
             fila[0] = pago.getId();
-            fila[1] = pago.getId_chofer();
+            fila[1] = chofer.getNombre() + " " + chofer.getApellido();
             fila[2] = pago.getMonto();
-            fila[3] = pago.getEstadoPago();
+            fila[3] = pago.getMetodoPago();
+            fila[4] = pago.getEstadoPago();
 
             // 3. Agregar fila
             modelo.addRow(fila);
@@ -1846,6 +2040,11 @@ public class Inicio extends javax.swing.JFrame {
         tblPagos.getColumnModel().getColumn(0).setMinWidth(0);
         tblPagos.getColumnModel().getColumn(0).setMaxWidth(0);
         tblPagos.getColumnModel().getColumn(0).setPreferredWidth(0);
+        
+        // Fija el tamaño de la columna estado
+        tblChoferes.getColumnModel().getColumn(4).setMinWidth(100);
+        tblChoferes.getColumnModel().getColumn(4).setMaxWidth(100);
+        tblChoferes.getColumnModel().getColumn(4).setPreferredWidth(100);
 
         // Configura el estilo de dinero
         tblPagos.getColumnModel().getColumn(2).setCellRenderer(new MonedaRenderer());
@@ -1885,6 +2084,35 @@ public class Inicio extends javax.swing.JFrame {
                 }
 
                 value = cedula;
+            }
+
+            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        }
+    }
+    
+        /**
+     * Renderer personalizado para mostrar valores numéricos como cédula.
+     *
+     * Extiende DefaultTableCellRenderer y formatea los valores de la celda
+     */
+    public class TelefonoRenderer extends DefaultTableCellRenderer {
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus,
+                int row, int column) {
+
+            if (value != null) {
+                String telefono = value.toString().replaceAll("-", "");
+
+                if (telefono.length() == 10) {
+                    telefono = "("
+                            + telefono.substring(0, 3) + ") "
+                            + telefono.substring(3, 6) + "-"
+                            + telefono.substring(6);
+                }
+
+                value = telefono;
             }
 
             return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
@@ -1985,6 +2213,18 @@ public class Inicio extends javax.swing.JFrame {
         return item;
     }
 
+    private void cargarChoferes() {
+        ChoferDAO choferDAO = new ChoferDAO();
+        List<Chofer> choferes = choferDAO.listar(idUsuario); // filtra por usuario actual
+
+        comboChofer.removeAllItems();
+        comboChofer.addItem(null);
+
+        for (Chofer chofer : choferes) {
+            comboChofer.addItem(chofer);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnChoferes;
@@ -1994,6 +2234,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnChoferesEditar;
     private javax.swing.JButton btnChoferesEliminar;
     private javax.swing.JButton btnChoferesInicio;
+    private javax.swing.JButton btnChoferesRecargar;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnPagos;
@@ -2002,6 +2243,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnPagosEditar;
     private javax.swing.JButton btnPagosEliminar;
     private javax.swing.JButton btnPagosInicio;
+    private javax.swing.JButton btnPagosRecargar;
     private javax.swing.JButton btnPagosVer;
     private javax.swing.JButton btnRutas;
     private javax.swing.JButton btnRutasBuscar;
@@ -2016,7 +2258,9 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnVehiculosEditar;
     private javax.swing.JButton btnVehiculosEliminar;
     private javax.swing.JButton btnVehiculosInicio;
+    private javax.swing.JButton btnVehiculosRecargar;
     private javax.swing.JButton btnVehiculosVer;
+    private javax.swing.JComboBox<Chofer> comboChofer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -2078,7 +2322,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTable tblVehiculos;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtChoferes;
-    private javax.swing.JTextField txtPagos;
     private javax.swing.JTextField txtVehiculos;
     // End of variables declaration//GEN-END:variables
 }

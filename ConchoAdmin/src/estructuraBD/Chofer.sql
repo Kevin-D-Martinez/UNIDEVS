@@ -13,3 +13,5 @@ CREATE TABLE Chofer(
 )
 
 SELECT * FROM Chofer
+
+SELECT * FROM Chofer WHERE (nombre LIKE '%Ra%' OR apellido LIKE '%Ra%' OR cedula LIKE '%Ra%') AND id_usuario = 8

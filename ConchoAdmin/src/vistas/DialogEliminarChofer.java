@@ -49,7 +49,7 @@ public class DialogEliminarChofer extends javax.swing.JDialog {
         txtNombre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear ruta");
+        setTitle("Eliminar chofer");
         setBackground(new java.awt.Color(255, 254, 236));
         setMinimumSize(new java.awt.Dimension(406, 216));
 

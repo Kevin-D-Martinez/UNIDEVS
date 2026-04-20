@@ -56,7 +56,7 @@ public class DialogEditarRuta extends javax.swing.JDialog {
         lblAlerta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear ruta");
+        setTitle("Editar ruta");
         setBackground(new java.awt.Color(255, 254, 236));
 
         jPanel1.setBackground(new java.awt.Color(255, 254, 236));

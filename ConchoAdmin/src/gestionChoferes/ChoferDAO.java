@@ -9,20 +9,22 @@ import java.util.List;
 
 /**
  * DAO choferes.
+ *
  * @author Kevin Daniel Martinez Reyes
  */
 public class ChoferDAO {
-    
+
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    
+
     /**
-     * Método que cuenta el total de choferes activos para un usuario en específico.
-     * Retorna el número total de choferes activos del usuario, o 0 si no tiene choferes activos o hay un
-     * error.
-     * @param idUsuario 
-     * @return 
+     * Método que cuenta el total de choferes activos para un usuario en
+     * específico. Retorna el número total de choferes activos del usuario, o 0
+     * si no tiene choferes activos o hay un error.
+     *
+     * @param idUsuario
+     * @return
      */
     public int contarChoferesActivos(int idUsuario) {
 
@@ -30,7 +32,7 @@ public class ChoferDAO {
 
         try {
 
-            con = ConexionMySQL.conectar();
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
@@ -46,28 +48,30 @@ public class ChoferDAO {
         }
         return 0;
     }
-    
+
     /**
-     * Este metodo se encarga de listar los choferes activos. El mismo devuelve un objeto tipo arrayList.
+     * Este metodo se encarga de listar los choferes activos. El mismo devuelve
+     * un objeto tipo arrayList.
+     *
      * @param estado
      * @param id_usuario
      * @return datos
      */
-    public List<Chofer> listarChoferActivo(String estado, int id_usuario){
-        
-        String sql = "SELECT * FROM Chofer "+
-                     "WHERE estado = ? AND id_usuario = ?";
-        
-        List<Chofer>datos = new ArrayList<>();
-        try{
-            
-            con = ConexionMySQL.conectar();
+    public List<Chofer> listarChoferActivo(String estado, int id_usuario) {
+
+        String sql = "SELECT * FROM Chofer "
+                + "WHERE estado = ? AND id_usuario = ?";
+
+        List<Chofer> datos = new ArrayList<>();
+        try {
+
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setString(1, estado);
             ps.setInt(2, id_usuario);
-            rs  = ps.executeQuery();
-            
-            while(rs.next()){
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
                 Chofer c = new Chofer();
                 c.setId(rs.getInt(1));
                 c.setNombre(rs.getString(2));
@@ -77,102 +81,42 @@ public class ChoferDAO {
                 c.setEstado(rs.getString(6));
                 datos.add(c);
             }
-        }catch(SQLException e){
-            System.out.println("Error al listar los choferes: " + e);
-        }finally {
-            cerrarRecursos();
-        }
-        return datos;
-    }
-    
-    /**
-     * Este metodo se encarga de listar un chofer.El mismo devuelve un objeto tipo arrayList.
-     * @param valorBuscar
-     * @param id_usuario
-     * @return datos
-     */
-    public List<Chofer> listarChofer(String valorBuscar, int id_usuario){
-        
-        String sql = "SELECT * FROM Chofer "+
-                     "WHERE nombre||apellido||cedula LIKE '%?%' AND id_usuario = ?";
-        
-        List<Chofer>datos = new ArrayList<>();
-        try{
-            
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, valorBuscar);
-            ps.setInt(2, id_usuario);
-            rs  = ps.executeQuery();
-            
-            while(rs.next()){
-                Chofer c = new Chofer();
-                c.setId(rs.getInt(1));
-                c.setNombre(rs.getString(2));
-                c.setApellido(rs.getString(3));
-                c.setCedula(rs.getString(4));
-                c.setTelefono(rs.getString(5));
-                c.setEstado(rs.getString(6));
-                datos.add(c);
-            }
-        }catch(SQLException e){
-            System.out.println("Error al listar los choferes: " + e);
-        }finally {
-            cerrarRecursos();
-        }
-        return datos;
-    }
-    
-    
-    /**
-     * Este metodo se encarga de listar todos los choferes.El mismo devuelve un objeto tipo arrayList.
-     * @param id_usuario
-     * @return datos
-     */
-    public List<Chofer> listar(int id_usuario){
-        String sql = "SELECT * FROM Chofer WHERE id_usuario = ?";
-        List<Chofer>datos = new ArrayList<>();
-        try{
-            
-            con = ConexionMySQL.conectar();
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, id_usuario);
-            rs  = ps.executeQuery();
-            
-            while(rs.next()){
-                Chofer c = new Chofer();
-                c.setId(rs.getInt(1));
-                c.setNombre(rs.getString(2));
-                c.setApellido(rs.getString(3));
-                c.setCedula(rs.getString(4));
-                c.setTelefono(rs.getString(5));
-                c.setEstado(rs.getString(6));
-                datos.add(c);
-            }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Error al listar los choferes: " + e);
         } finally {
             cerrarRecursos();
         }
         return datos;
     }
-    
+
     /**
-     * Este metodo se encarga de listar todos los choferes.El mismo devuelve un objeto tipo arrayList.
+     * Este metodo se encarga de listar un chofer.El mismo devuelve un objeto
+     * tipo arrayList.
+     *
+     * @param valorBuscar
      * @param id_usuario
      * @return datos
      */
-    public Chofer cargarChofer(int id){
-        String sql = "SELECT * FROM Chofer WHERE id = ?";
+    public List<Chofer> listarChofer(String valorBuscar, int id_usuario) {
 
-        try{
-            
-            con = ConexionMySQL.conectar();
+        String sql = "SELECT * FROM Chofer "
+                + "WHERE (nombre LIKE ? OR apellido LIKE ? OR cedula LIKE ?) AND id_usuario = ?";
+
+        List<Chofer> datos = new ArrayList<>();
+        try {
+
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            rs  = ps.executeQuery();
-            
-            if(rs.next()){
+
+            String buscar = "%" + valorBuscar + "%";
+            ps.setString(1, buscar);
+            ps.setString(2, buscar);
+            ps.setString(3, buscar);
+            ps.setInt(4, id_usuario);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
                 Chofer c = new Chofer();
                 c.setId(rs.getInt(1));
                 c.setNombre(rs.getString(2));
@@ -180,31 +124,103 @@ public class ChoferDAO {
                 c.setCedula(rs.getString(4));
                 c.setTelefono(rs.getString(5));
                 c.setEstado(rs.getString(6));
+                datos.add(c);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar los choferes: " + e);
+        } finally {
+            cerrarRecursos();
+        }
+        return datos;
+    }
+
+    /**
+     * Este metodo se encarga de listar todos los choferes.El mismo devuelve un
+     * objeto tipo arrayList.
+     *
+     * @param id_usuario
+     * @return datos
+     */
+    public List<Chofer> listar(int id_usuario) {
+        String sql = "SELECT * FROM Chofer WHERE id_usuario = ?";
+        List<Chofer> datos = new ArrayList<>();
+        try {
+
+            con = asignaciones.ConexionMySQL.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id_usuario);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Chofer c = new Chofer();
+                c.setId(rs.getInt(1));
+                c.setNombre(rs.getString(2));
+                c.setApellido(rs.getString(3));
+                c.setCedula(rs.getString(4));
+                c.setTelefono(rs.getString(5));
+                c.setEstado(rs.getString(6));
+                datos.add(c);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar los choferes: " + e);
+        } finally {
+            cerrarRecursos();
+        }
+        return datos;
+    }
+
+    /**
+     * Este metodo se encarga de listar todos los choferes.El mismo devuelve un
+     * objeto tipo arrayList.
+     *
+     * @param id_usuario
+     * @return datos
+     */
+    public Chofer cargarChofer(int id) {
+        String sql = "SELECT * FROM Chofer WHERE id = ?";
+
+        try {
+
+            con = asignaciones.ConexionMySQL.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Chofer c = new Chofer();
+                c.setId(rs.getInt(1));
+                c.setNombre(rs.getString(2));
+                c.setApellido(rs.getString(3));
+                c.setCedula(rs.getString(4));
+                c.setTelefono(rs.getString(5));
+                c.setEstado(rs.getString(6));
+                c.setIdRuta(rs.getInt(7));
                 return c;
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Error al cargar chofer: " + e);
         } finally {
             cerrarRecursos();
         }
         return null;
     }
-    
+
     /**
-     * Este metodo se encarga de registrar un nuevo chofer.
-     * Devuelve un 1 si se ha realizado con exito la insercion.
+     * Este metodo se encarga de registrar un nuevo chofer. Devuelve un 1 si se
+     * ha realizado con exito la insercion.
+     *
      * @param c
      * @return 1
      */
-    public int agregar(Chofer c){
-        
+    public int agregar(Chofer c) {
+
         String sql = "INSERT INTO Chofer(nombre, apellido, cedula, telefono, estado, id_ruta, id_usuario) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        
-        try{
-            con = ConexionMySQL.conectar();
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
-                    
+
             ps.setString(1, c.getNombre());
             ps.setString(2, c.getApellido());
             ps.setString(3, c.getCedula());
@@ -212,9 +228,9 @@ public class ChoferDAO {
             ps.setString(5, c.getEstado());
             ps.setInt(6, c.getIdRuta());
             ps.setInt(7, c.getIdUsuario());
-            
+
             ps.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println("Error al insertar chofer: " + e);
         } finally {
@@ -222,20 +238,21 @@ public class ChoferDAO {
         }
         return 1;
     }
-    
+
     /**
-     * Este metodo se encarga de actualizar un chofer,
-     * devuelve el numero de choferes afectados.
+     * Este metodo se encarga de actualizar un chofer, devuelve el numero de
+     * choferes afectados.
+     *
      * @param c
      * @return r
      */
-    public int actualizar(Chofer c){
+    public int actualizar(Chofer c) {
         int r = 0;
-        
+
         String sql = "UPDATE Chofer set nombre=?, apellido=?, cedula=?, telefono=?, estado=? WHERE id=?";
-        
-        try{
-            con = ConexionMySQL.conectar();
+
+        try {
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, c.getNombre());
@@ -244,15 +261,15 @@ public class ChoferDAO {
             ps.setString(4, c.getTelefono());
             ps.setString(5, c.getEstado());
             ps.setInt(6, c.getId());
-            
+
             r = ps.executeUpdate();
-            
-            if(r == 1){
+
+            if (r == 1) {
                 return 1;
-            }else{
+            } else {
                 return 0;
             }
-            
+
         } catch (SQLException e) {
             System.out.println("Error al tratar de actualizar chofer: " + e);
         } finally {
@@ -261,26 +278,27 @@ public class ChoferDAO {
         return r;
     }
 
-        /**
-     * Este metodo se encarga de eliminar el chofer seleccionado.
-     * El mismo devuelve el numero de choferes afectados.
+    /**
+     * Este metodo se encarga de eliminar el chofer seleccionado. El mismo
+     * devuelve el numero de choferes afectados.
+     *
      * @param id
      * @return r
      */
-    public int eliminar(int id){
+    public int eliminar(int id) {
 
         int r = 0;
-        
+
         String sql = "DELETE FROM Chofer WHERE id = " + id;
-        
-        try{
-            con = ConexionMySQL.conectar();
+
+        try {
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
-            
+
             r = ps.executeUpdate();
-            if(r == 1){
+            if (r == 1) {
                 return 1;
-            }else{
+            } else {
                 return 0;
             }
         } catch (SQLException e) {
@@ -290,14 +308,18 @@ public class ChoferDAO {
         }
         return r;
     }
-    
-     // Metodo para cerrar recursos
-    private void cerrarRecursos(){
-        try{
-            if(rs != null) rs.close();
-            if(ps != null) ps.close();
-            if(con != null) con.close();
-        } catch(SQLException e){
+
+    // Metodo para cerrar recursos
+    private void cerrarRecursos() {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            //if(con != null) con.close();
+        } catch (SQLException e) {
             System.err.println("Error al cerrar conexión: " + e.getMessage());
         }
     }

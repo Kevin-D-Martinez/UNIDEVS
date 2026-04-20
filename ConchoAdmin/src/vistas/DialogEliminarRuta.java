@@ -50,7 +50,7 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
         txtNombreRuta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear ruta");
+        setTitle("Eliminar ruta");
         setBackground(new java.awt.Color(255, 254, 236));
         setMaximumSize(new java.awt.Dimension(406, 216));
         setMinimumSize(new java.awt.Dimension(406, 216));

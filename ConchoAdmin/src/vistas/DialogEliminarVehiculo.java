@@ -49,7 +49,7 @@ public class DialogEliminarVehiculo extends javax.swing.JDialog {
         txtNombre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear ruta");
+        setTitle("Eliminar vehículo");
         setBackground(new java.awt.Color(255, 254, 236));
         setMinimumSize(new java.awt.Dimension(406, 216));
 
@@ -157,7 +157,7 @@ public class DialogEliminarVehiculo extends javax.swing.JDialog {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         int resultado = controller.eliminar(vehiculo.getId());
 
-        if (resultado == 0) {
+        if (resultado == 1) {
             System.out.println("Ruta eliminada");
         } else {
             System.out.println("Error al eliminar");

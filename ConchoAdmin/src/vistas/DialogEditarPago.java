@@ -71,7 +71,7 @@ public class DialogEditarPago extends javax.swing.JDialog {
         comboEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear ruta");
+        setTitle("Editar pago");
         setBackground(new java.awt.Color(255, 254, 236));
 
         jPanel1.setBackground(new java.awt.Color(255, 254, 236));

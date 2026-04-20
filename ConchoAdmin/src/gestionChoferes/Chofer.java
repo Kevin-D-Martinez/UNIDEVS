@@ -143,6 +143,6 @@ public class Chofer {
     
     @Override
     public String toString() {
-        return this.nombre;
+        return this.nombre + " " + this.apellido;
     }
 }

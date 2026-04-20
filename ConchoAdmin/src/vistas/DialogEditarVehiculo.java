@@ -74,7 +74,7 @@ public class DialogEditarVehiculo extends javax.swing.JDialog {
         txtAno = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear ruta");
+        setTitle("Editar vehiculo");
         setBackground(new java.awt.Color(255, 254, 236));
 
         jPanel1.setBackground(new java.awt.Color(255, 254, 236));

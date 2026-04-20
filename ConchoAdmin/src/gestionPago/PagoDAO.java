@@ -23,7 +23,7 @@ public class PagoDAO {
         String sql = "INSERT INTO Pago (monto, metodoPago, estado, id_chofer, id_ruta, id_usuario) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
-            con = ConexionMySQL.conectar();
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
 
             // Usamos los Getters del DTO para llenar los campos '?'
@@ -51,7 +51,7 @@ public class PagoDAO {
         List<Pago> lista = new ArrayList<>();
         String sql = "SELECT * FROM Pago WHERE id_usuario = ? ORDER BY fechaCreacion DESC";
         try {
-            con = ConexionMySQL.conectar();
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
@@ -77,15 +77,12 @@ public class PagoDAO {
 
     // Carga Pago especifico por ID
     public Pago leerPago(int idUsuario) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
 
         String sql = "SELECT * FROM Pago WHERE id = ?";
 
         try {
 
-            con = ConexionMySQL.conectar();
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
@@ -116,14 +113,11 @@ public class PagoDAO {
     // Elimina una pago especifico por id
     public boolean eliminarPago(Pago pago) {
 
-        Connection con = null;
-        PreparedStatement ps = null;
-
         String sql = "DELETE FROM Pago where id = ?";
 
         try {
 
-            con = ConexionMySQL.conectar();
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, pago.getId());
 
@@ -141,7 +135,7 @@ public class PagoDAO {
     public boolean actualizarEstado(int idPago, String nuevoEstado) {
         String sql = "UPDATE Pago SET estado = ? WHERE id = ?";
         try {
-            con = ConexionMySQL.conectar();
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setString(1, nuevoEstado);
             ps.setInt(2, idPago);
@@ -157,14 +151,11 @@ public class PagoDAO {
     //Metodo para actualizar pago
     public boolean actualizarPago(Pago pago) {
 
-        Connection con = null;
-        PreparedStatement ps = null;
-
         String sql = "UPDATE Pago set monto = ?, metodoPago = ?, estado = ?, id_chofer = ?, id_ruta = ? where id = ?";
 
         try {
 
-            con = ConexionMySQL.conectar();
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setDouble(1, pago.getMonto());
             ps.setString(2, pago.getMetodoPago());
@@ -188,7 +179,7 @@ public class PagoDAO {
         List<Pago> lista = new ArrayList<>();
         String sql = "SELECT * FROM Pago WHERE id_chofer = ?";
         try {
-            con = ConexionMySQL.conectar();
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idChofer);
             rs = ps.executeQuery();
@@ -218,7 +209,7 @@ public class PagoDAO {
         int total = 0;
 
         try {
-            con = ConexionMySQL.conectar();
+            con = asignaciones.ConexionMySQL.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             rs = ps.executeQuery();
@@ -244,9 +235,9 @@ public class PagoDAO {
             if (ps != null) {
                 ps.close();
             }
-            if (con != null) {
-                con.close();
-            }
+//            if (con != null) {
+//                con.close();
+//            }
         } catch (SQLException e) {
             System.err.println("Error al cerrar: " + e.getMessage());
         }
