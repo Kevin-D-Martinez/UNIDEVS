@@ -1,4 +1,4 @@
-package gestionUsuarios;
+package modelo;
 
 /**
  * DTO usuario

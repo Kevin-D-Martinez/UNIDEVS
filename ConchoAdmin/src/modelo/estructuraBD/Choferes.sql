@@ -1,4 +1,4 @@
-CREATE TABLE Chofer(
+CREATE TABLE Choferes(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(25),
     apellido VARCHAR(25),

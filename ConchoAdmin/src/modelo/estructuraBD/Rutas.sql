@@ -1,4 +1,4 @@
-CREATE TABLE Ruta(
+CREATE TABLE Rutas(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(25),
     tarifa DECIMAL(6,2),

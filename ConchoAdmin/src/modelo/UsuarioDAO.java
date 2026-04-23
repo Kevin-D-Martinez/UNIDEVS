@@ -1,6 +1,8 @@
-package gestionUsuarios;
+package modelo;
 
-import conexion.ConexionMySQL;
+import modelo.Usuario;
+import modelo.Sesion;
+import modelo.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

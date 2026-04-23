@@ -2,7 +2,8 @@
  */
 package vistas;
 
-import gestionVehiculos.*;
+import modelo.VehiculoDAO;
+import modelo.Vehiculo;
 
 /**
  *

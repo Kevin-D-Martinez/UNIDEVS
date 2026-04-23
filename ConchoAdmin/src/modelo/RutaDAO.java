@@ -1,6 +1,7 @@
-package gestionRutas;
+package modelo;
 
-import conexion.ConexionMySQL;
+import modelo.Ruta;
+import modelo.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

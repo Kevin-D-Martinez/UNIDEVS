@@ -2,8 +2,8 @@
  */
 package vistas;
 
-import gestionRutas.Ruta;
-import gestionRutas.RutaControlador;
+import modelo.Ruta;
+import controlador.RutaControlador;
 
 /**
  *

@@ -2,10 +2,10 @@
  */
 package vistas;
 
-import gestionRutas.Ruta;
-import gestionRutas.RutaControlador;
-import gestionUsuarios.Sesion;
-import gestionUsuarios.Usuario;
+import modelo.Ruta;
+import controlador.RutaControlador;
+import modelo.Sesion;
+import modelo.Usuario;
 import javax.swing.JOptionPane;
 
 /**

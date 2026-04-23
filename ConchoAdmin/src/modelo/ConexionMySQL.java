@@ -1,4 +1,4 @@
-package conexion;
+package modelo;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,12 +14,11 @@ import java.util.Properties;
  */
 public class ConexionMySQL {
 
-    private static Connection connect;
+    private static Connection con;
 
     public static Connection conectar() {
 
-        // Si ya hay una conexión abierta, no abre otra
-        if (connect == null) {
+        if (con == null) {
             try {
 
                 /*
@@ -31,7 +30,7 @@ public class ConexionMySQL {
                 String url = props.getProperty("db.url");
                 String usuario = props.getProperty("db.usuario");
                 String contra = props.getProperty("db.contra");
-                connect = DriverManager.getConnection(url, usuario, contra);
+                con = DriverManager.getConnection(url, usuario, contra);
                 System.out.println("Conexión exitosa");
 
             } catch (IOException e) {
@@ -41,6 +40,6 @@ public class ConexionMySQL {
                 System.out.println("Error al conectar con la base de datos");
             }
         }
-        return connect;
+        return con;
     }
 }

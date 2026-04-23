@@ -1,6 +1,7 @@
-package gestionChoferes;
+package modelo;
 
-import conexion.ConexionMySQL;
+import modelo.Chofer;
+import modelo.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

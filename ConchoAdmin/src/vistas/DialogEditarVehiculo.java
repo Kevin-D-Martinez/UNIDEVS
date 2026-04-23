@@ -2,10 +2,14 @@
  */
 package vistas;
 
-import gestionChoferes.*;
-import gestionRutas.*;
-import gestionUsuarios.*;
-import gestionVehiculos.*;
+import modelo.VehiculoDAO;
+import modelo.Vehiculo;
+import modelo.Usuario;
+import modelo.Sesion;
+import modelo.RutaDAO;
+import modelo.Ruta;
+import modelo.ChoferDAO;
+import modelo.Chofer;
 import java.util.List;
 import javax.swing.JOptionPane;
 

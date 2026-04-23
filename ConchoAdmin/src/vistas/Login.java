@@ -2,8 +2,8 @@
  */
 package vistas;
 
-import gestionUsuarios.Usuario;
-import gestionUsuarios.UsuarioDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 import java.awt.Image;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

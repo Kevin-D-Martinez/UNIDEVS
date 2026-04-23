@@ -1,4 +1,4 @@
-package gestionUsuarios;
+package modelo;
 
 /**
  * Se encarga manejar la sesion del usuario

@@ -2,9 +2,12 @@
  */
 package vistas;
 
-import gestionChoferes.*;
-import gestionRutas.*;
-import gestionVehiculos.*;
+import modelo.VehiculoDAO;
+import modelo.Vehiculo;
+import modelo.RutaDAO;
+import modelo.Ruta;
+import modelo.ChoferDAO;
+import modelo.Chofer;
 
 /**
  *

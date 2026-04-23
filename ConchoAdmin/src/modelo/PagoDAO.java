@@ -1,6 +1,7 @@
-package gestionPago;
+package modelo;
 
-import conexion.ConexionMySQL;
+import modelo.Pago;
+import modelo.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

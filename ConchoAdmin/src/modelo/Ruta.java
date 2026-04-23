@@ -1,6 +1,6 @@
 /*
  */
-package gestionRutas;
+package modelo;
 
 /**
  * Rutas DTO

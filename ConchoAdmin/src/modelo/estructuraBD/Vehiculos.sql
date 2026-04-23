@@ -1,8 +1,9 @@
-CREATE TABLE Pago(
+CREATE TABLE Vehiculos(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    monto DECIMAL(6,2),
-    metodoPago VARCHAR(10),
-    estado VARCHAR(10),
+    marca VARCHAR(15),
+    modelo VARCHAR(10),
+    año VARCHAR(4),
+    matricula CHAR(7),
     id_chofer INT,
     id_ruta INT,
     id_usuario INT,
@@ -12,4 +13,4 @@ CREATE TABLE Pago(
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 )
 
-SELECT * from Pago;
+SELECT * FROM Vehiculo

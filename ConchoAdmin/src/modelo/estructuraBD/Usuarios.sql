@@ -1,4 +1,4 @@
-CREATE TABLE Usuario(
+CREATE TABLE Usuarios(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(25),
     apellido VARCHAR(25),

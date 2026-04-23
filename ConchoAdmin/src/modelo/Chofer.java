@@ -1,4 +1,4 @@
-package gestionChoferes;
+package modelo;
 
 /**
  * DTO chofer

@@ -1,10 +1,15 @@
 package vistas;
 
-import gestionChoferes.*;
-import gestionPago.*;
-import gestionRutas.*;
-import gestionUsuarios.*;
-import gestionVehiculos.*;
+import modelo.VehiculoDAO;
+import modelo.Vehiculo;
+import modelo.Usuario;
+import modelo.Sesion;
+import controlador.RutaControlador;
+import modelo.Ruta;
+import modelo.PagoDAO;
+import modelo.Pago;
+import modelo.ChoferDAO;
+import modelo.Chofer;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.text.NumberFormat;
@@ -28,7 +33,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.ToolTipManager;
-import utilidades.LectorFAQ;
+import modelo.LectorFAQ;
 
 /**
  * Interfaz principal de la aplicación

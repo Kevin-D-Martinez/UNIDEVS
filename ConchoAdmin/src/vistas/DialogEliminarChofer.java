@@ -2,7 +2,8 @@
  */
 package vistas;
 
-import gestionChoferes.*;
+import modelo.ChoferDAO;
+import modelo.Chofer;
 
 /**
  *
