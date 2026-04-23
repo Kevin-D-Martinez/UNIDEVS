@@ -258,11 +258,11 @@ public class Inicio extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(lblRutasCreadas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -277,6 +277,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("registrados");
         jLabel10.setToolTipText("");
+        jLabel10.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel10.setPreferredSize(new java.awt.Dimension(89, 27));
 
@@ -309,13 +310,13 @@ public class Inicio extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(24, 24, 24)
                 .addComponent(lblVehiculosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         jPanel5.setBackground(new java.awt.Color(11, 120, 100));
@@ -359,11 +360,11 @@ public class Inicio extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(lblChoferesActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
@@ -377,7 +378,9 @@ public class Inicio extends javax.swing.JFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("pendientes");
         jLabel13.setToolTipText("");
+        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel13.setPreferredSize(new java.awt.Dimension(87, 27));
 
         jLabel15.setBackground(new java.awt.Color(23, 31, 38));
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -408,13 +411,13 @@ public class Inicio extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(lblPagosPendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13)
-                .addGap(8, 8, 8))
+                .addGap(0, 0, 0)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         jSeparator3.setBackground(new java.awt.Color(204, 204, 204));
@@ -1194,6 +1197,8 @@ public class Inicio extends javax.swing.JFrame {
 
         scrollFAQ.setBackground(new java.awt.Color(255, 254, 236));
         scrollFAQ.setBorder(null);
+        scrollFAQ.setMinimumSize(new java.awt.Dimension(530, 530));
+        scrollFAQ.setPreferredSize(new java.awt.Dimension(530, 530));
 
         jLabel25.setBackground(new java.awt.Color(153, 153, 153));
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -1203,6 +1208,8 @@ public class Inicio extends javax.swing.JFrame {
         jLabel25.setIconTextGap(10);
 
         jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(2147483647, 2147483647));
 
@@ -1226,42 +1233,39 @@ public class Inicio extends javax.swing.JFrame {
         pnlInfo.setLayout(pnlInfoLayout);
         pnlInfoLayout.setHorizontalGroup(
             pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInfoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
             .addGroup(pnlInfoLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlInfoLayout.createSequentialGroup()
                         .addComponent(jLabel25)
-                        .addContainerGap(346, Short.MAX_VALUE))
-                    .addGroup(pnlInfoLayout.createSequentialGroup()
-                        .addComponent(scrollFAQ)
-                        .addGap(35, 35, 35))
-                    .addGroup(pnlInfoLayout.createSequentialGroup()
-                        .addComponent(jSeparator13)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInfoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInfoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInfoLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59))))
+                        .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator13, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrollFAQ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnlInfoLayout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addGap(41, 41, 41))))
         );
         pnlInfoLayout.setVerticalGroup(
             pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlInfoLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(scrollFAQ, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(scrollFAQ, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
@@ -1807,7 +1811,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         Login log = new Login();
-        
+
         log.setVisible(true);
 
         this.dispose();
@@ -1818,7 +1822,7 @@ public class Inicio extends javax.swing.JFrame {
         pnlContenido.add(pnlInfo);
         pnlContenido.repaint();
         pnlContenido.revalidate();
-        
+
         jLabel3.setText("1.0");
 
         // Regresa el scroll al inicio
@@ -1936,8 +1940,9 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Configura el comportamiento y apariencia de la tabla tblChoferes.
      *
-     * Fija el ancho de la columna ID a 0 (para que no aparezca) y de la columnas cédula, estado y telefono a 100px.
-     * También da formado a las columnas cedula y telefono
+     * Fija el ancho de la columna ID a 0 (para que no aparezca) y de la
+     * columnas cédula, estado y telefono a 100px. También da formado a las
+     * columnas cedula y telefono
      */
     private void configurarTablaChoferes() {
         tblChoferes.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
@@ -1951,12 +1956,12 @@ public class Inicio extends javax.swing.JFrame {
         tblChoferes.getColumnModel().getColumn(2).setMinWidth(100);
         tblChoferes.getColumnModel().getColumn(2).setMaxWidth(100);
         tblChoferes.getColumnModel().getColumn(2).setPreferredWidth(100);
-        
+
         // Fija el tamaño de la columna telefono en tblChoferes
         tblChoferes.getColumnModel().getColumn(3).setMinWidth(100);
         tblChoferes.getColumnModel().getColumn(3).setMaxWidth(100);
         tblChoferes.getColumnModel().getColumn(3).setPreferredWidth(100);
-        
+
         // Fija el tamaño de la columna estado en tblChoferes
         tblChoferes.getColumnModel().getColumn(4).setMinWidth(100);
         tblChoferes.getColumnModel().getColumn(4).setMaxWidth(100);
@@ -1985,7 +1990,7 @@ public class Inicio extends javax.swing.JFrame {
 
         for (Vehiculo vehiculo : vehiculos) {
             Chofer chofer = controllerChoferes.cargarChofer(vehiculo.getIdChofer());
-            
+
             Object[] fila = new Object[5];
 
             fila[0] = vehiculo.getId();
@@ -2036,9 +2041,9 @@ public class Inicio extends javax.swing.JFrame {
         List<Pago> pagos = controllerPagos.listarPagos(idUsuario);
 
         for (Pago pago : pagos) {
-            
+
             Chofer chofer = controllerChoferes.cargarChofer(pago.getId_chofer());
-            
+
             Object[] fila = new Object[5];
 
             fila[0] = pago.getId();
@@ -2072,7 +2077,7 @@ public class Inicio extends javax.swing.JFrame {
         tblPagos.getColumnModel().getColumn(0).setMinWidth(0);
         tblPagos.getColumnModel().getColumn(0).setMaxWidth(0);
         tblPagos.getColumnModel().getColumn(0).setPreferredWidth(0);
-        
+
         // Fija el tamaño de la columna estado
         tblChoferes.getColumnModel().getColumn(4).setMinWidth(100);
         tblChoferes.getColumnModel().getColumn(4).setMaxWidth(100);
@@ -2121,8 +2126,8 @@ public class Inicio extends javax.swing.JFrame {
             return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         }
     }
-    
-        /**
+
+    /**
      * Renderer personalizado para mostrar valores numéricos como cédula.
      *
      * Extiende DefaultTableCellRenderer y formatea los valores de la celda
@@ -2204,6 +2209,16 @@ public class Inicio extends javax.swing.JFrame {
             numero++;
         }
 
+        scrollFAQ.getViewport().addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentResized(java.awt.event.ComponentEvent e) {
+                panelContenido.setPreferredSize(
+                        new Dimension(e.getComponent().getWidth(), panelContenido.getPreferredSize().height)
+                );
+                panelContenido.revalidate();
+            }
+        });
+
         scrollFAQ.setViewportView(panelContenido);
     }
 
@@ -2224,7 +2239,7 @@ public class Inicio extends javax.swing.JFrame {
                 BorderFactory.createLineBorder(new Color(11, 120, 100), 1),
                 BorderFactory.createEmptyBorder(10, 15, 10, 15)
         ));
-        item.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+        //item.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 
         JLabel lblPregunta = new JLabel(pregunta);
         lblPregunta.setFont(new Font("Segoe UI", Font.BOLD, 14));
