@@ -13,7 +13,7 @@ Concho admin es un sistema de gestión de rutas de transporte público que permi
 
 ## Requisitos
 * Java JDK 25
-* Tener conexión a internet (los datos son almacenados en la nube).
+* MySQL
 
 ## Imagenes del prógrama en uso
 ![Inicio sesión](imagenesDeUso/image.png)
@@ -21,7 +21,9 @@ Concho admin es un sistema de gestión de rutas de transporte público que permi
 ![Inicio](imagenesDeUso/image2.png)
 
 ## UNIDEVS
-Darvin Mendez - Lider del equipo.
-Zoila García - Diseñadora.
-Luis Moscoso - SQA.
-Kevin Martinez - Administrador de la Base de Datos.
+| Nombre | Rol |
+|:--------------:|:----------------------------------|
+| Darvin Mendez | Lider del equipo |
+| Zoila García | Diseñadora |
+| Luis Moscoso | SQA |
+| Kevin Martinez | Administrador de la Base de Datos |

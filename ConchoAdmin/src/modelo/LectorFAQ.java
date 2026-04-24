@@ -49,14 +49,6 @@ public class LectorFAQ {
         } catch (IOException e) {
             System.out.println("Error leyendo faq.txt: " + e.getMessage());
         }
-
-        items.add(new String[]{
-            "Creado por UNIDEVS:",
-            "Darvin Mendez - Líder del equipo\n" +
-            "Zoila García - UX/UI\n" +
-            "Luis Moscoso - SQA\n" +
-            "Kevin Martinez - Administrador Base de Datos"
-        });
         return items;
     }
 }
