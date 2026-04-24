@@ -1,15 +1,9 @@
 package vistas;
 
-import modelo.DAO.VehiculoDAO;
-import modelo.DTO.Vehiculo;
-import modelo.DTO.Usuario;
-import modelo.SesionActiva;
 import controlador.RutaControlador;
-import modelo.DTO.Ruta;
-import modelo.DAO.PagoDAO;
-import modelo.DTO.Pago;
-import modelo.DAO.ChoferDAO;
-import modelo.DTO.Chofer;
+import controlador.FAQControlador;
+
+
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.text.NumberFormat;
@@ -33,7 +27,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.ToolTipManager;
-import controlador.FAQControlador;
 
 /**
  * Interfaz principal de la aplicación
@@ -41,18 +34,8 @@ import controlador.FAQControlador;
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
 public class Inicio extends javax.swing.JFrame {
-
-    //Llama a los controladores para no tener que abrir más de una instancia
-    RutaControlador controller = new RutaControlador();
-    PagoDAO controllerPagos = new PagoDAO();
-    ChoferDAO controllerChoferes = new ChoferDAO();
-    VehiculoDAO controllerVehiculos = new VehiculoDAO();
-
-    //Llama al usuario activo
-    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
-    int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
-
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
+    
+        private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
 
     /**
      * Creates new form home
@@ -1879,38 +1862,6 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChoferesRecargarActionPerformed
 
     /**
-     * Carga y muestra todas las rutas del usuario activo en la tabla tblRutas.
-     *
-     * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
-     * También mide e imprime el tiempo de carga en consola para diagnóstico.
-     *
-     */
-    public void mostrarRutas() {
-        long inicio = System.currentTimeMillis();
-
-        DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
-        modelo.setRowCount(0);
-
-        List<Ruta> rutas = controller.leerRutas(idUsuario);
-
-        for (Ruta ruta : rutas) {
-            Object[] fila = new Object[3];
-
-            fila[0] = ruta.getId();
-            fila[1] = ruta.getNombre();
-            fila[2] = ruta.getTarifa();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
-        }
-
-        tblRutas.setModel(modelo);
-
-        long fin = System.currentTimeMillis();
-        System.out.println("Tiempo: " + (fin - inicio));
-    }
-
-    /**
      * Configura el comportamiento y apariencia de la tabla tblRutas.
      *
      * Fija el ancho de la columna ID a 0 (para que no aparezca) y de la columna
@@ -1935,41 +1886,6 @@ public class Inicio extends javax.swing.JFrame {
         // Configura el estilo de dinero
         tblRutas.getColumnModel().getColumn(2).setCellRenderer(new MonedaRenderer());
 
-    }
-
-    /**
-     * Carga y muestra todos los choferes del usuario activo en la tabla
-     * tblChoferes.
-     *
-     * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
-     * También mide e imprime el tiempo de carga en consola para diagnóstico.
-     *
-     */
-    public void mostrarChoferes() {
-        long inicio = System.currentTimeMillis();
-
-        DefaultTableModel modelo = (DefaultTableModel) tblChoferes.getModel();
-        modelo.setRowCount(0);
-
-        List<Chofer> choferes = controllerChoferes.listar(idUsuario);
-
-        for (Chofer chofer : choferes) {
-            Object[] fila = new Object[5];
-
-            fila[0] = chofer.getId();
-            fila[1] = chofer.getNombre() + " " + chofer.getApellido();
-            fila[2] = chofer.getCedula();
-            fila[3] = chofer.getTelefono();
-            fila[4] = chofer.getEstado();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
-        }
-
-        tblChoferes.setModel(modelo);
-
-        long fin = System.currentTimeMillis();
-        System.out.println("Tiempo: " + (fin - inicio));
     }
 
     /**
@@ -2008,43 +1924,6 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     /**
-     * Carga y muestra todas las rutas del usuario activo en la tabla
-     * tblVehiculos.
-     *
-     * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
-     * También mide e imprime el tiempo de carga en consola para diagnóstico.
-     *
-     */
-    public void mostrarVehiculos() {
-        long inicio = System.currentTimeMillis();
-
-        DefaultTableModel modelo = (DefaultTableModel) tblVehiculos.getModel();
-        modelo.setRowCount(0);
-
-        List<Vehiculo> vehiculos = controllerVehiculos.listar(idUsuario);
-
-        for (Vehiculo vehiculo : vehiculos) {
-            Chofer chofer = controllerChoferes.cargarChofer(vehiculo.getIdChofer());
-
-            Object[] fila = new Object[5];
-
-            fila[0] = vehiculo.getId();
-            fila[1] = chofer.getNombre() + " " + chofer.getApellido();
-            fila[2] = vehiculo.getMarca();
-            fila[3] = vehiculo.getModelo();
-            fila[4] = vehiculo.getAño();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
-        }
-
-        tblVehiculos.setModel(modelo);
-
-        long fin = System.currentTimeMillis();
-        System.out.println("Tiempo: " + (fin - inicio));
-    }
-
-    /**
      * Configura el comportamiento y apariencia de la tabla tblVehiculos.
      *
      * Fija el ancho de la columna ID a 0 (para que no aparezca)
@@ -2058,46 +1937,7 @@ public class Inicio extends javax.swing.JFrame {
         tblVehiculos.getColumnModel().getColumn(0).setPreferredWidth(0);
     }
 
-    /**
-     * Carga y muestra todos los pagos del usuario activo en la tabla tblPagos.
-     *
-     * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
-     * También mide e imprime el tiempo de carga en consola para diagnóstico.
-     *
-     */
-    public void mostrarPagos() {
-        long inicio = System.currentTimeMillis();
-
-        cargarChoferes();
-
-        DefaultTableModel modelo = (DefaultTableModel) tblPagos.getModel();
-        modelo.setRowCount(0);
-
-        List<Pago> pagos = controllerPagos.listarPagos(idUsuario);
-
-        for (Pago pago : pagos) {
-
-            Chofer chofer = controllerChoferes.cargarChofer(pago.getId_chofer());
-
-            Object[] fila = new Object[5];
-
-            fila[0] = pago.getId();
-            fila[1] = chofer.getNombre() + " " + chofer.getApellido();
-            fila[2] = pago.getMonto();
-            fila[3] = pago.getMetodoPago();
-            fila[4] = pago.getEstadoPago();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
-        }
-
-        tblPagos.setModel(modelo);
-
-        long fin = System.currentTimeMillis();
-        System.out.println("Tiempo: " + (fin - inicio));
-    }
-
-    /**
+        /**
      * Configura el comportamiento y apariencia de la tabla tblPagos.
      *
      * Fija el ancho de la columna ID a 0 (para que no aparezca) Aplica el
@@ -2295,17 +2135,7 @@ public class Inicio extends javax.swing.JFrame {
         return item;
     }
 
-    private void cargarChoferes() {
-        ChoferDAO choferDAO = new ChoferDAO();
-        List<Chofer> choferes = choferDAO.listar(idUsuario); // filtra por usuario actual
 
-        comboChofer.removeAllItems();
-        comboChofer.addItem(null);
-
-        for (Chofer chofer : choferes) {
-            comboChofer.addItem(chofer);
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;

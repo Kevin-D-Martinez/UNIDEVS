@@ -57,4 +57,36 @@ public class RutaControlador {
         
         return rutaDAO.contarRutas(idUsuario);
     }
+    
+    /**
+     * Carga y muestra todas las rutas del usuario activo en la tabla tblRutas.
+     *
+     * Limpia el contenido actual de la tabla antes de cargar los nuevos datos.
+     * También mide e imprime el tiempo de carga en consola para diagnóstico.
+     *
+     */
+    public void mostrarRutas() {
+        long inicio = System.currentTimeMillis();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
+        modelo.setRowCount(0);
+
+        List<Ruta> rutas = controller.leerRutas(idUsuario);
+
+        for (Ruta ruta : rutas) {
+            Object[] fila = new Object[3];
+
+            fila[0] = ruta.getId();
+            fila[1] = ruta.getNombre();
+            fila[2] = ruta.getTarifa();
+
+            // 3. Agregar fila
+            modelo.addRow(fila);
+        }
+
+        tblRutas.setModel(modelo);
+
+        long fin = System.currentTimeMillis();
+        System.out.println("Tiempo: " + (fin - inicio));
+    }
 }
