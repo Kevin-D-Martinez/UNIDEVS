@@ -2,12 +2,12 @@
  */
 package vistas;
 
-import modelo.VehiculoDAO;
-import modelo.Vehiculo;
-import modelo.RutaDAO;
-import modelo.Ruta;
-import modelo.ChoferDAO;
-import modelo.Chofer;
+import modelo.DAO.VehiculoDAO;
+import modelo.DTO.Vehiculo;
+import modelo.DAO.RutaDAO;
+import modelo.DTO.Ruta;
+import modelo.DAO.ChoferDAO;
+import modelo.DTO.Chofer;
 
 /**
  *

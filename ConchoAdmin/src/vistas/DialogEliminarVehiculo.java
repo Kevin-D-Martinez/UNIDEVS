@@ -2,8 +2,8 @@
  */
 package vistas;
 
-import modelo.VehiculoDAO;
-import modelo.Vehiculo;
+import modelo.DAO.VehiculoDAO;
+import modelo.DTO.Vehiculo;
 
 /**
  *

@@ -1,15 +1,15 @@
 package vistas;
 
-import modelo.VehiculoDAO;
-import modelo.Vehiculo;
-import modelo.Usuario;
-import modelo.Sesion;
+import modelo.DAO.VehiculoDAO;
+import modelo.DTO.Vehiculo;
+import modelo.DTO.Usuario;
+import modelo.SesionActiva;
 import controlador.RutaControlador;
-import modelo.Ruta;
-import modelo.PagoDAO;
-import modelo.Pago;
-import modelo.ChoferDAO;
-import modelo.Chofer;
+import modelo.DTO.Ruta;
+import modelo.DAO.PagoDAO;
+import modelo.DTO.Pago;
+import modelo.DAO.ChoferDAO;
+import modelo.DTO.Chofer;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.text.NumberFormat;
@@ -33,7 +33,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.ToolTipManager;
-import modelo.LectorFAQ;
+import controlador.FAQControlador;
 
 /**
  * Interfaz principal de la aplicación
@@ -49,7 +49,7 @@ public class Inicio extends javax.swing.JFrame {
     VehiculoDAO controllerVehiculos = new VehiculoDAO();
 
     //Llama al usuario activo
-    Usuario actual = Sesion.getInstancia().getUsuarioActual();
+    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
@@ -2229,7 +2229,7 @@ public class Inicio extends javax.swing.JFrame {
         panelContenido.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
 
         // Lee el archivo desde los recursos internos
-        List<String[]> items = LectorFAQ.leerFAQ();
+        List<String[]> items = FAQControlador.leerFAQ();
 
         if (items.isEmpty()) {
             JLabel lblError = new JLabel("No se pudo cargar el FAQ.");

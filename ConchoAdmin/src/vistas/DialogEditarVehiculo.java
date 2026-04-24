@@ -2,14 +2,14 @@
  */
 package vistas;
 
-import modelo.VehiculoDAO;
-import modelo.Vehiculo;
-import modelo.Usuario;
-import modelo.Sesion;
-import modelo.RutaDAO;
-import modelo.Ruta;
-import modelo.ChoferDAO;
-import modelo.Chofer;
+import modelo.DAO.VehiculoDAO;
+import modelo.DTO.Vehiculo;
+import modelo.DTO.Usuario;
+import modelo.SesionActiva;
+import modelo.DAO.RutaDAO;
+import modelo.DTO.Ruta;
+import modelo.DAO.ChoferDAO;
+import modelo.DTO.Chofer;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -25,7 +25,7 @@ public class DialogEditarVehiculo extends javax.swing.JDialog {
     VehiculoDAO controller = new VehiculoDAO();
     private Inicio home;
 
-    Usuario actual = Sesion.getInstancia().getUsuarioActual();
+    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     /**

@@ -2,12 +2,12 @@
  */
 package vistas;
 
-import modelo.RutaDAO;
-import modelo.Ruta;
-import modelo.ChoferDAO;
-import modelo.Chofer;
-import modelo.Sesion;
-import modelo.Usuario;
+import modelo.DAO.RutaDAO;
+import modelo.DTO.Ruta;
+import modelo.DAO.ChoferDAO;
+import modelo.DTO.Chofer;
+import modelo.SesionActiva;
+import modelo.DTO.Usuario;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -20,7 +20,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearChofer.class.getName());
     private Inicio home;
 
-    Usuario actual = Sesion.getInstancia().getUsuarioActual();
+    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     /**

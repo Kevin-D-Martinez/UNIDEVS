@@ -2,8 +2,8 @@
  */
 package vistas;
 
-import modelo.PagoDAO;
-import modelo.Pago;
+import modelo.DAO.PagoDAO;
+import modelo.DTO.Pago;
 
 /**
  *

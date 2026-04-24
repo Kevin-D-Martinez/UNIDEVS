@@ -2,14 +2,14 @@
  */
 package vistas;
 
-import modelo.RutaDAO;
-import modelo.Ruta;
-import modelo.PagoDAO;
-import modelo.Pago;
-import modelo.ChoferDAO;
-import modelo.Chofer;
-import modelo.Sesion;
-import modelo.Usuario;
+import modelo.DAO.RutaDAO;
+import modelo.DTO.Ruta;
+import modelo.DAO.PagoDAO;
+import modelo.DTO.Pago;
+import modelo.DAO.ChoferDAO;
+import modelo.DTO.Chofer;
+import modelo.SesionActiva;
+import modelo.DTO.Usuario;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -22,7 +22,7 @@ public class DialogCrearPago extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearPago.class.getName());
     private Inicio home;
 
-    Usuario actual = Sesion.getInstancia().getUsuarioActual();
+    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     /**

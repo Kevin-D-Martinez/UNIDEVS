@@ -2,8 +2,8 @@
  */
 package vistas;
 
-import modelo.ChoferDAO;
-import modelo.Chofer;
+import modelo.DAO.ChoferDAO;
+import modelo.DTO.Chofer;
 
 /**
  *

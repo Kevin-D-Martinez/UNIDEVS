@@ -2,10 +2,10 @@
  */
 package controlador;
 
-import modelo.Ruta;
+import modelo.DTO.Ruta;
 import java.util.List;
-import modelo.Ruta;
-import modelo.RutaDAO;
+import modelo.DTO.Ruta;
+import modelo.DAO.RutaDAO;
 
 /**
  *

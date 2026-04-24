@@ -2,7 +2,7 @@
  */
 package vistas;
 
-import modelo.Ruta;
+import modelo.DTO.Ruta;
 import controlador.RutaControlador;
 
 /**

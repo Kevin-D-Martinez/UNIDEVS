@@ -2,14 +2,14 @@
  */
 package vistas;
 
-import modelo.Usuario;
-import modelo.Sesion;
-import modelo.RutaDAO;
-import modelo.Ruta;
-import modelo.PagoDAO;
-import modelo.Pago;
-import modelo.ChoferDAO;
-import modelo.Chofer;
+import modelo.DTO.Usuario;
+import modelo.SesionActiva;
+import modelo.DAO.RutaDAO;
+import modelo.DTO.Ruta;
+import modelo.DAO.PagoDAO;
+import modelo.DTO.Pago;
+import modelo.DAO.ChoferDAO;
+import modelo.DTO.Chofer;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -25,7 +25,7 @@ public class DialogEditarPago extends javax.swing.JDialog {
     PagoDAO controller = new PagoDAO();
     private Inicio home;
 
-    Usuario actual = Sesion.getInstancia().getUsuarioActual();
+    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     /**

@@ -3,8 +3,8 @@
 package vistas;
 
 import controlador.RutaControlador;
-import modelo.Sesion;
-import modelo.Usuario;
+import modelo.SesionActiva;
+import modelo.DTO.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +16,7 @@ public class DialogCrearRuta extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearRuta.class.getName());
     private Inicio home;
     
-    Usuario actual = Sesion.getInstancia().getUsuarioActual();
+    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
     int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
 
     /**

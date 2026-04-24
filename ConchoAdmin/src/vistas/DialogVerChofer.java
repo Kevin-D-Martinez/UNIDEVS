@@ -2,10 +2,10 @@
  */
 package vistas;
 
-import modelo.RutaDAO;
-import modelo.Ruta;
-import modelo.ChoferDAO;
-import modelo.Chofer;
+import modelo.DAO.RutaDAO;
+import modelo.DTO.Ruta;
+import modelo.DAO.ChoferDAO;
+import modelo.DTO.Chofer;
 
 /**
  *
