@@ -1,7 +1,5 @@
 package modelo.DAO;
 
-import modelo.DTO.Vehiculo;
-import modelo.estructuraBD.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

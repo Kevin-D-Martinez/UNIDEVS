@@ -2,14 +2,15 @@
  */
 package vistas;
 
-import modelo.DAO.VehiculoDAO;
+import controlador.ChoferControlador;
+import controlador.RutaControlador;
+import controlador.UsuarioControlador;
+import controlador.VehiculoControlador;
+
 import modelo.DTO.Vehiculo;
-import modelo.DTO.Usuario;
-import modelo.SesionActiva;
-import modelo.DAO.RutaDAO;
 import modelo.DTO.Ruta;
-import modelo.DAO.ChoferDAO;
 import modelo.DTO.Chofer;
+
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -22,11 +23,16 @@ public class DialogEditarVehiculo extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEditarVehiculo.class.getName());
 
     Vehiculo vehiculo;
-    VehiculoDAO controller = new VehiculoDAO();
     private Inicio home;
 
-    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
-    int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
+    //Llama a los controladores para no tener que abrir más de una instancia
+    RutaControlador controllerRutas = new RutaControlador();
+    ChoferControlador controllerChoferes = new ChoferControlador();
+    UsuarioControlador controllerUsuario = new UsuarioControlador();
+    VehiculoControlador controllerVehiculos = new VehiculoControlador();
+
+    //Llama al usuario activo para usarlo en filtros WHERE
+    int idUsuario = controllerUsuario.getIdUsuarioActual();
 
     /**
      * Creates new form DialogCrearVehiculo
@@ -39,7 +45,7 @@ public class DialogEditarVehiculo extends javax.swing.JDialog {
         cargarChoferes();
         setLocationRelativeTo(parent);
 
-        vehiculo = controller.cargarVehiculo(id);
+        vehiculo = controllerVehiculos.cargarVehiculo(id);
 
         txtModelo.setText(vehiculo.getModelo());
         txtMarca.setText(vehiculo.getMarca());
@@ -273,47 +279,40 @@ public class DialogEditarVehiculo extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMarcaActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        
+
         Ruta rutaSeleccionada = (Ruta) comboRuta.getSelectedItem();
         if (rutaSeleccionada == null) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.");
             return;
         }
         int idRuta = rutaSeleccionada.getId();
-        
+
         Chofer choferSeleccionado = (Chofer) comboChofer.getSelectedItem();
         if (choferSeleccionado == null) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un chofer.");
             return;
         }
         int idChofer = choferSeleccionado.getId();
-        
+
         String modelo = txtModelo.getText();
         String marca = txtMarca.getText();
         String ano = txtAno.getText();
         String matricula = txtMatricula.getText();
-        
+
         if (modelo.isEmpty() || marca.isEmpty() || ano.isEmpty() || matricula.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos.");
             return;
         }
-        
-        vehiculo.setMarca(marca);
-        vehiculo.setModelo(modelo);
-        vehiculo.setAño(ano);
-        vehiculo.setMatricula(matricula);
-        vehiculo.setIdChofer(idChofer);
-        vehiculo.setIdRuta(idRuta);
-                
-        int resultado = controller.actualizar(vehiculo);
 
-        if (resultado == 1) {
+        boolean resultado = controllerVehiculos.actualizar(vehiculo.getId(), marca, modelo, ano, matricula, idChofer, idRuta, idUsuario);
+
+        if (resultado) {
             System.out.println("Vehiculo guardado");
         } else {
             System.out.println("Error al guardar");
             return;
         }
-        
+
         dispose();
         home.mostrarVehiculos();
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -331,8 +330,7 @@ public class DialogEditarVehiculo extends javax.swing.JDialog {
     }//GEN-LAST:event_txtAnoActionPerformed
 
     private void cargarRutas() {
-        RutaDAO rutaDAO = new RutaDAO();
-        List<Ruta> rutas = rutaDAO.leerRutas(idUsuario); // filtra por usuario actual
+        List<Ruta> rutas = controllerRutas.leerRutas(idUsuario); // filtra por usuario actual
 
         comboRuta.removeAllItems();
 
@@ -342,8 +340,7 @@ public class DialogEditarVehiculo extends javax.swing.JDialog {
     }
 
     private void cargarChoferes() {
-        ChoferDAO choferDAO = new ChoferDAO();
-        List<Chofer> choferes = choferDAO.listar(idUsuario); // filtra por usuario actual
+        List<Chofer> choferes = controllerChoferes.listarChoferes(idUsuario); // filtra por usuario actual
 
         comboChofer.removeAllItems();
 

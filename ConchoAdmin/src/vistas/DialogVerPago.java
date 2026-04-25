@@ -2,11 +2,12 @@
  */
 package vistas;
 
-import modelo.DAO.RutaDAO;
+import controlador.ChoferControlador;
+import controlador.PagoControlador;
+import controlador.RutaControlador;
+
 import modelo.DTO.Ruta;
-import modelo.DAO.PagoDAO;
 import modelo.DTO.Pago;
-import modelo.DAO.ChoferDAO;
 import modelo.DTO.Chofer;
 
 /**
@@ -18,26 +19,25 @@ public class DialogVerPago extends javax.swing.JDialog {
     Chofer chofer;
     Ruta ruta;
     Pago pago;
-    ChoferDAO controllerChofer = new ChoferDAO();
-    RutaDAO controllerRuta = new RutaDAO();
-    PagoDAO controllerPago = new PagoDAO();
     
-    private Inicio home;
-
+    //Llama a los controladores para no tener que abrir más de una instancia
+    RutaControlador controllerRutas = new RutaControlador();
+    ChoferControlador controllerChoferes = new ChoferControlador();
+    PagoControlador controllerPagos = new PagoControlador();
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogVerPago.class.getName());
 
     /**
      * Creates new form DialogEditarChofer
      */
-    public DialogVerPago(java.awt.Frame parent, boolean modal, int id, Inicio home) {
+    public DialogVerPago(java.awt.Frame parent, boolean modal, int id) {
         super(parent, modal);
-        this.home = home;
         initComponents();
         setLocationRelativeTo(parent);
         
-        pago = controllerPago.leerPago(id);
-        chofer = controllerChofer.cargarChofer(pago.getId());
-        ruta = controllerRuta.cargarRuta(pago.getId());
+        pago = controllerPagos.leerPago(id);
+        chofer = controllerChoferes.cargarChofer(pago.getId_chofer());
+        ruta = controllerRutas.cargarRuta(pago.getId_ruta());
         
         txtChofer.setText(chofer != null ? chofer.getNombre() + " " + chofer.getApellido() : "Sin chofer asignado");
         txtRuta.setText(ruta != null ? ruta.getNombre() : "Sin ruta asignada");

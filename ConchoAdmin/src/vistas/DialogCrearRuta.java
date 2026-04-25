@@ -3,8 +3,8 @@
 package vistas;
 
 import controlador.RutaControlador;
-import modelo.SesionActiva;
-import modelo.DTO.Usuario;
+import controlador.UsuarioControlador;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -15,9 +15,13 @@ public class DialogCrearRuta extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearRuta.class.getName());
     private Inicio home;
-    
-    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
-    int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
+
+    //Llama a los controladores para no tener que abrir más de una instancia
+    RutaControlador controllerRutas = new RutaControlador();
+    UsuarioControlador controllerUsuario = new UsuarioControlador();
+
+    //Llama al usuario activo para usarlo en filtros WHERE
+    int idUsuario = controllerUsuario.getIdUsuarioActual();
 
     /**
      * Creates new form DialogCrearRuta
@@ -216,11 +220,11 @@ public class DialogCrearRuta extends javax.swing.JDialog {
 
     private void txtTarifaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTarifaKeyTyped
         char numeros = evt.getKeyChar();
-        
+
         if (Character.isISOControl(numeros)) {
-        return;
-    }
-        
+            return;
+        }
+
         if ((numeros < '0' || numeros > '9') && (numeros != '.')) {
             lblAlerta.setText("*Sólo puede agregar números.");
             evt.consume();
@@ -235,19 +239,21 @@ public class DialogCrearRuta extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Debe ingresar un nombre.");
             return;
         }
-        
+
         if (txtTarifa.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Debe ingresar una tarifa.");
             return;
         }
-        
-        RutaControlador controller = new RutaControlador();
 
         String nombre = txtNombre.getText();
-        String tarifa = txtTarifa.getText();
-        int id_usuario = idUsuario;
-
-        boolean resultado = controller.guardarRuta(nombre, tarifa, id_usuario);
+        double tarifa;
+        try {
+            tarifa = Double.parseDouble(txtTarifa.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La tarifa debe ser un número válido.");
+            return;
+        }
+        boolean resultado = controllerRutas.guardarRuta(nombre, tarifa, idUsuario);
 
         if (resultado) {
             System.out.println("Ruta guardada");
@@ -255,7 +261,7 @@ public class DialogCrearRuta extends javax.swing.JDialog {
             System.out.println("Error al guardar");
             return;
         }
-        
+
         dispose();
         home.mostrarRutas();
     }//GEN-LAST:event_btnAceptarActionPerformed

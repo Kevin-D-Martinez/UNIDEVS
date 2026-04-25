@@ -2,14 +2,13 @@
  */
 package vistas;
 
-import modelo.DAO.RutaDAO;
-import modelo.DTO.Ruta;
-import modelo.DAO.ChoferDAO;
-import modelo.DTO.Chofer;
-import modelo.SesionActiva;
-import modelo.DTO.Usuario;
+import controlador.ChoferControlador;
+import controlador.RutaControlador;
+import controlador.UsuarioControlador;
+
 import java.util.List;
 import javax.swing.JOptionPane;
+import modelo.DTO.Ruta;
 
 /**
  *
@@ -19,9 +18,14 @@ public class DialogCrearChofer extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearChofer.class.getName());
     private Inicio home;
+    
+    //Llama a los controladores para no tener que abrir más de una instancia
+    RutaControlador controllerRutas = new RutaControlador();
+    ChoferControlador controllerChoferes = new ChoferControlador();
+    UsuarioControlador controllerUsuario = new UsuarioControlador();
 
-    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
-    int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
+    //Llama al usuario activo para usarlo en filtros WHERE
+    int idUsuario = controllerUsuario.getIdUsuarioActual();
 
     /**
      * Creates new form DialogCrearRuta
@@ -260,13 +264,12 @@ public class DialogCrearChofer extends javax.swing.JDialog {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
-        ChoferDAO controller = new ChoferDAO();
-
         Ruta rutaSeleccionada = (Ruta) comboRuta.getSelectedItem();
         if (rutaSeleccionada == null) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.");
             return;
         }
+        
         int idRuta = rutaSeleccionada.getId();
 
         String nombre = txtNombre.getText();
@@ -274,15 +277,13 @@ public class DialogCrearChofer extends javax.swing.JDialog {
         String cedula = txtCedula.getText();
         String telefono = txtTelefono.getText();
         String estado = comboEstado.getSelectedItem().toString();
-        int id_usuario = idUsuario;
 
         if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty() || telefono.isEmpty() || estado.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar todos los datos");
             return;
         }
 
-        Chofer chofer = new Chofer(0, nombre, apellido, estado, idRuta, idUsuario, telefono, cedula);
-        int resultado = controller.agregar(chofer);
+        int resultado = controllerChoferes.agregar(nombre, apellido, estado, idRuta, idUsuario, telefono, cedula);
 
         if (resultado == 1) {
             System.out.println("Chofer guardado");
@@ -308,8 +309,7 @@ public class DialogCrearChofer extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
     private void cargarRutas() {
-        RutaDAO rutaDAO = new RutaDAO();
-        List<Ruta> rutas = rutaDAO.leerRutas(idUsuario); // filtra por usuario actual
+        List<Ruta> rutas = controllerRutas.leerRutas(idUsuario); // filtra por usuario actual
 
         comboRuta.removeAllItems();
 

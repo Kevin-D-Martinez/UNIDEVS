@@ -25,20 +25,6 @@ public class Pago {
     public Pago(){
     }
     
-     /**
-     * Constructor que asigna los valores de un Pago
-     * @param id
-     * @param monto
-     * @param metodoPago
-     * @param estadoPago
-     * @param id_chofer
-     * @param id_ruta
-     * @param id_usuario
-     * @param fechaCreacion
-     * @return 
-     */
-     
-    
     // Getters
     public int getId() {
         return id;

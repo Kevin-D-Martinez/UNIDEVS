@@ -1,8 +1,5 @@
 package modelo.DAO;
 
-import modelo.DTO.Usuario;
-import modelo.SesionActiva;
-import modelo.estructuraBD.ConexionMySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

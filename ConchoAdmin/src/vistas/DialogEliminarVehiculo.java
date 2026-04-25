@@ -2,6 +2,7 @@
  */
 package vistas;
 
+import controlador.VehiculoControlador;
 import modelo.DAO.VehiculoDAO;
 import modelo.DTO.Vehiculo;
 
@@ -12,8 +13,10 @@ import modelo.DTO.Vehiculo;
 public class DialogEliminarVehiculo extends javax.swing.JDialog {
     
     Vehiculo vehiculo;
-    VehiculoDAO controller = new VehiculoDAO();
     private Inicio home;
+    
+    //Llama a los controladores para no tener que abrir más de una instancia
+    VehiculoControlador controllerVehiculos = new VehiculoControlador();
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEliminarVehiculo.class.getName());
 
@@ -26,7 +29,7 @@ public class DialogEliminarVehiculo extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(parent);
 
-        vehiculo = controller.cargarVehiculo(id);
+        vehiculo = controllerVehiculos.cargarVehiculo(id);
         
         txtNombre.setText(vehiculo.getMarca() + " " + vehiculo.getModelo() + " " + vehiculo.getAño());
     }
@@ -156,7 +159,7 @@ public class DialogEliminarVehiculo extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        int resultado = controller.eliminar(vehiculo.getId());
+        int resultado = controllerVehiculos.eliminar(vehiculo.getId());
 
         if (resultado == 1) {
             System.out.println("Ruta eliminada");

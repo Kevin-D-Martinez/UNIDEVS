@@ -2,7 +2,7 @@
  */
 package vistas;
 
-import modelo.DAO.ChoferDAO;
+import controlador.ChoferControlador;
 import modelo.DTO.Chofer;
 
 /**
@@ -12,8 +12,10 @@ import modelo.DTO.Chofer;
 public class DialogEliminarChofer extends javax.swing.JDialog {
     
     Chofer chofer;
-    ChoferDAO controller = new ChoferDAO();
     private Inicio home;
+    
+    //Llama a los controladores para no tener que abrir más de una instancia
+    ChoferControlador controllerChoferes = new ChoferControlador();
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEliminarChofer.class.getName());
 
@@ -26,7 +28,7 @@ public class DialogEliminarChofer extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(parent);
 
-        chofer = controller.cargarChofer(id);
+        chofer = controllerChoferes.cargarChofer(id);
         
         txtNombre.setText(chofer.getNombre() + " " + chofer.getApellido());
     }
@@ -156,7 +158,7 @@ public class DialogEliminarChofer extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        int resultado = controller.eliminar(chofer.getId());
+        int resultado = controllerChoferes.eliminar(chofer.getId());
 
         if (resultado == 1) {
             System.out.println("Chofer eliminado");

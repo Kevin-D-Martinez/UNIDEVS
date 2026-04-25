@@ -2,7 +2,7 @@
  */
 package vistas;
 
-import modelo.DAO.PagoDAO;
+import controlador.PagoControlador;
 import modelo.DTO.Pago;
 
 /**
@@ -12,8 +12,10 @@ import modelo.DTO.Pago;
 public class DialogEliminarPago extends javax.swing.JDialog {
     
     Pago pago;
-    PagoDAO controller = new PagoDAO();
     private Inicio home;
+    
+    //Llama a los controladores para no tener que abrir más de una instancia
+    PagoControlador controllerPagos = new PagoControlador();
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEliminarPago.class.getName());
 
@@ -26,7 +28,7 @@ public class DialogEliminarPago extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(parent);
 
-        pago = controller.leerPago(id);
+        pago = controllerPagos.leerPago(id);
         
         txtNombre.setText("RD$" + String.valueOf(pago.getMonto()));
     }
@@ -156,7 +158,7 @@ public class DialogEliminarPago extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        boolean resultado = controller.eliminarPago(pago);
+        boolean resultado = controllerPagos.eliminarPago(pago);
 
         if (resultado) {
             System.out.println("pago eliminado");

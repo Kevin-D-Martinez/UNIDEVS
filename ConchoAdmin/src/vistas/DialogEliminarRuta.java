@@ -10,9 +10,9 @@ import controlador.RutaControlador;
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
 public class DialogEliminarRuta extends javax.swing.JDialog {
-    
+
     Ruta ruta;
-    RutaControlador controller = new RutaControlador();
+    RutaControlador controllerRutas = new RutaControlador();
     private Inicio home;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEliminarRuta.class.getName());
@@ -26,8 +26,8 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(parent);
 
-        ruta = controller.cargarRuta(id);
-        
+        ruta = controllerRutas.cargarRuta(id);
+
         txtNombreRuta.setText(ruta.getNombre());
     }
 
@@ -157,7 +157,7 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        boolean resultado = controller.eliminarRuta(ruta);
+        boolean resultado = controllerRutas.eliminarRuta(ruta);
 
         if (resultado) {
             System.out.println("Ruta eliminada");
@@ -165,7 +165,7 @@ public class DialogEliminarRuta extends javax.swing.JDialog {
             System.out.println("Error al eliminar");
             return;
         }
-        
+
         dispose();
         home.mostrarRutas();
     }//GEN-LAST:event_btnAceptarActionPerformed

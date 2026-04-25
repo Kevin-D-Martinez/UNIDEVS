@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
 public class DialogEditarRuta extends javax.swing.JDialog {
-    
+
     Ruta ruta;
-    RutaControlador controller = new RutaControlador();
+    RutaControlador controllerRutas = new RutaControlador();
     private Inicio home;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEditarRuta.class.getName());
@@ -29,8 +29,8 @@ public class DialogEditarRuta extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(parent);
 
-        ruta = controller.cargarRuta(id);
-        
+        ruta = controllerRutas.cargarRuta(id);
+
         txtNombre.setText(ruta.getNombre());
         txtTarifa.setText(Double.toString(ruta.getTarifa()));
     }
@@ -222,7 +222,7 @@ public class DialogEditarRuta extends javax.swing.JDialog {
 
     private void txtTarifaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTarifaKeyTyped
         char numeros = evt.getKeyChar();
-        if ((numeros < '0' || numeros > '9') && (numeros < '.' || numeros > '.')) {
+        if ((numeros < '0' || numeros > '9') && numeros != '.') {
             lblAlerta.setText("*Sólo puede agregar números.");
             evt.consume();
         } else {
@@ -231,20 +231,25 @@ public class DialogEditarRuta extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTarifaKeyTyped
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-       if (txtNombre.getText().equals("")) {
+        if (txtNombre.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un nombre.");
             return;
         }
-        
+
         if (txtTarifa.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Debe ingresar una tarifa.");
             return;
         }
-        
-        ruta.setNombre(txtNombre.getText());
-        ruta.setTarifa(Double.parseDouble(txtTarifa.getText()));
-        
-        boolean resultado = controller.actualizarRuta(ruta);
+
+        double tarifa;
+        try {
+            tarifa = Double.parseDouble(txtTarifa.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La tarifa debe ser un número válido.");
+            return;
+        }
+
+        boolean resultado = controllerRutas.actualizarRuta(ruta.getId(), txtNombre.getText(), tarifa, ruta.getIdUsuario());
 
         if (resultado) {
             System.out.println("Ruta guardada");
@@ -252,11 +257,11 @@ public class DialogEditarRuta extends javax.swing.JDialog {
             System.out.println("Error al guardar");
             return;
         }
-        
+
         dispose();
         home.mostrarRutas();
-        
-        
+
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

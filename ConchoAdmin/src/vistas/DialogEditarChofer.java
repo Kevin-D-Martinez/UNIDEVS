@@ -2,12 +2,13 @@
  */
 package vistas;
 
-import modelo.DAO.RutaDAO;
+import controlador.ChoferControlador;
+import controlador.RutaControlador;
+import controlador.UsuarioControlador;
+
 import modelo.DTO.Ruta;
-import modelo.DAO.ChoferDAO;
 import modelo.DTO.Chofer;
-import modelo.SesionActiva;
-import modelo.DTO.Usuario;
+
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -18,13 +19,17 @@ import javax.swing.JOptionPane;
 public class DialogEditarChofer extends javax.swing.JDialog {
 
     Chofer chofer;
-    ChoferDAO controller = new ChoferDAO();
     private Inicio home;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogEditarChofer.class.getName());
 
-    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
-    int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
+    //Llama a los controladores para no tener que abrir más de una instancia
+    RutaControlador controllerRutas = new RutaControlador();
+    ChoferControlador controllerChoferes = new ChoferControlador();
+    UsuarioControlador controllerUsuario = new UsuarioControlador();
+
+    //Llama al usuario activo para usarlo en filtros WHERE
+    int idUsuario = controllerUsuario.getIdUsuarioActual();
 
     /**
      * Creates new form DialogEditarChofer
@@ -35,9 +40,9 @@ public class DialogEditarChofer extends javax.swing.JDialog {
         initComponents();
         cargarRutas();
         setLocationRelativeTo(parent);
-        
-        chofer = controller.cargarChofer(id);
-        
+
+        chofer = controllerChoferes.cargarChofer(id);
+
         txtNombre.setText(chofer.getNombre());
         txtApellido.setText(chofer.getApellido());
         txtCedula.setText(chofer.getCedula());
@@ -282,20 +287,13 @@ public class DialogEditarChofer extends javax.swing.JDialog {
         String cedula = txtCedula.getText();
         String telefono = txtTelefono.getText();
         String estado = comboEstado.getSelectedItem().toString();
-        int id_usuario = idUsuario;
 
         if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty() || telefono.isEmpty() || estado.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar todos los datos");
             return;
         }
 
-        chofer.setNombre(nombre);
-        chofer.setApellido(apellido);
-        chofer.setCedula(cedula);
-        chofer.setTelefono(telefono);
-        chofer.setEstado(estado);
-        
-        int resultado = controller.actualizar(chofer);
+        int resultado = controllerChoferes.actualizar(chofer.getId(), nombre, apellido, cedula, telefono, estado, idRuta);
 
         if (resultado == 1) {
             System.out.println("Chofer guardado");
@@ -321,8 +319,7 @@ public class DialogEditarChofer extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
     private void cargarRutas() {
-        RutaDAO rutaDAO = new RutaDAO();
-        List<Ruta> rutas = rutaDAO.leerRutas(idUsuario); // filtra por usuario actual
+        List<Ruta> rutas = controllerRutas.leerRutas(idUsuario); // filtra por usuario actual
 
         comboRuta.removeAllItems();
 

@@ -1,5 +1,9 @@
 /Asignación 4.1/20251159_Kevin_Martinez/Estudiante/dist/
-/ConchoAdmin/dist/
+
+# Ignora todo en dist/ excepto el javadoc
+/ConchoAdmin/dist/*
+!/ConchoAdmin/dist/javadoc/
+
 /ConchoAdmin/nbproject/private/
 /ConchoAdmin/build/
 ConchoAdmin/build/

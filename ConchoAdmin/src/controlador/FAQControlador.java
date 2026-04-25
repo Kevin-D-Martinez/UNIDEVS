@@ -8,14 +8,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Utilidad para leer el archivo FAQ.
+ * Controlador utilitario para la lectura del archivo de preguntas frecuentes
+ * (FAQ).
+ *
+ * <p>
+ * Lee el archivo {@code faq.txt} ubicado en {@code /assets/faq.txt} dentro del
+ * classpath, y lo parsea en una lista de pares pregunta-respuesta.</p>
+ *
+ * <p>
+ * El archivo debe seguir el siguiente formato por cada entrada:</p>
+ * <pre>
+ * PREGUNTA: ¿Cómo registro un chofer?
+ * RESPUESTA: Dirígete a la sección Choferes y haz clic en "Crear nuevo".
+ * </pre>
+ *
+ * <p>
+ * Este controlador es de uso estático — no necesita instanciarse.</p>
+ *
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
 public class FAQControlador {
+
     /**
-     * Lee el archivo faq.txt y retorna una lista de pares [pregunta, respuesta].
+     * Lee el archivo {@code faq.txt} desde los recursos internos de la
+     * aplicación y retorna su contenido como una lista de pares
+     * pregunta-respuesta.
      *
-     * @return Lista de arreglos String[] donde [0]=pregunta y [1]=respuesta
+     * <p>
+     * El método busca líneas que comiencen con {@code PREGUNTA:} y
+     * {@code RESPUESTA:}. Cuando encuentra ambas, las agrupa en un arreglo y lo
+     * añade a la lista resultado.</p>
+     *
+     * <p>
+     * Si el archivo no se encuentra o ocurre un error de lectura, retorna una
+     * lista vacía y registra el error en consola.</p>
+     *
+     * @return Lista de arreglos {@code String[]} donde:
+     * <ul>
+     * <li>{@code [0]} contiene el texto de la pregunta.</li>
+     * <li>{@code [1]} contiene el texto de la respuesta.</li>
+     * </ul>
+     * Retorna una lista vacía si el archivo no existe o no pudo leerse.
      */
     public static List<String[]> leerFAQ() {
 

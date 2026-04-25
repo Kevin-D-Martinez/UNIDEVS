@@ -2,11 +2,12 @@
  */
 package vistas;
 
-import modelo.DAO.VehiculoDAO;
+import controlador.ChoferControlador;
+import controlador.RutaControlador;
+import controlador.VehiculoControlador;
+
 import modelo.DTO.Vehiculo;
-import modelo.DAO.RutaDAO;
 import modelo.DTO.Ruta;
-import modelo.DAO.ChoferDAO;
 import modelo.DTO.Chofer;
 
 /**
@@ -18,31 +19,30 @@ public class DialogVerVehiculo extends javax.swing.JDialog {
     Chofer chofer;
     Ruta ruta;
     Vehiculo vehiculo;
-    ChoferDAO controllerChofer = new ChoferDAO();
-    RutaDAO controllerRuta = new RutaDAO();
-    VehiculoDAO controllerVehiculo = new VehiculoDAO();
     
-    private Inicio home;
-
+    //Llama a los controladores para no tener que abrir más de una instancia
+    RutaControlador controllerRutas = new RutaControlador();
+    ChoferControlador controllerChoferes = new ChoferControlador();
+    VehiculoControlador controllerVehiculos = new VehiculoControlador();
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogVerVehiculo.class.getName());
 
     /**
      * Creates new form DialogVerVehiculo
      */
-    public DialogVerVehiculo(java.awt.Frame parent, boolean modal, int id, Inicio home) {
+    public DialogVerVehiculo(java.awt.Frame parent, boolean modal, int id) {
         super(parent, modal);
-        this.home = home;
         initComponents();
         setLocationRelativeTo(parent);
         
-        vehiculo = controllerVehiculo.cargarVehiculo(id);
-        chofer = controllerChofer.cargarChofer(vehiculo.getId());
-        ruta = controllerRuta.cargarRuta(vehiculo.getId());
+        vehiculo = controllerVehiculos.cargarVehiculo(id);
+        chofer = controllerChoferes.cargarChofer(vehiculo.getIdChofer());
+        ruta = controllerRutas.cargarRuta(vehiculo.getIdRuta());
         
         txtMarca.setText(vehiculo.getMarca());
         txtModelo.setText(vehiculo.getModelo());
         txtAno.setText(vehiculo.getAño());
-        txrMatricula.setText(vehiculo.getMatricula());
+        txtMatricula.setText(vehiculo.getMatricula());
         txtChofer.setText(chofer != null ? chofer.getNombre() + " " + chofer.getApellido() : "Sin chofer asignado");
         txtRuta.setText(ruta != null ? ruta.getNombre() : "Sin ruta asignada");
     }
@@ -70,7 +70,7 @@ public class DialogVerVehiculo extends javax.swing.JDialog {
         txtMarca = new javax.swing.JLabel();
         txtModelo = new javax.swing.JLabel();
         txtAno = new javax.swing.JLabel();
-        txrMatricula = new javax.swing.JLabel();
+        txtMatricula = new javax.swing.JLabel();
         txtChofer = new javax.swing.JLabel();
         txtRuta = new javax.swing.JLabel();
 
@@ -132,9 +132,9 @@ public class DialogVerVehiculo extends javax.swing.JDialog {
         txtAno.setForeground(new java.awt.Color(23, 31, 38));
         txtAno.setText("Año:");
 
-        txrMatricula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txrMatricula.setForeground(new java.awt.Color(23, 31, 38));
-        txrMatricula.setText("Matricula:");
+        txtMatricula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMatricula.setForeground(new java.awt.Color(23, 31, 38));
+        txtMatricula.setText("Matricula:");
 
         txtChofer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtChofer.setForeground(new java.awt.Color(23, 31, 38));
@@ -178,7 +178,7 @@ public class DialogVerVehiculo extends javax.swing.JDialog {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtRuta)
-                    .addComponent(txrMatricula)
+                    .addComponent(txtMatricula)
                     .addComponent(txtAno)
                     .addComponent(txtModelo)
                     .addComponent(txtMarca)
@@ -217,7 +217,7 @@ public class DialogVerVehiculo extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtAno)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txrMatricula)
+                                .addComponent(txtMatricula)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtChofer)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
@@ -263,10 +263,10 @@ public class DialogVerVehiculo extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAlerta;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel txrMatricula;
     private javax.swing.JLabel txtAno;
     private javax.swing.JLabel txtChofer;
     private javax.swing.JLabel txtMarca;
+    private javax.swing.JLabel txtMatricula;
     private javax.swing.JLabel txtModelo;
     private javax.swing.JLabel txtRuta;
     // End of variables declaration//GEN-END:variables

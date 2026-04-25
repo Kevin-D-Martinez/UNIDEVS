@@ -2,14 +2,15 @@
  */
 package vistas;
 
-import modelo.DAO.RutaDAO;
+import controlador.ChoferControlador;
+import controlador.PagoControlador;
+import controlador.RutaControlador;
+import controlador.UsuarioControlador;
+import controlador.VehiculoControlador;
+
 import modelo.DTO.Ruta;
-import modelo.DAO.PagoDAO;
-import modelo.DTO.Pago;
-import modelo.DAO.ChoferDAO;
 import modelo.DTO.Chofer;
-import modelo.SesionActiva;
-import modelo.DTO.Usuario;
+
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -22,8 +23,15 @@ public class DialogCrearPago extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogCrearPago.class.getName());
     private Inicio home;
 
-    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
-    int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
+    //Llama a los controladores para no tener que abrir más de una instancia
+    RutaControlador controllerRutas = new RutaControlador();
+    ChoferControlador controllerChoferes = new ChoferControlador();
+    UsuarioControlador controllerUsuario = new UsuarioControlador();
+    VehiculoControlador controllerVehiculos = new VehiculoControlador();
+    PagoControlador controllerPagos = new PagoControlador();
+
+    //Llama al usuario activo para usarlo en filtros WHERE
+    int idUsuario = controllerUsuario.getIdUsuarioActual();
 
     /**
      * Creates new form DialogCrearPago
@@ -237,44 +245,49 @@ public class DialogCrearPago extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMontoActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        Pago pago = new Pago();
-        PagoDAO controller = new PagoDAO();
-        
+ 
         Ruta rutaSeleccionada = (Ruta) comboRuta.getSelectedItem();
         if (rutaSeleccionada == null) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.");
             return;
         }
         int idRuta = rutaSeleccionada.getId();
-        
+
         Chofer choferSeleccionado = (Chofer) comboChofer.getSelectedItem();
         if (choferSeleccionado == null) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un chofer.");
             return;
         }
         int idChofer = choferSeleccionado.getId();
-        
+
         if (txtMonto.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe rellenar el monto.");
             return;
         }
-        
-        pago.setMonto(Double.parseDouble(txtMonto.getText()));
-        pago.setEstadoPago(comboEstado.getSelectedItem().toString());
-        pago.setMetodoPago(comboMetodo.getSelectedItem().toString());
-        pago.setId_chofer(idChofer);
-        pago.setId_ruta(idRuta);
-        pago.setId_usuario(idUsuario);
-        
-        boolean resultado = controller.crearPago(pago);
 
-        if (resultado) {
-            System.out.println("Pago guardado");
-        } else {
-            System.out.println("Error al guardar");
+        // Conversión de String a double con manejo de error
+        double monto;
+        try {
+            monto = Double.parseDouble(txtMonto.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El monto debe ser un número válido.");
             return;
         }
-        
+
+        boolean exito = controllerPagos.agregar(
+                monto,
+                comboEstado.getSelectedItem().toString(),
+                comboMetodo.getSelectedItem().toString(),
+                choferSeleccionado.getId(),
+                rutaSeleccionada.getId(),
+                idUsuario
+        );
+
+        if (!exito) {
+            JOptionPane.showMessageDialog(this, "Error al guardar el pago.");
+            return;
+        }
+
         dispose();
         home.mostrarPagos();
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -288,8 +301,7 @@ public class DialogCrearPago extends javax.swing.JDialog {
     }//GEN-LAST:event_comboMetodoActionPerformed
 
     private void cargarRutas() {
-        RutaDAO rutaDAO = new RutaDAO();
-        List<Ruta> rutas = rutaDAO.leerRutas(idUsuario); // filtra por usuario actual
+        List<Ruta> rutas = controllerRutas.leerRutas(idUsuario); // filtra por usuario actual
 
         comboRuta.removeAllItems();
 
@@ -299,8 +311,7 @@ public class DialogCrearPago extends javax.swing.JDialog {
     }
 
     private void cargarChoferes() {
-        ChoferDAO choferDAO = new ChoferDAO();
-        List<Chofer> choferes = choferDAO.listar(idUsuario); // filtra por usuario actual
+        List<Chofer> choferes = controllerChoferes.listarChoferes(idUsuario); // filtra por usuario actual
 
         comboChofer.removeAllItems();
 

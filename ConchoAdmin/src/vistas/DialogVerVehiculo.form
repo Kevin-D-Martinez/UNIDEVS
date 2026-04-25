@@ -94,7 +94,7 @@
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtRuta" min="-2" max="-2" attributes="0"/>
-                      <Component id="txrMatricula" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMatricula" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="txtAno" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="txtModelo" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMarca" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -138,7 +138,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtAno" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txrMatricula" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtMatricula" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtChofer" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -299,7 +299,7 @@
             <Property name="text" type="java.lang.String" value="A&#xf1;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="txrMatricula">
+        <Component class="javax.swing.JLabel" name="txtMatricula">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>

@@ -2,9 +2,9 @@
  */
 package vistas;
 
-import modelo.DAO.RutaDAO;
+import controlador.ChoferControlador;
+import controlador.RutaControlador;
 import modelo.DTO.Ruta;
-import modelo.DAO.ChoferDAO;
 import modelo.DTO.Chofer;
 
 /**
@@ -15,25 +15,25 @@ public class DialogVerChofer extends javax.swing.JDialog {
 
     Chofer chofer;
     Ruta ruta;
-    ChoferDAO controllerChofer = new ChoferDAO();
-    RutaDAO controllerRuta = new RutaDAO();
     
-    private Inicio home;
+    //Llama a los controladores para no tener que abrir más de una instancia
+    RutaControlador controllerRutas = new RutaControlador();
+    ChoferControlador controllerChoferes = new ChoferControlador();
+    
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogVerChofer.class.getName());
 
     /**
      * Creates new form DialogVerChofer
      */
-    public DialogVerChofer(java.awt.Frame parent, boolean modal, int id, Inicio home) {
+    public DialogVerChofer(java.awt.Frame parent, boolean modal, int id) {
         super(parent, modal);
-        this.home = home;
         initComponents();
         setLocationRelativeTo(parent);
         
-        chofer = controllerChofer.cargarChofer(id);
+        chofer = controllerChoferes.cargarChofer(id);
         System.out.println("ID ruta del chofer: " + chofer.getIdRuta());
-        ruta = controllerRuta.cargarRuta(chofer.getIdRuta());
+        ruta = controllerRutas.cargarRuta(chofer.getIdRuta());
         
         lblTitulo.setText(chofer.getNombre() + " " + chofer.getApellido());
         txtNombre.setText(chofer.getNombre());

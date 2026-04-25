@@ -3,15 +3,6 @@ package vistas;
 import controlador.*;
 import modelo.DTO.*;
 
-//import modelo.DAO.VehiculoDAO;
-//import modelo.DTO.Vehiculo;
-//import modelo.DTO.Usuario;
-//import modelo.SesionActiva;
-//import modelo.DTO.Ruta;
-//import modelo.DAO.PagoDAO;
-//import modelo.DTO.Pago;
-//import modelo.DAO.ChoferDAO;
-//import modelo.DTO.Chofer;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.text.NumberFormat;
@@ -37,14 +28,15 @@ import javax.swing.JTextArea;
 import javax.swing.ToolTipManager;
 
 /**
- * Interfaz principal de la aplicación
+ * Ventana principal de ConchoAdmin. Contiene la navegación lateral y los
+ * paneles de Rutas, Choferes, Vehículos y Pagos.
  *
  * @author ZoeyTato [Zoila Garcia 2021-1514]
  */
 public class Inicio extends javax.swing.JFrame {
 
     //Llama a los controladores para no tener que abrir más de una instancia
-    RutaControlador controller = new RutaControlador();
+    RutaControlador controllerRutas = new RutaControlador();
     PagoControlador controllerPagos = new PagoControlador();
     ChoferControlador controllerChoferes = new ChoferControlador();
     VehiculoControlador controllerVehiculos = new VehiculoControlador();
@@ -60,6 +52,9 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
 
+        // Quita los botones de minimizar, maximizar y cerrar
+        setUndecorated(true);
+        
         // Inicializa los componentes de la interfa
         initComponents();
 
@@ -1255,8 +1250,8 @@ public class Inicio extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(153, 153, 153));
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(23, 31, 38));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("UNIDEVS");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Por UNIDEVS:");
 
         javax.swing.GroupLayout pnlInfoLayout = new javax.swing.GroupLayout(pnlInfo);
         pnlInfo.setLayout(pnlInfoLayout);
@@ -1293,7 +1288,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1623,7 +1618,7 @@ public class Inicio extends javax.swing.JFrame {
 
         int id = (int) this.tblChoferes.getValueAt(fila, 0);
 
-        DialogVerChofer dialog = new DialogVerChofer(this, true, id, this);
+        DialogVerChofer dialog = new DialogVerChofer(this, true, id);
         dialog.setVisible(true);
     }//GEN-LAST:event_btnChoferesDetallesActionPerformed
 
@@ -1678,7 +1673,7 @@ public class Inicio extends javax.swing.JFrame {
 
         int id = (int) this.tblVehiculos.getValueAt(fila, 0);
 
-        DialogVerVehiculo dialog = new DialogVerVehiculo(this, true, id, this);
+        DialogVerVehiculo dialog = new DialogVerVehiculo(this, true, id);
         dialog.setVisible(true);
     }//GEN-LAST:event_btnVehiculosVerActionPerformed
 
@@ -1692,7 +1687,7 @@ public class Inicio extends javax.swing.JFrame {
 
         int id = (int) this.tblPagos.getValueAt(fila, 0);
 
-        DialogVerPago dialog = new DialogVerPago(this, true, id, this);
+        DialogVerPago dialog = new DialogVerPago(this, true, id);
         dialog.setVisible(true);
     }//GEN-LAST:event_btnPagosVerActionPerformed
 
@@ -1796,7 +1791,7 @@ public class Inicio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
         modelo.setRowCount(0);
 
-        List<Object[]> rutasVista = controller.poblarTablaRutas(idUsuario, txtBuscar.getText());
+        List<Object[]> rutasVista = controllerRutas.poblarTablaRutas(idUsuario, txtBuscar.getText());
 
         for (Object[] ruta : rutasVista) {
             modelo.addRow(ruta);
@@ -1959,8 +1954,7 @@ public class Inicio extends javax.swing.JFrame {
         }
 
         tblPagos.setModel(modelo);
-        
-        
+
         // Carga los choferes para poblar el dropdown
         List<Chofer> choferes = controllerChoferes.listarChoferes(idUsuario); // filtra por usuario actual
 
@@ -1972,9 +1966,8 @@ public class Inicio extends javax.swing.JFrame {
         for (Chofer chofer : choferes) {
             comboChofer.addItem(chofer);
         }
-        
-        comboChofer.setSelectedIndex(0);
 
+        comboChofer.setSelectedIndex(0);
 
         long fin = System.currentTimeMillis();
         System.out.println("Tiempo: " + (fin - inicio));
@@ -2011,7 +2004,7 @@ public class Inicio extends javax.swing.JFrame {
      *
      */
     private void actualizarContadores(int usuarioActivo) {
-        lblRutasCreadas.setText(String.valueOf(controller.contarRutas(usuarioActivo)));
+        lblRutasCreadas.setText(String.valueOf(controllerRutas.contarRutas(usuarioActivo)));
         lblChoferesActivos.setText(String.valueOf(controllerChoferes.contarChoferesActivos(usuarioActivo)));
         lblPagosPendientes.setText(String.valueOf(controllerPagos.contarPagosPendientes(usuarioActivo)));
         lblVehiculosRegistrados.setText(String.valueOf(controllerVehiculos.contarVehiculos(usuarioActivo)));
