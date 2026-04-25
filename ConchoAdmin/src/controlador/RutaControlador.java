@@ -2,6 +2,7 @@
  */
 package controlador;
 
+import java.util.ArrayList;
 import modelo.DTO.Ruta;
 import java.util.List;
 import modelo.DTO.Ruta;
@@ -27,34 +28,52 @@ public class RutaControlador {
         return rutaDAO.agregarRuta(ruta);
 
     }
-    
+
     public List<Ruta> leerRutas(int idUsuario) {
-        
+
         return rutaDAO.leerRutas(idUsuario);
     }
-    
+
     public Ruta cargarRuta(int idUsuario) {
-        
+
         return rutaDAO.cargarRuta(idUsuario);
     }
-    
+
     public boolean actualizarRuta(Ruta ruta) {
-        
+
         return rutaDAO.actualizarRuta(ruta);
     }
-    
+
     public boolean eliminarRuta(Ruta ruta) {
-        
+
         return rutaDAO.eliminarRuta(ruta);
     }
-    
-    public List<Ruta> filtrarRutas(int idUsuario, String valorFiltro) {
-        
-        return rutaDAO.filtrarRutas(idUsuario,valorFiltro);
+
+    public List<Object[]> poblarTablaRutas(int idUsuario, String valorFiltro) {
+
+        List<Ruta> rutas;
+
+        if (valorFiltro.equals("")) {
+            rutas = rutaDAO.leerRutas(idUsuario);
+        } else {
+            rutas = rutaDAO.filtrarRutas(idUsuario, valorFiltro);
+        }
+
+        List<Object[]> rutasVista = new ArrayList<>();
+
+        for (Ruta ruta : rutas) {
+            rutasVista.add(new Object[]{
+                ruta.getId(),
+                ruta.getNombre(),
+                ruta.getTarifa()
+            });
+        }
+
+        return rutasVista;
     }
-    
+
     public int contarRutas(int idUsuario) {
-        
+
         return rutaDAO.contarRutas(idUsuario);
     }
 }

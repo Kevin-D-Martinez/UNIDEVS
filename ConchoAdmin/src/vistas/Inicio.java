@@ -1,15 +1,17 @@
 package vistas;
 
-import modelo.DAO.VehiculoDAO;
-import modelo.DTO.Vehiculo;
-import modelo.DTO.Usuario;
-import modelo.SesionActiva;
-import controlador.RutaControlador;
-import modelo.DTO.Ruta;
-import modelo.DAO.PagoDAO;
-import modelo.DTO.Pago;
-import modelo.DAO.ChoferDAO;
-import modelo.DTO.Chofer;
+import controlador.*;
+import modelo.DTO.*;
+
+//import modelo.DAO.VehiculoDAO;
+//import modelo.DTO.Vehiculo;
+//import modelo.DTO.Usuario;
+//import modelo.SesionActiva;
+//import modelo.DTO.Ruta;
+//import modelo.DAO.PagoDAO;
+//import modelo.DTO.Pago;
+//import modelo.DAO.ChoferDAO;
+//import modelo.DTO.Chofer;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.text.NumberFormat;
@@ -33,7 +35,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.ToolTipManager;
-import controlador.FAQControlador;
 
 /**
  * Interfaz principal de la aplicación
@@ -44,13 +45,13 @@ public class Inicio extends javax.swing.JFrame {
 
     //Llama a los controladores para no tener que abrir más de una instancia
     RutaControlador controller = new RutaControlador();
-    PagoDAO controllerPagos = new PagoDAO();
-    ChoferDAO controllerChoferes = new ChoferDAO();
-    VehiculoDAO controllerVehiculos = new VehiculoDAO();
+    PagoControlador controllerPagos = new PagoControlador();
+    ChoferControlador controllerChoferes = new ChoferControlador();
+    VehiculoControlador controllerVehiculos = new VehiculoControlador();
+    UsuarioControlador controllerUsuario = new UsuarioControlador();
 
-    //Llama al usuario activo
-    Usuario actual = SesionActiva.getInstancia().getUsuarioActual();
-    int idUsuario = actual.getId(); // Para usarlo en filtros WHERE
+    //Llama al usuario activo para usarlo en filtros WHERE
+    int idUsuario = controllerUsuario.getIdUsuarioActual();
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
 
@@ -82,7 +83,7 @@ public class Inicio extends javax.swing.JFrame {
         actualizarContadores(idUsuario);
 
         // Actualiza el nombre de usuario en el inicio
-        lblUsuario.setText("Hola, " + actual.getNombre());
+        lblUsuario.setText("Hola, " + controllerUsuario.getNombreUsuarioActual());
 
         // Que los tooltips aparezcan más rápido
         ToolTipManager.sharedInstance().setInitialDelay(200); // más rápido
@@ -1535,29 +1536,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btnRutasBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasBuscarActionPerformed
-        if (txtBuscar.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar su búsqueda.");
-            return;
-        }
-
-        DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
-        modelo.setRowCount(0);
-
-        List<Ruta> rutas = controller.filtrarRutas(idUsuario, txtBuscar.getText());
-
-        for (Ruta ruta : rutas) {
-            Object[] fila = new Object[3];
-
-            fila[0] = ruta.getId();
-            fila[1] = ruta.getNombre();
-            fila[2] = ruta.getTarifa();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
-        }
-
-        tblRutas.setModel(modelo);
-        //txtBuscar.setText("");
+        mostrarRutas();
     }//GEN-LAST:event_btnRutasBuscarActionPerformed
 
     private void btnRutasCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasCrearActionPerformed
@@ -1598,31 +1577,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtChoferesActionPerformed
 
     private void btnChoferesBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesBuscarActionPerformed
-        if (txtChoferes.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar su búsqueda.");
-            return;
-        }
-
-        DefaultTableModel modelo = (DefaultTableModel) tblChoferes.getModel();
-        modelo.setRowCount(0);
-
-        List<Chofer> choferes = controllerChoferes.listarChofer(txtChoferes.getText(), idUsuario);
-
-        for (Chofer chofer : choferes) {
-            Object[] fila = new Object[5];
-
-            fila[0] = chofer.getId();
-            fila[1] = chofer.getNombre();
-            fila[2] = chofer.getApellido();
-            fila[3] = chofer.getCedula();
-            fila[4] = chofer.getEstado();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
-        }
-
-        tblChoferes.setModel(modelo);
-        //txtChoferes.setText("");
+        mostrarChoferes();
     }//GEN-LAST:event_btnChoferesBuscarActionPerformed
 
     private void btnChoferesCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoferesCrearActionPerformed
@@ -1677,31 +1632,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_txtVehiculosActionPerformed
 
     private void btnVehiculosBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosBuscarActionPerformed
-        if (txtVehiculos.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar su búsqueda.");
-            return;
-        }
-
-        DefaultTableModel modelo = (DefaultTableModel) tblVehiculos.getModel();
-        modelo.setRowCount(0);
-
-        List<Vehiculo> vehiculos = controllerVehiculos.filtrarVehiculo(txtVehiculos.getText(), idUsuario);
-
-        for (Vehiculo vehiculo : vehiculos) {
-            Object[] fila = new Object[5];
-
-            fila[0] = vehiculo.getId();
-            fila[1] = vehiculo.getMarca();
-            fila[2] = vehiculo.getModelo();
-            fila[3] = vehiculo.getAño();
-            fila[4] = vehiculo.getIdChofer();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
-        }
-
-        tblVehiculos.setModel(modelo);
-        txtVehiculos.setText("");
+        mostrarVehiculos();
     }//GEN-LAST:event_btnVehiculosBuscarActionPerformed
 
     private void btnVehiculosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosCrearActionPerformed
@@ -1799,33 +1730,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPagosCrearActionPerformed
 
     private void btnPagosBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosBuscarActionPerformed
-        Chofer choferSeleccionado = (Chofer) comboChofer.getSelectedItem();
-        if (choferSeleccionado == null) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un chofer.");
-            return;
-        }
-        int idChofer = choferSeleccionado.getId();
-
-        DefaultTableModel modelo = (DefaultTableModel) tblPagos.getModel();
-        modelo.setRowCount(0);
-
-        List<Pago> pagos = controllerPagos.listarPorChofer(idChofer);
-
-        for (Pago pago : pagos) {
-            Object[] fila = new Object[4];
-
-            fila[0] = pago.getId();
-            fila[1] = pago.getId_chofer();
-            fila[2] = pago.getMonto();
-            fila[3] = pago.getEstadoPago();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
-        }
-
-        tblPagos.setModel(modelo);
-        comboChofer.setSelectedIndex(1);
-
+        mostrarPagos();
     }//GEN-LAST:event_btnPagosBuscarActionPerformed
 
     private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
@@ -1891,20 +1796,14 @@ public class Inicio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblRutas.getModel();
         modelo.setRowCount(0);
 
-        List<Ruta> rutas = controller.leerRutas(idUsuario);
+        List<Object[]> rutasVista = controller.poblarTablaRutas(idUsuario, txtBuscar.getText());
 
-        for (Ruta ruta : rutas) {
-            Object[] fila = new Object[3];
-
-            fila[0] = ruta.getId();
-            fila[1] = ruta.getNombre();
-            fila[2] = ruta.getTarifa();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
+        for (Object[] ruta : rutasVista) {
+            modelo.addRow(ruta);
         }
 
         tblRutas.setModel(modelo);
+        txtBuscar.setText("");
 
         long fin = System.currentTimeMillis();
         System.out.println("Tiempo: " + (fin - inicio));
@@ -1951,22 +1850,14 @@ public class Inicio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblChoferes.getModel();
         modelo.setRowCount(0);
 
-        List<Chofer> choferes = controllerChoferes.listar(idUsuario);
+        List<Object[]> choferVista = controllerChoferes.poblarTablaChofer(idUsuario, txtChoferes.getText());
 
-        for (Chofer chofer : choferes) {
-            Object[] fila = new Object[5];
-
-            fila[0] = chofer.getId();
-            fila[1] = chofer.getNombre() + " " + chofer.getApellido();
-            fila[2] = chofer.getCedula();
-            fila[3] = chofer.getTelefono();
-            fila[4] = chofer.getEstado();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
+        for (Object[] chofer : choferVista) {
+            modelo.addRow(chofer);
         }
 
         tblChoferes.setModel(modelo);
+        txtChoferes.setText("");
 
         long fin = System.currentTimeMillis();
         System.out.println("Tiempo: " + (fin - inicio));
@@ -2021,24 +1912,14 @@ public class Inicio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblVehiculos.getModel();
         modelo.setRowCount(0);
 
-        List<Vehiculo> vehiculos = controllerVehiculos.listar(idUsuario);
+        List<Object[]> vehiculos = controllerVehiculos.poblarTablaVehiculo(idUsuario, txtVehiculos.getText());
 
-        for (Vehiculo vehiculo : vehiculos) {
-            Chofer chofer = controllerChoferes.cargarChofer(vehiculo.getIdChofer());
-
-            Object[] fila = new Object[5];
-
-            fila[0] = vehiculo.getId();
-            fila[1] = chofer.getNombre() + " " + chofer.getApellido();
-            fila[2] = vehiculo.getMarca();
-            fila[3] = vehiculo.getModelo();
-            fila[4] = vehiculo.getAño();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
+        for (Object[] vehiculo : vehiculos) {
+            modelo.addRow(vehiculo);
         }
 
         tblVehiculos.setModel(modelo);
+        txtVehiculos.setText("");
 
         long fin = System.currentTimeMillis();
         System.out.println("Tiempo: " + (fin - inicio));
@@ -2068,30 +1949,32 @@ public class Inicio extends javax.swing.JFrame {
     public void mostrarPagos() {
         long inicio = System.currentTimeMillis();
 
-        cargarChoferes();
-
         DefaultTableModel modelo = (DefaultTableModel) tblPagos.getModel();
         modelo.setRowCount(0);
 
-        List<Pago> pagos = controllerPagos.listarPagos(idUsuario);
+        List<Object[]> pagosVista = controllerPagos.poblarTablaPagos(idUsuario, (Chofer) comboChofer.getSelectedItem());
 
-        for (Pago pago : pagos) {
-
-            Chofer chofer = controllerChoferes.cargarChofer(pago.getId_chofer());
-
-            Object[] fila = new Object[5];
-
-            fila[0] = pago.getId();
-            fila[1] = chofer.getNombre() + " " + chofer.getApellido();
-            fila[2] = pago.getMonto();
-            fila[3] = pago.getMetodoPago();
-            fila[4] = pago.getEstadoPago();
-
-            // 3. Agregar fila
-            modelo.addRow(fila);
+        for (Object[] pago : pagosVista) {
+            modelo.addRow(pago);
         }
 
         tblPagos.setModel(modelo);
+        
+        
+        // Carga los choferes para poblar el dropdown
+        List<Chofer> choferes = controllerChoferes.listarChoferes(idUsuario); // filtra por usuario actual
+
+        // Limpia el dropdown
+        comboChofer.removeAllItems();
+        comboChofer.addItem(null);
+
+        // Agrega los choferes al dropdown
+        for (Chofer chofer : choferes) {
+            comboChofer.addItem(chofer);
+        }
+        
+        comboChofer.setSelectedIndex(0);
+
 
         long fin = System.currentTimeMillis();
         System.out.println("Tiempo: " + (fin - inicio));
@@ -2114,9 +1997,9 @@ public class Inicio extends javax.swing.JFrame {
         tblPagos.getColumnModel().getColumn(0).setPreferredWidth(0);
 
         // Fija el tamaño de la columna estado
-        tblChoferes.getColumnModel().getColumn(4).setMinWidth(100);
-        tblChoferes.getColumnModel().getColumn(4).setMaxWidth(100);
-        tblChoferes.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tblPagos.getColumnModel().getColumn(4).setMinWidth(100);
+        tblPagos.getColumnModel().getColumn(4).setMaxWidth(100);
+        tblPagos.getColumnModel().getColumn(4).setPreferredWidth(100);
 
         // Configura el estilo de dinero
         tblPagos.getColumnModel().getColumn(2).setCellRenderer(new MonedaRenderer());
@@ -2293,18 +2176,6 @@ public class Inicio extends javax.swing.JFrame {
         item.add(txtRespuesta, BorderLayout.CENTER);
 
         return item;
-    }
-
-    private void cargarChoferes() {
-        ChoferDAO choferDAO = new ChoferDAO();
-        List<Chofer> choferes = choferDAO.listar(idUsuario); // filtra por usuario actual
-
-        comboChofer.removeAllItems();
-        comboChofer.addItem(null);
-
-        for (Chofer chofer : choferes) {
-            comboChofer.addItem(chofer);
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

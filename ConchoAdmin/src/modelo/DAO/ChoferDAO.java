@@ -101,7 +101,7 @@ public class ChoferDAO {
      * @param idUsuario
      * @return datos
      */
-    public List<Chofer> listarChofer(String valorBuscar, int idUsuario) {
+    public List<Chofer> listarChofer(int idUsuario, String valorBuscar) {
 
         String sql = "SELECT * FROM Choferes "
                 + "WHERE (nombre LIKE ? OR apellido LIKE ? OR cedula LIKE ?) AND id_usuario = ?";
